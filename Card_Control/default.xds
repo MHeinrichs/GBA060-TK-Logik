@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<DesignStrategy goal="Speeeeeed" strategy="Xilinx Default (unlocked)" version="12.1">
+
+  <Description>The Default strategy provides a balanced optimization of performance results vs. runtime. The default property values correspond to the default values of each of the underlying implementation tools. This strategy keeps all properties in an unlocked state so that you can modify the values as you wish.</Description>
+
+  <DeviceList devices="xc9500xl"/>
+
+  <Properties>
+    <property name="Synthesize - XST:Optimization Effort" value="High"/>
+    <property name="Synthesize - XST:Resource Sharing" value="true"/>
+    <property name="Synthesize - XST:Equivalent Register Removal" value="true"/>
+    <property name="Synthesize - XST:XOR Preserve" value="true"/>
+    <property name="Fit:Implementation Template" value="Optimize Speed"/>
+    <property name="Fit:I/O Pin Termination" value="Float"/>
+    <property name="Fit:Macrocell Power Setting" value="Timing Driven"/>
+    <property name="Fit:Logic Optimization" value="Speed"/>
+    <property name="Fit:Exhaustive Fit Mode" value="true"/>
+  </Properties>
+
+</DesignStrategy>

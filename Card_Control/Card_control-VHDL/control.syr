@@ -1,0 +1,348 @@
+Release 14.6 - xst P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: control.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "control.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "control"
+Output Format                      : NGC
+Target Device                      : XC9500XL CPLDs
+
+---- Source Options
+Top Module Name                    : control
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+
+---- Target Options
+Add IO Buffers                     : YES
+MACRO Preserve                     : YES
+XOR Preserve                       : YES
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 2
+Keep Hierarchy                     : Yes
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Verilog 2001                       : YES
+
+---- Other Options
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" in Library work.
+Entity <control> compiled.
+Entity <control> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <control> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <control> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" line 362: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <TERM>
+Entity <control> analyzed. Unit <control> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <control>.
+    Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd".
+WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <BERR30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <TCI40> is never assigned.
+WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
+    Register <PCLK> equivalent to <CLK_BS> has been removed
+    Found finite state machine <FSM_0> for signal <AMIQ>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 5                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | SCLK_SIG                  (rising_edge)        |
+    | Reset              | RST_TERM                  (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <SIZING>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 36                                             |
+    | Inputs             | 11                                             |
+    | Outputs            | 7                                              |
+    | Clock              | SCLK_SIG                  (rising_edge)        |
+    | Reset              | RSTI40_SIG                (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Power Up State     | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found 1-bit tristate buffer for signal <PLL_S<0>>.
+    Found 1-bit register for signal <CLK_BS>.
+    Found 1-bit register for signal <LE_BS>.
+    Found 1-bit tristate buffer for signal <AS30>.
+    Found 1-bit tristate buffer for signal <DS30>.
+    Found 1-bit tristate buffer for signal <RESET30>.
+    Found 1-bit tristate buffer for signal <TA40>.
+    Found 1-bit register for signal <AS30_SIG>.
+    Found 1-bit register for signal <ATERM>.
+    Found 1-bit register for signal <BCLK040_SIG>.
+    Found 1-bit register for signal <BCLK060_SIG>.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 168.
+    Found 1-bit register for signal <CLK30_SIG>.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 169.
+    Found 1-bit register for signal <CLK_RAMC_SIG>.
+    Found 1-bit register for signal <CNTDIS>.
+    Found 12-bit up counter for signal <COUNTHALT>.
+    Found 11-bit up counter for signal <COUNTRES>.
+    Found 1-bit register for signal <DS30_SIG>.
+    Found 2-bit register for signal <LDSACK>.
+    Found 1-bit register for signal <LEND>.
+    Found 2-bit register for signal <QDSACK>.
+    Found 1-bit register for signal <RSTI40_SIG>.
+    Found 1-bit register for signal <RSTINT>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred  16 D-type flip-flop(s).
+	inferred   2 Xor(s).
+	inferred   5 Tristate(s).
+Unit <control> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 12-bit up counter                                     : 1
+# Registers                                            : 17
+ 1-bit register                                        : 17
+# Tristates                                            : 5
+ 1-bit tristate buffer                                 : 5
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <SIZING/FSM> on signal <SIZING[1:6]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000001
+ 001   | 000010
+ 010   | 000100
+ 100   | 001000
+ 011   | 010000
+ 101   | 100000
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <AMIQ/FSM> on signal <AMIQ[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 11    | 11
+-------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 12-bit up counter                                     : 1
+# Registers                                            : 16
+ Flip-Flops                                            : 16
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <CLK_BS> 
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: LONGPORT_and0001, TEA40_and0000, TEA40, LONGPORT.
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: BWL_BS<2>, BWL_BS_2_and0001, BYTEPORT_and0001, BWL_BS_2_or0000, BYTEPORT.
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: WORDPORT, BWL_BS_1_and0003, WORDPORT_and0001, BWL_BS_1_or0001, BWL_BS<1>, BWL_BS_1_or0002.
+
+Optimizing unit <control> ...
+  implementation constraint: INIT=r	 : BCLK060_SIG
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd5
+  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : ATERM
+  implementation constraint: INIT=r	 : CLK30_SIG
+  implementation constraint: INIT=r	 : COUNTHALT_10
+  implementation constraint: INIT=r	 : COUNTRES_0
+  implementation constraint: INIT=r	 : AS30_SIG
+  implementation constraint: INIT=r	 : CLK_RAMC_SIG
+  implementation constraint: INIT=r	 : QDSACK_0
+  implementation constraint: INIT=r	 : QDSACK_1
+  implementation constraint: INIT=r	 : CNTDIS
+  implementation constraint: INIT=r	 : RSTI40_SIG
+  implementation constraint: INIT=r	 : COUNTHALT_5
+  implementation constraint: INIT=r	 : COUNTRES_5
+  implementation constraint: INIT=r	 : COUNTHALT_9
+  implementation constraint: INIT=r	 : COUNTHALT_2
+  implementation constraint: INIT=r	 : COUNTHALT_8
+  implementation constraint: INIT=r	 : COUNTRES_4
+  implementation constraint: INIT=r	 : COUNTHALT_7
+  implementation constraint: INIT=r	 : COUNTRES_1
+  implementation constraint: INIT=r	 : COUNTHALT_6
+  implementation constraint: INIT=r	 : COUNTRES_3
+  implementation constraint: INIT=r	 : COUNTRES_6
+  implementation constraint: INIT=r	 : COUNTHALT_0
+  implementation constraint: INIT=r	 : COUNTRES_10
+  implementation constraint: INIT=r	 : COUNTHALT_1
+  implementation constraint: INIT=r	 : COUNTRES_9
+  implementation constraint: INIT=r	 : COUNTHALT_4
+  implementation constraint: INIT=r	 : COUNTRES_8
+  implementation constraint: INIT=r	 : COUNTRES_2
+  implementation constraint: INIT=r	 : COUNTRES_7
+  implementation constraint: INIT=r	 : COUNTHALT_3
+  implementation constraint: INIT=r	 : COUNTHALT_11
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd1
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd2
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd3
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd4
+  implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
+  implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
+  implementation constraint: INIT=s	 : SIZING_FSM_FFd6
+  implementation constraint: INIT=r	 : LDSACK_0
+  implementation constraint: INIT=r	 : LDSACK_1
+  implementation constraint: INIT=r	 : LEND
+  implementation constraint: INIT=r	 : BCLK040_SIG
+  implementation constraint: INIT=r	 : RSTINT
+INFO:Xst:2261 - The FF/Latch <ATERM> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <LE_BS> 
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : control.ngr
+Top Level Output File Name         : control
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : Yes
+Target Technology                  : XC9500XL CPLDs
+Macro Preserve                     : YES
+XOR Preserve                       : YES
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+Design Statistics
+# IOs                              : 63
+
+Cell Usage :
+# BELS                             : 348
+#      AND2                        : 112
+#      AND3                        : 13
+#      AND4                        : 2
+#      AND5                        : 2
+#      GND                         : 1
+#      INV                         : 125
+#      OR2                         : 57
+#      OR3                         : 11
+#      VCC                         : 1
+#      XOR2                        : 24
+# FlipFlops/Latches                : 46
+#      FD                          : 5
+#      FDC                         : 15
+#      FDCE                        : 23
+#      FDP                         : 3
+# IO Buffers                       : 59
+#      IBUF                        : 22
+#      IOBUFE                      : 1
+#      OBUF                        : 32
+#      OBUFE                       : 4
+=========================================================================
+
+
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.97 secs
+ 
+--> 
+
+Total memory usage is 302264 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    8 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

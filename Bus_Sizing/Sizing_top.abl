@@ -1,0 +1,186 @@
+MODULE sizing
+
+// Eingänge
+CLK_BS				PIN 22;																				// CLK-Eingang						
+DIR_BS				PIN 23;																				// R/W Eingang (von Steuer-CPLD)
+BWL0_BS				PIN  3;																				// Steuerwort Bus-Sizing Bit 0
+BWL1_BS				PIN  4;																				// Steuerwort Bus-Sizing Bit 1
+BWL2_BS				PIN  1;																				// Steuerwort Bus-Sizing Bit 2
+LE_BS					PIN 27;																				// Latch-Enable Treiber 040-Seite					
+OE_BS					PIN 97;																				// Output-Enable alle Treiber
+RESET30				PIN 99;																				// Reset vom Mainboard
+
+// Ausgänge
+D30_0					PIN  9 ISTYPE 'COM';																// I/O Datenbus Mainboard
+D30_1					PIN  8 ISTYPE 'COM';
+D30_2					PIN 12 ISTYPE 'COM';
+D30_3					PIN 15 ISTYPE 'COM';
+D30_4					PIN 11 ISTYPE 'COM';
+D30_5					PIN  6 ISTYPE 'COM';
+D30_6					PIN 14 ISTYPE 'COM';
+D30_7					PIN 10 ISTYPE 'COM';
+D30_8					PIN 18 ISTYPE 'COM';
+D30_9					PIN 13 ISTYPE 'COM';
+D30_10				PIN 20 ISTYPE 'COM';
+D30_11				PIN 17 ISTYPE 'COM';
+D30_12				PIN 25 ISTYPE 'COM';
+D30_13				PIN 16 ISTYPE 'COM';
+D30_14				PIN 29 ISTYPE 'COM';
+D30_15				PIN 28 ISTYPE 'COM';
+D30_16				PIN 30 ISTYPE 'COM';
+D30_17				PIN 32 ISTYPE 'COM';
+D30_18				PIN 33 ISTYPE 'COM';
+D30_19				PIN 36 ISTYPE 'COM';
+D30_20				PIN 35 ISTYPE 'COM';
+D30_21				PIN 39 ISTYPE 'COM';
+D30_22				PIN 37 ISTYPE 'COM';
+D30_23				PIN 41 ISTYPE 'COM';
+D30_24				PIN 40 ISTYPE 'COM';
+D30_25				PIN 50 ISTYPE 'COM';
+D30_26				PIN 53 ISTYPE 'COM';
+D30_27				PIN 49 ISTYPE 'COM';
+D30_28				PIN 54 ISTYPE 'COM';
+D30_29				PIN 52 ISTYPE 'COM';
+D30_30				PIN 42 ISTYPE 'COM';
+D30_31				PIN 55 ISTYPE 'COM';
+
+D40_0					PIN 77 ISTYPE 'REG,BUFFER';													// I/O Datenbus 040 CPU
+D40_1					PIN 79 ISTYPE 'REG,BUFFER';
+D40_2					PIN 78 ISTYPE 'REG,BUFFER';
+D40_3					PIN 82 ISTYPE 'REG,BUFFER';
+D40_4					PIN 85 ISTYPE 'REG,BUFFER';
+D40_5					PIN 86 ISTYPE 'REG,BUFFER';
+D40_6					PIN 87 ISTYPE 'REG,BUFFER';
+D40_7					PIN 89 ISTYPE 'REG,BUFFER';
+D40_8 				PIN 81 ISTYPE 'REG,BUFFER';
+D40_9 				PIN 90 ISTYPE 'REG,BUFFER';
+D40_10				PIN 91 ISTYPE 'REG,BUFFER';
+D40_11				PIN 92 ISTYPE 'REG,BUFFER';
+D40_12				PIN 93 ISTYPE 'REG,BUFFER';
+D40_13				PIN 76 ISTYPE 'REG,BUFFER';
+D40_14				PIN 72 ISTYPE 'REG,BUFFER';
+D40_15				PIN 71 ISTYPE 'REG,BUFFER';
+D40_16				PIN 74 ISTYPE 'REG,BUFFER';
+D40_17				PIN 94 ISTYPE 'REG,BUFFER';
+D40_18				PIN 70 ISTYPE 'REG,BUFFER';
+D40_19				PIN 95 ISTYPE 'REG,BUFFER';
+D40_20				PIN 96 ISTYPE 'REG,BUFFER';
+D40_21				PIN 68 ISTYPE 'REG,BUFFER';
+D40_22				PIN 66 ISTYPE 'REG,BUFFER';
+D40_23				PIN 64 ISTYPE 'REG,BUFFER';
+D40_24				PIN 67 ISTYPE 'REG,BUFFER';
+D40_25				PIN 63 ISTYPE 'REG,BUFFER';
+D40_26				PIN 65 ISTYPE 'REG,BUFFER';
+D40_27				PIN 60 ISTYPE 'REG,BUFFER';
+D40_28				PIN 61 ISTYPE 'REG,BUFFER';
+D40_29				PIN 58 ISTYPE 'REG,BUFFER';
+D40_30				PIN 56 ISTYPE 'REG,BUFFER';
+D40_31				PIN 59 ISTYPE 'REG,BUFFER';
+
+
+
+
+DECLARATIONS
+
+D30BYTE0 	= [D30_31..D30_24];
+D30BYTE1 	= [D30_23..D30_16];
+D30BYTE2 	= [D30_15..D30_8];
+D30BYTE3 	= [D30_7..D30_0];
+
+D40BYTE0 	= [D40_31..D40_24];
+D40BYTE1 	= [D40_23..D40_16];
+D40BYTE2 	= [D40_15..D40_8];
+D40BYTE3 	= [D40_7..D40_0];
+
+READ			= 	DIR_BS;
+WRITE			= !DIR_BS;
+
+BYTE0 		= !BWL2_BS & !BWL1_BS & !BWL0_BS;													// Status  0
+BYTE1			= !BWL2_BS & !BWL1_BS &  BWL0_BS;													// Status  1
+BYTE2			= !BWL2_BS &  BWL1_BS & !BWL0_BS;													// Status  2
+BYTE3			= !BWL2_BS &  BWL1_BS &  BWL0_BS;													// Status  3
+WORD0			=  BWL2_BS & !BWL1_BS & !BWL0_BS;													// Status  4
+WORD1			=  BWL2_BS & !BWL1_BS &  BWL0_BS;													// Status  5
+LONG			=  BWL2_BS &  BWL1_BS & !BWL0_BS;													// Status  6
+
+
+EQUATIONS
+
+// OE-Ansteuerung
+D40BYTE0.OE 		= READ & OE_BS & RESET30;
+D40BYTE1.OE 		= READ & OE_BS & RESET30;
+D40BYTE2.OE 		= READ & OE_BS & RESET30;
+D40BYTE3.OE 		= READ & OE_BS & RESET30;
+
+
+D30BYTE0.OE 		= WRITE & OE_BS & RESET30;
+D30BYTE1.OE 		= WRITE & OE_BS & RESET30;
+D30BYTE2.OE 		= WRITE & OE_BS & RESET30;
+D30BYTE3.OE 		= WRITE & OE_BS & RESET30;
+
+
+// Zuordnung Datenleitungen von 030-System zu 040-CPU (Read)
+// nach TABELLE 1
+//D40BYTE0.D			= D30BYTE0.PIN & READ & (BYTE0 # WORD0 # LONG);							// Treiber a
+//D40BYTE0.CLK		= LE_BS & READ & (BYTE0 # WORD0 # LONG);
+//D40BYTE0.AR			= !RESET30;
+//
+//
+//D40BYTE1.D			= D30BYTE0.PIN & READ & BYTE1													// Treiber b2
+//						# D30BYTE1.PIN & READ & (LONG # WORD0);									// Treiber b1
+//D40BYTE1.CLK		= LE_BS & READ & (BYTE1 # LONG # WORD0);
+//D40BYTE1.AR			= !RESET30;		
+//		
+//
+//D40BYTE2.D			= D30BYTE0.PIN & READ & (BYTE2 # WORD1 )									// Treiber c2
+//						# D30BYTE2.PIN & READ &  LONG;												// Treiber c1
+//D40BYTE2.CLK		= LE_BS & READ & (BYTE2 # WORD1 # LONG);
+//D40BYTE2.AR			= !RESET30;		
+//		
+//
+//D40BYTE3.D			= D30BYTE0.PIN & READ & BYTE3													// Treiber d3
+//						# D30BYTE1.PIN & READ & WORD1													// Treiber d2
+//						# D30BYTE3.PIN & READ & LONG;													// Treiber d1
+//D40BYTE3.CLK		= LE_BS & READ & (BYTE3 # WORD1 # LONG);			
+//D40BYTE3.AR			= !RESET30;
+
+
+// Zuordnung Datenleitungen von 030-System zu 040-CPU (Read)
+// nach TABELLE 2
+D40BYTE0.D			= D30BYTE0.PIN & READ & (BYTE0 # WORD0 # LONG);							// Treiber a
+D40BYTE0.CLK		= LE_BS & READ & (BYTE0 # WORD0 # LONG);
+D40BYTE0.AR			= !RESET30;
+
+D40BYTE1.D			= D30BYTE0.PIN & READ & (BYTE0 # BYTE1)									// Treiber b2
+						# D30BYTE1.PIN & READ & (LONG # WORD0);									// Treiber b1
+D40BYTE1.CLK		= LE_BS & READ & (BYTE0 # BYTE1 # LONG # WORD0);
+D40BYTE1.AR			= !RESET30;		
+
+D40BYTE2.D			= D30BYTE0.PIN & READ & (BYTE0 # BYTE1 # BYTE2 # WORD0 # WORD1 )	// Treiber c2
+						# D30BYTE2.PIN & READ &  LONG;												// Treiber c1
+D40BYTE2.CLK		= LE_BS & READ & (BYTE0 # BYTE1 # BYTE2 # WORD0 # WORD1 # LONG);
+D40BYTE2.AR			= !RESET30;		
+		
+D40BYTE3.D			= D30BYTE0.PIN & READ & (BYTE0 # BYTE1 # BYTE2 # BYTE3)				// Treiber d3
+						# D30BYTE1.PIN & READ & (WORD0 # WORD1)									// Treiber d2
+						# D30BYTE3.PIN & READ & LONG;													// Treiber d1
+D40BYTE3.CLK		= LE_BS & READ & (BYTE0 # BYTE1 # BYTE2 # BYTE3 # WORD0 # WORD1 # LONG);					
+D40BYTE3.AR			= !RESET30;
+
+
+// Zuordnung Datenleitungen von 040-CPU zu 030-System (Write)
+D30BYTE0				= D40BYTE0.PIN & WRITE &  BYTE0												// Treiber a
+						# D40BYTE1.PIN & WRITE &  BYTE1												// Treiber b2
+						# D40BYTE2.PIN & WRITE &  BYTE2												// Treiber c2
+						# D40BYTE3.PIN & WRITE &  BYTE3;												// Treiber d3
+
+D30BYTE1				= D40BYTE1.PIN & WRITE & (BYTE0 # BYTE1)									// Treiber b1
+						# D40BYTE3.PIN & WRITE & (BYTE2 # BYTE3);									// Treiber d2
+						
+D30BYTE2				= D40BYTE2.PIN & WRITE & (BYTE0 # BYTE1 # BYTE2 # BYTE3);			// Treiber c1
+
+D30BYTE3				= D40BYTE3.PIN & WRITE & (BYTE0 # BYTE1 # BYTE2 # BYTE3);			// Treiber d1
+
+
+
+END

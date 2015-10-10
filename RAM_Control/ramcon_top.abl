@@ -1,0 +1,778 @@
+MODULE ramcon
+
+// Eingänge
+CLK_RAMC		PIN 22;																			// Eingangs-CLK
+RESET			PIN 99;																			// Reset-Eingang
+
+A40_0			PIN 58;																			// Adressleitung  0 der CPU
+A40_1			PIN 56;																			// Adressleitung  1 der CPU
+A40_2			PIN 55;																			// Adressleitung  2 der CPU
+A40_3			PIN 54;																			// Adressleitung  3 der CPU
+A40_4			PIN 53;																			// Adressleitung  4 der CPU
+A40_5			PIN 52;																			// Adressleitung  5 der CPU
+A40_6			PIN 50;																			// Adressleitung  6 der CPU
+A40_7			PIN 49;																			// Adressleitung  7 der CPU
+A40_8			PIN 46;																			// Adressleitung  8 der CPU
+A40_9			PIN 43;																			// Adressleitung  9 der CPU
+A40_10		PIN 42;																			// Adressleitung 10 der CPU
+A40_11		PIN 41;																			// Adressleitung 11 der CPU
+A40_12		PIN 40;																			// Adressleitung 12 der CPU
+A40_13		PIN 39;																			// Adressleitung 13 der CPU
+A40_14		PIN 37;																			// Adressleitung 14 der CPU
+A40_15		PIN 36;																			// Adressleitung 15 der CPU
+A40_16		PIN 35;																			// Adressleitung 16 der CPU
+A40_17		PIN 34;																			// Adressleitung 17 der CPU
+A40_18		PIN 33;																			// Adressleitung 18 der CPU
+A40_19		PIN 32;																			// Adressleitung 19 der CPU
+A40_20		PIN 30;																			// Adressleitung 20 der CPU
+A40_21		PIN 29;																			// Adressleitung 21 der CPU
+A40_22		PIN 28;																			// Adressleitung 22 der CPU
+A40_23		PIN 25;																			// Adressleitung 23 der CPU
+A40_24		PIN 24;																			// Adressleitung 24 der CPU
+A40_25		PIN 20;																			// Adressleitung 25 der CPU
+A40_26		PIN 19;																			// Adressleitung 26 der CPU
+A40_27		PIN 18;																			// Adressleitung 27 der CPU
+A40_28		PIN 17;																			// Adressleitung 28 der CPU
+A40_29		PIN 16;																			// Adressleitung 29 der CPU
+A40_30		PIN 15;																			// Adressleitung 30 der CPU
+
+C4MHZ			PIN 11;																			// CLK fuer Refresh-Counter
+
+RW_40			PIN 12;																			// Read/Write von 040-CPU
+
+INIT			PIN 13;																			// verzoegerter Reset fuer DRAM-Init
+
+SIZ40_0		PIN 72;																			// Transfer-Breite Bit 0 von 040-CPU
+SIZ40_1		PIN 71;																			// Transfer-Breite Bit 1 von 040-CPU
+
+TT40_1		PIN  1;																			// Transfer-Type Bit 1 von 040-CPU
+TS40			PIN 70;																			// Transfer-Start von 040-CPU 
+
+SCLK			PIN  2;																			// Steuerwort Card-Controller
+
+ICACHE		PIN  3;																			// Steuerwort vom Card-Controller
+
+WE_FLASH		PIN 14 ;	//CONFIG_0																		// Write-Enable fuer Flash
+OE_FLASH		PIN 59 ;	//A30LE -> PIN 9 Control-CPLD												// Output-Enable fuer Flash
+
+// Ausgänge 
+UDQ0			PIN 77 ISTYPE 'REG,BUFFER';												// Byte-Select zum DRAM
+UDQ1			PIN 74 ISTYPE 'REG,BUFFER';												// Byte-Select zum DRAM
+LDQ0			PIN 76 ISTYPE 'REG,BUFFER';												// Byte-Select zum DRAM
+LDQ1			PIN 73 ISTYPE 'REG,BUFFER';												// Byte-Select zum DRAM
+
+CE_B0			PIN 78 ISTYPE 'REG,BUFFER';												// Chip-Enable DRAM Bank 0
+CE_B1			PIN 79 ISTYPE 'REG,BUFFER';												// Chip-Enable DRAM Bank 1
+
+WE				PIN 80 ISTYPE 'REG,BUFFER';												// Write-Enable DRAM
+CAS			PIN 81 ISTYPE 'REG,BUFFER';												// CAS-Select DRAM
+RAS			PIN 85 ISTYPE 'REG,BUFFER';												// RAS-Select DRAM
+
+CLK_RAM		PIN 82 ISTYPE 'COM';															// CLK zum DRAM
+CLKEN			PIN 10 ISTYPE 'COM';	
+
+BA0			PIN 87 ISTYPE 'REG,BUFFER';												// Bank-Select Bit 0 DRAM
+BA1			PIN 90 ISTYPE 'REG,BUFFER';												// Bank-Select Bit 1 DRAM
+
+LE_RAM		PIN 65 ISTYPE 'COM';															// Latch-Enable Daten-Treiber DRAM
+OERAM_40		PIN 66 ISTYPE 'REG,BUFFER';												// Output-Enable Daten-Treiber DRAM zu CPU
+OE40_RAM		PIN 67 ISTYPE 'REG,BUFFER';												// Output-Enable Daten-Treiber CPU zu DRAM
+
+ARAM_0		PIN 94 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 0
+ARAM_1		PIN 96 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 1
+ARAM_2		PIN  6 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 2
+ARAM_3		PIN  8 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 3
+ARAM_4		PIN  9 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 4
+ARAM_5		PIN  7 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 5
+ARAM_6		PIN 97 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 6
+ARAM_7		PIN 95 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 7
+ARAM_8		PIN 93 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 8
+ARAM_9		PIN 91 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 9
+ARAM_10		PIN 92 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 10
+ARAM_11		PIN 89 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 11
+ARAM_12		PIN 86 ISTYPE 'REG,BUFFER';												// DRAM-Adressleitung 12
+
+
+
+D30_28		PIN 61 ISTYPE 'COM';															// Datenleitung Mainboard D28
+D30_29		PIN 63 ISTYPE 'COM';															// Datenleitung Mainboard D29
+D30_30		PIN 64 ISTYPE 'COM';															// Datenleitung Mainboard D30
+D30_31		PIN 60 ISTYPE 'COM';															// Datenleitung Mainboard D31
+
+SEL16M		PIN  4 ISTYPE 'COM';															// Steuerwort zum Card-Controller
+
+TA40			PIN 68 ISTYPE 'REG,BUFFER';												// Transfer Acknowledge zur 040-CPU
+
+TCI40			PIN 23 ISTYPE 'COM';															// Transfer Cache Inhibit zur 040-CPU
+
+TBI40			PIN 27;	//CONFIG_1															// Transfer Burst Inhibit zur 040-CPU
+
+
+
+// Hilfsnetze
+
+RQ7..RQ0		NODE ISTYPE 'REG,BUFFER';													// Refresh-Counter
+CQ5..CQ0		NODE ISTYPE 'REG,BUFFER';													// State-Counter
+NQ2..NQ0		NODE ISTYPE 'REG,BUFFER';													// NOP-Counter
+
+TRANSFER		NODE ISTYPE 'REG,BUFFER';															// TS-Speicher
+CLRTRAN		NODE ISTYPE 'COM';															// Reset fuer Transfer Speicher
+
+CLRREFC		NODE ISTYPE 'COM';															// Reset fuer Refresh-Counter
+CLRNOPC		NODE ISTYPE 'COM';															// Reset fuer NOP-Counter
+ENANOPC		NODE ISTYPE 'COM';															// Enable fuer NOP-Counter
+ENACLK		NODE ISTYPE 'COM';															// Enable fuer RAM-CLK
+REFRESH		NODE ISTYPE 'COM';															// Enable fuer Refresh-Zyklus
+
+SELRAM0		NODE ISTYPE 'COM';															// Adressbereich RAM BANK 0
+SELRAM1		NODE ISTYPE 'COM';															// Adressbereich RAM BANK 1
+
+
+
+DECLARATIONS
+
+SELRAM		= SELRAM0 # SELRAM1;
+
+CHIP			= !A40_24 & !A40_23 & !A40_22 & !A40_21;								// $000..$01F
+
+ROM			= !A40_24 &  A40_23 &  A40_22 &  A40_21 &  A40_20 &  A40_19;	// $0F8..$0FF
+
+ZORRO2		= !A40_24 & !A40_23 & !A40_22 &  A40_21								// $020..$03F
+				# !A40_24 & !A40_23 &  A40_22												// $040..$07F
+				# !A40_24 &  A40_23 & !A40_22 & !A40_21;								// $080..$09F
+				
+SRAM			=  A40_24 & !A40_23 & !A40_22 &  A40_21								// $120..$13F
+				#  A40_24 & !A40_23 &  A40_22												// $140..$17F
+				#  A40_24 &  A40_23 & !A40_22 & !A40_21;								// $180..$19F
+			
+				
+UDQ1M			= !( !A40_1 & !A40_0	& !SIZ40_1 &  SIZ40_0							// Write-Enable D31-D24
+					# !A40_1 & 			   SIZ40_1 & !SIZ40_0
+					#  					  !SIZ40_1 & !SIZ40_0					
+					# 						   SIZ40_1 &  SIZ40_0 );
+					
+LDQ1M			= !( !A40_1 &  A40_0	& !SIZ40_1 &  SIZ40_0							// Write-Enable D23-D16
+					# !A40_1 & 			   SIZ40_1 & !SIZ40_0
+					#  					  !SIZ40_1 & !SIZ40_0					
+					# 						   SIZ40_1 &  SIZ40_0 );
+					
+UDQ0M			= !(  A40_1 & !A40_0	& !SIZ40_1 &  SIZ40_0							// Write-Enable D15-D8
+					#  A40_1 & 			   SIZ40_1 & !SIZ40_0
+					#  					  !SIZ40_1 & !SIZ40_0					
+					# 						   SIZ40_1 &  SIZ40_0 );
+
+LDQ0M			= !(  A40_1 &  A40_0	& !SIZ40_1 &  SIZ40_0							// Write-Enable D8-D0
+					#  A40_1 & 			   SIZ40_1 & !SIZ40_0
+					#  					  !SIZ40_1 & !SIZ40_0					
+					# 						   SIZ40_1 &  SIZ40_0 );
+
+
+REFCOUNT		= [RQ7..RQ0];
+
+NOPCOUNT		= [NQ2..NQ0];
+
+RAMCONTROL	= [CQ5..CQ0];
+
+S0		= ^b000000;		S16	= ^b011000;		S32	= ^b110000;		
+S1		= ^b000001;		S17	= ^b011001;		S33	= ^b110001;		
+S2		= ^b000011;		S18	= ^b011011;		S34	= ^b110011;		
+S3		= ^b000010;		S19	= ^b011010;		S35	= ^b110010;		
+S4		= ^b000110;		S20	= ^b011110;		S36	= ^b110110;		
+S5		= ^b000111;		S21	= ^b011111;		S37	= ^b110111;		
+S6		= ^b000101;		S22	= ^b011101;		S38	= ^b110101;			
+S7		= ^b000100;		S23	= ^b011100;		S39	= ^b110100;		
+S8		= ^b001100;		S24	= ^b010100;		S40	= ^b111100;		
+S9		= ^b001101;		S25	= ^b010101;		S41	= ^b111101;
+S10	= ^b001111;		S26	= ^b010111;		S42	= ^b111111;
+S11	= ^b001110;		S27	= ^b010110;		S43	= ^b111110;	
+S12	= ^b001010;		S28	= ^b010010;		S44	= ^b111010;
+S13	= ^b001011;		S29	= ^b010011;		S45	= ^b111011;
+S14	= ^b001001;		S30	= ^b010001;		S46	= ^b111001;
+S15	= ^b001000;		S31	= ^b010000;		S47	= ^b111000;	
+
+ADRAM	= [ARAM_11..ARAM_0];							
+	
+	
+EQUATIONS
+												
+// Adressbereich Mainboard mit 32Bit-SRAM
+SEL16M			= !A40_30 & !A40_29 & !A40_28 & !A40_27 & !A40_26 & !A40_25;						// $000..$1FF
+
+// Adressbereich TK-SDRAM Bank 0 32MB
+SELRAM0			= !A40_30 & !A40_29 & !A40_28 &  A40_27 & !A40_26 & !A40_25;						// $800..$9FF
+
+// Adressbereich TK-SDRAM Bank 1 32MB
+SELRAM1			= !A40_30 & !A40_29 & !A40_28 &  A40_27 & !A40_26 &  A40_25;						// $A00..$BFF
+
+// Cache-Inhibit 
+TCI40					= ICACHE & SEL16M & ROM																		// ROM Zugriff
+						# ICACHE & SEL16M & CHIP											   					// CHIP-RAM Zugriff
+						# ICACHE & SEL16M & ZORRO2																	// Zorro-II Zugriff
+						# SEL16M & SRAM																				// SRAM Zugriff
+						# SELRAM;                                                         			// SDRAM Zugriff 
+
+
+// Transfer-Start fuer Refreshzyklus speichern
+TRANSFER.D			= 1;
+TRANSFER.CLK		= !TS40 & !TT40_1 & SELRAM;
+TRANSFER.AR			= CLRTRAN # !RESET;
+
+
+// Transfer-Acknowledge
+TA40.CLK			= CLK_RAMC;
+TA40.ASET		= !RESET;
+TA40.OE			= SELRAM;
+
+// Latch-Enable Treiber Datenbus
+LE_RAM			= 0;																			// Latch transparent geschaltet																		
+
+
+// Refresh-Counter; wird auch fuer Startverzoegerung genutzt
+[RQ7..RQ0].CLK	= C4MHZ;
+[RQ7..RQ0].AR	= !RESET # CLRREFC;
+
+REFCOUNT 	  := (REFCOUNT + 1);															// Refresh-Counter zaehlt staendig
+
+REFRESH			= (REFCOUNT >= ^d60);													// Refresh nach 15 us
+
+
+// Counter fuer NOP's
+[NQ2..NQ0].CLK	= CLK_RAMC;
+[NQ2..NQ0].AR	= !RESET # CLRNOPC;
+
+NOPCOUNT		  := (NOPCOUNT + 1) & ENANOPC;											// NOP-Counter zaehlt bei Freigabe
+
+// SDRAM-Takt mit Enable
+CLK_RAM			= !CLK_RAMC & ENACLK;													// Takt SDRAM Controller
+
+CLKEN				= 1;
+
+
+
+// Steuersignale fuer Ausgangsregister
+OERAM_40.CLK	= CLK_RAMC;		OERAM_40.ASET	= !RESET;
+OE40_RAM.CLK	= CLK_RAMC;		OE40_RAM.ASET	= !RESET;
+UDQ0.CLK			= CLK_RAMC;		UDQ0.ASET		= !RESET;
+UDQ1.CLK			= CLK_RAMC;		UDQ1.ASET		= !RESET;
+LDQ0.CLK			= CLK_RAMC;		LDQ0.ASET		= !RESET;
+LDQ1.CLK			= CLK_RAMC;		LDQ1.ASET		= !RESET;
+CE_B0.CLK		= CLK_RAMC;		CE_B0.ASET		= !RESET;
+CE_B1.CLK		= CLK_RAMC;		CE_B1.ASET		= !RESET;
+WE.CLK			= CLK_RAMC;		WE.ASET			= !RESET;
+CAS.CLK			= CLK_RAMC;		CAS.ASET			= !RESET;
+RAS.CLK			= CLK_RAMC;		RAS.ASET			= !RESET;
+BA0.CLK			= CLK_RAMC;		BA0.ASET			= !RESET;
+BA1.CLK			= CLK_RAMC;		BA1.ASET			= !RESET;
+
+[ARAM_11..ARAM_0].CLK	= CLK_RAMC;
+[ARAM_11..ARAM_0].AR		= !RESET;
+
+
+
+// State-Machine fuer RAM-Controller
+[CQ5..CQ0].CLK	= CLK_RAMC;
+[CQ5..CQ0].AR	= !RESET;
+
+@dcset
+state_diagram RAMCONTROL
+
+State S0:																						// COMMAND INHIBIT	-INIT				
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;			
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;
+			if 		( INIT ) 												then S1		// 100 us warten
+			else S0;	
+
+State S1:																						// PRECHARGE ALL		-INIT
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 0;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+	
+					[ARAM_11..ARAM_0].D = [A40_22,1,A40_20..A40_11];
+					
+					ENACLK			= 1;				CLRNOPC 			= 1;
+			goto S2;
+
+State S2:																						// NOP					-INIT			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;
+															CLRREFC			= 1;
+			if 		( NOPCOUNT >= ^d1 ) 								then S3			// Warten fuer Precharge-Zeit  	
+			else S2;																				// min. 20ns -> 2 NOP's bei 100MHz
+					
+State S3:																						// AUTO REFRESH		-INIT				
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 0;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;											
+			goto S4;
+
+State S4:																						// NOP					-INIT			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;				// Warten fuer Refresh-Zeit
+			if 		( NOPCOUNT >= ^d6) & (REFCOUNT >= ^d4 )	then S5			// min. 66ns -> 7 NOP's bei 100MHz
+			else if 	( NOPCOUNT >= ^d6) & (REFCOUNT <= ^d4 )	then S3			// min. 8 AUTO REFRESH durchfuehren
+			else S4;																				
+
+State S5:																						// LMR					-INIT			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;											
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;				//          010 	Burst 4
+					CE_B0.D			= 0;				CE_B1.D			= 0;				//         0 		Sequential Burst
+					WE.D				= 0;				TA40.D			= 1;				//      010 		CAS Latency 2
+					CAS.D				= 0;				RAS.D				= 0;				//    00 			Standard Operation																
+					BA0.D				= A40_23;		BA1.D				= A40_24;		//   0				Write-Burst								 
+																									// 00					Reserved	
+					[ARAM_11..ARAM_0].D = ^b000000100010;					
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+					CLRREFC			= 1;
+			goto S6;
+
+State S6:																						// DESELECT				-INIT-ENDE			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;	
+			if 		( NOPCOUNT >= ^d1 ) 									then S7		// Warten fuer WORK-Status  	
+			else S6;																				// 2 NOP's 
+
+
+
+State S7:																						// DESELECT 			-WORK				
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				
+			if			( REFRESH ) 											then S8		// Refresh-Zyklus ausfuehren 
+			else if	( !REFRESH & TRANSFER &  RW_40 & !SCLK ) 		then S10		// READ-Zyklus 
+			else if	( !REFRESH & TRANSFER & !RW_40 &  SCLK )	 	then S23		// WRITE-Zyklus
+			else S7;																		
+
+
+
+State S8:																						// AUTO REFRESH		-REFRESH-ZYKLUS				
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 0;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+															CLRREFC			= 1;
+			goto S9;
+
+State S9:																						// DESELECT				-REFRESH-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1; 
+			if 		( NOPCOUNT >= ^d6 ) 									then S7		// Warten fuer Refresh-Zeit 
+			else S9;																				// min. 66ns -> 7 NOP's bei 100MHz
+
+
+
+			
+State S10:																						// ACTIVE				-READ-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					[ARAM_11..ARAM_0].D = [A40_22..A40_11];
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+					CLRTRAN			= 1;
+			goto S11;
+
+State S11:																						// NOP					-READ-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+				
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S12;
+			
+State S12:																						// READ					-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );				
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 0;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					[ARAM_11..ARAM_0].D = [0,0,0,A40_10..A40_2];						// ohne Auto-Precharge
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+			goto S13;
+
+State S13:																						// NOP					-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S14;
+			
+State S14:																						// Datenübernahme 1	-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;
+			if 		( SIZ40_0 & SIZ40_1 ) 								then S15		// LINE-Transfer  	
+			else S21;																			// BURST-Abbruch									
+
+State S15:																						// NOP					-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S16;			
+
+State S16:																						// Datenübernahme 2	-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S17;
+
+
+State S17:																						// NOP					-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S18;	
+
+State S18:																						// Datenübernahme 3	-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S19;
+
+State S19:																						// NOP					-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S20;
+
+State S20:																						// Datenübernahme 4	-READ-ZYKLUS			
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 0;				UDQ1.D			= 0;
+					LDQ0.D			= 0;				LDQ1.D			= 0;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S21;
+
+State S21:																						// PRECHARGE ALL 		-READ-ZYKLUS
+					OERAM_40.D		= !( SELRAM & RW_40 );
+					OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 0;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+	
+					[ARAM_11..ARAM_0].D = [A40_22,1,A40_20..A40_11];
+						
+					ENACLK			= 0;				CLRNOPC		 	= 1;
+			goto S22;
+
+State S22:																						// DESELECT				-READ-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;				// Zurueck in WORK-Status
+			if 		( NOPCOUNT >= ^d1 ) 									then S7		// Warten fuer Precharge-Zeit  	
+			else S22;																			// min. 20ns -> 2 NOP's bei 100MHz
+
+
+
+					
+State S23:																						// ACTIVE				-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					[ARAM_11..ARAM_0].D = [A40_22..A40_11];
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+					CLRTRAN			= 1;
+			goto S24;
+
+State S24:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+			goto S25;	
+
+State S25:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+			goto S26;	
+	
+State S26:																						// WRITE					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;														//Datenübernahme 1
+					OE40_RAM.D		= !( SELRAM & !RW_40 );	
+					UDQ0.D			= UDQ0M;			UDQ1.D			= UDQ1M;
+					LDQ0.D			= LDQ0M;			LDQ1.D			= LDQ1M;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 0;				TA40.D			= 0;
+					CAS.D				= 0;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+						
+					[ARAM_11..ARAM_0].D = [0,0,0,A40_10..A40_2];						// ohne Auto-Precharge
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;	
+			goto S27;
+			
+State S27:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= 1;			UDQ1.D			= 1;
+					LDQ0.D			= 1;			LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;		
+			if 		( SIZ40_0 & SIZ40_1 ) 								then S28		// LINE-Transfer  	
+			else S33;																			// BURST-Abbruch				goto S35;
+			
+State S28:																						// Datenübernahme 2	-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= UDQ0M;			UDQ1.D			= UDQ1M;
+					LDQ0.D			= LDQ0M;			LDQ1.D			= LDQ1M;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S29;
+
+State S29:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= 1;			UDQ1.D			= 1;
+					LDQ0.D			= 1;			LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S30;
+
+State S30:																						// Datenübernahme 3	-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= UDQ0M;			UDQ1.D			= UDQ1M;
+					LDQ0.D			= LDQ0M;			LDQ1.D			= LDQ1M;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S31;
+
+State S31:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= 1;			UDQ1.D			= 1;
+					LDQ0.D			= 1;			LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S32;
+
+State S32:																						// Datenübernahme 4	-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				
+					OE40_RAM.D		= !( SELRAM & !RW_40 );					
+					UDQ0.D			= UDQ0M;			UDQ1.D			= UDQ1M;
+					LDQ0.D			= LDQ0M;			LDQ1.D			= LDQ1M;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 0;			
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 0;				CLRNOPC			= 1;	
+			goto S33;
+
+State S33:																						// NOP					-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;					
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= !SELRAM0;		CE_B1.D			= !SELRAM1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				CLRNOPC			= 1;	
+			goto S34;
+
+State S34:																						// PRECHARGE ALL 		-WRITE-ZYKLUS
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 0;				CE_B1.D			= 0;
+					WE.D				= 0;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 0;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+	
+					[ARAM_11..ARAM_0].D = [A40_22,1,A40_20..A40_11];
+					
+					ENACLK			= 1;				CLRNOPC		 	= 1;
+			goto S35;
+
+State S35:																						// DESELECT				-WRITE-ZYKLUS			
+					OERAM_40.D		= 1;				OE40_RAM.D		= 1;
+					UDQ0.D			= 1;				UDQ1.D			= 1;
+					LDQ0.D			= 1;				LDQ1.D			= 1;
+					CE_B0.D			= 1;				CE_B1.D			= 1;
+					WE.D				= 1;				TA40.D			= 1;
+					CAS.D				= 1;				RAS.D				= 1;
+					BA0.D				= A40_23;		BA1.D				= A40_24;
+					
+					ENACLK			= 1;				ENANOPC			= 1;				// Zurueck in WORK-Status
+			if 		( NOPCOUNT >= ^d1 ) 									then S7		// Warten fuer Precharge-Zeit  	
+			else S35;																			// min. 20ns -> 2 NOP's bei 100MHz
+
+
+	
+END
+

@@ -1,0 +1,581 @@
+MODULE control
+
+// Eingänge
+SEL16M		PIN  4;																// Steuerwort vom Ram-Controller	SEL16M		
+
+PLL_CLK		PIN 22;																// Eingangs-CLK / Ausgang PLL
+//OSC_CLK		PIN 23;															// CLK vom Oszillator
+
+RSTO40		PIN 94;																// Reset-Ausgang von 040-CPU 
+HALT30		PIN 37;																// HALT-Leitung vom Mainboard
+
+IPL30_0		PIN 19;																// Interrupt Prio-Level 0 vom Mainboard
+IPL30_1		PIN 18;																// Interrupt Prio-Level 1 vom Mainboard
+IPL30_2		PIN 20;																// Interrupt Prio-Level 2 vom Mainboard
+
+//BERR30		PIN 41;																// Bus-Error vom Mainboard
+
+DSACK30_0	PIN 36;																// DSACK Bit 0 vom Mainboard
+DSACK30_1	PIN 35;																// DSACK Bit 1 vom Mainboard
+STERM30		PIN 40;																// STERM vom Mainboard
+																					
+//CIOUT40		PIN 95; // (kann entfallen)								// Cache-Inhibit-Out von 040-CPU
+																						
+CPU40_60		PIN 92;																// Erkennung 68040 oder 68060
+
+A40_0			PIN 27;																// Adressleitung 0 von 040-CPU
+A40_1			PIN  1;																// Adressleitung 1 von 040-CPU
+
+SIZ40_0		PIN 60;																// Transfer-Breite Bit 0 von 040-CPU
+SIZ40_1		PIN 61;																// Transfer-Breite Bit 1 von 040-CPU
+
+RW40			PIN 64;																// Read/Write von 040-CPU
+																				
+TM40_0		PIN 55;																// Transfer Modifier Bit 0 von 040-CPU
+TM40_1		PIN 54;																// Transfer Modifier Bit 1 von 040-CPU
+TM40_2		PIN 66;																// Transfer Modifier Bit 2 von 040-CPU
+TT40_0		PIN 96;																// Transfer-Type Bit 0 von 040-CPU
+TT40_1		PIN 97;																// Transfer-Type Bit 1 von 040-CPU
+TS40			PIN 68;																// Transfer-Start von 040-CPU
+
+
+// Ausgänge 
+PLL_S0		PIN 53 ISTYPE 'COM';												// Steuerausgänge fuer PLL-Justage
+PLL_S1		PIN 52 ISTYPE 'COM';
+
+CLK30			PIN 34 ISTYPE 'REG,BUFFER';									// CLK zum Mainboard
+PCLK			PIN 81 ISTYPE 'REG,BUFFER';									// CLK_40 040
+BCLK			PIN 82 ISTYPE 'REG_T,BUFFER';									// CLKEN40 040
+SCLK			PIN  2 ISTYPE 'REG_T,BUFFER';									// BCLK zum Ram-Controller
+CLK_BS		PIN 14 ISTYPE 'REG,BUFFER';									// CLK Bus-Sizing
+CLK_RAMC		PIN  6 ISTYPE 'REG_T,BUFFER';									// CLK RAM-Controller
+
+AL_0			PIN  8 ISTYPE 'COM';												// Adressleitung-Ausgang A0 zum Mainboard
+AL_1			PIN  7 ISTYPE 'COM';												// Adressleitung-Ausgang A1 zum Mainboard
+A30_LE		PIN  9 ISTYPE 'COM';												// Latch-Enable fuer Adresspuffer zum Mainboard
+
+OE_BS			PIN 10 ISTYPE 'COM';												// Output-Enable fuer Bus-Sizing
+LE_BS			PIN 16 ISTYPE 'REG,BUFFER';									// Latch-Enable fuer Bus-Sizing
+DIR_BS		PIN 15 ISTYPE 'COM';												// Read/Write für Bus-Sizing
+BWL0_BS		PIN 12 ISTYPE 'COM';												// Steuerwort fuer Busbreite Bus-Sizing Bit 0
+BWL1_BS		PIN 13 ISTYPE 'COM';												// Steuerwort fuer Busbreite Bus-Sizing Bit 1
+BWL2_BS		PIN 11 ISTYPE 'COM';												// Steuerwort fuer Busbreite Bus-Sizing Bit 2
+
+FC30_0		PIN 30 ISTYPE 'COM';												// Function-Code 0 zum Mainboard
+FC30_1		PIN 29 ISTYPE 'COM';												// Function-Code 1 zum Mainboard
+FC30_2		PIN 33 ISTYPE 'COM';												// Function-Code 2 zum Mainboard
+
+AS30			PIN 39 ISTYPE 'REG,BUFFER';									// Adress-Strobe zum Mainboard
+DS30			PIN 46 ISTYPE 'REG,BUFFER';									// Data-Strobe zum Mainboard
+
+RW30			PIN 42 ISTYPE 'COM';												// Read/Write zum Mainboard
+
+SIZ30_0		PIN 49 ISTYPE 'COM';												// Transfer-Breite Bit 0 zum Mainboard
+SIZ30_1		PIN 43 ISTYPE 'COM';												// Transfer-Breite Bit 1 zum Mainboard
+
+RESET30		PIN 99 ISTYPE 'COM';												// Reset vom Mainboard
+RSTI40		PIN 86 ISTYPE 'REG,BUFFER';									// Reset-Eingang zur 040-CPU
+
+IPL40_0		PIN 89 ISTYPE 'COM';												// Interrupt Prio-Level 0 zur 040-CPU
+IPL40_1		PIN 85 ISTYPE 'COM';												// Interrupt Prio-Level 1 zur 040-CPU
+IPL40_2		PIN 90 ISTYPE 'COM';												// Interrupt Prio-Level 2 zur 040-CPU
+
+TBI40			PIN 79 ISTYPE 'COM';												// Transfer Burst Inhibit zur 040-CPU
+//TCI40			PIN 80 ISTYPE 'COM';	// (kann entfallen; CONFIG_1)					// Steuerung im RAM-Controller	
+																						 
+MDIS40		PIN 87 ISTYPE 'COM';	// (kann entfallen)					// MMU-Disable zur 040-CPU	
+CDIS40		PIN 91 ISTYPE 'COM';	// (kann entfallen)					// Cache-Disable zur 040-CPU
+
+TA40			PIN 72 ISTYPE 'COM';												// Transfer Acknowledge zur 040-CPU
+TEA40			PIN 73 ISTYPE 'COM';												// Transfer Error Acknowledge zur 040-CPU
+
+BGR60			PIN 77 ISTYPE 'COM';	// (zu RAM-Controller; CONFIG_0)					// BG-Relinquish-Control zur 060-CPU
+
+ICACHE		PIN  3 ISTYPE 'COM';												// Steuerwort zum Ram-Controller I-Cache																				
+
+// Hilfsnetze
+RSTINT		NODE ISTYPE 'REG,BUFFER';										// Reset um 1 BCLK verzoegert
+
+AMIQ0			NODE ISTYPE 'REG,BUFFER';										// State-Machine Terminierung
+AMIQ1			NODE ISTYPE 'REG,BUFFER';										// State-Machine Terminierung
+LDSACK0		NODE ISTYPE 'REG,BUFFER';										// DSACK0 gelatcht
+LDSACK1		NODE ISTYPE 'REG,BUFFER';										// DSACK0 gelatcht
+QDSACK0		NODE ISTYPE 'REG,BUFFER';										// DSACK0 gelatcht & verzoegert
+QDSACK1		NODE ISTYPE 'REG,BUFFER';										// DSACK0 gelatcht & verzoegert
+
+CNTDIS		NODE ISTYPE 'REG,BUFFER';
+
+CAQ2..CAQ0	NODE ISTYPE 'REG,BUFFER';										// State-Machine Sizing
+
+LEND			NODE ISTYPE 'REG,BUFFER';
+ATERM			NODE ISTYPE 'REG,BUFFER';
+
+NAMIACC		NODE ISTYPE 'COM';
+
+AMISEL		NODE ISTYPE 'COM';
+
+LONGPORT		NODE ISTYPE 'COM';
+WORDPORT		NODE ISTYPE 'COM';
+BYTEPORT		NODE ISTYPE 'COM';
+
+H11..H0		NODE ISTYPE 'REG,BUFFER';										// Filter-Counter fuer HALT-Leitung
+F10..F0		NODE ISTYPE 'REG,BUFFER';
+STOPRES		NODE ISTYPE 'COM';	
+STOPHALT		NODE ISTYPE 'COM';												// Ausgangsverkettung Filter-Counter
+
+
+
+DECLARATIONS
+
+smallbuf		= 1;
+largebuf		= 0;
+normbus		= 1;
+muxbus		= 0;
+DLE_off		= 1;
+DLE_on		= 0;
+
+COUNTHALT	= [H11..H0];
+COUNTRES	= [F10..F0];
+
+LONG			=(!SIZ40_1 & !SIZ40_0) # (SIZ40_1 & SIZ40_0);			// LONG & LINE
+WORD			=  SIZ40_1 & !SIZ40_0;
+WORD0			=  SIZ40_1 & !SIZ40_0 & !A40_1;
+WORD2			=  SIZ40_1 & !SIZ40_0 &  A40_1;
+BYTE			= !SIZ40_1 &  SIZ40_0;
+BYTE0			= !SIZ40_1 &  SIZ40_0 & !A40_1 & !A40_0;
+BYTE1			= !SIZ40_1 &  SIZ40_0 & !A40_1 &  A40_0;
+BYTE2			= !SIZ40_1 &  SIZ40_0 &  A40_1 & !A40_0;
+BYTE3			= !SIZ40_1 &  SIZ40_0 &  A40_1 &  A40_0;
+
+LONGTERM		= RSTI40 & ATERM &  LDSACK1 &  LDSACK0 & !CNTDIS;
+WORDTERM		= RSTI40 & ATERM &  LDSACK1 & !LDSACK0 & !CNTDIS;
+BYTETERM		= RSTI40 & ATERM & !LDSACK1 &  LDSACK0 & !CNTDIS;
+
+SIZING		= [CAQ2..CAQ0];
+
+Q0				= ^b000;	
+Q1				= ^b001;	
+Q2				= ^b010;	
+Q3				= ^b011;	
+Q4				= ^b100;	
+Q5				= ^b101;	
+Q6				= ^b110;	
+Q7				= ^b111;
+
+CQ0			= !CAQ2 & !CAQ1 & !CAQ0;
+CQ5			=  CAQ2 & !CAQ1 &  CAQ0;
+
+TERMINIERUNG		= [AMIQ1..AMIQ0];
+
+T0				= ^b00;	
+T1				= ^b01;	
+T2				= ^b11;	
+
+AQ3			=  AMIQ1 &  AMIQ0;
+
+
+EQUATIONS
+
+// Einstellung PLL     M = high (3,3V out) 1 = 3-State (5V pullup) 0 = low 
+// S1 S0	Multi		S1	OE	S0	OE		
+// 0	0	x2			0	1	0	1			
+// 0	1	x5			0	1	1	0
+//	M	0	x3			1	1	0	1
+//	M	1	x3,33		1	1	1	0	
+//	1	0	x4			1	0	0	1
+//	1	1	x2,5		1	0	1	0	
+	
+PLL_S1			= 0;																
+PLL_S1.OE		= 1;	
+PLL_S0			= 1;																
+PLL_S0.OE		= 0;
+
+
+// Erzeugung der Karten-Taktsignale
+CLK_RAMC.CLK	= PLL_CLK;														// Takt SDRAM Controller
+CLK_RAMC.T		= 1;
+
+CLK_BS.CLK		= PLL_CLK;														// Takt Bus-Sizing
+CLK_BS.D			= !CLK_RAMC;
+																
+PCLK.CLK			= PLL_CLK;														// PCLK_040  CLK_060 fuer 100 MHz
+PCLK.D			= !CLK_RAMC;
+
+//PCLK.CLK			= PLL_CLK;													// PCLK_040  CLK_060 fuer 50 MHz
+//PCLK.D			= !CLK_RAMC & CPU40_60
+//					# (!CLK30 $ !CLK_RAMC) & !CPU40_60;		
+
+SCLK.CLK			= PLL_CLK;														// BCLK fuer RAM-Controller
+SCLK.D			= (CLK30 $ CLK_RAMC);										// System-CLK fuer State-Machines
+
+BCLK.CLK			= PLL_CLK & CPU40_60
+					# !PLL_CLK & !CPU40_60;										// BCLK_040  CLKEN_060 fuer 100 MHz
+BCLK.D			= (CLK30 $ CLK_RAMC);			
+
+//BCLK.CLK			= PLL_CLK;													// BCLK_040  CLKEN_060 fuer 50 MHz
+//BCLK.D			= (CLK30 $ CLK_RAMC) & CPU40_60;			
+
+CLK30.CLK		= PLL_CLK;														// Takt 68030 Logik Mainboard, 
+CLK30.T			= !CLK_RAMC;	
+									
+
+
+// Filterung HALT-Leitung von Mainboard
+[H11..H0].CLK	= SCLK;
+[H11..H0].AR	= !HALT30;
+
+COUNTHALT 		:= (COUNTHALT + 1) & !STOPHALT							// 100us Filter fuer Low-High Flanke
+					# COUNTHALT & STOPHALT;
+
+STOPHALT			= H11 & H10 & H9 & H8 & H7;								// HALT um 100us in der L-H-Flanke verzoegert
+
+
+// Erzeugung der Resets
+RSTI40.CLK		= SCLK;
+RSTI40.D			= !( !RESET30.PIN & RSTO40									// Reset zur 040 CPU & kein Soft-Reset
+					# 	  !STOPHALT & RSTO40 );									// CPU-RESET solange HALT aktiv
+
+[F10..F0].CLK	= SCLK;
+[F10..F0].AR	= !RSTO40;
+
+COUNTRES 		:= (COUNTRES + 1) & !STOPRES								// 50us Reset-Verlaengerung von RSTO
+					# COUNTRES & STOPRES;
+
+STOPRES			= F10 & F9 & F8 & F7;										// Reset um 50us verlaengern
+					
+RESET30.OE		= !RSTO40 & STOPHALT
+					# !RESET30.PIN & !STOPRES;									// Rueckfuehrung des CPU-Resetausgangs 
+
+RESET30			= !( !RSTO40 & STOPHALT
+					#	!RESET30.PIN & !STOPRES);								// auf den Board-Reset solange HALT inaktiv
+
+RSTINT.D			= RSTI40;														// 1 BCLK in High-Flanke zum CPU-Reset verzoegerter 
+RSTINT.CLK		= SCLK;															// interner Reset fuer die CPU-Konfiguration
+RSTINT.AR		= !RSTI40;
+
+
+// CPU-Konfiguration
+IPL40_0			=  RSTINT & IPL30_0
+					# !RSTINT & smallbuf;										// 040: small Buffer Control-Signale
+																						// 060: Acknowledge Termination 
+IPL40_1			=  RSTINT & IPL30_1											// ignore State Capability disabled
+					# !RSTINT & smallbuf;										// 040: small Buffer Adress- u. Transfer-Bus
+																						// 060: 68040 Acknowledge Termination Protokoll
+IPL40_2			=  RSTINT & IPL30_2
+					# !RSTINT & smallbuf;										// 040: small Buffer Daten-Bus
+																						// 060: extra Data Write Hold Mode disabled
+																						
+CDIS40			= RSTINT															// Cache-Disable deaktiviert	(ein Pullup tut es)
+					# !RSTINT & normbus;											// 040: kein BUS-Multiplexer	060: keine Bedeutung
+																	 
+MDIS40			= RSTINT															// MMU-Disable deativiert		(ein Pullup tut es)
+					# !RSTINT & DLE_off;											// 040: DLE-Mode deaktiviert	060: keine Bedeutung
+
+BGR60				= 0;
+
+RW30				= RW40;
+
+A30_LE			= 0;																// Adress-Latch zum Mainboard transparent geschal.
+
+ICACHE			= !TT40_1 & !TM40_2 & TM40_1 & !TM40_0             // !TT1 -> normal/move16 TM2..0 -> user code access   
+					# !TT40_1 &  TM40_2 & TM40_1 & !TM40_0;            // !TT1 -> normal/move16 TM2..0 -> supervisor code access
+
+
+//	1  0	/DSACK						SIZ1 SIZ0  Size030	FC2 FC1 FC0  Space
+//	---------------------------	------------------	------------------
+//	H  L	 8 Bit-Port (D31-D24)	0    1	   Byte		1   1   1    CPU
+//	L  H	16 Bit-Port (D31-D16)	1    0	   Word		0   0   1    USR Data
+//	L  L	32 Bit-Port (D31-D00)	1    1	   3 Bytes	0   1   0    USR Prog
+//											0    0	   Long		1   0   1    SUP Data
+//																		1   1   0    SUP Prog
+
+//	SIZ1 SIZ0  Size040	TT1 TT0   Type	  TM2 TM1 TM0
+//	------------------	--------------	  --------------
+//	0    1     Byte		0   0   normal	  0   0   0   Data Cache Push
+//	1    0     Word		0   1   MOVE16	  0/1 0   1   Usr/SupV data
+//	1    1     Line		1   0   AltAcc	  0/1 1   0   Usr/supV code
+//	0    0     Long		1   1   Acknow	  0,1 1,0 1,0 MMU data,code
+//													  1   1   1   reserved
+
+
+// Function-Code A1240
+FC30_0			= !TT40_1 & !TM40_1 											// user data
+					# !TT40_1 &  TM40_1 &  TM40_0								// user data
+					#  TT40_1 & !TT40_0 &  TM40_0								// alt logical func
+					#  TT40_1 &  TT40_0;											// avec / breakpoints
+					
+FC30_1			= !TT40_1 &  TM40_1 & !TM40_0								// supv / user code
+					#  TT40_1 & !TT40_0 &  TM40_1								// alt logical func
+					#  TT40_1 &  TT40_0;											// avec / breakpoints
+
+FC30_2			= !TT40_1 &  TM40_2 & !TM40_1 &  TM40_0				// supv data
+					# !TT40_1 &  TM40_2 &  TM40_1 & !TM40_0				// supv code
+					#  TT40_1 & !TT40_0 &  TM40_2								// alt logical func
+					#  TT40_1  & TT40_0;											// avec / breakpoints
+
+
+
+QDSACK0.AR		= NAMIACC;
+QDSACK0.CLK		= SCLK;															// sample on falling edge of A1200 clk
+QDSACK0.D		= !DSACK30_0 # !STERM30;									// LDSACKx is active in AQ2 & AQ3 !
+
+QDSACK1.AR		= NAMIACC;
+QDSACK1.CLK		= SCLK;
+QDSACK1.D		= !DSACK30_1 # !STERM30;
+
+LDSACK0.AR		= NAMIACC;
+LDSACK0.CLK		= !SCLK;
+LDSACK0.D		= !DSACK30_0 & (QDSACK0 # QDSACK1)						// sync with DSACKx skew
+					# !STERM30   & (QDSACK0 # QDSACK1)
+					# LDSACK0 & AQ3 & !CNTDIS;									// hold to sync with CAQ
+
+LDSACK1.AR		= NAMIACC;
+LDSACK1.CLK		= !SCLK;
+LDSACK1.D		= !DSACK30_1 & (QDSACK0 # QDSACK1)						// sync with DSACKx skew
+					# !STERM30   & (QDSACK0 # QDSACK1)
+					# LDSACK1 & AQ3 & !CNTDIS;									// hold to sync with CAQ
+				
+OE_BS				= AMISEL;														// OE fuer BUS-Sizing CPLD
+DIR_BS			= RW40;															// Datenrichtung BUS-Sizing CPLD
+
+LONGPORT			= RSTI40 & LDSACK1 & LDSACK0								// 
+					# LONGPORT & !LEND;										
+
+WORDPORT			= RSTI40 & LDSACK1 & !LDSACK0
+					# WORDPORT & !CQ0;
+
+BYTEPORT			= RSTI40 & !LDSACK1 & LDSACK0
+					# BYTEPORT & !CQ0;
+															
+TA40.OE			= AMISEL;
+
+AMISEL			= RSTI40 & !TT40_1 & SEL16M								// Adressbereich Mainboard 
+					# RSTI40 &  TT40_1;	//&!TT40_0							// alt func AVEC/BRKPT
+
+TBI40				= !( RSTI40 & !TT40_1 & SEL16M
+					# 	  RSTI40 &  TT40_1 );	//&!TT0
+
+TEA40				= !( LONGPORT & WORDPORT & AS30.Q
+					# 	  LONGPORT & BYTEPORT & AS30.Q
+					# 	  WORDPORT & BYTEPORT & AS30.Q );
+					
+LEND.AR			= !RSTI40;
+LEND.CLK			= SCLK;
+
+[CAQ2..CAQ0].CLK	= SCLK;															
+[CAQ2..CAQ0].AR	= !RSTI40;// # !BERR30;	
+															
+@dcset						
+state_diagram SIZING
+
+State Q0:		TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE;
+					SIZ30_1	= 0;
+					
+					AL_0		= 0;			
+					AL_1		= 0;
+					
+					NAMIACC 	= 1;
+					
+					BWL0_BS	= 1;		  
+					BWL1_BS	= 1;	  
+					BWL2_BS	= 1;
+
+				if			( !TS40 & !TT40_1 & SEL16M ) 		then Q1
+				else Q0;
+
+State Q1:		TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE;
+					SIZ30_1	= WORD;
+					
+					AL_0		= A40_0 & !LONG;			
+					AL_1		= A40_1 & !LONG;
+					
+					BWL0_BS	= !( AMISEL & !RW40 & (LONG # WORD0 # WORD2 # BYTE0 # BYTE2)
+									# AMISEL &  RW40 & (LONGPORT # WORDPORT # BYTEPORT) );
+									
+					BWL1_BS	= !( AMISEL & !RW40 & (LONG # WORD0 # BYTE0 # BYTE1) 
+									# AMISEL &  RW40 & (WORDPORT # BYTEPORT) );
+				  
+					BWL2_BS	= !( AMISEL & !RW40 
+									# AMISEL &  RW40 & BYTEPORT );
+				
+				if			( BYTETERM & (LONG # WORD0) )		then Q2		
+				else if	( BYTETERM & WORD2 ) 				then Q4		
+				else if	( WORDTERM & LONG ) 					then Q3		
+				else if	( LONGTERM  							
+							# WORDTERM & (WORD # BYTE)  		
+							# BYTETERM & BYTE )					then Q5
+				else Q1;  
+
+State Q2: 	TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE # WORD # LONG;
+					SIZ30_1	= 0;
+					
+					AL_0		= 1;		
+					AL_1		= 0;
+					
+					BWL0_BS	= 1;
+				
+					BWL1_BS	= !( AMISEL & !RW40 
+									# AMISEL &  RW40 & BYTEPORT );
+							  
+					BWL2_BS	= !( AMISEL & !RW40 
+									# AMISEL &  RW40 & BYTEPORT );
+
+				if			( BYTETERM & WORD0 ) 				then Q5	
+				else if	( BYTETERM & LONG ) 					then Q3 
+				else Q2;  
+
+State Q3: 	TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+								
+					SIZ30_0	= BYTE;
+					SIZ30_1	= LONG;
+					
+					AL_0		= 0;
+					AL_1		= 1;
+					
+					BWL0_BS	= !( AMISEL & !RW40
+									# AMISEL &  RW40 & BYTEPORT );
+							  
+					BWL1_BS	= !( AMISEL &  RW40 & WORDPORT );
+							  
+					BWL2_BS	= !( AMISEL & !RW40 
+									# AMISEL &  RW40 & BYTEPORT );
+
+				if			( BYTETERM & LONG )					then Q4		
+				else if	( WORDTERM & LONG )	 				then Q5	
+				else Q3;  
+
+State Q4: 	TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE # WORD # LONG;
+					SIZ30_1	= 0;
+					
+					AL_0		= 1;
+					AL_1		= 1;
+					
+					BWL0_BS	= 1;
+							  
+					BWL1_BS	= 1;
+							  
+					BWL2_BS	= !( AMISEL & !RW40 
+									# AMISEL &  RW40 & BYTEPORT );
+
+				if			( BYTETERM & LONG 							
+							# BYTETERM & WORD2 )					then Q5
+				else Q4;  
+
+State Q5: 	TA40		= 0;
+					AS30.OE	= 0;
+					DS30.OE	= 0;
+					
+					SIZ30_0	= BYTE;
+					SIZ30_1	= 0;
+					
+					AL_0		= 0;			
+					AL_1		= 0;
+					
+					NAMIACC 	= 1;
+					
+					BWL0_BS	= 1;
+					BWL1_BS	= 1;		  
+					BWL2_BS	= 1;
+				
+					LEND.D	= 1;
+				goto  Q0;
+				
+State Q6: 	TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE;
+					SIZ30_1	= 0;
+					
+					AL_0		= 0;			
+					AL_1		= 0;
+					
+					BWL0_BS	= 1;		  
+					BWL1_BS	= 1;		  
+					BWL2_BS	= 1;			
+				goto  Q0;
+				
+State Q7: 		TA40		= !( TT40_1 & TT40_0 );
+					AS30.OE	= 1;
+					DS30.OE	= 1;
+					
+					SIZ30_0	= BYTE;
+					SIZ30_1	= 0;
+					
+					AL_0		= 0;			
+					AL_1		= 0;
+					
+					BWL0_BS	= 1;	  
+					BWL1_BS	= 1;	  
+					BWL2_BS	= 1;					
+				goto  Q0;				
+
+
+
+EQUATIONS
+
+CNTDIS.AR		= !RSTI40;
+CNTDIS.CLK		= SCLK;
+CNTDIS.D			= ATERM;
+
+AS30.ASET		= !RSTI40 # NAMIACC;														// OE in Sizing State-Machine gesteuert										
+AS30.CLK			= SCLK;
+
+DS30.ASET		= !RSTI40 # NAMIACC;														// OE in Sizing State-Machine gesteuert
+DS30.CLK			= SCLK;
+
+ATERM.AR			= !RSTI40 # NAMIACC;
+ATERM.CLK		= SCLK;
+
+LE_BS.AR			= !RSTI40 # NAMIACC;
+LE_BS.CLK		= SCLK;
+
+[AMIQ1..AMIQ0].CLK	= SCLK;															
+[AMIQ1..AMIQ0].AR	= !RSTI40 # NAMIACC;// # !BERR30;
+
+
+state_diagram TERMINIERUNG																			
+
+State T0:		
+					AS30.D	= 0;
+					DS30.D	= !( RW40 );
+				
+				goto T1;		
+
+State T1: 	
+					AS30.D	= !( !LDSACK0 & !LDSACK1 );
+					DS30.D	= !( !LDSACK0 & !LDSACK1 );
+				
+				if			( LDSACK1 # LDSACK0 )				then T2
+				else T1;	
+				
+State T2:	
+					AS30.D	= !( CNTDIS );
+					DS30.D	= !( CNTDIS & RW40 );
+					
+					ATERM.D	= 1;
+					LE_BS.D 	= 1;
+					
+				if			( CNTDIS )								then T1
+				else T2;
+				
+		
+END
