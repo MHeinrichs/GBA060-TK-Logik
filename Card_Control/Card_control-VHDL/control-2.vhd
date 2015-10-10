@@ -144,8 +144,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
-	--PLL_S	<=	"Z0"; --80MHz
+	--PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -155,7 +155,7 @@ begin
 	CLK_RAMC	<= CLK_RAMC_SIG;
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
-	CLK30 <= CLK30_SIG;
+	--CLK30 <= CLK30_SIG;
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
@@ -163,7 +163,7 @@ begin
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
 			CLK_BS	<= not CLK_RAMC_SIG;
 			PCLK	<= not CLK_RAMC_SIG;
-			--CLK30_SIG	<= CLK30;
+			CLK30_SIG	<= CLK30;
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;			
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;			
@@ -194,7 +194,8 @@ begin
 	end process HALT_P;
 
 	--Erzeugung der Resets
-	RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
+	--RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
+	RESET30	<=	'Z'; 
 	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
 	RESET_P: process (RSTO40,SCLK_SIG)
 	begin
@@ -360,8 +361,8 @@ begin
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, TS40, SEL16M, LONGPORT, A40, WORDPORT,
-	 AMISEL, RW40, BYTEPORT, RSTI40_SIG, ATERM, LDSACK, CNTDIS,
-	 TT40, BYTE, WORD,LONG, SIZ40)
+	 AMISEL, RW40, BYTEPORT, RSTI40_SIG, LDSACK, CNTDIS,
+	 TT40, BYTE, WORD,LONG, SIZ40, TERM)
    begin
       if(SIZING ="101") then
 			TA40_SIG	<= '0';

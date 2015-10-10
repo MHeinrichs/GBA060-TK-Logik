@@ -17,6 +17,7 @@ Checking Constraint Associations...
 Done...
 
 Checking expanded design ...
+WARNING:NgdBuild:470 - bidirect pad net 'CLK30' has no legal driver
 
 Partition Implementation Status
 -------------------------------
@@ -27,9 +28,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:   0
+  Number of warnings:   1
 
-Total memory usage is 186180 kilobytes
+Total memory usage is 186160 kilobytes
 
 Writing NGD file "control.ngd" ...
 Total REAL time to NGDBUILD completion:  5 sec

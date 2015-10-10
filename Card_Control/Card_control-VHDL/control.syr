@@ -89,8 +89,6 @@ Analyzing hierarchy for entity <control> in library <work> (architecture <behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <control> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" line 362: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <TERM>
 Entity <control> analyzed. Unit <control> generated.
 
 
@@ -99,12 +97,14 @@ Entity <control> analyzed. Unit <control> generated.
 =========================================================================
 
 Performing bidirectional port resolution...
+INFO:Xst:2561 - Always blocking tristate driving signal <RESET30> in unit <control> is removed.
 
 Synthesizing Unit <control>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd".
 WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <BERR30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <TCI40> is never assigned.
+WARNING:Xst:2565 - Inout <CLK30> is never assigned.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
     Register <PCLK> equivalent to <CLK_BS> has been removed
@@ -136,12 +136,11 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<0>>.
+    Found 1-bit tristate buffer for signal <PLL_S<1>>.
     Found 1-bit register for signal <CLK_BS>.
     Found 1-bit register for signal <LE_BS>.
     Found 1-bit tristate buffer for signal <AS30>.
     Found 1-bit tristate buffer for signal <DS30>.
-    Found 1-bit tristate buffer for signal <RESET30>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 1-bit register for signal <AS30_SIG>.
     Found 1-bit register for signal <ATERM>.
@@ -165,7 +164,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
 	inferred   2 Counter(s).
 	inferred  16 D-type flip-flop(s).
 	inferred   2 Xor(s).
-	inferred   5 Tristate(s).
+	inferred   4 Tristate(s).
 Unit <control> synthesized.
 
 
@@ -178,8 +177,8 @@ Macro Statistics
  12-bit up counter                                     : 1
 # Registers                                            : 17
  1-bit register                                        : 17
-# Tristates                                            : 5
- 1-bit tristate buffer                                 : 5
+# Tristates                                            : 4
+ 1-bit tristate buffer                                 : 4
 # Xors                                                 : 2
  1-bit xor2                                            : 2
 
@@ -227,58 +226,58 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:2677 - Node <COUNTRES_0> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_1> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_2> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_3> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_4> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_5> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_6> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_7> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_8> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_9> of sequential type is unconnected in block <control>.
+WARNING:Xst:2677 - Node <COUNTRES_10> of sequential type is unconnected in block <control>.
 INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <CLK_BS> 
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: LONGPORT_and0001, TEA40_and0000, TEA40, LONGPORT.
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: BWL_BS<2>, BWL_BS_2_and0001, BYTEPORT_and0001, BWL_BS_2_or0000, BYTEPORT.
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: WORDPORT, BWL_BS_1_and0003, WORDPORT_and0001, BWL_BS_1_or0001, BWL_BS<1>, BWL_BS_1_or0002.
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: TEA40, TEA40_and0000, LONGPORT, LONGPORT_and0001.
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: BYTEPORT_and0001, BWL_BS_2_and0001, BWL_BS_2_or0000, BYTEPORT, BWL_BS<2>.
+WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: WORDPORT_and0001, BWL_BS_1_and0003, WORDPORT, BWL_BS_1_or0002, BWL_BS<1>, BWL_BS_1_or0001.
 
 Optimizing unit <control> ...
   implementation constraint: INIT=r	 : BCLK060_SIG
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd5
+  implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : ATERM
   implementation constraint: INIT=r	 : CLK30_SIG
-  implementation constraint: INIT=r	 : COUNTHALT_10
-  implementation constraint: INIT=r	 : COUNTRES_0
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : QDSACK_0
   implementation constraint: INIT=r	 : QDSACK_1
-  implementation constraint: INIT=r	 : CNTDIS
+  implementation constraint: INIT=s	 : SIZING_FSM_FFd6
   implementation constraint: INIT=r	 : RSTI40_SIG
-  implementation constraint: INIT=r	 : COUNTHALT_5
-  implementation constraint: INIT=r	 : COUNTRES_5
-  implementation constraint: INIT=r	 : COUNTHALT_9
   implementation constraint: INIT=r	 : COUNTHALT_2
-  implementation constraint: INIT=r	 : COUNTHALT_8
-  implementation constraint: INIT=r	 : COUNTRES_4
-  implementation constraint: INIT=r	 : COUNTHALT_7
-  implementation constraint: INIT=r	 : COUNTRES_1
-  implementation constraint: INIT=r	 : COUNTHALT_6
-  implementation constraint: INIT=r	 : COUNTRES_3
-  implementation constraint: INIT=r	 : COUNTRES_6
   implementation constraint: INIT=r	 : COUNTHALT_0
-  implementation constraint: INIT=r	 : COUNTRES_10
-  implementation constraint: INIT=r	 : COUNTHALT_1
-  implementation constraint: INIT=r	 : COUNTRES_9
-  implementation constraint: INIT=r	 : COUNTHALT_4
-  implementation constraint: INIT=r	 : COUNTRES_8
-  implementation constraint: INIT=r	 : COUNTRES_2
-  implementation constraint: INIT=r	 : COUNTRES_7
   implementation constraint: INIT=r	 : COUNTHALT_3
+  implementation constraint: INIT=r	 : CNTDIS
+  implementation constraint: INIT=r	 : COUNTHALT_1
+  implementation constraint: INIT=r	 : COUNTHALT_4
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd4
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd5
+  implementation constraint: INIT=r	 : COUNTHALT_5
+  implementation constraint: INIT=r	 : COUNTHALT_6
+  implementation constraint: INIT=r	 : COUNTHALT_7
+  implementation constraint: INIT=r	 : COUNTHALT_8
+  implementation constraint: INIT=r	 : COUNTHALT_9
+  implementation constraint: INIT=r	 : COUNTHALT_10
   implementation constraint: INIT=r	 : COUNTHALT_11
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd4
   implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
-  implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
-  implementation constraint: INIT=s	 : SIZING_FSM_FFd6
-  implementation constraint: INIT=r	 : LDSACK_0
-  implementation constraint: INIT=r	 : LDSACK_1
   implementation constraint: INIT=r	 : LEND
-  implementation constraint: INIT=r	 : BCLK040_SIG
+  implementation constraint: INIT=r	 : LDSACK_1
+  implementation constraint: INIT=r	 : LDSACK_0
   implementation constraint: INIT=r	 : RSTINT
+  implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
 INFO:Xst:2261 - The FF/Latch <ATERM> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <LE_BS> 
 
 =========================================================================
@@ -311,38 +310,38 @@ Design Statistics
 # IOs                              : 63
 
 Cell Usage :
-# BELS                             : 348
-#      AND2                        : 112
-#      AND3                        : 13
+# BELS                             : 319
+#      AND2                        : 100
+#      AND3                        : 10
 #      AND4                        : 2
-#      AND5                        : 2
+#      AND5                        : 4
+#      AND7                        : 1
 #      GND                         : 1
-#      INV                         : 125
-#      OR2                         : 57
+#      INV                         : 119
+#      OR2                         : 56
 #      OR3                         : 11
 #      VCC                         : 1
-#      XOR2                        : 24
-# FlipFlops/Latches                : 46
+#      XOR2                        : 14
+# FlipFlops/Latches                : 35
 #      FD                          : 5
 #      FDC                         : 15
-#      FDCE                        : 23
+#      FDCE                        : 12
 #      FDP                         : 3
-# IO Buffers                       : 59
-#      IBUF                        : 22
-#      IOBUFE                      : 1
-#      OBUF                        : 32
+# IO Buffers                       : 58
+#      IBUF                        : 23
+#      OBUF                        : 31
 #      OBUFE                       : 4
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.97 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.96 secs
  
 --> 
 
 Total memory usage is 302264 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
-Number of infos    :    2 (   0 filtered)
+Number of warnings :   19 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 
