@@ -1,40 +1,29 @@
-----------------------------------------------------------------------------------
--- Company: A1K
--- Engineer: Georg Braun and Matthias Heinrichs
+-- Xilinx XPort Language Converter, Version 4.1 (110)
 -- 
--- Create Date:    20:21:31 09/26/2015 
--- Design Name: 	 68060-68030-Statemachine
--- Module Name:    control - Behavioral 
--- Project Name: 
--- Target Devices: XC95144XL-TQFP100-10ns
--- Tool versions: 
--- Description: 
+-- ABEL Design Source: C:\Users\Matze\Amiga\Hardwarehacks\gb_a1k_tk\Logik\Card_Control\control.abl
+-- VHDL Design Output: control.vhd
+-- Created 04-Oct-2015 10:10 PM
 --
--- Dependencies: 
---
--- Revision: 0.1
--- Revision 0.01 - File Created
--- Additional Comments: 
--- Testet frequencies: 100Mhz & 80Mhz
--- other frequencies not tested!
--- Phone me NOW!!!!! ;)
---
-----------------------------------------------------------------------------------
-library IEEE;
+-- Copyright (c) 2015, Xilinx, Inc.  All Rights Reserved.
+-- Xilinx Inc makes no warranty, expressed or implied, with respect to
+-- the operation and/or functionality of the converted output files.
+-- 
+
+Library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity control is
-    Port ( SEL16M : in  STD_LOGIC;								--Steuerwort vom Ram-Controller	SEL16M		
+--  Port (
+--      SEL16M, PLL_CLK, RSTO40, HALT30, IPL30(0), IPL30(1), IPL30(2), DSACK30(0),
+--	    DSACK30(1), STERM30, CPU40_60, A40(0), A40(1), SIZ40(0), SIZ40(1), RW40,
+--	    TM40(0), TM40(1), TM40(2), TT40(0), TT40(1), TS40: in std_logic;
+--      PLL_S(0), PLL_S(1), CLK30, PCLK, BCLK, SCLK, CLK_BS, CLK_RAMC, AL(0), AL(1),
+--	    A30_LE, OE_BS, LE_BS, DIR_BS, BWL_BS(0), BWL_BS(1), BWL_BS(2), FC30(0),
+--	    FC30(1), FC30(2), AS30, DS30, RW30, SIZ30(0), SIZ30(1), RESET30,
+--	    RSTI40, IPL40(0), IPL40(1), IPL40(2), TBI40, MDIS40, CDIS40, TA40,
+--	    TEA40, BGR60, ICACHE: buffer std_logic
+ Port ( SEL16M : in  STD_LOGIC;								--Steuerwort vom Ram-Controller	SEL16M		
            PLL_CLK : in  STD_LOGIC;								--Eingangs-CLK / Ausgang PLL
            OSC_CLK : in  STD_LOGIC;								--CLK vom Oszillator (entfallen)
            RSTO40 : in  STD_LOGIC;								--Reset-Ausgang von 040-CPU 
@@ -52,7 +41,7 @@ entity control is
            TT40 : in  STD_LOGIC_VECTOR (1 downto 0);		--Transfer-Type Bit 0-1 von 040-CPU
            TS40 : in  STD_LOGIC;									--Transfer-Start von 040-CPU
            PLL_S : out  STD_LOGIC_VECTOR (1 downto 0);	--Steuerausgänge fuer PLL-Justage
-           CLK30 : inout  STD_LOGIC;								--CLK zum Mainboard
+           CLK30 : out  STD_LOGIC;								--CLK zum Mainboard
            PCLK : out  STD_LOGIC;								--CLK_40 040
            BCLK : out  STD_LOGIC;								--CLKEN40 040
            SCLK : out  STD_LOGIC;								--BCLK zum Ram-Controller
@@ -84,21 +73,27 @@ entity control is
 
 end control;
 
-architecture Behavioral of control is
+
+architecture control_behav of control is
+   signal CAQ0_CLK_ctrl,
+	 CAQ0_ACLR_ctrl, 
+	 TA40_ZD, 
+	 LEND_D,  CAQ0_D, CAQ1_D, CAQ2_D, LEND_CLK, LEND_ACLR,
+	 TA40_OE,
+	 CAQ0, CAQ1, CAQ2: std_logic;
+   signal 
+	 
+	 CAQ2_FB,
+	 CAQ1_FB, CAQ0_FB, LEND_FB: std_logic
+	 -- :='0'
+	 ;
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
 signal	AMIQ : STD_LOGIC_VECTOR (1 downto 0):="00";	--State-Machine Terminierung
 signal	LDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht
 signal	QDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D1 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D2 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D3 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D4 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	CNTDIS : STD_LOGIC:='0';	--
 signal	SIZING : STD_LOGIC_VECTOR (2 downto 0):="000";	--State-Machine Sizing
-signal	SIZING_D : STD_LOGIC_VECTOR (2 downto 0):="000";	--State-Machine Sizing
 signal	LEND : STD_LOGIC:='0';	--
-signal	LEND_D : STD_LOGIC:='0';	--
 signal	ATERM : STD_LOGIC:='0';	--
 signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
@@ -140,27 +135,16 @@ signal	TERM : STD_LOGIC:='0'; --hilfssignal für die Identifikation vom Zyklusend
    begin for i in rep'range loop rep(i) := a;  end loop; return rep;
    end sizeIt;
 begin
--- Einstellung PLL     1 = high (3,3V out) Z = 3-State (5V pullup) 0 = low 
--- Basisfrequenz: 40MHz
--- S1 S0	Multi		S1	OE	S0	OE	CODE	
--- 0	0	x2			0	1	0	1	00		
--- 0	Z	x5			0	1	1	0	0Z
---	1	0	x3			1	1	0	1	10
---	1	Z	x3,33		1	1	1	0	1Z	
---	Z	0	x4			1	0	0	1	Z0
---	Z	Z	x2,5		1	0	1	0	ZZ
-	--PLL_S	<=	"0Z"; --100MHz
-	PLL_S	<=	"Z0"; --80MHz
-	--PLL_S	<=	"1Z"; --66MHz
-	--PLL_S	<=	"10"; --60MHz
-	--PLL_S	<=	"ZZ"; --50MHz
-	--PLL_S	<=	"00"; --40MHz
-	
+
+	PLL_S	<=	"Z0";
+
+-- Register Section
+
 	--clocks
 	CLK_RAMC	<= CLK_RAMC_SIG;
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
-	--CLK30 <= CLK30_SIG;
+	CLK30 <= CLK30_SIG;
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
@@ -168,14 +152,12 @@ begin
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
 			CLK_BS	<= not CLK_RAMC_SIG;
 			PCLK	<= not CLK_RAMC_SIG;
-			--CLK30_SIG	<= CLK30;			
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;			
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;			
 		end if;
 	end process CLOCKS_P;
-	
-	--clocks neg edge
+		--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
 		if (falling_edge(PLL_CLK)) then
@@ -183,37 +165,7 @@ begin
 		end if;
 	end process CLOCKS_N;
 
-	--Filterung HALT-Leitung vom Mainboard
-	STOPHALT	<=	'1' when COUNTHALT(11 downto 7) = "11111" else '0';
-	HALT_P: process (HALT30,SCLK_SIG)
-	begin
-		if(HALT30 = '0') then
-			COUNTHALT	<= "000000000000";
-		elsif (rising_edge(SCLK_SIG)) then
-			if( STOPHALT ='1') then
-				COUNTHALT	<= COUNTHALT;
-			else
-				COUNTHALT	<= COUNTHALT + 1;
-			end if;
-		end if;
-	end process HALT_P;
 
-	--Erzeugung der Resets
-	--RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
-	RESET30	<=	'Z'; 
-	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
-	RESET_P: process (RSTO40,SCLK_SIG)
-	begin
-		if(RSTO40 = '0')then
-			COUNTRES	<= "00000000000";
-		elsif(rising_edge(SCLK_SIG)) then
-			if( STOPRES ='1') then
-				COUNTRES	<= COUNTRES;
-			else
-				COUNTRES	<= COUNTRES + 1;
-			end if;			
-		end if;
-	end process RESET_P;
 	RESET_40I: process (SCLK_SIG)
 	begin
 		if(rising_edge(SCLK_SIG)) then
@@ -236,6 +188,76 @@ begin
 		end if;
 	end process RESET_DLY;
 
+
+	--sampling DSACK
+	QDSACK_SYNC: process (NAMIACC,SCLK_SIG)
+	begin
+		if(NAMIACC = '1')then
+			QDSACK	<="00";
+		elsif(rising_edge(SCLK_SIG)) then
+			--sample DSACK
+			if(STERM30='0') then
+				QDSACK	<= "11";
+			else
+				QDSACK(0) <= not DSACK30(0);
+				QDSACK(1) <= not DSACK30(1);
+			end if;
+		end if;
+	end process QDSACK_SYNC;
+
+
+   (CAQ2, CAQ1, CAQ0) <= std_logic_vector'(CAQ2_FB & CAQ1_FB & CAQ0_FB);
+   process (CAQ0_CLK_ctrl, CAQ0_ACLR_ctrl) begin
+      if CAQ0_ACLR_ctrl='1' then
+	 (CAQ2_FB, CAQ1_FB, CAQ0_FB) <= std_logic_vector'("000");
+      elsif CAQ0_CLK_ctrl'event and CAQ0_CLK_ctrl='1' then
+	 (CAQ2_FB, CAQ1_FB, CAQ0_FB) <= std_logic_vector'(CAQ2_D & CAQ1_D &
+	       CAQ0_D);
+      end if;
+   end process;
+
+   LEND <= LEND_FB;
+   process (LEND_CLK, LEND_ACLR) begin
+      if LEND_ACLR='1' then
+	 LEND_FB <= '0';
+      elsif LEND_CLK'event and LEND_CLK='1' then
+	 LEND_FB <= LEND_D;
+      end if;
+   end process;
+
+
+	--Filterung HALT-Leitung vom Mainboard
+	STOPHALT	<=	'1' when COUNTHALT(11 downto 7) = "11111" else '0';
+	HALT_P: process (HALT30,SCLK_SIG)
+	begin
+		if(HALT30 = '0') then
+			COUNTHALT	<= "000000000000";
+		elsif (rising_edge(SCLK_SIG)) then
+			if( STOPHALT ='1') then
+				COUNTHALT	<= COUNTHALT;
+			else
+				COUNTHALT	<= COUNTHALT + 1;
+			end if;
+		end if;
+	end process HALT_P;
+   
+	--Erzeugung der Resets
+	RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
+	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
+	RESET_P: process (RSTO40,SCLK_SIG)
+	begin
+		if(RSTO40 = '0')then
+			COUNTRES	<= "00000000000";
+		elsif(rising_edge(SCLK_SIG)) then
+			if( STOPRES ='1') then
+				COUNTRES	<= COUNTRES;
+			else
+				COUNTRES	<= COUNTRES + 1;
+			end if;			
+		end if;
+	end process RESET_P;
+
+-- Start of original equations
 	--CPU Konfiguration
 	IPL40		<= "111"	when RSTINT ='0' else IPL30;	
 	-- the 111 controls on a 040: small buffer data, adress&Transfer, controll
@@ -270,8 +292,8 @@ begin
 --	0    0     Long		1   1   Acknow	  0,1 1,0 1,0 MMU data,code
 --													  1   1   1   reserved
 
-	BYTE <= '1' when SIZ40 = "01" else '0';
-	WORD <= '1' when SIZ40 = "10" else '0';
+	BYTE <= '1' when SIZ40 = "10" else '0';
+	WORD <= '1' when SIZ40 = "01" else '0';
 	LONG <= '1' when SIZ40 = "11" or SIZ40 ="00" else '0';
 	TERM <= '1' when ATERM = '1' and CNTDIS= '0' else '0';
 
@@ -287,36 +309,7 @@ begin
 					'1' when TT40(1)='0' AND TM40(2 downto 0)="110" else 						-- supv code
 					'1' when TT40(1 downto 0 )="10" AND TM40(2)='1' else						-- alt logical func
 					'1' when TT40(1 downto 0)="11" else '0';										-- avec / breakpoints
-	--sampling DSACK
-	QDSACK_SYNC: process (NAMIACC,SCLK_SIG)
-	begin
-		if(NAMIACC = '1')then
-			QDSACK_D0	<="00";
-			QDSACK_D1	<="00";
-			QDSACK_D2	<="00";
-			QDSACK_D3	<="00";
-			--QDSACK_D4	<="00";
-			QDSACK		<="00";
-		elsif(rising_edge(SCLK_SIG)) then
-			--sample DSACK
-			if(STERM30='0') then
-				--QDSACK	<= "11"; -- original timing
-				QDSACK_D0	<= "11";
-			else
-				--QDSACK(0) <= not DSACK30(0); -- original timing
-				--QDSACK(1) <= not DSACK30(1); -- original timing				
-				QDSACK_D0(0) <= not DSACK30(0);
-				QDSACK_D0(1) <= not DSACK30(1);				
-			end if;
-			QDSACK_D1 <= QDSACK_D0;
-			QDSACK_D2 <= QDSACK_D1;
-			QDSACK_D3 <= QDSACK_D2;
-			--QDSACK_D4 <= QDSACK_D3;
-			QDSACK	<= QDSACK_D2; --14MHz-sync timing@80Mhz
-		end if;
-	end process QDSACK_SYNC;
 
-	
 	LDSACK_SYNC: process (NAMIACC,SCLK_SIG)
 	begin
 		if(NAMIACC = '1')then
@@ -341,231 +334,213 @@ begin
 		end if;
 	end process LDSACK_SYNC;
 	
-	OE_BS		<= AMISEL;
-	DIR_BS	<=	RW40;
-	LONGPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="11" else		--long access
-					'1' when LONGPORT ='1' and LEND ='0' else '0';	-- hold
-	WORDPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="10" else		--word access
-					'1' when WORDPORT ='1' and SIZING/="000" else '0';	-- hold
-	BYTEPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="01" else		--byte access
-					'1' when BYTEPORT ='1' and SIZING/="000" else '0';	-- hold
+   
+   OE_BS <= AMISEL;
+   DIR_BS <= RW40;
+   LONGPORT <= (RSTI40_SIG and LDSACK(1) and LDSACK(0)) or (LONGPORT and (not LEND));
+   WORDPORT <= (RSTI40_SIG and LDSACK(1) and (not LDSACK(0))) or (WORDPORT and (not
+	 ((not CAQ2) and (not CAQ1) and (not CAQ0))));
+   BYTEPORT <= (RSTI40_SIG and (not LDSACK(1)) and LDSACK(0)) or (BYTEPORT and (not
+	 ((not CAQ2) and (not CAQ1) and (not CAQ0))));
+
+   TA40_OE <= AMISEL;
+   AMISEL <= (RSTI40_SIG and (not TT40(1)) and SEL16M) or (RSTI40_SIG and TT40(1));
+   TBI40 <= not ((RSTI40_SIG and (not TT40(1)) and SEL16M) or (RSTI40_SIG and TT40(1)));
+   TEA40 <= not ((LONGPORT and WORDPORT and AS30_SIG) or (LONGPORT and BYTEPORT
+	 and AS30_SIG) or (WORDPORT and BYTEPORT and AS30_SIG));
 
 
-	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
-														or TT40(1)='1') 						-- alt func AVEC/BRKPT
-						 else '0';
-	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
-														or TT40(1)='1') 						-- alt func AVEC/BRKPT
-						 else '1';
-	TEA40		<= '0' when LONGPORT = '1' and WORDPORT = '1' and AS30_SIG = '1' else
-					'0' when LONGPORT = '1' and BYTEPORT = '1' and AS30_SIG = '1' else
-					'0' when WORDPORT = '1' and BYTEPORT = '1' and AS30_SIG = '1' else '1'; --error: two ports open!
-					
+   LEND_ACLR <= not RSTI40_SIG;
+   LEND_CLK <= SCLK_SIG;
+   CAQ0_CLK_ctrl <= SCLK_SIG;
+   CAQ0_ACLR_ctrl <= not RSTI40_SIG;
+
 	AS30		<= AS30_SIG when AS30_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' else 'Z';
-	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 
-	--sizing statemachine
-	--this is the clocked statemachine transition process
-   process (SCLK_SIG, RSTI40_SIG) begin
-      if RSTI40_SIG='0' then
-      	SIZING <= "000";
-			LEND <= '0';
-      elsif (rising_edge(SCLK_SIG)) then
-			SIZING <= SIZING_D;
-			LEND <= LEND_D;
-      end if;
-   end process;
-	
-	--somehow a lot of signals need to be "latched" in a unclocked process
-	--this idea comes from the abel-conversion
-   SIZING_SM: process (SIZING, TS40, SEL16M, LONGPORT, A40, WORDPORT,
-	 AMISEL, RW40, BYTEPORT, RSTI40_SIG, LDSACK, CNTDIS,
-	 TT40, BYTE, WORD,LONG, SIZ40, TERM)
+   TA40 <= TA40_ZD when TA40_OE='1' else 'Z';
+   process (CAQ0_FB, CAQ1_FB, CAQ2_FB, TS40, SEL16M, LONGPORT, A40(0), WORDPORT,
+	 AMISEL, RW40, BYTEPORT, RSTI40_SIG, ATERM, LDSACK(1), LDSACK(0), CNTDIS,
+	 A40(1), TT40(1), TT40(0), SIZ40(1), SIZ40(0))
+      variable stdVec3: std_logic_vector(2 downto 0);
    begin
-      if(SIZING ="101") then
-			TA40_SIG	<= '0';
-			AS30_OE		<= '0';
-			DS30_OE		<= '0';
-			LEND_D <= '1';
-		else
-			LEND_D <= '0';
-			if(TT40(1 downto 0)="11") then
-				TA40_SIG	<= '0';
-			else
-				TA40_SIG	<= '1';
-			end if;
-			AS30_OE		<= '1';
-			DS30_OE		<= '1';
-		end if;
-	
-		if(SIZING = "000" or SIZING = "101")then
-			NAMIACC <= '1';
-		else
-			NAMIACC <= '0';
-		end if;
-      C1: case SIZING is
-			when "000" =>
-				SIZ30(0)	<= BYTE;
-				SIZ30(1) <= '0';
-					
-				AL <= "00";
-						
-				BWL_BS	<= "111";
-					
-				if( TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
-					SIZING_D <="001";
-				else
-					SIZING_D <="000";
-				end if;					
-			when "001" =>
-				SIZ30(0)	<= BYTE;
-				SIZ30(1)	<= WORD;
-				
-				if(LONG = '0') then
-					AL <=	A40;
-				else
-					AL <= "00";
-				end if;
-
-				--bus code for data latch
-				if(	(AMISEL = '1' and RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
-						(AMISEL = '1' and RW40 ='1' AND (LONGPORT ='1' or WORDPORT  = '1' or BYTEPORT ='1'))) then --READ: any port
-					BWL_BS(0)	<=	'0';
-				else 
-					BWL_BS(0)	<=	'1';
-				end if;
-					
-				if(	(AMISEL = '1' and RW40 ='0' and ( LONG = '1' OR			-- WRITE: LONG
-																	(WORD = '1' and A40(1)='0')	or		-- WRITE: WORD A1=0
-																	(BYTE = '1' and A40(1)='0')))or 	-- WRITE: BYTE A1=0
-						(AMISEL = '1' and RW40 ='1' AND (WORDPORT  = '1' or BYTEPORT ='1'))) then --READ: word/byte port
-					BWL_BS(1)	<=	'0';
-				else 
-					BWL_BS(1)	<=	'1';
-				end if;
-
-				if(	(AMISEL = '1' and RW40 ='0') or 	-- WRITE: any access
-						(AMISEL = '1' and RW40 ='1' AND BYTEPORT ='1')) then --READ: byte port
-					BWL_BS(2)	<=	'0';
-				else 
-					BWL_BS(2)	<=	'1';
-				end if;
-
-				if( TERM ='1' and LDSACK="01" and 					-- byteterm
-					(LONG = '1' or (WORD = '1' and A40(1)='0'))	-- LONG or WORD0
-					) then
-					SIZING_D <= "010";
-				elsif( TERM ='1' and LDSACK="01" and  				-- BYTETERM
-					WORD = '1' and A40(1)='1'							-- WORD2
-					) then
-					SIZING_D <= "100";
-				elsif(TERM ='1' and LDSACK="10" and 				-- WORDTERM
-					LONG = '1'												-- LONG
-					) then
-					SIZING_D <= "011";
-				elsif(TERM ='1' and LDSACK="11"						-- LONGTERM
-					) then
-					SIZING_D <= "101";
-				elsif(TERM ='1' and LDSACK="10" 	and				-- WORDTERM
-						(WORD = '1' or BYTE = '1')						-- WORD or BYTE
-					) then
-					SIZING_D <= "101";
-				elsif( TERM ='1' and LDSACK="01" and				-- BYTETERM
-						BYTE = '1'											-- BYTE
-					) then
-					SIZING_D <= "101";
-				else
-					SIZING_D <= "001";
-				end if;
-			when "010" =>
-				SIZ30	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
-				AL		<=	"01";
-				BWL_BS(0)	<= '1';
-				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))) then
-					BWL_BS(1) <= '0';
-					BWL_BS(2) <= '0';
-				else
-					BWL_BS(1) <= '1';
-					BWL_BS(2) <= '1';
-				end if;
-				
-				if(TERM ='1' and LDSACK="01" and  						-- BYTETERM
-					WORD = '1' and A40(1)='0'								-- WORD0
-					) then
-					SIZING_D <= "101";
-				elsif(TERM ='1' and LDSACK="01" and  					-- BYTETERM
-					LONG = '1'													-- LONG
-					) then
-					SIZING_D <= "011";
-				else
-					SIZING_D <= "010";
-				end if;
-			when "011" =>
-				SIZ30(0)	<= BYTE;
-				SIZ30(1)	<= LONG;
-					
-				AL	<= "10";
-					
-				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))) then
-					BWL_BS(0) <= '0';
-					BWL_BS(2) <= '0';
-				else
-					BWL_BS(0) <= '1';
-					BWL_BS(2) <= '1';
-				end if;
-				if( AMISEL ='1' and               RW40='1' and WORDPORT = '1')then
-					BWL_BS(1) <= '0';
-				else
-					BWL_BS(1) <= '1';
-				end if;
-					
-				if(TERM ='1' and LDSACK="01" and  					-- BYTETERM
-					LONG = '1'												-- LONG
-					) then
-					SIZING_D <= "100";
-				elsif(TERM ='1' and LDSACK="10" and  				-- WORDTERM
-					LONG = '1'												-- LONG
-					) then
-					SIZING_D <= "101";
-				else
-					SIZING_D <= "011";
-				end if;
-			when "100" =>
-				SIZ30	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
-				AL		<=	"11";
-				BWL_BS(1 downto 0) <= "11";
-				if( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))then
-					BWL_BS(2) <= '0';
-				else
-					BWL_BS(2) <= '1';
-				end if;
-				
-				if(TERM ='1' and LDSACK="01" and  					-- BYTETERM
-					(LONG = '1' or											-- LONG
-					 (WORD = '1' and A40(1)='1'))						-- WORD2						
-					) then
-					SIZING_D <= "101";
-				else
-					SIZING_D <= "100";
-				end if;
-			when "101"=>
-				SIZ30(0)	<= BYTE;
-				SIZ30(1)	<= '0';
-				
-				AL <="00";
-				
-				BWL_BS <= "111";
-				SIZING_D <="000";
-			when others=>					
-				SIZ30(0)	<= BYTE;
-				SIZ30(1)	<= '0';
-					
-				AL <="00";
-				BWL_BS <= "111";
-				SIZING_D <="000";
-      end case C1;
-   end process SIZING_SM;
+      (NAMIACC, LEND_D, TA40_ZD, AS30_OE, DS30_OE, SIZ30(0), SIZ30(1), AL(0),
+	    AL(1), BWL_BS(0), BWL_BS(1), BWL_BS(2), CAQ2_D, CAQ1_D, CAQ0_D) <=
+	    std_logic_vector'("000000000000000");
+      stdVec3 := std_logic_vector'(CAQ2_FB & CAQ1_FB & CAQ0_FB);
+      case stdVec3 is
+      when "000" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= '0';
+	 AL(0) <= '0';
+	 AL(1) <= '0';
+	 NAMIACC <= '1';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= '1';
+	 BWL_BS(2) <= '1';
+	 if ((not TS40) and (not TT40(1)) and SEL16M)='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("001");
+	 else
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("000");
+	 end if;
+      when "001" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= SIZ40(1) and (not SIZ40(0));
+	 AL(0) <= A40(0) and (not (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1)
+	       and SIZ40(0))));
+	 AL(1) <= A40(1) and (not (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1)
+	       and SIZ40(0))));
+	 BWL_BS(0) <= not ((AMISEL and (not RW40) and (((not SIZ40(1)) and (not
+	       SIZ40(0))) or (SIZ40(1) and SIZ40(0)) or (SIZ40(1) and (not SIZ40(0))
+	       and (not A40(1))) or (SIZ40(1) and (not SIZ40(0)) and A40(1)) or
+	       ((not SIZ40(1)) and SIZ40(0) and (not A40(1)) and (not A40(0))) or
+	       ((not SIZ40(1)) and SIZ40(0) and A40(1) and (not A40(0))))) or
+	       (AMISEL and RW40 and (LONGPORT or WORDPORT or BYTEPORT)));
+	 BWL_BS(1) <= not ((AMISEL and (not RW40) and (((not SIZ40(1)) and (not
+	       SIZ40(0))) or (SIZ40(1) and SIZ40(0)) or (SIZ40(1) and (not SIZ40(0))
+	       and (not A40(1))) or ((not SIZ40(1)) and SIZ40(0) and (not A40(1))
+	       and (not A40(0))) or ((not SIZ40(1)) and SIZ40(0) and (not A40(1))
+	       and A40(0)))) or (AMISEL and RW40 and (WORDPORT or BYTEPORT)));
+	 BWL_BS(2) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 if (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and SIZ40(0))
+	       or (SIZ40(1) and (not SIZ40(0)) and (not A40(1)))))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("010");
+	 elsif (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and SIZ40(1) and (not SIZ40(0)) and A40(1))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("100");
+	 elsif (RSTI40_SIG and ATERM and LDSACK(1) and (not LDSACK(0)) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and
+	       SIZ40(0))))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("011");
+	 elsif ((RSTI40_SIG and ATERM and LDSACK(1) and LDSACK(0) and (not CNTDIS)) or
+	       (RSTI40_SIG and ATERM and LDSACK(1) and (not LDSACK(0)) and (not CNTDIS)
+	       and ((SIZ40(1) and (not SIZ40(0))) or ((not SIZ40(1)) and
+	       SIZ40(0)))) or (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0)
+	       and (not CNTDIS) and (not SIZ40(1)) and SIZ40(0)))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("101");
+	 else
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("001");
+	 end if;
+      when "010" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= ((not SIZ40(1)) and SIZ40(0)) or (SIZ40(1) and (not SIZ40(0)))
+	       or ((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and SIZ40(0));
+	 SIZ30(1) <= '0';
+	 AL(0) <= '1';
+	 AL(1) <= '0';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 BWL_BS(2) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 if (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and SIZ40(1) and (not SIZ40(0)) and (not A40(1)))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("101");
+	 elsif (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and
+	       SIZ40(0))))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("011");
+	 else
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("010");
+	 end if;
+      when "011" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= ((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and SIZ40(0));
+	 AL(0) <= '0';
+	 AL(1) <= '1';
+	 BWL_BS(0) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 BWL_BS(1) <= not (AMISEL and RW40 and WORDPORT);
+	 BWL_BS(2) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 if (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and
+	       SIZ40(0))))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("100");
+	 elsif (RSTI40_SIG and ATERM and LDSACK(1) and (not LDSACK(0)) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and
+	       SIZ40(0))))='1' then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("101");
+	 else
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("011");
+	 end if;
+      when "100" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= ((not SIZ40(1)) and SIZ40(0)) or (SIZ40(1) and (not SIZ40(0)))
+	       or ((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and SIZ40(0));
+	 SIZ30(1) <= '0';
+	 AL(0) <= '1';
+	 AL(1) <= '1';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= '1';
+	 BWL_BS(2) <= not ((AMISEL and (not RW40)) or (AMISEL and RW40 and
+	       BYTEPORT));
+	 if ((RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0) and (not CNTDIS)
+	       and (((not SIZ40(1)) and (not SIZ40(0))) or (SIZ40(1) and
+	       SIZ40(0)))) or (RSTI40_SIG and ATERM and (not LDSACK(1)) and LDSACK(0)
+	       and (not CNTDIS) and SIZ40(1) and (not SIZ40(0)) and A40(1)))='1'
+	       then
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("101");
+	 else
+	    (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("100");
+	 end if;
+      when "101" =>
+	 TA40_ZD <= '0';
+	 AS30_OE <= '0';
+	 DS30_OE <= '0';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= '0';
+	 AL(0) <= '0';
+	 AL(1) <= '0';
+	 NAMIACC <= '1';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= '1';
+	 BWL_BS(2) <= '1';
+	 LEND_D <= '1';
+	 (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("000");
+      when "110" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= '0';
+	 AL(0) <= '0';
+	 AL(1) <= '0';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= '1';
+	 BWL_BS(2) <= '1';
+	 (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("000");
+      when "111" =>
+	 TA40_ZD <= not (TT40(1) and TT40(0));
+	 AS30_OE <= '1';
+	 DS30_OE <= '1';
+	 SIZ30(0) <= (not SIZ40(1)) and SIZ40(0);
+	 SIZ30(1) <= '0';
+	 AL(0) <= '0';
+	 AL(1) <= '0';
+	 BWL_BS(0) <= '1';
+	 BWL_BS(1) <= '1';
+	 BWL_BS(2) <= '1';
+	 (CAQ2_D, CAQ1_D, CAQ0_D) <= std_logic_vector'("000");
+      when others =>
+      end case;
+      stdVec3 := (others=>'0');  -- no storage needed
+   end process;
 
 
 	CNTDIS_PROC: process (RSTI40_SIG,SCLK_SIG)
@@ -576,7 +551,7 @@ begin
 			CNTDIS <= ATERM;
 		end if;
 	end process CNTDIS_PROC;
-	
+
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	--terminierung statemachine
 	TERMINATION_SM: process (RST_TERM,SCLK_SIG)
@@ -628,7 +603,5 @@ begin
 		end if;
 		
 	end process TERMINATION_SM;
-	
 
-end Behavioral;
-
+end control_behav;
