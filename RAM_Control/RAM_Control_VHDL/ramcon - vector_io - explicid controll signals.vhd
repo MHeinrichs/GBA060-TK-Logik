@@ -196,10 +196,6 @@ begin
 
    process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
    begin
-      ( CLRNOPC, ENACLK, ENANOPC) <=
-	    std_logic_vector'("000");
-		 ARAM_D <= "000000000000";
-		 CQ_D <= "000000";
 
       case CQ is
       when "000000" =>
@@ -216,6 +212,9 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 CLRNOPC	<= '0';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 if (INIT)='1' then
 		    CQ_D <= "000001";
 		 else
@@ -237,6 +236,7 @@ begin
 		 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "000011";
       when "000011" =>
 		 OERAM_40_D <= '1';
@@ -253,6 +253,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= "000010";
 		 else
@@ -273,6 +275,8 @@ begin
 		 RAS_D <= '0';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "000110";
       when "000110" =>
 		 OERAM_40_D <= '1';
@@ -289,6 +293,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (	NQ >= "110" and
 		      RQ >= "00000100") then
 		    CQ_D <= "000111";
@@ -315,6 +321,7 @@ begin
 		 ARAM_D <= ARAM_OPTCODE;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "000101";
       when "000101" =>
 		 OERAM_40_D <= '1';
@@ -331,6 +338,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
@@ -350,6 +359,9 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 CLRNOPC	<= '0';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 if (REFRESH='1') then
 		    CQ_D <= "001100";
 		 elsif ((not REFRESH) and TRANSFER and RW_40 and (not SCLK))='1' then
@@ -374,6 +386,8 @@ begin
 		 RAS_D <= '0';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "001101";
       when "001101" =>
 		 OERAM_40_D <= '1';
@@ -390,6 +404,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "110") then
 		    CQ_D <= "000100";
 		 else
@@ -411,6 +427,7 @@ begin
 	 	 ARAM_D <= ARAM_HIGH;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "001110";
 	  when "001110" =>
 		 OERAM_40_D <= '1';
@@ -427,6 +444,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "001010";
       when "001010" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -444,6 +463,7 @@ begin
 	 	 ARAM_D <= ARAM_LOW;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "001011";
       when "001011" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -460,6 +480,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "001001";
       when "001001" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -476,6 +498,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (SIZ40 ="11") then
 		    CQ_D <= "001000";
 		 else
@@ -496,6 +520,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011000";
       when "011000" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -512,6 +538,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011001";
       when "011001" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -528,6 +556,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011011";
       when "011011" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -544,6 +574,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011010";
       when "011010" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -560,6 +592,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011110";
       when "011110" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -576,6 +610,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "011111";
       when "011111" =>
 		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
@@ -593,6 +629,7 @@ begin
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "011101";
       when "011101" =>
 		 OERAM_40_D <= '1';
@@ -609,6 +646,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC <= '1';
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
@@ -630,6 +669,7 @@ begin
 	 	 ARAM_D <= ARAM_HIGH;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "010100";
       when "010100" =>
 		 OERAM_40_D <= '1';
@@ -646,6 +686,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010101";
       when "010101" =>
 		 OERAM_40_D <= '1';
@@ -662,6 +704,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010111";
       when "010111" =>
 		 OERAM_40_D <= '1';
@@ -681,6 +725,8 @@ begin
 		 ARAM_D <= ARAM_LOW;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010110";
       when "010110" =>
 		 OERAM_40_D <= '1';
@@ -697,6 +743,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 if (SIZ40 ="11") then
 		    CQ_D <= "010010";
 		 else
@@ -717,6 +765,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010011";
       when "010011" =>
 		 OERAM_40_D <= '1';
@@ -733,6 +783,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010001";
       when "010001" =>
 		 OERAM_40_D <= '1';
@@ -749,6 +801,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+ 		 ENACLK	<= '0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "010000";
       when "010000" =>
 		 OERAM_40_D <= '1';
@@ -765,6 +819,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "110000";
       when "110000" =>
 		 OERAM_40_D <= '1';
@@ -783,6 +839,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '0';
 		 CLRNOPC <= '1';
+ 		 ENACLK	<= '0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "110001";
       when "110001" =>
 		 OERAM_40_D <= '1';
@@ -799,6 +857,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
 		 CQ_D <= "110011";
       when "110011" =>
 		 OERAM_40_D <= '1';
@@ -816,6 +876,7 @@ begin
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '1';
 		 CLRNOPC <= '1';
+		 ENANOPC	<='0';
 		 CQ_D <= "110010";
       when "110010" =>
 		 OERAM_40_D <= '1';
@@ -832,13 +893,15 @@ begin
 		 RAS_D <= '1';
 		 ENACLK <= '1';
 		 ENANOPC <= '1';
+		 CLRNOPC	<= '0';
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
 		    CQ_D <= "110010";
 		 end if;
       when others =>
-         OERAM_40_D <= '0';
+       OERAM_40_D <= '0';
 		 OE40_RAM_D <= '0';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
@@ -850,7 +913,11 @@ begin
 		 TA40_D <= '0';
 		 CAS_D <= '0';
 		 RAS_D <= '0';
-	     CQ_D <= "000000";
+ 		 ENACLK	<= '0';
+		 CLRNOPC	<= '0';
+		 ENANOPC	<='0';
+		 ARAM_D <= "000000000000";
+	    CQ_D <= "000000";
 
       end case;
    end process;

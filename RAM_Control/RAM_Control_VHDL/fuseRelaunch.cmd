@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/RamConTest_isim_beh.exe" -prj "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/RamConTest_beh.prj" "work.RamConTest" 

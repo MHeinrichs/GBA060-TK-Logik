@@ -6,18 +6,15 @@
 ********** Mapped Logic **********
 </td></tr><tr><td>
 </td></tr><tr><td>
-$OpTx$$OpTx$FX_DC$37_INV$274 <= (NOT RQ(3) AND NOT RQ(5) AND NOT RQ(6) AND NOT RQ(7));
-</td></tr><tr><td>
-</td></tr><tr><td>
 $OpTx$DEC_UDQ0_OBUF$0 <= ((CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(0) AND NOT SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(1) AND SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(1) AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(0) AND NOT SIZ40(1) AND SIZ40(0))
@@ -28,188 +25,145 @@ $OpTx$DEC_UDQ0_OBUF$0 <= ((CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 </td></tr><tr><td>
 </td></tr><tr><td>
 $OpTx$DEC_UDQ0_OBUF$1 <= (($OpTx$DEC_UDQ0_OBUF$0)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+$OpTx$FX_DC$36 <= NOT (CQ(2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 XOR 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$OpTx$FX_DC$36 <= NOT (CQ(1));
 </td></tr><tr><td>
 FDCPE_ARAM0: FDCPE port map (ARAM(0),ARAM_D(0),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(0) <= ((NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(0) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(11))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(11))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(11))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(2))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(2))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(11)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(11))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(2)));
 </td></tr><tr><td>
 FDCPE_ARAM1: FDCPE port map (ARAM(1),ARAM_D(1),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(1) <= ((CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(1) <= ((CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(3)));
 </td></tr><tr><td>
 FDCPE_ARAM2: FDCPE port map (ARAM(2),ARAM_D(2),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(2) <= ((NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(2) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(13))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(13))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(13))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(13)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(13))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(4)));
 </td></tr><tr><td>
 FDCPE_ARAM3: FDCPE port map (ARAM(3),ARAM_D(3),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(3) <= ((NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(3) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(14))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(14))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(14))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(14)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(14))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(5)));
 </td></tr><tr><td>
 FDCPE_ARAM4: FDCPE port map (ARAM(4),ARAM_D(4),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(4) <= ((CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(4) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(15))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(15))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(15))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(6))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(6))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(15)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(15))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(6)));
 </td></tr><tr><td>
 FDCPE_ARAM5: FDCPE port map (ARAM(5),ARAM_D(5),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(5) <= ((CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(5) <= ((CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(16))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(7)));
 </td></tr><tr><td>
 FDCPE_ARAM6: FDCPE port map (ARAM(6),ARAM_D(6),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(6) <= ((CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(6) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(17))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(17))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(17))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(8))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(8))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(17)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(17))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(8)));
 </td></tr><tr><td>
 FDCPE_ARAM7: FDCPE port map (ARAM(7),ARAM_D(7),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(7) <= ((CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(7) <= ((CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(18))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(18))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(18))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(18))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(9))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(18))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(9)));
 </td></tr><tr><td>
 FDCPE_ARAM8: FDCPE port map (ARAM(8),ARAM_D(8),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(8) <= ((A40(19) AND CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(19) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(8) <= ((A40(19) AND CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(19) AND CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(19) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(19) AND NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(10))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(10)));
 </td></tr><tr><td>
 FDCPE_ARAM9: FDCPE port map (ARAM(9),ARAM_D(9),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(9) <= ((A40(20) AND CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(20) AND CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(20) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(20) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(9) <= ((A40(20) AND CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(20) AND NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 FDCPE_ARAM10: FDCPE port map (ARAM(10),ARAM_D(10),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(10) <= ((A40(21) AND CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(10) <= ((A40(21) AND CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(21) AND CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(21) AND NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 FDCPE_ARAM11: FDCPE port map (ARAM(11),ARAM_D(11),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(11) <= ((A40(22) AND CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARAM_D(11) <= ((A40(22) AND CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
-FDCPE_BA0: FDCPE port map (BA0,BA0_D,CLK_RAMC,'0',NOT RESET);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BA0_D <= ((NOT CQ(5) AND A40(23))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(23)));
+FDCPE_BA0: FDCPE port map (BA0,A40(23),CLK_RAMC,'0',NOT RESET);
 </td></tr><tr><td>
-FDCPE_BA1: FDCPE port map (BA1,BA1_D,CLK_RAMC,'0',NOT RESET);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BA1_D <= ((NOT CQ(5) AND A40(24))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(24)));
+FDCPE_BA1: FDCPE port map (BA1,A40(24),CLK_RAMC,'0',NOT RESET);
 </td></tr><tr><td>
 FDCPE_CAS: FDCPE port map (CAS,CAS_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CAS_D <= ((CLK_RAM_OBUF.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(1) AND NOT CQ(4)));
 </td></tr><tr><td>
 FDCPE_CE_B0: FDCPE port map (CE_B0,CE_B0_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CE_B0_D <= ((UDQ0_OBUF.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(1) AND NOT CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(1) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(1) AND NOT CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(2) AND CQ(3))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
@@ -217,17 +171,17 @@ FDCPE_CE_B0: FDCPE port map (CE_B0,CE_B0_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(1) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(3) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(0) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(0) AND CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND NOT CQ(3) AND CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 FDCPE_CE_B1: FDCPE port map (CE_B1,CE_B1_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CE_B1_D <= ((WE_OBUF.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(1) AND NOT CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(1) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(1) AND NOT CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(2) AND CQ(3))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
@@ -235,9 +189,9 @@ FDCPE_CE_B1: FDCPE port map (CE_B1,CE_B1_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(1) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(3) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(0) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(0) AND CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND A40(25) AND NOT CQ(3) AND CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 </td></tr><tr><td>
 CLKEN <= '1';
@@ -245,120 +199,111 @@ CLKEN <= '1';
 </td></tr><tr><td>
 CLK_RAM <= NOT (((CLK_RAMC)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(1) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(1) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))));
 </td></tr><tr><td>
 FDCPE_CQ0: FDCPE port map (CQ(0),CQ_D(0),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(0) <= ((EXP16_.EXP)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(0) <= ((EXP18_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP19_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(2))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP21_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND INIT)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(4) AND NOT CQ(5) AND $OpTx$FX_DC$36)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(4) AND NOT CQ(5) AND NOT $OpTx$FX_DC$36)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND $OpTx$FX_DC$36)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4) AND CQ(5)));
 </td></tr><tr><td>
 FDCPE_CQ1: FDCPE port map (CQ(1),CQ_D(1),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(1) <= ((CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP20_.EXP)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(0) AND CQ(1) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(1) <= ((NOT CQ(0) AND NOT CQ(2) AND CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(3) AND CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3).EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT RQ(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND RW_40 AND TRANSFER_FB AND NOT SCLK)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(1) AND NOT CQ(5) AND SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND NOT NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(2) AND NOT NQ(0)));
 </td></tr><tr><td>
 FTCPE_CQ2: FTCPE port map (CQ(2),CQ_T(2),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_T(2) <= ((NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND NQ(1) AND NQ(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(3) AND NOT RQ(5) AND NOT RQ(2) AND NOT RQ(4) AND NOT RQ(6) AND NOT RQ(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND NQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND NQ(2)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_T(2) <= ((EXP17_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND NQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND NQ(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5)));
 </td></tr><tr><td>
 FDCPE_CQ3: FDCPE port map (CQ(3),CQ_D(3),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(3) <= ((CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RQ(6))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RQ(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(0) AND NOT CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RW_40 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	TRANSFER_FB AND NOT SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT RW_40 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(3) <= ((EXP13_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(3) AND NOT CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND NOT NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RQ(6))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RQ(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT RW_40 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	TRANSFER_FB AND SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND RQ(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RQ(5) AND RQ(2) AND RQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(1) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(0) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(2)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(3) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1)));
 </td></tr><tr><td>
 FDCPE_CQ4: FDCPE port map (CQ(4),CQ_D(4),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(4) <= ((NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(4) <= ((EXP14_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT SIZ40(1))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND NOT NQ(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT NQ(1) AND NOT NQ(2) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND NOT RW_40 AND TRANSFER_FB AND SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND NOT RW_40 AND TRANSFER_FB AND SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND NOT RW_40 AND TRANSFER_FB AND SCLK)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT RQ(4) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT RQ(6) AND NOT RQ(7) AND NOT RW_40 AND TRANSFER_FB AND SCLK)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(1) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4)));
 </td></tr><tr><td>
 FDCPE_CQ5: FDCPE port map (CQ(5),CQ_D(5),CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(5) <= ((NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_D(5) <= ((CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5) AND NOT NQ(1) AND NOT NQ(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0)));
@@ -427,47 +372,39 @@ FDCPE_CQ5: FDCPE port map (CQ(5),CQ_D(5),CLK_RAMC,NOT RESET,'0');
 </td></tr><tr><td>
 </td></tr><tr><td>
 </td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
-</td></tr><tr><td>
 FDCPE_LDQ0: FDCPE port map (LDQ0,LDQ0_D,CLK_RAMC,'0',NOT RESET);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LDQ0_D <= ((EXP30_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LDQ0_D <= ((EXP26_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(0) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT A40(0) AND NOT SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(1) AND SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(1) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(0) AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT A40(1) AND SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT A40(1) AND NOT SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT A40(0) AND NOT SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0)));
 </td></tr><tr><td>
 FDCPE_LDQ1: FDCPE port map (LDQ1,LDQ1_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LDQ1_D <= ((CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(1) AND NOT SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(1) AND NOT SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(1) AND SIZ40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(1) AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND NOT A40(0) AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(1) AND SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(1) AND NOT SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND NOT A40(0) AND NOT SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0)));
 </td></tr><tr><td>
@@ -475,67 +412,67 @@ FDCPE_LDQ1: FDCPE port map (LDQ1,LDQ1_D,CLK_RAMC,'0',NOT RESET);
 LE_RAM <= '0';
 </td></tr><tr><td>
 FDCPE_NQ0: FDCPE port map (NQ(0),NQ_D(0),CLK_RAMC,NOT NQ(1)/NQ(1)_RSTF__$INT,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(0) <= ((CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(0) <= ((CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(0)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-NQ(1)/NQ(1)_RSTF__$INT <= ((RESET AND CQ(2) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(2) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4))
+NQ(1)/NQ(1)_RSTF__$INT <= ((RESET AND CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(0) AND NOT CQ(3) AND NOT CQ(1) AND NOT CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(3) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(0) AND CQ(1) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(1) AND NOT CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND CQ(0) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4)));
 </td></tr><tr><td>
 FDCPE_NQ1: FDCPE port map (NQ(1),NQ_D(1),CLK_RAMC,NOT NQ(1)/NQ(1)_RSTF__$INT,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(1) <= ((CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NOT NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(1) <= ((CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NOT NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(1) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(1) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(1) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(1) AND NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(1) AND NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(1) AND CQ(4) AND CQ(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(1) AND NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(5) AND NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5) AND NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NOT NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5) AND NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT NQ(0)));
 </td></tr><tr><td>
 FDCPE_NQ2: FDCPE port map (NQ(2),NQ_D(2),CLK_RAMC,NOT NQ(1)/NQ(1)_RSTF__$INT,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(2) <= ((CQ(3) AND CQ(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NQ_D(2) <= ((NOT CQ(0) AND NOT CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(1) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT NQ(1) AND NOT NQ(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT NQ(2) AND NOT NQ(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(0) AND CQ(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(1))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NQ(1) AND NQ(2) AND NQ(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(0) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(0) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(3) AND CQ(4)));
 </td></tr><tr><td>
 FDCPE_OE40_RAM: FDCPE port map (OE40_RAM,OE40_RAM_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OE40_RAM_D <= ((CQ(2) AND CQ(5))
@@ -548,20 +485,20 @@ FDCPE_OE40_RAM: FDCPE port map (OE40_RAM,OE40_RAM_D,CLK_RAMC,'0',NOT RESET);
 </td></tr><tr><td>
 FDCPE_OERAM_40: FDCPE port map (OERAM_40,OERAM_40_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OERAM_40_D <= ((CQ(2) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT CQ(2) AND CQ(3) AND RW_40)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND CQ(3) AND CQ(1) AND CQ(4) AND RW_40)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5)));
 </td></tr><tr><td>
 FDCPE_RAS: FDCPE port map (RAS,RAS_D,CLK_RAMC,'0',NOT RESET);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RAS_D <= ((EXP36_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RAS_D <= ((EXP32_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(1) AND CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(0) AND CQ(1) AND NOT CQ(4)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(1) AND NOT CQ(4)));
 </td></tr><tr><td>
 FTCPE_RQ0: FTCPE port map (RQ(0),'1',C4MHZ,RQ(3)/RQ(3)_RSTF,'0');
 </td></tr><tr><td>
@@ -572,8 +509,8 @@ FTCPE_RQ2: FTCPE port map (RQ(2),RQ_T(2),C4MHZ,RQ(3)/RQ(3)_RSTF,'0');
 </td></tr><tr><td>
 </td></tr><tr><td>
 RQ(3)/RQ(3)_RSTF <= ((NOT RESET)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 FTCPE_RQ3: FTCPE port map (RQ(3),RQ_T(3),C4MHZ,RQ(3)/RQ(3)_RSTF,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RQ_T(3) <= (RQ(0) AND RQ(2) AND RQ(1));
@@ -597,11 +534,11 @@ SEL16M <= (NOT A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND
 </td></tr><tr><td>
 FDCPE_TA40: FDCPE port map (TA40_I,TA40,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TA40 <= ((CQ(2) AND CQ(3) AND NOT CQ(1) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(4) AND CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(0) AND NOT CQ(1) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5)));
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TA40 <= TA40_I when TA40_OE = '1' else 'Z';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TA40_OE <= (A40(27) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
@@ -630,34 +567,34 @@ FDCPE_TRANSFER_FB: FDCPE port map (TRANSFER_FB,'1',TRANSFER_FB_C,TRANSFER_FB/TRA
 </td></tr><tr><td>
 </td></tr><tr><td>
 TRANSFER_FB/TRANSFER_FB_RSTF <= ((NOT RESET)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND CQ(0) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND CQ(3) AND NOT CQ(0) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND CQ(2) AND CQ(3) AND CQ(1) AND NOT CQ(4) AND NOT CQ(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND CQ(2) AND CQ(3) AND NOT CQ(1) AND CQ(4) AND NOT CQ(5)));
 </td></tr><tr><td>
 FDCPE_UDQ0: FDCPE port map (UDQ0,UDQ0_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UDQ0_D <= (($OpTx$DEC_UDQ0_OBUF$1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4) AND CQ(5)));
 </td></tr><tr><td>
 FDCPE_UDQ1: FDCPE port map (UDQ1,UDQ1_D,CLK_RAMC,'0',NOT RESET);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UDQ1_D <= ((EXP37_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UDQ1_D <= ((EXP33_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(2) AND NOT CQ(4) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(0) AND CQ(1) AND CQ(4))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(0) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(1) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(0) AND NOT SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(1) AND SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(1) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(3) AND NOT CQ(5) AND A40(0) AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(1) AND SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(1) AND NOT SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND CQ(4) AND A40(0) AND NOT SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0)));
 </td></tr><tr><td>
 FDCPE_WE: FDCPE port map (WE,WE_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WE_D <= ((CQ(2) AND NOT CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(1) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND CQ(4) AND NOT CQ(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(0) AND CQ(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(2) AND NOT CQ(3) AND CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(2) AND NOT CQ(3) AND NOT CQ(1) AND CQ(4))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ(0) AND NOT CQ(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ(3) AND NOT CQ(4) AND NOT CQ(5)));

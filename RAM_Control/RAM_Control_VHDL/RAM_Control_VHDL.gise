@@ -25,32 +25,34 @@
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="ramcon.bld"/>
+    <file xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="ramcon.bld"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="ramcon.cmd_log"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_GYD" xil_pn:name="ramcon.gyd"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_JEDEC" xil_pn:name="ramcon.jed"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="ramcon.lso"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MFD" xil_pn:name="ramcon.mfd"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGA" xil_pn:name="ramcon.nga"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="ramcon.ngc"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="ramcon.ngd"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="ramcon.ngr"/>
+    <file xil_pn:fileType="FILE_GYD" xil_pn:name="ramcon.gyd"/>
+    <file xil_pn:fileType="FILE_JEDEC" xil_pn:name="ramcon.jed"/>
+    <file xil_pn:fileType="FILE_LSO" xil_pn:name="ramcon.lso"/>
+    <file xil_pn:fileType="FILE_MFD" xil_pn:name="ramcon.mfd"/>
+    <file xil_pn:fileType="FILE_NGA" xil_pn:name="ramcon.nga"/>
+    <file xil_pn:fileType="FILE_NGC" xil_pn:name="ramcon.ngc"/>
+    <file xil_pn:fileType="FILE_NGD" xil_pn:name="ramcon.ngd"/>
+    <file xil_pn:fileType="FILE_NGR" xil_pn:name="ramcon.ngr"/>
     <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="ramcon.pad"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PNX" xil_pn:name="ramcon.pnx"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ramcon.prj"/>
+    <file xil_pn:fileType="FILE_PNX" xil_pn:name="ramcon.pnx"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ramcon.prj"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="ramcon.rpt"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="ramcon.stx"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="ramcon.syr"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VM6" xil_pn:name="ramcon.vm6"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ramcon.stx"/>
+    <file xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="ramcon.syr"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="ramcon.tim"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="ramcon.tspec"/>
+    <file xil_pn:fileType="FILE_VM6" xil_pn:name="ramcon.vm6"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="ramcon.xml"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="ramcon.xst"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="ramcon.xst"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="ramcon_build.xml"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="ramcon_envsettings.html"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="ramcon_html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="ramcon_ngdbuild.xrpt"/>
     <file xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="ramcon_pad.csv"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="ramcon_summary.html"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ramcon_vhdl.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ramcon_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="ramcon_xst.xrpt"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
@@ -58,63 +60,56 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1445334683" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-6824495746533233046" xil_pn:start_ts="1445334673">
+    <transform xil_pn:end_ts="1448189329" xil_pn:in_ck="366150746070760521" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-6824495746533233046" xil_pn:start_ts="1448189319">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="ramcon.lso"/>
-      <outfile xil_pn:name="ramcon.ngc"/>
-      <outfile xil_pn:name="ramcon.ngr"/>
-      <outfile xil_pn:name="ramcon.prj"/>
-      <outfile xil_pn:name="ramcon.stx"/>
-      <outfile xil_pn:name="ramcon.syr"/>
-      <outfile xil_pn:name="ramcon.xst"/>
-      <outfile xil_pn:name="ramcon_vhdl.prj"/>
-      <outfile xil_pn:name="ramcon_xst.xrpt"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
-    </transform>
-    <transform xil_pn:end_ts="1445331525" xil_pn:in_ck="5432108599669260" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-39609358951156256" xil_pn:start_ts="1445331525">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1445334690" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1445334683">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="_ngo"/>
-      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
-      <outfile xil_pn:name="ramcon.bld"/>
-      <outfile xil_pn:name="ramcon.ngd"/>
-      <outfile xil_pn:name="ramcon_ngdbuild.xrpt"/>
-    </transform>
-    <transform xil_pn:end_ts="1445334714" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1445334690">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="ramcon.gyd"/>
-      <outfile xil_pn:name="ramcon.mfd"/>
-      <outfile xil_pn:name="ramcon.nga"/>
-      <outfile xil_pn:name="ramcon.pad"/>
-      <outfile xil_pn:name="ramcon.pnx"/>
-      <outfile xil_pn:name="ramcon.rpt"/>
-      <outfile xil_pn:name="ramcon.vm6"/>
-      <outfile xil_pn:name="ramcon.xml"/>
-      <outfile xil_pn:name="ramcon_build.xml"/>
-      <outfile xil_pn:name="ramcon_html"/>
-      <outfile xil_pn:name="ramcon_pad.csv"/>
-    </transform>
-    <transform xil_pn:end_ts="1445334716" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1445334714">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="ramcon.jed"/>
-    </transform>
-    <transform xil_pn:end_ts="1445096566" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1445096564">
-      <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1448188656" xil_pn:in_ck="5432108599669260" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-39609358951156256" xil_pn:start_ts="1448188656">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1448189337" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1448189329">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1448189354" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1448189337">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1448189357" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1448189354">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1448188676" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1448188674">
+      <status xil_pn:value="AbortedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
     </transform>
   </transforms>
 
