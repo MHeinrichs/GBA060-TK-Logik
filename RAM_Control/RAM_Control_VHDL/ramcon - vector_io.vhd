@@ -36,8 +36,8 @@ end ramcon;
 architecture ramcon_behav of ramcon is
    signal RQ_ACLR_ctrl, NQ_ACLR_ctrl,
 	 BA1_D, BA0_D, RAS_D, CAS_D, TA40_D, WE_D, CE_B1_D,
-	 CE_B0_D, LDQ1_D, LDQ0_D, UDQ1_D, UDQ0_D, LDQ1_SIG, LDQ0_SIG, UDQ1_SIG, UDQ0_SIG, OE40_RAM_D, OERAM_40_D, TRANSFER_ACLR, TRANSFER_CLK, TRANSFER_D, SELRAM1,
-	 SELRAM0, REFRESH, ENACLK, ENANOPC, CLRNOPC, CLRREFC, CLRTRAN,
+	 CE_B0_D, LDQ1_D, LDQ0_D, UDQ1_D, UDQ0_D, LDQ1_SIG, LDQ0_SIG, UDQ1_SIG, UDQ0_SIG, OE40_RAM_D, OERAM_40_D, TRANSFER_ACLR, TRANSFER_CLK, SELRAM1,
+	 SELRAM0, REFRESH, ENACLK, ENANOPC, CLRNOPC, CLRREFC,
 	 TRANSFER: std_logic;
    signal TA40_FB, TA40_OE, TRANSFER_FB: std_logic;
 	signal NQ :  STD_LOGIC_VECTOR (2 downto 0);
@@ -130,12 +130,15 @@ begin
       end if;
    end process;
 
-   TRANSFER <= TRANSFER_FB;
+   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and A40(30 downto 26) = "00010" else '0';
+   TRANSFER_ACLR <= '1' when 	CQ = "001111" or
+										CQ = "011100" or 
+										RESET ='0' else '0';
    process (TRANSFER_CLK, TRANSFER_ACLR) begin
       if TRANSFER_ACLR='1' then
-	 TRANSFER_FB <= '0';
+			TRANSFER <= '0';
       elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
-	 TRANSFER_FB <= TRANSFER_D;
+			TRANSFER <= '1';
       end if;
    end process;
 
@@ -152,9 +155,6 @@ begin
 								A40(30 downto 22) = "000000101"  or 
 								A40(30 downto 21) = "0000001100"  or
 								A40(30 downto 26) = "00010" else '0';
-   TRANSFER_D <= '1';
-   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and A40(30 downto 26) = "00010" else '0';
-   TRANSFER_ACLR <= CLRTRAN or (not RESET);
    LE_RAM <= '0';
    REFRESH <= '1' when    RQ >= "00111100" else '0';
    CLK_RAM <= (not CLK_RAMC) and ENACLK;
@@ -190,9 +190,7 @@ begin
 								CQ = "000111" or
 								CQ = "001100" 
 						else '0';
-	CLRTRAN <= '1' when 	CQ = "001111" or
-								CQ = "011100" 
-						else '0';
+
 	ENANOPC	<= '1' when 	CQ = "000011" or
 								CQ = "000110" or
 								CQ = "000101" or
