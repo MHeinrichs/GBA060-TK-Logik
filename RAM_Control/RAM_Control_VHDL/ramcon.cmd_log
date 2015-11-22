@@ -17,3 +17,9 @@ cpldfit -intstyle ise -p xc95144xl-10-TQ100 -ofmt vhdl -optimize speed -htmlrpt 
 XSLTProcess ramcon_build.xml 
 tsim -intstyle ise ramcon ramcon.nga 
 hprep6 -s IEEE1149 -n ramcon -i ramcon 
+xst -intstyle ise -ifn "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon.xst" -ofn "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc ramcon.ucf -p xc95144xl-TQ100-10 ramcon.ngc ramcon.ngd  
+cpldfit -intstyle ise -p xc95144xl-10-TQ100 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper ramcon.ngd 
+XSLTProcess ramcon_build.xml 
+tsim -intstyle ise ramcon ramcon.nga 
+hprep6 -s IEEE1149 -n ramcon -i ramcon 

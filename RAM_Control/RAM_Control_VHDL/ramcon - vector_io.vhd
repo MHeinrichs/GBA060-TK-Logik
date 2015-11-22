@@ -193,11 +193,19 @@ begin
 	CLRTRAN <= '1' when 	CQ = "001111" or
 								CQ = "011100" 
 						else '0';
+	ENANOPC	<= '1' when 	CQ = "000011" or
+								CQ = "000110" or
+								CQ = "000101" or
+								CQ = "001101" or
+								CQ = "001001" or
+								CQ = "011101" or
+								CQ = "110010" 
+						else '0'; 
 
    process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
    begin
-      ( CLRNOPC, ENACLK, ENANOPC) <=
-	    std_logic_vector'("000");
+      ( CLRNOPC, ENACLK) <=
+	    std_logic_vector'("00");
 		 ARAM_D <= "000000000000";
 		 CQ_D <= "000000";
 
@@ -252,7 +260,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (NQ >= "001") then
 		    CQ_D <= "000010";
 		 else
@@ -288,7 +295,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (	NQ >= "110" and
 		      RQ >= "00000100") then
 		    CQ_D <= "000111";
@@ -330,7 +336,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
@@ -389,7 +394,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (NQ >= "110") then
 		    CQ_D <= "000100";
 		 else
@@ -475,7 +479,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (SIZ40 ="11") then
 		    CQ_D <= "001000";
 		 else
@@ -608,7 +611,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
@@ -831,7 +833,6 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
-		 ENANOPC <= '1';
 		 if (NQ >= "001") then
 		    CQ_D <= "000100";
 		 else
