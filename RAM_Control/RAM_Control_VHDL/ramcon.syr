@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
 
@@ -124,10 +124,10 @@ WARNING:Xst:1780 - Signal <BA0_D> is never used or assigned. This unconnected si
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 6-bit register for signal <CQ>.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 271.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 306.
-    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 306.
-    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 308.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 270.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 305.
+    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 305.
+    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 307.
     Found 3-bit up counter for signal <NQ>.
     Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 159.
     Found 8-bit up counter for signal <RQ>.
@@ -242,11 +242,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.74 secs
+Total CPU time to Xst completion: 7.67 secs
  
 --> 
 
-Total memory usage is 286064 kilobytes
+Total memory usage is 286040 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)

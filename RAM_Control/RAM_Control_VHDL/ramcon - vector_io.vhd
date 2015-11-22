@@ -213,9 +213,8 @@ begin
 
    process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
    begin
-      ENACLK <= '0';
+      
 		 ARAM_D <= "000000000000";
-		 CQ_D <= "000000";
 
       case CQ is
       when "000000" =>
@@ -847,7 +846,7 @@ begin
 		    CQ_D <= "110010";
 		 end if;
       when others =>
-         OERAM_40_D <= '0';
+       OERAM_40_D <= '0';
 		 OE40_RAM_D <= '0';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
@@ -859,8 +858,8 @@ begin
 		 TA40_D <= '0';
 		 CAS_D <= '0';
 		 RAS_D <= '0';
-	     CQ_D <= "000000";
-
+	    CQ_D <= "000000";
+		 ENACLK <= '0';
       end case;
    end process;
 end ramcon_behav;
