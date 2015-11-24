@@ -37,7 +37,7 @@ architecture ramcon_behav of ramcon is
    signal RQ_ACLR_ctrl, NQ_ACLR_ctrl,
 	 RAS_D, CAS_D, TA40_D, WE_D, CE_B1_D,
 	 CE_B0_D, LDQ1_D, LDQ0_D, UDQ1_D, UDQ0_D, LDQ1_SIG, LDQ0_SIG, UDQ1_SIG, UDQ0_SIG, OE40_RAM_D, OERAM_40_D, TRANSFER_ACLR, TRANSFER_CLK, SELRAM1,
-	 SELRAM0, REFRESH, ENACLK, ENANOPC, CLRNOPC, CLRREFC,
+	 SELRAM0, REFRESH, ENACLK, CLRNOPC, CLRREFC,
 	 TRANSFER: std_logic;
    TYPE sdram_state_machine_type IS (
 				powerup, 					--000000
@@ -158,11 +158,7 @@ begin
       if NQ_ACLR_ctrl='1' then
 			NQ  <= "000";
       elsif rising_edge(CLK_RAMC) then
-			if(ENANOPC = '0') then
-				NQ  <= "000";
-			else
-				NQ <= NQ +1;
-			end if;
+			NQ <= NQ +1;
       end if;
    end process;
 
@@ -226,18 +222,11 @@ begin
 								CQ = init_opcode or
 								CQ = refresh_start 
 						else '0';
-
-	ENANOPC	<= '1' when 	CQ = init_precharge_commit or
-								CQ = init_wait or
-								CQ = end_cycle or
-								CQ = refresh_wait or
-								CQ = read_data_wait 
-						else '0'; 
-	CLRNOPC	<= '0' when 	CQ = powerup or
+	
+	CLRNOPC	<= '0' when 	
 								CQ = init_precharge_commit or
 								CQ = init_wait or
-								CQ = end_cycle or
-								CQ = start_state or
+								CQ = end_cycle or								
 								CQ = refresh_wait 
 						else '1'; 
 

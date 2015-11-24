@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: ramcon.prj
 
@@ -87,7 +87,7 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 244: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 233: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <ARAM_HIGH>, <ARAM_LOW>, <UDQ0_SIG>, <UDQ1_SIG>, <LDQ0_SIG>, <LDQ1_SIG>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
@@ -121,12 +121,12 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 6-bit register for signal <CQ>.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 437.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 377.
-    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 336.
-    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 338.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 426.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 366.
+    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 325.
+    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 327.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 195.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 191.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <TA40_FB>.
     Found 1-bit register for signal <TRANSFER>.
@@ -179,12 +179,12 @@ Macro Statistics
 =========================================================================
 
 Optimizing unit <ramcon> ...
-  implementation constraint: INIT=r	 : CQ_2
   implementation constraint: INIT=r	 : CQ_3
   implementation constraint: INIT=r	 : CQ_4
-  implementation constraint: INIT=r	 : CQ_0
-  implementation constraint: INIT=r	 : CQ_1
   implementation constraint: INIT=r	 : CQ_5
+  implementation constraint: INIT=r	 : CQ_1
+  implementation constraint: INIT=r	 : CQ_0
+  implementation constraint: INIT=r	 : CQ_2
 
 =========================================================================
 *                           Partition Report                            *
@@ -216,16 +216,16 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 692
-#      AND2                        : 190
+# BELS                             : 671
+#      AND2                        : 179
 #      AND3                        : 56
 #      AND4                        : 3
 #      AND5                        : 2
 #      AND6                        : 5
 #      AND8                        : 1
 #      GND                         : 1
-#      INV                         : 292
-#      OR2                         : 113
+#      INV                         : 285
+#      OR2                         : 110
 #      OR3                         : 13
 #      OR4                         : 2
 #      VCC                         : 1
@@ -240,12 +240,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.69 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.72 secs
  
 --> 
 
-Total memory usage is 289828 kilobytes
+Total memory usage is 289772 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)
