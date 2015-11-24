@@ -68,26 +68,6 @@ begin
 
 -- Register Section
 
-
-   process (CLK_RAMC, RESET) begin
-      if RESET='0' then
-			UDQ0 <= '1';
-			UDQ1 <= '1';
-			LDQ0 <= '1';
-			LDQ1 <= '1';
-			CE_B0 <= '1';
-			CE_B1 <= '1';
-			WE <= '1';
-			CAS <= '1';
-			RAS <= '1';
-			BA0 <= '1';
-			BA1 <= '1';
-			OERAM_40 <= '1';
-			OE40_RAM <= '1';
-			TA40_FB <= '1';	
-			ARAM (11 downto 0) <= "000000000000";
-			CQ	<= "000000";
-      elsif rising_edge(CLK_RAMC) then
 			UDQ0 <= UDQ0_D;
 			UDQ1 <= UDQ1_D;
 			LDQ0 <= LDQ0_D;
@@ -97,132 +77,36 @@ begin
 			WE <= WE_D;
 			CAS <= CAS_D;
 			RAS <= RAS_D;
-			BA0 <= A40(23);
-			BA1 <= A40(24);
 			OERAM_40 <= OERAM_40_D;
 			OE40_RAM <= OE40_RAM_D;
 			TA40_FB <= TA40_D;	
 			ARAM (11 downto 0) <= ARAM_D;			 
 			CQ	<= CQ_D;
-      end if;
-   end process;
-   TA40 <= TA40_FB when TA40_OE='1' else 'Z';
-
-   RQ_ACLR_ctrl <= (not RESET) or CLRREFC;
-   process (C4MHZ, RQ_ACLR_ctrl) begin
-      if RQ_ACLR_ctrl='1' then
-			RQ<=	"00000000";
-      elsif rising_edge(C4MHZ) then
-			RQ <= RQ +1;
-      end if;
-   end process;
-
-   NQ_ACLR_ctrl <= (not RESET) or CLRNOPC;
-   process (CLK_RAMC, NQ_ACLR_ctrl) begin
-      if NQ_ACLR_ctrl='1' then
-			NQ  <= "000";
+   process (CLK_RAMC, RESET) begin
+      if RESET='0' then
+			UDQ0_D <= '1';
+			UDQ1_D <= '1';
+			LDQ0_D <= '1';
+			LDQ1_D <= '1';
+			CE_B0_D <= '1';
+			CE_B1_D <= '1';
+			WE_D <= '1';
+			CAS_D <= '1';
+			RAS_D <= '1';
+			BA0 <= '1';
+			BA1 <= '1';
+			OERAM_40_D <= '1';
+			OE40_RAM_D <= '1';
+			TA40_D <= '1';	
+			ARAM_D (11 downto 0) <= "000000000000";
+			CQ_D	<= "000000";
       elsif rising_edge(CLK_RAMC) then
-			if(ENANOPC = '0') then
-				NQ  <= "000";
-			else
-				NQ <= NQ +1;
-			end if;
-      end if;
-   end process;
+			BA0 <= A40(23);
+			BA1 <= A40(24);
 
-   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and A40(30 downto 26) = "00010" else '0';
-   TRANSFER_ACLR <= '1' when 	CQ = "001111" or
-										CQ = "011100" or 
-										RESET ='0' else '0';
-   process (TRANSFER_CLK, TRANSFER_ACLR) begin
-      if TRANSFER_ACLR='1' then
-			TRANSFER <= '0';
-      elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
-			TRANSFER <= '1';
-      end if;
-   end process;
-
--- Start of original equations
-	SEL16M <= '1' when A40(30 downto 25) = "000000" else '0';
-   SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
-   SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
-   TA40_OE 	<= '1' when A40(30 downto 26) = "00010" else '0'; -- was: SELRAM0 or SELRAM1;
-   TCI40 	<= '1' when ICACHE ='1' and(	
-													A40(30 downto 19) = "000000011111" 	or
-													A40(30 downto 23) = "00000000"  or 
-													A40(30 downto 21) = "0000000100" ) else
-					'1' when A40(30 downto 21) = "0000001001"  or 
-								A40(30 downto 22) = "000000101"  or 
-								A40(30 downto 21) = "0000001100"  or
-								A40(30 downto 26) = "00010" else '0';
-   LE_RAM <= '0';
-   REFRESH <= '1' when    RQ >= "00111100" else '0';
-   CLK_RAM <= (not CLK_RAMC) and ENACLK;
-   CLKEN <= '1';
-
-	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
-	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
-	ARAM_HIGH <= A40(22 downto 11);
-	ARAM_PRECHARGE <= "010000000000";
-	ARAM_OPTCODE <= "000000100010";
-	UDQ0_SIG <= '0' when (A40 (1 downto 0) = "10" and SIZ40 = "01") or
-								(A40(1) = '1' and SIZ40 = "10") or
-								SIZ40 = "00" or
-								SIZ40 = "11" 
-						 else '1';
-	UDQ1_SIG <= '0' when (A40 (1 downto 0) = "00" and SIZ40 = "01") or
-								(A40(1) = '0' and SIZ40 = "10") or
-								SIZ40 = "00" or
-								SIZ40 = "11" 
-						 else '1';
-	LDQ0_SIG <= '0' when (A40 (1 downto 0) = "11" and SIZ40 = "01") or
-								(A40(1) = '1' and SIZ40 = "10") or
-								SIZ40 = "00" or
-								SIZ40 = "11"
-						 else '1';
-	LDQ1_SIG <= '0' when (A40 (1 downto 0) = "01" and SIZ40 = "01") or
-								(A40(1) = '0' and SIZ40 = "10") or
-								SIZ40 = "00" or
-								SIZ40 = "11"
-						 else '1';
-
-	CLRREFC <= '1' when 	CQ = "000011" or
-								CQ = "000111" or
-								CQ = "001100" 
-						else '0';
-
-	ENANOPC	<= '1' when 	CQ = "000011" or
-								CQ = "000110" or
-								CQ = "000101" or
-								CQ = "001101" or
-								CQ = "001001" or
-								CQ = "011101" or
-								CQ = "110010" 
-						else '0'; 
-	CLRNOPC	<= '0' when 	CQ = "000000" or
-								CQ = "000011" or
-								CQ = "000110" or
-								CQ = "000101" or
-								CQ = "000100" or
-								CQ = "001101" or
-								CQ = "011101" or
-								CQ = "110010" 
-						else '1'; 
-	
-	ENACLK	<= '0' when 	CQ = "001000" or
-								CQ = "011001" or
-								CQ = "011010" or
-								CQ = "011111" or
-								CQ = "010010" or
-								CQ = "010001" or
-								CQ = "110000" 
-						else '1'; 
-
-   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
-   begin
-      
-
-      case CQ is
+			
+			
+			case CQ_D is
       when "000000" =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
@@ -869,5 +753,125 @@ begin
 		 --ENACLK <= '0';
 		 ARAM_D <= "000000000000";
       end case;
+			
+			
+			
+      end if;
+   end process;
+   TA40 <= TA40_FB when TA40_OE='1' else 'Z';
+
+   RQ_ACLR_ctrl <= (not RESET) or CLRREFC;
+   process (C4MHZ, RQ_ACLR_ctrl) begin
+      if RQ_ACLR_ctrl='1' then
+			RQ<=	"00000000";
+      elsif rising_edge(C4MHZ) then
+			RQ <= RQ +1;
+      end if;
+   end process;
+
+   NQ_ACLR_ctrl <= (not RESET) or CLRNOPC;
+   process (CLK_RAMC, NQ_ACLR_ctrl) begin
+      if NQ_ACLR_ctrl='1' then
+			NQ  <= "000";
+      elsif rising_edge(CLK_RAMC) then
+			if(ENANOPC = '0') then
+				NQ  <= "000";
+			else
+				NQ <= NQ +1;
+			end if;
+      end if;
+   end process;
+
+   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and A40(30 downto 26) = "00010" else '0';
+   TRANSFER_ACLR <= '1' when 	CQ = "001111" or
+										CQ = "011100" or 
+										RESET ='0' else '0';
+   process (TRANSFER_CLK, TRANSFER_ACLR) begin
+      if TRANSFER_ACLR='1' then
+			TRANSFER <= '0';
+      elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
+			TRANSFER <= '1';
+      end if;
+   end process;
+
+-- Start of original equations
+	SEL16M <= '1' when A40(30 downto 25) = "000000" else '0';
+   SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
+   SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
+   TA40_OE 	<= '1' when A40(30 downto 26) = "00010" else '0'; -- was: SELRAM0 or SELRAM1;
+   TCI40 	<= '1' when ICACHE ='1' and(	
+													A40(30 downto 19) = "000000011111" 	or
+													A40(30 downto 23) = "00000000"  or 
+													A40(30 downto 21) = "0000000100" ) else
+					'1' when A40(30 downto 21) = "0000001001"  or 
+								A40(30 downto 22) = "000000101"  or 
+								A40(30 downto 21) = "0000001100"  or
+								A40(30 downto 26) = "00010" else '0';
+   LE_RAM <= '0';
+   REFRESH <= '1' when    RQ >= "00111100" else '0';
+   CLK_RAM <= (not CLK_RAMC) and ENACLK;
+   CLKEN <= '1';
+
+	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
+	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
+	ARAM_HIGH <= A40(22 downto 11);
+	ARAM_PRECHARGE <= "010000000000";
+	ARAM_OPTCODE <= "000000100010";
+	UDQ0_SIG <= '0' when (A40 (1 downto 0) = "10" and SIZ40 = "01") or
+								(A40(1) = '1' and SIZ40 = "10") or
+								SIZ40 = "00" or
+								SIZ40 = "11" 
+						 else '1';
+	UDQ1_SIG <= '0' when (A40 (1 downto 0) = "00" and SIZ40 = "01") or
+								(A40(1) = '0' and SIZ40 = "10") or
+								SIZ40 = "00" or
+								SIZ40 = "11" 
+						 else '1';
+	LDQ0_SIG <= '0' when (A40 (1 downto 0) = "11" and SIZ40 = "01") or
+								(A40(1) = '1' and SIZ40 = "10") or
+								SIZ40 = "00" or
+								SIZ40 = "11"
+						 else '1';
+	LDQ1_SIG <= '0' when (A40 (1 downto 0) = "01" and SIZ40 = "01") or
+								(A40(1) = '0' and SIZ40 = "10") or
+								SIZ40 = "00" or
+								SIZ40 = "11"
+						 else '1';
+
+	CLRREFC <= '1' when 	CQ = "000011" or
+								CQ = "000111" or
+								CQ = "001100" 
+						else '0';
+
+	ENANOPC	<= '1' when 	CQ = "000011" or
+								CQ = "000110" or
+								CQ = "000101" or
+								CQ = "001101" or
+								CQ = "001001" or
+								CQ = "011101" or
+								CQ = "110010" 
+						else '0'; 
+	CLRNOPC	<= '0' when 	CQ = "000000" or
+								CQ = "000011" or
+								CQ = "000110" or
+								CQ = "000101" or
+								CQ = "000100" or
+								CQ = "001101" or
+								CQ = "011101" or
+								CQ = "110010" 
+						else '1'; 
+	ENACLK	<= '0' when 	CQ = "001000" or
+								CQ = "011001" or
+								CQ = "011010" or
+								CQ = "011111" or
+								CQ = "010010" or
+								CQ = "010001" or
+								CQ = "110000" 
+						else '1'; 
+   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
+   begin
+      
+
+
    end process;
 end ramcon_behav;

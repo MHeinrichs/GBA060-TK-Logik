@@ -87,7 +87,7 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 212: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 208: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <ARAM_HIGH>, <ARAM_LOW>, <UDQ0_SIG>, <UDQ1_SIG>, <LDQ0_SIG>, <LDQ1_SIG>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
@@ -105,7 +105,7 @@ WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and lef
 WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 64x3-bit ROM for signal <CQ$rom0000>.
+    Found 64x2-bit ROM for signal <CQ$rom0000>.
     Found 1-bit register for signal <UDQ0>.
     Found 1-bit register for signal <UDQ1>.
     Found 1-bit register for signal <LDQ0>.
@@ -122,10 +122,10 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 6-bit register for signal <CQ>.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 268.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 304.
-    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 304.
-    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 306.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 264.
+    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 300.
+    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 300.
+    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 302.
     Found 3-bit up counter for signal <NQ>.
     Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 159.
     Found 8-bit up counter for signal <RQ>.
@@ -145,7 +145,7 @@ HDL Synthesis Report
 
 Macro Statistics
 # ROMs                                                 : 1
- 64x3-bit ROM                                          : 1
+ 64x2-bit ROM                                          : 1
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
@@ -171,7 +171,7 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # ROMs                                                 : 1
- 64x3-bit ROM                                          : 1
+ 64x2-bit ROM                                          : 1
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
@@ -216,19 +216,19 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 813
-#      AND2                        : 231
-#      AND3                        : 62
-#      AND4                        : 8
+# BELS                             : 791
+#      AND2                        : 234
+#      AND3                        : 54
+#      AND4                        : 9
 #      AND5                        : 2
 #      AND6                        : 3
 #      GND                         : 1
-#      INV                         : 337
-#      OR2                         : 134
-#      OR3                         : 19
-#      OR4                         : 2
+#      INV                         : 330
+#      OR2                         : 122
+#      OR3                         : 23
+#      OR4                         : 1
 #      VCC                         : 1
-#      XOR2                        : 13
+#      XOR2                        : 11
 # FlipFlops/Latches                : 44
 #      FDC                         : 30
 #      FDP                         : 14
@@ -240,11 +240,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.91 secs
+Total CPU time to Xst completion: 7.86 secs
  
 --> 
 
-Total memory usage is 286068 kilobytes
+Total memory usage is 289824 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)

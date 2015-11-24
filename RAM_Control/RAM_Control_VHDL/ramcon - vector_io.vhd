@@ -195,18 +195,14 @@ begin
 								CQ = "000110" or
 								CQ = "000101" or
 								CQ = "001101" or
-								CQ = "001001" or
-								CQ = "011101" or
-								CQ = "110010" 
+								CQ = "001001" 
 						else '0'; 
 	CLRNOPC	<= '0' when 	CQ = "000000" or
 								CQ = "000011" or
 								CQ = "000110" or
 								CQ = "000101" or
 								CQ = "000100" or
-								CQ = "001101" or
-								CQ = "011101" or
-								CQ = "110010" 
+								CQ = "001101" 
 						else '1'; 
 
    process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
@@ -602,27 +598,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '0';
-		 CQ_D <= "011101";
-      when "011101" =>
-		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= '1';
-		 UDQ0_D <= '1';
-		 UDQ1_D <= '1';
-		 LDQ0_D <= '1';
-		 LDQ1_D <= '1';
-		 CE_B0_D <= '1';
-		 CE_B1_D <= '1';
-		 WE_D <= '1';
-		 TA40_D <= '1';
-		 CAS_D <= '1';
-		 RAS_D <= '1';
-		 ENACLK <= '1';
-		 ARAM_D <= "000000000000";
-		 if (NQ >= "001") then
-		    CQ_D <= "000100";
-		 else
-		    CQ_D <= "011101";
-		 end if;
+		 CQ_D <= "000101";
       when "011100" =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
@@ -822,27 +798,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '1';
-		 CQ_D <= "110010";
-      when "110010" =>
-		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= '1';
-		 UDQ0_D <= '1';
-		 UDQ1_D <= '1';
-		 LDQ0_D <= '1';
-		 LDQ1_D <= '1';
-		 CE_B0_D <= '1';
-		 CE_B1_D <= '1';
-		 WE_D <= '1';
-		 TA40_D <= '1';
-		 CAS_D <= '1';
-		 RAS_D <= '1';
-		 ENACLK <= '1';
-		 ARAM_D <= "000000000000";
-		 if (NQ >= "001") then
-		    CQ_D <= "000100";
-		 else
-		    CQ_D <= "110010";
-		 end if;
+		 CQ_D <= "000101";
       when others =>
        OERAM_40_D <= '0';
 		 OE40_RAM_D <= '0';

@@ -184,14 +184,6 @@ BEGIN
 		wait for SCLK_period/2;
    end process;
  
-   CLK_RAM_process :process
-   begin
-		CLK_RAM <= '0';
-		wait for CLK_RAM_period/2;
-		CLK_RAM <= '1';
-		wait for CLK_RAM_period/2;
-   end process;
- 
    C4MHZ_process :process
    begin
 		C4MHZ <= '0';
@@ -207,11 +199,21 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
 		RESET<='0';
-      wait for 100 ns;	
+		TS40 <='1';
+		TT40_1 <='1';
+		A40(30 downto 0) <= "0000000000000000000000000000000";
+      wait for 30 ns;	
 		RESET<='1';
-      wait for CLK_RAMC_period*10;
-
+      wait for CLK_RAMC_period*5;
       -- insert stimulus here 
+		INIT <='1';
+      wait for CLK_RAMC_period*100;
+		-- start a cycle
+		A40(30 downto 25) <= "000100";
+		TT40_1 <='0';
+		SIZ40 <="00";
+		wait for 1 ns;	
+		TS40 <='0';
 
       wait;
    end process;
