@@ -10,561 +10,567 @@ EQ | 2 |
 
 MACROCELL | 7 | 10 | TA40_FB
 ATTRIBUTES | 8689410 | 0
-INPUTS | 12 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | NQ<0>.EXP
-INPUTMC | 7 | 0 | 12 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 16 | 0 | 2 | 7 | 9
+INPUTS | 11 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | EXP27_.EXP  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>
+INPUTMC | 6 | 0 | 11 | 0 | 10 | 5 | 0 | 0 | 15 | 0 | 16 | 7 | 9
 INPUTP | 5 | 28 | 23 | 24 | 26 | 29
 IMPORTS | 1 | 7 | 9
 EQ | 10 | 
-   TA40.D = CQ<2> & !CQ<4> & !CQ<5>
+   TA40.D = !CQ<2> & !CQ<4> & !CQ<5>
 	# !CQ<3> & !CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
 ;Imported pterms FB8_10
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>;
+	# !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>;
    TA40.CLK = CLK_RAMC;	// GCK
    !TA40.AP = RESET;	// GSR
    TA40.OE = A40<27> & !A40<30> & !A40<29> & !A40<28> & 
 	!A40<26>;
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
+MACROCELL | 0 | 11 | CQ<2>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 53 | 7 | 10 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 3 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 8 | 0 | 9 | 0 | 12 | 0 | 13 | 0 | 14 | 0 | 17 | 5 | 2 | 5 | 4 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 16 | 7 | 15
+INPUTS | 10 | CQ<2>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | CQ<4>  | RQ<6>  | RQ<7>  | CQ<4>.EXP  | EXP15_.EXP
+INPUTMC | 10 | 0 | 11 | 5 | 0 | 0 | 15 | 0 | 16 | 0 | 2 | 0 | 10 | 4 | 17 | 4 | 16 | 0 | 10 | 0 | 12
+IMPORTS | 2 | 0 | 10 | 0 | 12
+EQ | 19 | 
+   CQ<2>.T = CQ<2> & CQ<5>
+	# CQ<3> & CQ<1> & CQ<0> & !CQ<5>
+	# CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# CQ<1> & CQ<0> & !CQ<5> & RQ<6>
+	# CQ<1> & CQ<0> & !CQ<5> & RQ<7>
+;Imported pterms FB1_11
+	# !CQ<2> & CQ<1> & CQ<0> & !CQ<5>
+;Imported pterms FB1_13
+	# !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & CQ<5>
+	# CQ<1> & CQ<0> & !CQ<5> & !SCLK & RW_40 & 
+	TRANSFER
+	# !CQ<2> & CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & NQ<1> & 
+	NQ<2>
+	# CQ<1> & CQ<0> & !CQ<5> & RQ<3> & RQ<5> & RQ<2> & 
+	RQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !RQ<3> & 
+	!RQ<5> & !RQ<2> & !RQ<4> & !RQ<6> & !RQ<7> & NQ<1> & NQ<2>;
+   CQ<2>.CLK = CLK_RAMC;	// GCK
+   !CQ<2>.AR = RESET;	// GSR
+GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
+
+MACROCELL | 0 | 15 | CQ<3>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 52 | 7 | 10 | 0 | 11 | 0 | 14 | 0 | 16 | 0 | 9 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 16 | 7 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 3 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 8 | 0 | 12 | 0 | 13 | 0 | 15 | 0 | 17 | 5 | 2 | 5 | 4 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 17 | 7 | 15
+INPUTS | 9 | CQ<2>  | CQ<1>  | CQ<0>  | CQ<5>  | RQ<6>  | RQ<7>  | CQ<3>  | CQ<4>  | EXP17_.EXP
+INPUTMC | 9 | 0 | 11 | 0 | 16 | 0 | 2 | 5 | 0 | 4 | 17 | 4 | 16 | 0 | 15 | 0 | 10 | 0 | 14
+EXPORTS | 1 | 0 | 16
+IMPORTS | 1 | 0 | 14
+EQ | 24 | 
+   CQ<3>.T = CQ<2> & CQ<1> & CQ<0> & !CQ<5> & RQ<6>
+	# CQ<2> & CQ<1> & CQ<0> & !CQ<5> & RQ<7>
+;Imported pterms FB1_15
+	# CQ<3> & CQ<5>
+	# CQ<2> & CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# CQ<2> & CQ<1> & CQ<0> & !CQ<5> & !SCLK & RW_40 & 
+	TRANSFER
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & NQ<1> & 
+	NQ<2>
+	# CQ<2> & CQ<1> & CQ<0> & !CQ<5> & RQ<3> & RQ<5> & 
+	RQ<2> & RQ<4>
+;Imported pterms FB1_14
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<1>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<0>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<0>;
+   CQ<3>.CLK = CLK_RAMC;	// GCK
+   !CQ<3>.AR = RESET;	// GSR
+    CQ<3>.EXP  =  CQ<2> & !CQ<1> & CQ<0> & !CQ<5>
+	# !CQ<3> & CQ<1> & !CQ<0> & !CQ<5>
+	# !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
+
 MACROCELL | 0 | 16 | CQ<1>
 ATTRIBUTES | 8561408 | 0
-OUTPUTMC | 62 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 6 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 7 | 7 | 6 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 9 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 1 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 4 | 0 | 9 | 0 | 11 | 0 | 14 | 0 | 15 | 0 | 17 | 5 | 0 | 5 | 2 | 5 | 3 | 5 | 11 | 5 | 12 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 0 | 7 | 2 | 7 | 8 | 7 | 11 | 7 | 14 | 7 | 15 | 7 | 17
-INPUTS | 10 | CQ<1>  | CQ<0>  | CQ<5>  | SIZ40<1>  | SIZ40<0>  | CQ<2>  | CQ<3>  | CQ<4>  | EXP17_.EXP  | EXP18_.EXP
-INPUTMC | 8 | 0 | 16 | 0 | 2 | 1 | 17 | 0 | 12 | 0 | 10 | 0 | 13 | 0 | 15 | 0 | 17
-INPUTP | 2 | 114 | 116
+OUTPUTMC | 53 | 7 | 10 | 0 | 11 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 3 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 8 | 0 | 9 | 0 | 12 | 0 | 13 | 0 | 17 | 5 | 2 | 5 | 4 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 16 | 7 | 9 | 7 | 15
+INPUTS | 15 | CQ<2>  | CQ<3>  | CQ<4>  | CQ<5>  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<7>  | NQ<1>  | NQ<2>  | CQ<0>  | CQ<3>.EXP  | EXP18_.EXP
+INPUTMC | 15 | 0 | 11 | 0 | 15 | 0 | 10 | 5 | 0 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 4 | 16 | 5 | 17 | 7 | 17 | 0 | 2 | 0 | 15 | 0 | 17
 IMPORTS | 2 | 0 | 15 | 0 | 17
-EQ | 25 | 
-   CQ<1>.D = CQ<1> & !CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<0> & !CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<0> & !CQ<5> & SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<5> & 
-	!SIZ40<1>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<5> & 
-	!SIZ40<0>
+EQ | 22 | 
+   CQ<1>.D = CQ<2> & !CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<3> & 
+	!RQ<6> & !RQ<7>
+	# CQ<2> & !CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<5> & 
+	!RQ<6> & !RQ<7>
+	# CQ<2> & !CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<2> & 
+	!RQ<6> & !RQ<7>
+	# CQ<2> & !CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<4> & 
+	!RQ<6> & !RQ<7>
+	# CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & !RQ<3> & !RQ<5> & 
+	!RQ<2> & !RQ<4> & !RQ<6> & !RQ<7> & NQ<1> & NQ<2>
 ;Imported pterms FB1_16
-	# CQ<1> & CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5>
-	# CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5>
-	# !CQ<2> & CQ<3> & CQ<0> & CQ<4> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<1> & CQ<0> & !CQ<5>
+	# !CQ<3> & CQ<1> & !CQ<0> & !CQ<5>
+	# !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
 ;Imported pterms FB1_18
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK;
+	# CQ<2> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
+	# !CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>
+	# CQ<1> & !CQ<0> & !CQ<5> & SIZ40<1> & SIZ40<0>
+	# !CQ<1> & CQ<0> & !CQ<5> & NQ<1> & NQ<2>;
    CQ<1>.CLK = CLK_RAMC;	// GCK
    !CQ<1>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
-MACROCELL | 0 | 12 | CQ<2>
+MACROCELL | 0 | 10 | CQ<4>
 ATTRIBUTES | 4367104 | 0
-OUTPUTMC | 62 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 11 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 9 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 1 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 4 | 0 | 9 | 0 | 11 | 0 | 14 | 0 | 15 | 0 | 17 | 5 | 0 | 5 | 2 | 5 | 3 | 5 | 6 | 5 | 11 | 5 | 12 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 0 | 7 | 2 | 7 | 6 | 7 | 14 | 7 | 15 | 7 | 17
-INPUTS | 8 | CQ<2>  | CQ<5>  | CQ<1>  | CQ<3>  | CQ<0>  | CQ<4>  | SIZ40<0>  | EXP15_.EXP
-INPUTMC | 7 | 0 | 12 | 1 | 17 | 0 | 16 | 0 | 10 | 0 | 2 | 0 | 13 | 0 | 11
-INPUTP | 1 | 116
-EXPORTS | 1 | 0 | 13
-IMPORTS | 1 | 0 | 11
-EQ | 18 | 
-   CQ<2>.T = CQ<2> & CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-;Imported pterms FB1_12
-	# CQ<1> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<1>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<0>
-;Imported pterms FB1_11
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !RQ<3> & !RQ<5> & 
-	!RQ<2> & !RQ<4> & !RQ<6> & NQ<1> & !RQ<7> & NQ<2>;
-   CQ<2>.CLK = CLK_RAMC;	// GCK
-   !CQ<2>.AR = RESET;	// GSR
-    CQ<2>.EXP  =  !CQ<1> & !CQ<2> & CQ<3> & !CQ<5> & !SIZ40<0>
-GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
-
-MACROCELL | 0 | 10 | CQ<3>
-ATTRIBUTES | 4367104 | 0
-OUTPUTMC | 62 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 6 | 5 | 12 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 1 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 9 | 0 | 11 | 0 | 14 | 0 | 15 | 0 | 17 | 5 | 0 | 5 | 2 | 5 | 3 | 5 | 6 | 5 | 9 | 5 | 14 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 0 | 7 | 2 | 7 | 7 | 7 | 11 | 7 | 14 | 7 | 15 | 7 | 17
-INPUTS | 15 | CQ<3>  | CQ<5>  | CQ<1>  | CQ<2>  | CQ<4>  | CQ<0>  | NQ<1>  | NQ<2>  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<7>  | EXP14_.EXP
-INPUTMC | 15 | 0 | 10 | 1 | 17 | 0 | 16 | 0 | 12 | 0 | 13 | 0 | 2 | 7 | 12 | 7 | 13 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 2 | 12 | 4 | 17 | 0 | 9
+OUTPUTMC | 53 | 7 | 10 | 0 | 11 | 0 | 14 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 15 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 3 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 0 | 0 | 3 | 0 | 8 | 0 | 9 | 0 | 12 | 0 | 13 | 0 | 15 | 0 | 17 | 5 | 2 | 5 | 4 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 16 | 7 | 0 | 7 | 9
+INPUTS | 15 | CQ<2>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | RQ<4>  | RQ<6>  | RQ<7>  | SCLK  | RW_40  | TRANSFER  | RQ<2>  | RQ<5>  | RQ<3>  | EXP14_.EXP
+INPUTMC | 13 | 0 | 11 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 2 | 14 | 4 | 17 | 4 | 16 | 2 | 12 | 2 | 16 | 2 | 13 | 2 | 15 | 0 | 9
+INPUTP | 2 | 4 | 19
 EXPORTS | 1 | 0 | 11
 IMPORTS | 1 | 0 | 9
-EQ | 19 | 
-   CQ<3>.T = CQ<3> & CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<4>
-	# CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & NQ<1> & NQ<2>
+EQ | 24 | 
+   CQ<4>.T = CQ<2> & CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<3> & 
+	!RQ<6> & !RQ<7> & SCLK & !RW_40 & TRANSFER
+	# CQ<2> & CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<5> & 
+	!RQ<6> & !RQ<7> & SCLK & !RW_40 & TRANSFER
+	# CQ<2> & CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<2> & 
+	!RQ<6> & !RQ<7> & SCLK & !RW_40 & TRANSFER
+	# CQ<2> & CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & !RQ<4> & 
+	!RQ<6> & !RQ<7> & SCLK & !RW_40 & TRANSFER
 ;Imported pterms FB1_10
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<6>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<7>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	!RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<3> & RQ<5> & RQ<2> & RQ<4>;
-   CQ<3>.CLK = CLK_RAMC;	// GCK
-   !CQ<3>.AR = RESET;	// GSR
-    CQ<3>.EXP  =  CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !RQ<3> & !RQ<5> & 
-	!RQ<2> & !RQ<4> & !RQ<6> & NQ<1> & !RQ<7> & NQ<2>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<4> & CQ<0>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<5> & 
+	!SIZ40<1>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<5> & 
+	!SIZ40<0>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<0>
+;Imported pterms FB1_9
+	# CQ<4> & CQ<5>
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0> & !CQ<5>;
+   CQ<4>.CLK = CLK_RAMC;	// GCK
+   !CQ<4>.AR = RESET;	// GSR
+    CQ<4>.EXP  =  !CQ<2> & CQ<1> & CQ<0> & !CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 0 | 2 | CQ<0>
 ATTRIBUTES | 8561408 | 0
-OUTPUTMC | 56 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 9 | 5 | 6 | 5 | 2 | 5 | 3 | 7 | 15 | 7 | 8 | 7 | 6 | 5 | 14 | 5 | 5 | 5 | 0 | 5 | 10 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 0 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 4 | 0 | 9 | 0 | 11 | 0 | 14 | 0 | 15 | 0 | 17 | 5 | 12 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 2 | 7 | 7 | 7 | 11 | 7 | 14 | 7 | 17
-INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | CQ<1>  | EXP11_.EXP  | EXP12_.EXP
-INPUTMC | 8 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 16 | 0 | 1 | 0 | 3
+OUTPUTMC | 48 | 7 | 9 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 2 | 7 | 15 | 7 | 8 | 5 | 14 | 5 | 4 | 0 | 17 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 1 | 0 | 3 | 0 | 8 | 0 | 9 | 0 | 12 | 0 | 13 | 0 | 14 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 16 | 7 | 16
+INPUTS | 17 | CQ<2>  | CQ<0>  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | SCLK  | RW_40  | TRANSFER  | CQ<3>  | CQ<1>  | CQ<4>  | NQ<0>  | NQ<1>  | NQ<2>  | EXP11_.EXP  | EXP12_.EXP
+INPUTMC | 15 | 0 | 11 | 0 | 2 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 2 | 12 | 0 | 15 | 0 | 16 | 0 | 10 | 7 | 1 | 5 | 17 | 7 | 17 | 0 | 1 | 0 | 3
+INPUTP | 2 | 4 | 19
 IMPORTS | 2 | 0 | 1 | 0 | 3
-EQ | 39 | 
-   CQ<0>.D = CQ<1> & CQ<2> & CQ<3> & CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<4> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-;Imported pterms FB1_2
-	# !CQ<1> & CQ<2> & !CQ<3> & CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-;Imported pterms FB1_1
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<1>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<2>
-	# !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & !NQ<0> & 
+EQ | 26 | 
+   !CQ<0>.D = CQ<2> & !CQ<1> & CQ<0>
+	# CQ<2> & CQ<0> & SCLK & !RW_40 & TRANSFER
+	# CQ<2> & CQ<0> & !SCLK & RW_40 & TRANSFER
+	# CQ<2> & CQ<0> & RQ<3> & RQ<5> & RQ<2> & RQ<4>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !NQ<0> & !NQ<1> & 
 	!NQ<2>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & NQ<1> & 
-	NQ<2> & !$OpTx$$OpTx$FX_DC$38_INV$242
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+;Imported pterms FB1_2
+	# CQ<2> & CQ<3> & CQ<0>
+	# CQ<2> & CQ<0> & RQ<6>
+	# CQ<2> & CQ<0> & RQ<7>
+	# !CQ<2> & !CQ<3> & CQ<0>
+	# !CQ<2> & CQ<1> & CQ<0>
+;Imported pterms FB1_1
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<1>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<2>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<0>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<5> & !INIT
 ;Imported pterms FB1_4
-	# CQ<1> & CQ<2> & !CQ<0> & CQ<4> & !CQ<5> & 
-	!SIZ40<1>
-	# CQ<1> & CQ<2> & !CQ<0> & CQ<4> & !CQ<5> & 
-	!SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & INIT
-	# !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<1>
-	# !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<0>
-;Imported pterms FB1_5
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK;
+	# CQ<2> & CQ<5>
+	# CQ<3> & CQ<5>
+	# CQ<1> & CQ<5>
+	# CQ<4> & CQ<0>
+	# CQ<4> & CQ<5>;
    CQ<0>.CLK = CLK_RAMC;	// GCK
    !CQ<0>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
-MACROCELL | 0 | 13 | CQ<4>
+MACROCELL | 5 | 0 | CQ<5>
 ATTRIBUTES | 8561408 | 0
-OUTPUTMC | 60 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 12 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 1 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 4 | 0 | 9 | 0 | 11 | 0 | 15 | 0 | 17 | 5 | 0 | 5 | 2 | 5 | 3 | 5 | 6 | 5 | 9 | 5 | 14 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 0 | 7 | 6 | 7 | 11 | 7 | 15 | 7 | 17
-INPUTS | 8 | CQ<3>  | CQ<4>  | CQ<5>  | CQ<0>  | CQ<2>  | CQ<1>  | CQ<2>.EXP  | EXP16_.EXP
-INPUTMC | 8 | 0 | 10 | 0 | 13 | 1 | 17 | 0 | 2 | 0 | 12 | 0 | 16 | 0 | 12 | 0 | 14
-IMPORTS | 2 | 0 | 12 | 0 | 14
-EQ | 19 | 
-   CQ<4>.D = !CQ<2> & CQ<4> & !CQ<5>
-	# !CQ<3> & CQ<4> & !CQ<5>
-	# !CQ<0> & CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>
-	# !CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<5>
-;Imported pterms FB1_13
-	# !CQ<1> & !CQ<2> & CQ<3> & !CQ<5> & !SIZ40<0>
-;Imported pterms FB1_15
-	# !CQ<1> & !CQ<2> & CQ<3> & !CQ<5> & !SIZ40<1>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK;
-   CQ<4>.CLK = CLK_RAMC;	// GCK
-   !CQ<4>.AR = RESET;	// GSR
-GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
-
-MACROCELL | 1 | 17 | CQ<5>
-ATTRIBUTES | 8561408 | 0
-OUTPUTMC | 60 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 1 | 0 | 0 | 0 | 1 | 0 | 3 | 0 | 4 | 0 | 9 | 0 | 11 | 0 | 14 | 0 | 15 | 0 | 17 | 5 | 0 | 5 | 2 | 5 | 3 | 5 | 12 | 5 | 15 | 5 | 16 | 5 | 17 | 7 | 0 | 7 | 2 | 7 | 6 | 7 | 11 | 7 | 15 | 7 | 17
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | SIZ40<0>  | SIZ40<1>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
-INPUTP | 2 | 116 | 114
-EQ | 8 | 
-   CQ<5>.D = !CQ<1> & !CQ<2> & !CQ<3> & !CQ<0> & CQ<4>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
+OUTPUTMC | 51 | 7 | 10 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 0 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 15 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 3 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10 | 5 | 13 | 3 | 17 | 3 | 15 | 3 | 12 | 0 | 3 | 0 | 8 | 0 | 9 | 0 | 12 | 0 | 14 | 0 | 17 | 5 | 2 | 5 | 4 | 5 | 6 | 5 | 9 | 5 | 15 | 5 | 16 | 7 | 0 | 7 | 9
+INPUTS | 7 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | NQ<1>.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 5 | 17
+EXPORTS | 1 | 5 | 1
+IMPORTS | 1 | 5 | 17
+EQ | 13 | 
+   CQ<5>.D = !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & CQ<5>
+;Imported pterms FB6_18
+	# CQ<2> & CQ<3> & CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	!SIZ40<1>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	!SIZ40<0>;
    CQ<5>.CLK = CLK_RAMC;	// GCK
    !CQ<5>.AR = RESET;	// GSR
+    CQ<5>.EXP  =  !CQ<2> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 2 | 15 | RQ<3>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 10 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 0 | 0 | 8 | 2 | 13 | 2 | 14 | 2 | 12 | 4 | 17 | 0 | 17
-INPUTS | 5 | RQ<0>  | RQ<2>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 4 | 7 | 4 | 2 | 16 | 2 | 17 | 3 | 15
+OUTPUTMC | 9 | 4 | 16 | 0 | 14 | 0 | 16 | 0 | 10 | 0 | 2 | 2 | 13 | 2 | 14 | 4 | 17 | 0 | 12
+INPUTS | 5 | RQ<2>  | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 4 | 2 | 16 | 5 | 15 | 2 | 17 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
-   RQ<3>.T = RQ<0> & RQ<2> & RQ<1>;
+   RQ<3>.T = RQ<2> & RQ<0> & RQ<1>;
    RQ<3>.CLK = C4MHZ;
-   RQ<3>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<3>.AR = RQ<6>/RQ<6>_RSTF;
 
 MACROCELL | 2 | 13 | RQ<5>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 8 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 4 | 2 | 12 | 4 | 17 | 0 | 17
-INPUTS | 7 | RQ<3>  | RQ<0>  | RQ<2>  | RQ<4>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 6 | 2 | 15 | 7 | 4 | 2 | 16 | 2 | 14 | 2 | 17 | 3 | 15
+OUTPUTMC | 7 | 4 | 16 | 0 | 14 | 0 | 16 | 0 | 10 | 0 | 2 | 4 | 17 | 0 | 12
+INPUTS | 7 | RQ<3>  | RQ<2>  | RQ<4>  | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 6 | 2 | 15 | 2 | 16 | 2 | 14 | 5 | 15 | 2 | 17 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
-   RQ<5>.T = RQ<3> & RQ<0> & RQ<2> & RQ<4> & RQ<1>;
+   RQ<5>.T = RQ<3> & RQ<2> & RQ<4> & RQ<0> & RQ<1>;
    RQ<5>.CLK = C4MHZ;
-   RQ<5>.AR = RQ<7>/RQ<7>_RSTF;
-
-MACROCELL | 7 | 4 | RQ<0>
-ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 7 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 2 | 12 | 2 | 17 | 4 | 17
-INPUTS | 2 | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 1 | 3 | 15
-INPUTP | 1 | 18
-EQ | 3 | 
-   RQ<0>.T = Vcc;
-   RQ<0>.CLK = C4MHZ;
-   RQ<0>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<5>.AR = RQ<6>/RQ<6>_RSTF;
 
 MACROCELL | 2 | 16 | RQ<2>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 11 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 4 | 2 | 15 | 2 | 13 | 2 | 14 | 2 | 12 | 4 | 17 | 0 | 17
-INPUTS | 4 | RQ<0>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 3 | 7 | 4 | 2 | 17 | 3 | 15
+OUTPUTMC | 10 | 4 | 16 | 0 | 14 | 0 | 16 | 0 | 10 | 0 | 2 | 2 | 15 | 2 | 13 | 2 | 14 | 4 | 17 | 0 | 12
+INPUTS | 4 | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 3 | 5 | 15 | 2 | 17 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
    RQ<2>.T = RQ<0> & RQ<1>;
    RQ<2>.CLK = C4MHZ;
-   RQ<2>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<2>.AR = RQ<6>/RQ<6>_RSTF;
 
 MACROCELL | 2 | 14 | RQ<4>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 9 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 4 | 2 | 13 | 2 | 12 | 4 | 17 | 0 | 17
-INPUTS | 6 | RQ<3>  | RQ<0>  | RQ<2>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 5 | 2 | 15 | 7 | 4 | 2 | 16 | 2 | 17 | 3 | 15
+OUTPUTMC | 8 | 4 | 16 | 0 | 14 | 0 | 16 | 0 | 10 | 0 | 2 | 2 | 13 | 4 | 17 | 0 | 12
+INPUTS | 6 | RQ<3>  | RQ<2>  | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 5 | 2 | 15 | 2 | 16 | 5 | 15 | 2 | 17 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
-   RQ<4>.T = RQ<3> & RQ<0> & RQ<2> & RQ<1>;
+   RQ<4>.T = RQ<3> & RQ<2> & RQ<0> & RQ<1>;
    RQ<4>.CLK = C4MHZ;
-   RQ<4>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<4>.AR = RQ<6>/RQ<6>_RSTF;
 
-MACROCELL | 2 | 12 | RQ<6>
+MACROCELL | 4 | 17 | RQ<6>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 8 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 0 | 0 | 4 | 4 | 17 | 0 | 8 | 0 | 17
-INPUTS | 8 | RQ<3>  | RQ<5>  | RQ<0>  | RQ<2>  | RQ<4>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 7 | 2 | 15 | 2 | 13 | 7 | 4 | 2 | 16 | 2 | 14 | 2 | 17 | 3 | 15
+OUTPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 1 | 4 | 16 | 0 | 12
+INPUTS | 8 | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 7 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 5 | 15 | 2 | 17 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
-   RQ<6>.T = RQ<3> & RQ<5> & RQ<0> & RQ<2> & RQ<4> & RQ<1>;
+   RQ<6>.T = RQ<3> & RQ<5> & RQ<2> & RQ<4> & RQ<0> & RQ<1>;
    RQ<6>.CLK = C4MHZ;
-   RQ<6>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<6>.AR = RQ<6>/RQ<6>_RSTF;
 
-MACROCELL | 7 | 12 | NQ<1>
-ATTRIBUTES | 8553232 | 0
-OUTPUTMC | 6 | 7 | 11 | 0 | 10 | 0 | 0 | 7 | 12 | 7 | 14 | 7 | 13
-INPUTS | 10 | CQ<1>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | NQ<1>  | NQ<0>  | CQ<2>  | NQ<0>/NQ<0>_RSTF__$INT  | EXP33_.EXP
-INPUTMC | 10 | 0 | 16 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 0 | 12 | 3 | 17 | 7 | 11
-EXPORTS | 1 | 7 | 13
-IMPORTS | 1 | 7 | 11
-EQ | 20 | 
-   NQ<1>.D = !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & NQ<1> & 
-	!NQ<0>
-	# !CQ<1> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & NQ<1> & 
-	!NQ<0>
-	# !CQ<1> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & 
-	NQ<0>
-;Imported pterms FB8_12
-	# !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & 
-	NQ<0>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	NQ<1> & !NQ<0>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<1> & NQ<0>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	NQ<1> & !NQ<0>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<1> & NQ<0>;
-   NQ<1>.CLK = CLK_RAMC;	// GCK
-   NQ<1>.AR = !NQ<0>/NQ<0>_RSTF__$INT;
-    NQ<1>.EXP  =  !CQ<2> & !CQ<0>
-GLOBALS | 1 | 2 | CLK_RAMC
+MACROCELL | 5 | 15 | RQ<0>
+ATTRIBUTES | 4326192 | 0
+OUTPUTMC | 8 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 4 | 16 | 2 | 17 | 5 | 16
+INPUTS | 10 | C4MHZ  | RQ<6>/RQ<6>_RSTF  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | NQ<0>  | NQ<1>
+INPUTMC | 9 | 3 | 17 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17
+INPUTP | 1 | 18
+EXPORTS | 1 | 5 | 16
+EQ | 7 | 
+   RQ<0>.T = Vcc;
+   RQ<0>.CLK = C4MHZ;
+   RQ<0>.AR = RQ<6>/RQ<6>_RSTF;
+    RQ<0>.EXP  =  !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	NQ<0> & !NQ<1>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	!NQ<0> & NQ<1>
+
+MACROCELL | 4 | 16 | RQ<7>
+ATTRIBUTES | 4326192 | 0
+OUTPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 1 | 0 | 12
+INPUTS | 9 | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<0>  | RQ<1>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 8 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 5 | 15 | 2 | 17 | 3 | 17
+INPUTP | 1 | 18
+EQ | 4 | 
+   RQ<7>.T = RQ<3> & RQ<5> & RQ<2> & RQ<4> & RQ<6> & RQ<0> & 
+	RQ<1>;
+   RQ<7>.CLK = C4MHZ;
+   RQ<7>.AR = RQ<6>/RQ<6>_RSTF;
 
 MACROCELL | 2 | 17 | RQ<1>
 ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 6 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 2 | 12 | 4 | 17
-INPUTS | 3 | RQ<0>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 2 | 7 | 4 | 3 | 15
+OUTPUTMC | 6 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 4 | 16
+INPUTS | 3 | RQ<0>  | C4MHZ  | RQ<6>/RQ<6>_RSTF
+INPUTMC | 2 | 5 | 15 | 3 | 17
 INPUTP | 1 | 18
 EQ | 3 | 
    RQ<1>.T = RQ<0>;
    RQ<1>.CLK = C4MHZ;
-   RQ<1>.AR = RQ<7>/RQ<7>_RSTF;
+   RQ<1>.AR = RQ<6>/RQ<6>_RSTF;
 
-MACROCELL | 4 | 17 | RQ<7>
-ATTRIBUTES | 4326192 | 0
-OUTPUTMC | 7 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 0 | 0 | 4 | 0 | 8 | 0 | 17
-INPUTS | 9 | RQ<3>  | RQ<5>  | RQ<0>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<1>  | C4MHZ  | RQ<7>/RQ<7>_RSTF
-INPUTMC | 8 | 2 | 15 | 2 | 13 | 7 | 4 | 2 | 16 | 2 | 14 | 2 | 12 | 2 | 17 | 3 | 15
-INPUTP | 1 | 18
-EQ | 4 | 
-   RQ<7>.T = RQ<3> & RQ<5> & RQ<0> & RQ<2> & RQ<4> & RQ<6> & 
-	RQ<1>;
-   RQ<7>.CLK = C4MHZ;
-   RQ<7>.AR = RQ<7>/RQ<7>_RSTF;
-
-MACROCELL | 7 | 9 | NQ<0>
+MACROCELL | 7 | 1 | NQ<0>
 ATTRIBUTES | 8553232 | 0
-OUTPUTMC | 7 | 0 | 0 | 7 | 12 | 7 | 9 | 7 | 11 | 7 | 8 | 7 | 14 | 7 | 10
-INPUTS | 9 | CQ<1>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | NQ<0>  | CQ<2>  | NQ<0>/NQ<0>_RSTF__$INT  | OE40_RAM_OBUF.EXP
-INPUTMC | 9 | 0 | 16 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 9 | 0 | 12 | 3 | 17 | 7 | 8
-EXPORTS | 1 | 7 | 10
-IMPORTS | 1 | 7 | 8
-EQ | 10 | 
-   NQ<0>.D = !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<0>
-	# !CQ<1> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<0>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<0>
-;Imported pterms FB8_9
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+OUTPUTMC | 6 | 0 | 2 | 7 | 1 | 5 | 17 | 7 | 0 | 5 | 15 | 5 | 16
+INPUTS | 8 | CQ<2>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | NQ<0>  | CQ<3>  | NQ<2>/NQ<2>_RSTF__$INT
+INPUTMC | 8 | 0 | 11 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 0 | 15 | 3 | 15
+EQ | 7 | 
+   NQ<0>.D = CQ<2> & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0>
+	# CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
 	!NQ<0>;
    NQ<0>.CLK = CLK_RAMC;	// GCK
-   NQ<0>.AR = !NQ<0>/NQ<0>_RSTF__$INT;
-    NQ<0>.EXP  =  !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
+   NQ<0>.AR = !NQ<2>/NQ<2>_RSTF__$INT;
 GLOBALS | 1 | 2 | CLK_RAMC
 
-MACROCELL | 7 | 13 | NQ<2>
+MACROCELL | 5 | 17 | NQ<1>
 ATTRIBUTES | 8553232 | 0
-OUTPUTMC | 3 | 0 | 0 | 0 | 10 | 7 | 14
-INPUTS | 8 | CQ<4>  | CQ<5>  | CQ<1>  | CQ<3>  | CQ<0>  | NQ<1>.EXP  | EXP34_.EXP  | NQ<0>/NQ<0>_RSTF__$INT
-INPUTMC | 8 | 0 | 13 | 1 | 17 | 0 | 16 | 0 | 10 | 0 | 2 | 7 | 12 | 7 | 14 | 3 | 17
-IMPORTS | 2 | 7 | 12 | 7 | 14
+OUTPUTMC | 11 | 0 | 0 | 0 | 14 | 0 | 16 | 0 | 2 | 5 | 17 | 7 | 0 | 0 | 12 | 0 | 17 | 5 | 15 | 5 | 16 | 5 | 0
+INPUTS | 12 | CQ<2>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | NQ<0>  | NQ<1>  | CQ<3>  | NQ<2>/NQ<2>_RSTF__$INT  | SIZ40<1>  | SIZ40<0>  | EXP25_.EXP
+INPUTMC | 10 | 0 | 11 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 0 | 15 | 3 | 15 | 5 | 16
+INPUTP | 2 | 114 | 116
+EXPORTS | 1 | 5 | 0
+IMPORTS | 1 | 5 | 16
+EQ | 25 | 
+   NQ<1>.D = CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0> & 
+	NQ<1>
+;Imported pterms FB6_17
+	# CQ<2> & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# CQ<2> & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0> & 
+	NQ<1>
+	# CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0> & 
+	NQ<1>
+;Imported pterms FB6_16
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	NQ<0> & !NQ<1>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	!NQ<0> & NQ<1>;
+   NQ<1>.CLK = CLK_RAMC;	// GCK
+   NQ<1>.AR = !NQ<2>/NQ<2>_RSTF__$INT;
+    NQ<1>.EXP  =  CQ<2> & CQ<3> & CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
+	!SIZ40<0>
+GLOBALS | 1 | 2 | CLK_RAMC
+
+MACROCELL | 7 | 17 | NQ<2>
+ATTRIBUTES | 8553232 | 0
+OUTPUTMC | 7 | 0 | 0 | 0 | 14 | 0 | 16 | 0 | 2 | 7 | 0 | 0 | 12 | 0 | 17
+INPUTS | 7 | CQ<2>  | CQ<1>  | CQ<0>  | CQ<3>  | EXP26_.EXP  | LDQ1_OBUF.EXP  | NQ<2>/NQ<2>_RSTF__$INT
+INPUTMC | 7 | 0 | 11 | 0 | 16 | 0 | 2 | 0 | 15 | 7 | 0 | 7 | 16 | 3 | 15
+IMPORTS | 2 | 7 | 0 | 7 | 16
 EQ | 14 | 
-   !NQ<2>.D = CQ<4>
+   !NQ<2>.D = CQ<1> & CQ<0>
+	# CQ<2> & CQ<3> & !CQ<1>
+	# !CQ<2> & CQ<3> & !CQ<0>
+	# !CQ<2> & !CQ<1> & !CQ<0>
+;Imported pterms FB8_1
+	# CQ<4>
 	# CQ<5>
-	# CQ<1> & CQ<3>
-	# !CQ<1> & !CQ<0>
-;Imported pterms FB8_13
-	# !CQ<2> & !CQ<0>
-;Imported pterms FB8_15
-	# !NQ<1> & !NQ<2>
 	# !NQ<0> & !NQ<2>
-	# CQ<1> & CQ<2> & CQ<0>
-	# !CQ<1> & !CQ<2> & !CQ<3>
-	# NQ<1> & NQ<0> & NQ<2>;
+	# !NQ<1> & !NQ<2>
+	# NQ<0> & NQ<1> & NQ<2>
+;Imported pterms FB8_17
+	# !CQ<3> & CQ<0>;
    NQ<2>.CLK = CLK_RAMC;	// GCK
-   NQ<2>.AR = !NQ<0>/NQ<0>_RSTF__$INT;
+   NQ<2>.AR = !NQ<2>/NQ<2>_RSTF__$INT;
 GLOBALS | 1 | 2 | CLK_RAMC
 
 MACROCELL | 3 | 11 | ARAM_0
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<2>  | A40<11>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<2>  | A40<11>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 90 | 64
 EQ | 10 | 
-   ARAM<0>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<0>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<2>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<11>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<2>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<2>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<11>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<11>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<2>;
    ARAM<0>.CLK = CLK_RAMC;	// GCK
    !ARAM<0>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 14 | ARAM_1
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<12>  | CQ<3>  | A40<3>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 10
-INPUTP | 2 | 63 | 88
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<3>  | A40<12>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
+INPUTP | 2 | 88 | 63
 EQ | 11 | 
-   ARAM<1>.D = CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<5> & 
+   ARAM<1>.D = CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5>
+	# CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<3>
-	# CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & 
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<12>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<3>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<12>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<12>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<3>;
    ARAM<1>.CLK = CLK_RAMC;	// GCK
    !ARAM<1>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 8 | ARAM_10
 ATTRIBUTES | 8692482 | 0
-INPUTS | 7 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<21>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 7 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<21>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 1 | 47
-EQ | 9 | 
-   ARAM<10>.D = A40<21> & CQ<1> & CQ<2> & CQ<3> & CQ<0> & 
-	!CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# A40<21> & !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & 
-	CQ<4> & !CQ<5>;
+EQ | 8 | 
+   ARAM<10>.D = !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# A40<21> & CQ<2> & !CQ<3> & CQ<1> & CQ<4> & 
+	!CQ<0> & !CQ<5>
+	# A40<21> & !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & 
+	!CQ<0> & !CQ<5>;
    ARAM<10>.CLK = CLK_RAMC;	// GCK
    !ARAM<10>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 4 | ARAM_11
 ATTRIBUTES | 8692482 | 0
-INPUTS | 7 | A40<22>  | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 7 | A40<22>  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 1 | 44
 EQ | 6 | 
-   ARAM<11>.D = A40<22> & CQ<1> & CQ<2> & CQ<3> & CQ<0> & 
-	!CQ<4> & !CQ<5>
-	# A40<22> & !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & 
-	CQ<4> & !CQ<5>;
+   ARAM<11>.D = A40<22> & CQ<2> & !CQ<3> & CQ<1> & CQ<4> & 
+	!CQ<0> & !CQ<5>
+	# A40<22> & !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & 
+	!CQ<0> & !CQ<5>;
    ARAM<11>.CLK = CLK_RAMC;	// GCK
    !ARAM<11>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 1 | 10 | ARAM_2
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<4>  | A40<13>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<4>  | A40<13>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 86 | 62
 EQ | 10 | 
-   ARAM<2>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<2>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<4>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<13>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<4>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<4>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<13>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<13>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<4>;
    ARAM<2>.CLK = CLK_RAMC;	// GCK
    !ARAM<2>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 1 | 13 | ARAM_3
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<5>  | A40<14>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<5>  | A40<14>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 82 | 60
 EQ | 10 | 
-   ARAM<3>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<3>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<5>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<14>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<5>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<5>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<14>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<14>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<5>;
    ARAM<3>.CLK = CLK_RAMC;	// GCK
    !ARAM<3>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 1 | 14 | ARAM_4
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<6>  | A40<15>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<6>  | A40<15>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 79 | 59
 EQ | 10 | 
-   ARAM<4>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<4>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<6>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<15>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<6>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<6>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<15>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<15>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<6>;
    ARAM<4>.CLK = CLK_RAMC;	// GCK
    !ARAM<4>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 1 | 11 | ARAM_5
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<16>  | CQ<3>  | A40<7>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 10
-INPUTP | 2 | 58 | 77
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<7>  | A40<16>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
+INPUTP | 2 | 77 | 58
 EQ | 11 | 
-   ARAM<5>.D = CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<5> & 
+   ARAM<5>.D = CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5>
+	# CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<7>
-	# CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & 
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<16>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<7>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<16>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<16>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<7>;
    ARAM<5>.CLK = CLK_RAMC;	// GCK
    !ARAM<5>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 16 | ARAM_6
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<8>  | A40<17>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<8>  | A40<17>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 72 | 57
 EQ | 10 | 
-   ARAM<6>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<6>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<8>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<17>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<8>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<8>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<17>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<17>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<8>;
    ARAM<6>.CLK = CLK_RAMC;	// GCK
    !ARAM<6>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 13 | ARAM_7
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<9>  | A40<18>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<9>  | A40<18>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 69 | 56
 EQ | 10 | 
-   ARAM<7>.D = CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+   ARAM<7>.D = CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<9>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<18>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
-	A40<9>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	A40<9>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5> & 
-	A40<18>;
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
+	A40<18>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
+	A40<9>;
    ARAM<7>.CLK = CLK_RAMC;	// GCK
    !ARAM<7>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 10 | ARAM_8
 ATTRIBUTES | 8692482 | 0
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | A40<10>  | A40<19>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 8 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | A40<10>  | A40<19>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 2 | 68 | 54
 EQ | 10 | 
-   ARAM<8>.D = A40<19> & CQ<1> & CQ<2> & CQ<3> & CQ<0> & 
-	!CQ<4> & !CQ<5>
-	# A40<19> & !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & 
-	CQ<4> & !CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5> & 
+   ARAM<8>.D = A40<19> & CQ<2> & !CQ<3> & CQ<1> & CQ<4> & 
+	!CQ<0> & !CQ<5>
+	# A40<19> & !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & 
+	!CQ<0> & !CQ<5>
+	# CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & 
 	A40<10>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5> & 
 	A40<10>;
    ARAM<8>.CLK = CLK_RAMC;	// GCK
    !ARAM<8>.AR = RESET;	// GSR
@@ -572,14 +578,14 @@ GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
 
 MACROCELL | 3 | 7 | ARAM_9
 ATTRIBUTES | 8692482 | 0
-INPUTS | 7 | A40<20>  | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+INPUTS | 7 | A40<20>  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 1 | 49
 EQ | 6 | 
-   ARAM<9>.D = A40<20> & CQ<1> & CQ<2> & CQ<3> & CQ<0> & 
-	!CQ<4> & !CQ<5>
-	# A40<20> & !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & 
-	CQ<4> & !CQ<5>;
+   ARAM<9>.D = A40<20> & CQ<2> & !CQ<3> & CQ<1> & CQ<4> & 
+	!CQ<0> & !CQ<5>
+	# A40<20> & !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & 
+	!CQ<0> & !CQ<5>;
    ARAM<9>.CLK = CLK_RAMC;	// GCK
    !ARAM<9>.AR = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 4 | RESET
@@ -607,50 +613,45 @@ GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 MACROCELL | 5 | 11 | CAS_OBUF
 ATTRIBUTES | 8688386 | 0
 OUTPUTMC | 1 | 5 | 10
-INPUTS | 6 | CQ<3>  | CQ<5>  | CQ<4>  | CQ<1>  | CQ<2>  | EXP26_.EXP
-INPUTMC | 6 | 0 | 10 | 1 | 17 | 0 | 13 | 0 | 16 | 0 | 12 | 5 | 12
+INPUTS | 6 | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | CQ<2>
+INPUTMC | 6 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 0 | 11
 EXPORTS | 1 | 5 | 10
-IMPORTS | 1 | 5 | 12
-EQ | 15 | 
-   !CAS.D = CQ<3> & CQ<5>
-	# !CQ<4> & CQ<5>
-;Imported pterms FB6_13
-	# CQ<2> & CQ<5>
-	# CQ<1> & !CQ<0> & CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0>
-	# CQ<1> & !CQ<2> & !CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-;Imported pterms FB6_14
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>;
+EQ | 7 | 
+   !CAS.D = CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4> & CQ<0> & !CQ<5>;
    CAS.CLK = CLK_RAMC;	// GCK
    !CAS.AP = RESET;	// GSR
-    CAS_OBUF.EXP  =  CQ<1> & !CQ<2> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>
+    CAS_OBUF.EXP  =  !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 5 | 7 | CE_B0_OBUF
 ATTRIBUTES | 8688386 | 0
-INPUTS | 7 | CQ<1>  | CQ<5>  | CQ<4>  | CQ<2>  | CQ<3>  | EXP24_.EXP  | CE_B1_OBUF.EXP
-INPUTMC | 7 | 0 | 16 | 1 | 17 | 0 | 13 | 0 | 12 | 0 | 10 | 5 | 6 | 5 | 8
+INPUTS | 14 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | CQ<2>  | CQ<1>  | CQ<3>  | CQ<4>  | CQ<0>  | CQ<5>  | EXP23_.EXP  | CE_B1_OBUF.EXP
+INPUTMC | 8 | 0 | 11 | 0 | 16 | 0 | 15 | 0 | 10 | 0 | 2 | 5 | 0 | 5 | 6 | 5 | 8
+INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 30
 IMPORTS | 2 | 5 | 6 | 5 | 8
-EQ | 18 | 
-   !CE_B0.D = CQ<1> & CQ<5>
-	# CQ<2> & CQ<5>
-	# CQ<3> & CQ<5>
-	# !CQ<4> & CQ<5>
-	# CQ<1> & !CQ<3> & !CQ<4>
+EQ | 21 | 
+   !CE_B0.D = CQ<3> & CQ<5>
+	# CQ<1> & CQ<5>
+	# !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
+	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & !A40<25> & CQ<2> & !CQ<1>
+	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & !A40<25> & CQ<3> & CQ<1>
 ;Imported pterms FB6_7
-	# CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
+	# CQ<4> & CQ<5>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<0>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0>
+;Imported pterms FB6_6
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & CQ<1>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & CQ<4>
+	!A40<26> & !A40<25> & CQ<5>
 ;Imported pterms FB6_9
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & !CQ<2> & CQ<3>;
+	!A40<26> & !A40<25> & CQ<4>;
    CE_B0.CLK = CLK_RAMC;	// GCK
    !CE_B0.AP = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
@@ -658,220 +659,186 @@ GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 MACROCELL | 5 | 8 | CE_B1_OBUF
 ATTRIBUTES | 8688386 | 0
 OUTPUTMC | 1 | 5 | 7
-INPUTS | 12 | CQ<1>  | CQ<5>  | CQ<4>  | CQ<2>  | CQ<3>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | EXP25_.EXP
-INPUTMC | 6 | 0 | 16 | 1 | 17 | 0 | 13 | 0 | 12 | 0 | 10 | 5 | 9
+INPUTS | 13 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | CQ<2>  | CQ<1>  | CQ<3>  | CQ<4>  | CQ<0>  | CQ<5>  | EXP24_.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 16 | 0 | 15 | 0 | 10 | 0 | 2 | 5 | 0 | 5 | 9
 INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 30
 EXPORTS | 1 | 5 | 7
 IMPORTS | 1 | 5 | 9
-EQ | 20 | 
-   !CE_B1.D = CQ<1> & CQ<5>
-	# CQ<2> & CQ<5>
-	# CQ<3> & CQ<5>
-	# !CQ<4> & CQ<5>
-;Imported pterms FB6_10
-	# CQ<1> & !CQ<3> & !CQ<4>
-	# CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
+EQ | 22 | 
+   !CE_B1.D = CQ<3> & CQ<5>
+	# !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & A40<25> & CQ<1>
+	!A40<26> & A40<25> & CQ<2> & !CQ<1>
+	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & A40<25> & CQ<3> & CQ<1>
+;Imported pterms FB6_10
+	# CQ<1> & CQ<5>
+	# CQ<4> & CQ<5>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<0>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4>
 ;Imported pterms FB6_11
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
 	!A40<26> & A40<25> & CQ<4>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & A40<25> & !CQ<2> & CQ<3>;
+	!A40<26> & A40<25> & CQ<5>;
    CE_B1.CLK = CLK_RAMC;	// GCK
    !CE_B1.AP = RESET;	// GSR
     CE_B1_OBUF.EXP  =  A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & !CQ<2> & CQ<3>
+	!A40<26> & !A40<25> & CQ<4>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 5 | 4 | LDQ0_OBUF
 ATTRIBUTES | 8688386 | 0
-INPUTS | 11 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | CQ<5>  | A40<0>  | EXP23_.EXP  | UDQ0_OBUF.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 5 | 3 | 5 | 5
-INPUTP | 4 | 92 | 114 | 116 | 95
-IMPORTS | 2 | 5 | 3 | 5 | 5
-EQ | 23 | 
-   LDQ0.D = !CQ<3> & !CQ<5> & !A40<1> & SIZ40<1> & !SIZ40<0>
-	# !CQ<3> & !CQ<5> & !A40<1> & !SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<1> & 
-	SIZ40<1> & !SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<1> & 
-	!SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<0> & 
-	!SIZ40<1> & SIZ40<0>
-;Imported pterms FB6_4
-	# CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & !A40<0> & !SIZ40<1> & SIZ40<0>
+OUTPUTMC | 1 | 5 | 5
+INPUTS | 7 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<0>  | CQ<1>  | EXP22_.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 10 | 5 | 0 | 0 | 15 | 0 | 2 | 0 | 16 | 5 | 3
+EXPORTS | 1 | 5 | 5
+IMPORTS | 1 | 5 | 3
+EQ | 21 | 
+   LDQ0.D = ;Imported pterms FB6_4
+	  !CQ<3> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & SIZ40<1> & 
+	!SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & !SIZ40<1> & 
+	SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<0> & !SIZ40<1> & 
+	SIZ40<0>
 ;Imported pterms FB6_3
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-;Imported pterms FB6_6
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>;
+	# !CQ<2> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>;
    LDQ0.CLK = CLK_RAMC;	// GCK
    !LDQ0.AP = RESET;	// GSR
+    LDQ0_OBUF.EXP  =  !CQ<2> & !CQ<4> & !CQ<5>
+	# !CQ<3> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 7 | 16 | LDQ1_OBUF
 ATTRIBUTES | 8688386 | 0
-INPUTS | 11 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | A40<0>  | SIZ40<1>  | SIZ40<0>  | CQ<5>  | A40<1>  | EXP35_.EXP  | EXP36_.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 7 | 15 | 7 | 17
+OUTPUTMC | 1 | 7 | 17
+INPUTS | 11 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<5>  | CQ<4>  | A40<0>  | SIZ40<1>  | SIZ40<0>  | A40<1>  | CQ<0>  | EXP28_.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 5 | 0 | 0 | 10 | 0 | 2 | 7 | 15
 INPUTP | 4 | 95 | 114 | 116 | 92
-IMPORTS | 2 | 7 | 15 | 7 | 17
-EQ | 22 | 
-   LDQ1.D = !CQ<3> & !CQ<5> & A40<1> & SIZ40<1> & !SIZ40<0>
-	# !CQ<3> & !CQ<5> & !A40<0> & !SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<1> & 
-	SIZ40<1> & !SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<1> & 
-	!SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<0> & 
-	!SIZ40<1> & SIZ40<0>
+EXPORTS | 1 | 7 | 17
+IMPORTS | 1 | 7 | 15
+EQ | 16 | 
+   LDQ1.D = CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<1> & SIZ40<1> & 
+	!SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<1> & !SIZ40<1> & 
+	SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<0> & !SIZ40<1> & 
+	SIZ40<0>
 ;Imported pterms FB8_16
-	# CQ<2> & !CQ<4> & !CQ<5>
+	# !CQ<2> & !CQ<4> & !CQ<5>
 	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<1> & !SIZ40<1> & SIZ40<0>
-;Imported pterms FB8_18
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>;
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>;
    LDQ1.CLK = CLK_RAMC;	// GCK
    !LDQ1.AP = RESET;	// GSR
+    LDQ1_OBUF.EXP  =  !CQ<3> & CQ<0>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 7 | 8 | OE40_RAM_OBUF
 ATTRIBUTES | 8688386 | 0
-OUTPUTMC | 1 | 7 | 9
-INPUTS | 14 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | CQ<0>  | CQ<5>  | RW_40  | CQ<3>  | CQ<2>  | CQ<4>  | CQ<1>  | NQ<0>  | OERAM_40_OBUF.EXP
-INPUTMC | 8 | 0 | 2 | 1 | 17 | 0 | 10 | 0 | 12 | 0 | 13 | 0 | 16 | 7 | 9 | 7 | 7
+INPUTS | 12 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | CQ<3>  | CQ<4>  | CQ<5>  | RW_40  | CQ<2>  | CQ<1>  | CQ<0>
+INPUTMC | 6 | 0 | 15 | 0 | 10 | 5 | 0 | 0 | 11 | 0 | 16 | 0 | 2
 INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 19
-EXPORTS | 1 | 7 | 9
-IMPORTS | 1 | 7 | 7
-EQ | 14 | 
-   !OE40_RAM.D = CQ<2> & CQ<5>
-	# CQ<3> & CQ<5>
-	# !CQ<4> & CQ<5>
+EQ | 6 | 
+   !OE40_RAM.D = A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & CQ<3> & CQ<4> & !CQ<5> & !RW_40
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !CQ<0> & CQ<5> & !RW_40
-;Imported pterms FB8_8
-	# CQ<1> & !CQ<0> & CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !CQ<3> & CQ<4> & !CQ<5> & !RW_40;
+	!A40<26> & CQ<2> & CQ<1> & CQ<4> & CQ<0> & !CQ<5> & !RW_40;
    OE40_RAM.CLK = CLK_RAMC;	// GCK
    !OE40_RAM.AP = RESET;	// GSR
-    OE40_RAM_OBUF.EXP  =  CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<0>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 7 | 7 | OERAM_40_OBUF
 ATTRIBUTES | 8688386 | 0
-OUTPUTMC | 1 | 7 | 8
-INPUTS | 13 | CQ<2>  | CQ<5>  | CQ<4>  | CQ<1>  | CQ<0>  | CQ<3>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | RW_40  | EXP32_.EXP
-INPUTMC | 7 | 0 | 12 | 1 | 17 | 0 | 13 | 0 | 16 | 0 | 2 | 0 | 10 | 7 | 6
+INPUTS | 11 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<5>  | RW_40  | CQ<2>
+INPUTMC | 5 | 0 | 15 | 0 | 16 | 0 | 10 | 5 | 0 | 0 | 11
 INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 19
-EXPORTS | 1 | 7 | 8
-IMPORTS | 1 | 7 | 6
-EQ | 16 | 
-   !OERAM_40.D = CQ<2> & CQ<5>
-	# !CQ<4> & CQ<5>
-;Imported pterms FB8_7
-	# CQ<3> & CQ<5>
-	# CQ<1> & !CQ<0> & CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
+EQ | 8 | 
+   !OERAM_40.D = A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & RW_40
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !CQ<2> & CQ<3> & RW_40
+	!A40<26> & !CQ<2> & !CQ<3> & CQ<4> & !CQ<5> & RW_40
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & CQ<1> & CQ<3> & CQ<4> & RW_40;
+	!A40<26> & !CQ<3> & !CQ<1> & CQ<4> & !CQ<5> & RW_40;
    OERAM_40.CLK = CLK_RAMC;	// GCK
    !OERAM_40.AP = RESET;	// GSR
-    OERAM_40_OBUF.EXP  =  CQ<1> & !CQ<0> & CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !CQ<3> & CQ<4> & !CQ<5> & !RW_40
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 5 | 14 | RAS_OBUF
 ATTRIBUTES | 8688386 | 0
-OUTPUTMC | 1 | 5 | 13
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<5>  | CLK_RAMC  | CQ<4>  | CQ<3>  | EXP27_.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 2 | 1 | 17 | 0 | 13 | 0 | 10 | 5 | 15
-INPUTP | 1 | 33
-EXPORTS | 1 | 5 | 13
-IMPORTS | 1 | 5 | 15
-EQ | 17 | 
-   RAS.D = !CQ<1> & !CQ<2> & !CQ<0> & !CQ<5>
-;Imported pterms FB6_16
-	# !CQ<2> & CQ<3> & !CQ<5>
-	# !CQ<3> & CQ<4> & !CQ<5>
-	# CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5>
-;Imported pterms FB6_17
-	# CQ<1> & !CQ<2> & CQ<0> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>;
+INPUTS | 6 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<0>  | CQ<5>  | CQ<4>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 2 | 5 | 0 | 0 | 10
+EQ | 7 | 
+   !RAS.D = CQ<2> & !CQ<3> & !CQ<1> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & !CQ<4> & !CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
+	# !CQ<2> & !CQ<3> & !CQ<4> & CQ<0> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5>;
    RAS.CLK = CLK_RAMC;	// GCK
    !RAS.AP = RESET;	// GSR
-    RAS_OBUF.EXP  =  !CLK_RAMC & CQ<2> & !CQ<0> & !CQ<5>
-	# !CLK_RAMC & CQ<1> & !CQ<2> & CQ<0> & !CQ<5>
-	# !CLK_RAMC & !CQ<1> & !CQ<0> & CQ<4> & !CQ<5>
-	# !CLK_RAMC & !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & 
-	CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 5 | 5 | UDQ0_OBUF
 ATTRIBUTES | 8688386 | 0
-OUTPUTMC | 1 | 5 | 4
-INPUTS | 7 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | CQ<5>  | CQ<0>  | $OpTx$DEC_UDQ0_OBUF$0
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 0 | 2 | 7 | 1
-EXPORTS | 1 | 5 | 4
-EQ | 7 | 
-   UDQ0.D = $OpTx$DEC_UDQ0_OBUF$0
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>;
+OUTPUTMC | 1 | 5 | 6
+INPUTS | 16 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<5>  | CQ<4>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | A40<0>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | LDQ0_OBUF.EXP
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 5 | 0 | 0 | 10 | 5 | 4
+INPUTP | 10 | 92 | 114 | 116 | 95 | 28 | 23 | 24 | 26 | 29 | 30
+EXPORTS | 1 | 5 | 6
+IMPORTS | 1 | 5 | 4
+EQ | 17 | 
+   UDQ0.D = CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & SIZ40<1> & 
+	!SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & !SIZ40<1> & 
+	SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<0> & !SIZ40<1> & 
+	SIZ40<0>
+;Imported pterms FB6_5
+	# !CQ<2> & !CQ<4> & !CQ<5>
+	# !CQ<3> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>;
    UDQ0.CLK = CLK_RAMC;	// GCK
    !UDQ0.AP = RESET;	// GSR
-    UDQ0_OBUF.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
+    UDQ0_OBUF.EXP  =  A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+	!A40<26> & !A40<25> & CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
 MACROCELL | 5 | 1 | UDQ1_OBUF
 ATTRIBUTES | 8688386 | 0
-INPUTS | 10 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | CQ<5>  | A40<0>  | EXP21_.EXP
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 5 | 0
+INPUTS | 10 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<5>  | CQ<4>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | A40<0>  | CQ<5>.EXP
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 5 | 0 | 0 | 10 | 5 | 0
 INPUTP | 4 | 92 | 114 | 116 | 95
 IMPORTS | 1 | 5 | 0
-EQ | 22 | 
-   UDQ1.D = !CQ<3> & !CQ<5> & A40<1> & SIZ40<1> & !SIZ40<0>
-	# !CQ<3> & !CQ<5> & A40<1> & !SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<1> & 
-	SIZ40<1> & !SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<1> & 
-	!SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<0> & 
-	!SIZ40<1> & SIZ40<0>
+EQ | 15 | 
+   UDQ1.D = !CQ<3> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<1> & SIZ40<1> & 
+	!SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<1> & !SIZ40<1> & 
+	SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & A40<0> & !SIZ40<1> & 
+	SIZ40<0>
 ;Imported pterms FB6_1
-	# CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<0> & !SIZ40<1> & SIZ40<0>
-;Imported pterms FB6_18
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>;
+	# !CQ<2> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>;
    UDQ1.CLK = CLK_RAMC;	// GCK
    !UDQ1.AP = RESET;	// GSR
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
@@ -879,30 +846,28 @@ GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 MACROCELL | 5 | 10 | WE_OBUF
 ATTRIBUTES | 8688386 | 0
 OUTPUTMC | 1 | 5 | 9
-INPUTS | 12 | CQ<0>  | CQ<5>  | CQ<3>  | CQ<4>  | CQ<2>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | CAS_OBUF.EXP
-INPUTMC | 6 | 0 | 2 | 1 | 17 | 0 | 10 | 0 | 13 | 0 | 12 | 5 | 11
+INPUTS | 13 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<0>  | CQ<5>  | CQ<4>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | CAS_OBUF.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 2 | 5 | 0 | 0 | 10 | 5 | 11
 INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 30
 EXPORTS | 1 | 5 | 9
 IMPORTS | 1 | 5 | 11
-EQ | 13 | 
-   WE.D = !CQ<0> & !CQ<5>
-	# !CQ<2> & CQ<3> & !CQ<5>
-	# CQ<3> & !CQ<4> & !CQ<5>
+EQ | 11 | 
+   !WE.D = CQ<2> & !CQ<3> & !CQ<1> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
 ;Imported pterms FB6_12
-	# CQ<1> & !CQ<2> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>;
+	# !CQ<2> & CQ<3> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5>;
    WE.CLK = CLK_RAMC;	// GCK
    !WE.AP = RESET;	// GSR
-    WE_OBUF.EXP  =  A40<27> & !A40<30> & !A40<29> & !A40<28> & 
+    WE_OBUF.EXP  =  !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0>
+	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
 	!A40<26> & A40<25> & CQ<4>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & A40<25> & !CQ<2> & CQ<3>
+	!A40<26> & A40<25> & CQ<5>
 GLOBALS | 2 | 2 | CLK_RAMC | 1 | RESET
 
-MACROCELL | 2 | 11 | TRANSFER
+MACROCELL | 2 | 12 | TRANSFER
 ATTRIBUTES | 8520496 | 0
-OUTPUTMC | 5 | 0 | 14 | 0 | 9 | 0 | 0 | 0 | 4 | 0 | 17
+OUTPUTMC | 4 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 12
 INPUTS | 8 | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | TT40_1  | TS40  | TRANSFER/TRANSFER_RSTF
 INPUTMC | 1 | 3 | 12
 INPUTP | 7 | 28 | 23 | 24 | 26 | 29 | 2 | 112
@@ -914,24 +879,15 @@ EQ | 4 |
 
 MACROCELL | 5 | 13 | CLK_RAM_OBUF
 ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 5 | 12
-INPUTS | 8 | CLK_RAMC  | CQ<3>  | CQ<4>  | CQ<5>  | CQ<1>  | CQ<2>  | CQ<0>  | RAS_OBUF.EXP
-INPUTMC | 7 | 0 | 10 | 0 | 13 | 1 | 17 | 0 | 16 | 0 | 12 | 0 | 2 | 5 | 14
+INPUTS | 7 | CLK_RAMC  | CQ<2>  | CQ<3>  | CQ<4>  | CQ<0>  | CQ<5>  | CQ<1>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 10 | 0 | 2 | 5 | 0 | 0 | 16
 INPUTP | 1 | 33
-EXPORTS | 1 | 5 | 12
-IMPORTS | 1 | 5 | 14
-EQ | 11 | 
-   CLK_RAM = !CLK_RAMC & CQ<1> & !CQ<4> & !CQ<5>
-	# !CLK_RAMC & CQ<2> & !CQ<3> & !CQ<5>
-	# !CLK_RAMC & !CQ<3> & !CQ<4> & !CQ<5>
-	# !CLK_RAMC & CQ<0> & !CQ<4> & !CQ<5>
-;Imported pterms FB6_15
-	# !CLK_RAMC & CQ<2> & !CQ<0> & !CQ<5>
-	# !CLK_RAMC & CQ<1> & !CQ<2> & CQ<0> & !CQ<5>
-	# !CLK_RAMC & !CQ<1> & !CQ<0> & CQ<4> & !CQ<5>
-	# !CLK_RAMC & !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & 
-	CQ<5>;
-    CLK_RAM_OBUF.EXP  =  !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
+EQ | 5 | 
+   !CLK_RAM = CLK_RAMC
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0> & !CQ<5>
+	# CQ<2> & !CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<1> & CQ<4> & CQ<0> & !CQ<5>;
 
 MACROCELL | 2 | 1 | TCI40_OBUF
 ATTRIBUTES | 264962 | 0
@@ -970,244 +926,193 @@ INPUTS | 0
 EQ | 1 | 
    LE_RAM = Gnd;
 
-MACROCELL | 0 | 8 | $OpTx$$OpTx$FX_DC$38_INV$242
+MACROCELL | 3 | 17 | RQ<6>/RQ<6>_RSTF
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 0 | 0
-INPUTS | 6 | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<7>
-INPUTMC | 6 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 2 | 12 | 4 | 17
-EQ | 1 | 
-   $OpTx$$OpTx$FX_DC$38_INV$242 = !RQ<3> & !RQ<5> & !RQ<2> & !RQ<4> & !RQ<6> & !RQ<7>;
-
-MACROCELL | 3 | 15 | RQ<7>/RQ<7>_RSTF
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 8 | 2 | 15 | 2 | 13 | 7 | 4 | 2 | 16 | 2 | 14 | 2 | 12 | 2 | 17 | 4 | 17
-INPUTS | 7 | RESET  | CQ<1>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | CQ<2>
-INPUTMC | 6 | 0 | 16 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 12
+OUTPUTMC | 8 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 5 | 15 | 4 | 16 | 2 | 17
+INPUTS | 7 | RESET  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 1 | 160
-EQ | 3 | 
-   RQ<7>/RQ<7>_RSTF = !RESET
-	# CQ<1> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>;
+EQ | 4 | 
+   RQ<6>/RQ<6>_RSTF = !RESET
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>;
 
-MACROCELL | 3 | 17 | NQ<0>/NQ<0>_RSTF__$INT
+MACROCELL | 3 | 15 | NQ<2>/NQ<2>_RSTF__$INT
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 3 | 7 | 12 | 7 | 9 | 7 | 13
-INPUTS | 7 | RESET  | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | CQ<3>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 10
+OUTPUTMC | 3 | 7 | 1 | 5 | 17 | 7 | 17
+INPUTS | 7 | RESET  | CQ<3>  | CQ<4>  | CQ<0>  | CQ<5>  | CQ<2>  | CQ<1>
+INPUTMC | 6 | 0 | 15 | 0 | 10 | 0 | 2 | 5 | 0 | 0 | 11 | 0 | 16
 INPUTP | 1 | 160
-EQ | 5 | 
-   NQ<0>/NQ<0>_RSTF__$INT = RESET & !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5>
-	# RESET & !CQ<1> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# RESET & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# RESET & CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & 
+EQ | 4 | 
+   NQ<2>/NQ<2>_RSTF__$INT = RESET & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5>
+	# RESET & CQ<2> & !CQ<3> & CQ<1> & !CQ<4> & !CQ<5>
+	# RESET & !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & 
 	!CQ<5>;
 
 MACROCELL | 3 | 12 | TRANSFER/TRANSFER_RSTF
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 2 | 11
-INPUTS | 7 | RESET  | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17
+OUTPUTMC | 1 | 2 | 12
+INPUTS | 7 | RESET  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>
+INPUTMC | 6 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
 INPUTP | 1 | 160
 EQ | 3 | 
    TRANSFER/TRANSFER_RSTF = !RESET
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5>;
-
-MACROCELL | 7 | 1 | $OpTx$DEC_UDQ0_OBUF$0
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 5 | 5
-INPUTS | 11 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | CQ<5>  | A40<0>  | EXP30_.EXP  | EXP31_.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 7 | 0 | 7 | 2
-INPUTP | 4 | 92 | 114 | 116 | 95
-IMPORTS | 2 | 7 | 0 | 7 | 2
-EQ | 18 | 
-   $OpTx$DEC_UDQ0_OBUF$0 = !CQ<3> & !CQ<5> & !A40<1> & SIZ40<1> & !SIZ40<0>
-	# !CQ<3> & !CQ<5> & !A40<1> & !SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<1> & 
-	SIZ40<1> & !SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & !A40<1> & 
-	!SIZ40<1> & SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & A40<0> & 
-	!SIZ40<1> & SIZ40<0>
-;Imported pterms FB8_1
-	# CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<0> & !SIZ40<1> & SIZ40<0>
-;Imported pterms FB8_3
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>;
+	# CQ<2> & !CQ<3> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5>
+	# !CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>;
 
 MACROCELL | 0 | 0 | EXP10_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 1
-INPUTS | 16 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | CQ<5>  | NQ<1>  | NQ<2>  | CQ<0>  | NQ<0>  | $OpTx$$OpTx$FX_DC$38_INV$242  | RQ<3>  | RQ<6>  | RQ<7>  | RW_40  | TRANSFER  | SCLK
-INPUTMC | 14 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 13 | 0 | 2 | 7 | 9 | 0 | 8 | 2 | 15 | 2 | 12 | 4 | 17 | 2 | 11
-INPUTP | 2 | 19 | 4
+INPUTS | 10 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | NQ<1>  | NQ<2>  | SIZ40<1>  | SIZ40<0>  | CQ<5>  | INIT
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 5 | 17 | 7 | 17 | 5 | 0
+INPUTP | 3 | 114 | 116 | 21
 EXPORTS | 1 | 0 | 1
-EQ | 8 | 
-       EXP10_.EXP  =  !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<1>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<2>
-	# !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & !NQ<0> & 
-	!NQ<2>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & NQ<1> & 
-	NQ<2> & !$OpTx$$OpTx$FX_DC$38_INV$242
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+EQ | 5 | 
+       EXP10_.EXP  =  CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<1>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<2>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<0>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<5> & !INIT
 
 MACROCELL | 0 | 1 | EXP11_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 2
-INPUTS | 7 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<4>  | CQ<5>  | CQ<0>  | EXP10_.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 13 | 1 | 17 | 0 | 2 | 0 | 0
+INPUTS | 7 | CQ<2>  | CQ<3>  | CQ<0>  | RQ<6>  | RQ<7>  | CQ<1>  | EXP10_.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 2 | 4 | 17 | 4 | 16 | 0 | 16 | 0 | 0
 EXPORTS | 1 | 0 | 2
 IMPORTS | 1 | 0 | 0
-EQ | 14 | 
-       EXP11_.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4> & CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
+EQ | 11 | 
+       EXP11_.EXP  =  CQ<2> & CQ<3> & CQ<0>
+	# CQ<2> & CQ<0> & RQ<6>
+	# CQ<2> & CQ<0> & RQ<7>
+	# !CQ<2> & !CQ<3> & CQ<0>
+	# !CQ<2> & CQ<1> & CQ<0>
 ;Imported pterms FB1_1
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<1>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5> & !NQ<2>
-	# !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & !NQ<0> & 
-	!NQ<2>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & NQ<1> & 
-	NQ<2> & !$OpTx$$OpTx$FX_DC$38_INV$242
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<1>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !NQ<2>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !SIZ40<0>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<5> & !INIT
 
 MACROCELL | 0 | 3 | EXP12_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 2
-INPUTS | 10 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | SIZ40<1>  | SIZ40<0>  | CQ<3>  | INIT  | EXP13_.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 4
-INPUTP | 3 | 114 | 116 | 21
+INPUTS | 6 | CQ<2>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>
+INPUTMC | 6 | 0 | 11 | 5 | 0 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2
 EXPORTS | 1 | 0 | 2
-IMPORTS | 1 | 0 | 4
-EQ | 16 | 
-       EXP12_.EXP  =  CQ<1> & CQ<2> & !CQ<0> & CQ<4> & !CQ<5> & 
-	!SIZ40<1>
-	# CQ<1> & CQ<2> & !CQ<0> & CQ<4> & !CQ<5> & 
-	!SIZ40<0>
-	# !CQ<1> & !CQ<2> & !CQ<3> & !CQ<4> & !CQ<5> & INIT
-	# !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<1>
-	# !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!SIZ40<0>
-;Imported pterms FB1_5
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+EQ | 5 | 
+       EXP12_.EXP  =  CQ<2> & CQ<5>
+	# CQ<3> & CQ<5>
+	# CQ<1> & CQ<5>
+	# CQ<4> & CQ<0>
+	# CQ<4> & CQ<5>
 
-MACROCELL | 0 | 4 | EXP13_
+MACROCELL | 0 | 8 | EXP13_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 3
-INPUTS | 13 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | RQ<5>  | RQ<6>  | RQ<7>  | RW_40  | TRANSFER  | SCLK  | RQ<2>  | RQ<4>
-INPUTMC | 11 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 2 | 13 | 2 | 12 | 4 | 17 | 2 | 11 | 2 | 16 | 2 | 14
-INPUTP | 2 | 19 | 4
-EXPORTS | 1 | 0 | 3
-EQ | 6 | 
-       EXP13_.EXP  =  !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+OUTPUTMC | 1 | 0 | 9
+INPUTS | 6 | CQ<4>  | CQ<5>  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<0>
+INPUTMC | 6 | 0 | 10 | 5 | 0 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 2
+EXPORTS | 1 | 0 | 9
+EQ | 2 | 
+       EXP13_.EXP  =  CQ<4> & CQ<5>
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0> & !CQ<5>
 
 MACROCELL | 0 | 9 | EXP14_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 10
-INPUTS | 15 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | RQ<6>  | RQ<7>  | RW_40  | TRANSFER  | SCLK  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>
-INPUTMC | 13 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 2 | 12 | 4 | 17 | 2 | 11 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14
-INPUTP | 2 | 19 | 4
-EXPORTS | 1 | 0 | 10
-EQ | 10 | 
-       EXP14_.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<6>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<7>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RW_40 & TRANSFER & !SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	!RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	RQ<3> & RQ<5> & RQ<2> & RQ<4>
-
-MACROCELL | 0 | 11 | EXP15_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 12
-INPUTS | 9 | CQ<1>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | CQ<2>  | SIZ40<1>  | SIZ40<0>  | CQ<3>.EXP
-INPUTMC | 7 | 0 | 16 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 0 | 12 | 0 | 10
+INPUTS | 9 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | SIZ40<1>  | SIZ40<0>  | EXP13_.EXP
+INPUTMC | 7 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 0 | 8
 INPUTP | 2 | 114 | 116
-EXPORTS | 1 | 0 | 12
-IMPORTS | 1 | 0 | 10
-EQ | 10 | 
-       EXP15_.EXP  =  CQ<1> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-	# CQ<1> & !CQ<2> & CQ<3> & !CQ<0> & CQ<4> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+EXPORTS | 1 | 0 | 10
+IMPORTS | 1 | 0 | 8
+EQ | 12 | 
+       EXP14_.EXP  =  CQ<2> & !CQ<3> & !CQ<1> & CQ<4> & CQ<0>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<5> & 
 	!SIZ40<1>
-	# !CQ<1> & !CQ<2> & CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !CQ<5> & 
 	!SIZ40<0>
-;Imported pterms FB1_11
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !RQ<3> & !RQ<5> & 
-	!RQ<2> & !RQ<4> & !RQ<6> & NQ<1> & !RQ<7> & NQ<2>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<0>
+;Imported pterms FB1_9
+	# CQ<4> & CQ<5>
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0> & !CQ<5>
 
-MACROCELL | 0 | 14 | EXP16_
+MACROCELL | 0 | 12 | EXP15_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 13
-INPUTS | 15 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<5>  | SIZ40<1>  | CQ<0>  | RQ<3>  | RQ<6>  | RQ<7>  | RW_40  | TRANSFER  | SCLK  | RQ<5>  | RQ<2>  | RQ<4>
-INPUTMC | 12 | 0 | 16 | 0 | 12 | 0 | 10 | 1 | 17 | 0 | 2 | 2 | 15 | 2 | 12 | 4 | 17 | 2 | 11 | 2 | 13 | 2 | 16 | 2 | 14
-INPUTP | 3 | 114 | 19 | 4
-EXPORTS | 1 | 0 | 13
+OUTPUTMC | 1 | 0 | 11
+INPUTS | 17 | CQ<3>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | SCLK  | RW_40  | TRANSFER  | CQ<2>  | NQ<1>  | NQ<2>  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | RQ<6>  | RQ<7>
+INPUTMC | 15 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 2 | 12 | 0 | 11 | 5 | 17 | 7 | 17 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 4 | 16
+INPUTP | 2 | 4 | 19
+EXPORTS | 1 | 0 | 11
 EQ | 9 | 
-       EXP16_.EXP  =  !CQ<1> & !CQ<2> & CQ<3> & !CQ<5> & !SIZ40<1>
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & !RW_40 & TRANSFER & SCLK
+       EXP15_.EXP  =  !CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & CQ<5>
+	# CQ<1> & CQ<0> & !CQ<5> & !SCLK & RW_40 & 
+	TRANSFER
+	# !CQ<2> & CQ<3> & !CQ<4> & CQ<0> & !CQ<5> & NQ<1> & 
+	NQ<2>
+	# CQ<1> & CQ<0> & !CQ<5> & RQ<3> & RQ<5> & RQ<2> & 
+	RQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & !CQ<0> & !RQ<3> & 
+	!RQ<5> & !RQ<2> & !RQ<4> & !RQ<6> & !RQ<7> & NQ<1> & NQ<2>
 
-MACROCELL | 0 | 15 | EXP17_
+MACROCELL | 0 | 13 | EXP16_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 16
-INPUTS | 6 | CQ<1>  | CQ<3>  | CQ<0>  | CQ<5>  | CQ<2>  | CQ<4>
-INPUTMC | 6 | 0 | 16 | 0 | 10 | 0 | 2 | 1 | 17 | 0 | 12 | 0 | 13
-EXPORTS | 1 | 0 | 16
-EQ | 5 | 
-       EXP17_.EXP  =  CQ<1> & CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & !CQ<4> & !CQ<5>
-	# CQ<2> & !CQ<3> & CQ<0> & CQ<4> & !CQ<5>
-	# !CQ<2> & CQ<3> & CQ<0> & CQ<4> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5>
+OUTPUTMC | 1 | 0 | 14
+INPUTS | 7 | CQ<2>  | CQ<3>  | CQ<1>  | CQ<0>  | CQ<4>  | SIZ40<1>  | SIZ40<0>
+INPUTMC | 5 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 2 | 0 | 10
+INPUTP | 2 | 114 | 116
+EXPORTS | 1 | 0 | 14
+EQ | 7 | 
+       EXP16_.EXP  =  CQ<2> & CQ<3> & CQ<1> & CQ<0>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<1>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<0>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<0>
+
+MACROCELL | 0 | 14 | EXP17_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 0 | 15
+INPUTS | 16 | CQ<3>  | CQ<5>  | CQ<2>  | CQ<1>  | CQ<4>  | CQ<0>  | SCLK  | RW_40  | TRANSFER  | NQ<1>  | NQ<2>  | RQ<3>  | RQ<5>  | RQ<2>  | RQ<4>  | EXP16_.EXP
+INPUTMC | 14 | 0 | 15 | 5 | 0 | 0 | 11 | 0 | 16 | 0 | 10 | 0 | 2 | 2 | 12 | 5 | 17 | 7 | 17 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 0 | 13
+INPUTP | 2 | 4 | 19
+EXPORTS | 1 | 0 | 15
+IMPORTS | 1 | 0 | 13
+EQ | 16 | 
+       EXP17_.EXP  =  CQ<3> & CQ<5>
+	# CQ<2> & CQ<1> & CQ<4> & CQ<0> & !CQ<5>
+	# CQ<2> & CQ<1> & CQ<0> & !CQ<5> & !SCLK & RW_40 & 
+	TRANSFER
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & NQ<1> & 
+	NQ<2>
+	# CQ<2> & CQ<1> & CQ<0> & !CQ<5> & RQ<3> & RQ<5> & 
+	RQ<2> & RQ<4>
+;Imported pterms FB1_14
+	# CQ<2> & CQ<3> & CQ<1> & CQ<0>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<1>
+	# CQ<2> & CQ<3> & CQ<1> & !CQ<4> & !SIZ40<0>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<1>
+	# !CQ<2> & CQ<3> & CQ<1> & CQ<4> & !CQ<0> & 
+	!SIZ40<0>
 
 MACROCELL | 0 | 17 | EXP18_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 16
-INPUTS | 15 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<5>  | RQ<3>  | RQ<6>  | RQ<7>  | RW_40  | TRANSFER  | SCLK  | RQ<5>  | RQ<2>  | RQ<4>
-INPUTMC | 13 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 2 | 15 | 2 | 12 | 4 | 17 | 2 | 11 | 2 | 13 | 2 | 16 | 2 | 14
-INPUTP | 2 | 19 | 4
+INPUTS | 10 | CQ<2>  | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>  | CQ<3>  | SIZ40<1>  | SIZ40<0>  | NQ<1>  | NQ<2>
+INPUTMC | 8 | 0 | 11 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 0 | 15 | 5 | 17 | 7 | 17
+INPUTP | 2 | 114 | 116
 EXPORTS | 1 | 0 | 16
-EQ | 9 | 
-       EXP18_.EXP  =  !CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<3> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<5> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<2> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & !RQ<4> & 
-	!RQ<6> & !RQ<7> & RW_40 & TRANSFER & !SCLK
+EQ | 5 | 
+       EXP18_.EXP  =  CQ<2> & CQ<1> & CQ<4> & !CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4> & CQ<0>
+	# !CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>
+	# CQ<1> & !CQ<0> & !CQ<5> & SIZ40<1> & SIZ40<0>
+	# !CQ<1> & CQ<0> & !CQ<5> & NQ<1> & NQ<2>
 
 MACROCELL | 2 | 0 | EXP19_
 ATTRIBUTES | 2048 | 0
@@ -1230,285 +1135,173 @@ EQ | 3 |
 	!A40<25> & A40<22> & A40<21> & A40<20> & A40<19> & ICACHE & 
 	!A40<24>
 
-MACROCELL | 5 | 0 | EXP21_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 5 | 1
-INPUTS | 10 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | A40<0>  | SIZ40<1>  | SIZ40<0>  | EXP29_.EXP
-INPUTMC | 7 | 0 | 12 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 16 | 0 | 2 | 5 | 17
-INPUTP | 3 | 95 | 114 | 116
-EXPORTS | 1 | 5 | 1
-IMPORTS | 1 | 5 | 17
-EQ | 11 | 
-       EXP21_.EXP  =  CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<0> & !SIZ40<1> & SIZ40<0>
-;Imported pterms FB6_18
-	# !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-
-MACROCELL | 5 | 2 | EXP22_
+MACROCELL | 5 | 2 | EXP21_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 5 | 3
-INPUTS | 6 | CQ<1>  | CQ<3>  | CQ<0>  | CQ<5>  | CQ<2>  | CQ<4>
-INPUTMC | 6 | 0 | 16 | 0 | 10 | 0 | 2 | 1 | 17 | 0 | 12 | 0 | 13
+INPUTS | 6 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<0>  | CQ<1>
+INPUTMC | 6 | 0 | 11 | 0 | 10 | 5 | 0 | 0 | 15 | 0 | 2 | 0 | 16
 EXPORTS | 1 | 5 | 3
-EQ | 3 | 
-       EXP22_.EXP  =  !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
+EQ | 4 | 
+       EXP21_.EXP  =  !CQ<2> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>
 
-MACROCELL | 5 | 3 | EXP23_
+MACROCELL | 5 | 3 | EXP22_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 5 | 4
-INPUTS | 10 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | A40<0>  | SIZ40<1>  | SIZ40<0>  | EXP22_.EXP
-INPUTMC | 7 | 0 | 12 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 16 | 0 | 2 | 5 | 2
-INPUTP | 3 | 95 | 114 | 116
+INPUTS | 10 | CQ<3>  | CQ<4>  | CQ<5>  | CQ<2>  | CQ<1>  | A40<1>  | SIZ40<1>  | SIZ40<0>  | A40<0>  | EXP21_.EXP
+INPUTMC | 6 | 0 | 15 | 0 | 10 | 5 | 0 | 0 | 11 | 0 | 16 | 5 | 2
+INPUTP | 4 | 92 | 114 | 116 | 95
 EXPORTS | 1 | 5 | 4
 IMPORTS | 1 | 5 | 2
-EQ | 9 | 
-       EXP23_.EXP  =  CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & !A40<0> & !SIZ40<1> & SIZ40<0>
+EQ | 13 | 
+       EXP22_.EXP  =  !CQ<3> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<1> & !CQ<5>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & SIZ40<1> & 
+	!SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<1> & !SIZ40<1> & 
+	SIZ40<0>
+	# CQ<3> & CQ<4> & !CQ<5> & !A40<0> & !SIZ40<1> & 
+	SIZ40<0>
 ;Imported pterms FB6_3
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
+	# !CQ<2> & !CQ<4> & !CQ<5>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>
 
-MACROCELL | 5 | 6 | EXP24_
+MACROCELL | 5 | 6 | EXP23_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 5 | 7
-INPUTS | 11 | CQ<2>  | CQ<3>  | CQ<0>  | CQ<4>  | CQ<1>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>
-INPUTMC | 5 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 0 | 16
-INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 30
+INPUTS | 7 | CQ<4>  | CQ<5>  | CQ<2>  | CQ<3>  | CQ<1>  | CQ<0>  | UDQ0_OBUF.EXP
+INPUTMC | 7 | 0 | 10 | 5 | 0 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 2 | 5 | 5
 EXPORTS | 1 | 5 | 7
-EQ | 7 | 
-       EXP24_.EXP  =  CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
+IMPORTS | 1 | 5 | 5
+EQ | 8 | 
+       EXP23_.EXP  =  CQ<4> & CQ<5>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<0>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0>
+;Imported pterms FB6_6
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & CQ<1>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !A40<25> & CQ<4>
+	!A40<26> & !A40<25> & CQ<5>
 
-MACROCELL | 5 | 9 | EXP25_
+MACROCELL | 5 | 9 | EXP24_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 5 | 8
-INPUTS | 12 | CQ<1>  | CQ<3>  | CQ<4>  | CQ<2>  | CQ<0>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | A40<25>  | WE_OBUF.EXP
-INPUTMC | 6 | 0 | 16 | 0 | 10 | 0 | 13 | 0 | 12 | 0 | 2 | 5 | 10
-INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 30
+INPUTS | 7 | CQ<1>  | CQ<5>  | CQ<4>  | CQ<2>  | CQ<3>  | CQ<0>  | WE_OBUF.EXP
+INPUTMC | 7 | 0 | 16 | 5 | 0 | 0 | 10 | 0 | 11 | 0 | 15 | 0 | 2 | 5 | 10
 EXPORTS | 1 | 5 | 8
 IMPORTS | 1 | 5 | 10
 EQ | 11 | 
-       EXP25_.EXP  =  CQ<1> & !CQ<3> & !CQ<4>
-	# CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# !CQ<2> & !CQ<3> & CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & A40<25> & CQ<1>
+       EXP24_.EXP  =  CQ<1> & CQ<5>
+	# CQ<4> & CQ<5>
+	# CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<2> & !CQ<3> & !CQ<1> & CQ<0>
+	# !CQ<2> & !CQ<3> & CQ<1> & !CQ<4>
 ;Imported pterms FB6_11
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & !CQ<0>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
 	!A40<26> & A40<25> & CQ<4>
 	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & A40<25> & !CQ<2> & CQ<3>
+	!A40<26> & A40<25> & CQ<5>
 
-MACROCELL | 5 | 12 | EXP26_
+MACROCELL | 5 | 16 | EXP25_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 5 | 11
-INPUTS | 7 | CQ<2>  | CQ<5>  | CQ<1>  | CQ<0>  | CQ<3>  | CQ<4>  | CLK_RAM_OBUF.EXP
-INPUTMC | 7 | 0 | 12 | 1 | 17 | 0 | 16 | 0 | 2 | 0 | 10 | 0 | 13 | 5 | 13
-EXPORTS | 1 | 5 | 11
-IMPORTS | 1 | 5 | 13
-EQ | 7 | 
-       EXP26_.EXP  =  CQ<2> & CQ<5>
-	# CQ<1> & !CQ<0> & CQ<5>
-	# CQ<1> & CQ<2> & !CQ<3> & CQ<0>
-	# CQ<1> & !CQ<2> & !CQ<0> & !CQ<4>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-;Imported pterms FB6_14
-	# !CQ<1> & CQ<2> & CQ<3> & !CQ<0> & !CQ<4>
+OUTPUTMC | 1 | 5 | 17
+INPUTS | 9 | CQ<2>  | CQ<3>  | CQ<4>  | CQ<0>  | CQ<5>  | NQ<0>  | NQ<1>  | CQ<1>  | RQ<0>.EXP
+INPUTMC | 9 | 0 | 11 | 0 | 15 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 0 | 16 | 5 | 15
+EXPORTS | 1 | 5 | 17
+IMPORTS | 1 | 5 | 15
+EQ | 15 | 
+       EXP25_.EXP  =  CQ<2> & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# CQ<2> & !CQ<3> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0> & 
+	NQ<1>
+	# CQ<2> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & NQ<0> & 
+	!NQ<1>
+	# !CQ<3> & CQ<1> & !CQ<4> & !CQ<0> & !CQ<5> & !NQ<0> & 
+	NQ<1>
+;Imported pterms FB6_16
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	NQ<0> & !NQ<1>
+	# !CQ<2> & CQ<3> & !CQ<1> & !CQ<4> & CQ<0> & !CQ<5> & 
+	!NQ<0> & NQ<1>
 
-MACROCELL | 5 | 15 | EXP27_
+MACROCELL | 7 | 0 | EXP26_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 5 | 14
-INPUTS | 7 | CQ<2>  | CQ<3>  | CQ<5>  | CQ<4>  | CQ<1>  | CQ<0>  | EXP28_.EXP
-INPUTMC | 7 | 0 | 12 | 0 | 10 | 1 | 17 | 0 | 13 | 0 | 16 | 0 | 2 | 5 | 16
-EXPORTS | 1 | 5 | 14
-IMPORTS | 1 | 5 | 16
-EQ | 8 | 
-       EXP27_.EXP  =  !CQ<2> & CQ<3> & !CQ<5>
-	# !CQ<3> & CQ<4> & !CQ<5>
-	# CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5>
-;Imported pterms FB6_17
-	# CQ<1> & !CQ<2> & CQ<0> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>
-
-MACROCELL | 5 | 16 | EXP28_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 5 | 15
-INPUTS | 6 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<5>  | CQ<3>  | CQ<4>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 2 | 1 | 17 | 0 | 10 | 0 | 13
-EXPORTS | 1 | 5 | 15
-EQ | 2 | 
-       EXP28_.EXP  =  CQ<1> & !CQ<2> & CQ<0> & !CQ<5>
-	# !CQ<1> & !CQ<2> & !CQ<3> & CQ<4>
-
-MACROCELL | 5 | 17 | EXP29_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 5 | 0
-INPUTS | 6 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<5>  | CQ<0>  | CQ<4>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 1 | 17 | 0 | 2 | 0 | 13
-EXPORTS | 1 | 5 | 0
+OUTPUTMC | 1 | 7 | 17
+INPUTS | 5 | CQ<4>  | CQ<5>  | NQ<0>  | NQ<2>  | NQ<1>
+INPUTMC | 5 | 0 | 10 | 5 | 0 | 7 | 1 | 7 | 17 | 5 | 17
+EXPORTS | 1 | 7 | 17
 EQ | 5 | 
-       EXP29_.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-
-MACROCELL | 7 | 0 | EXP30_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 1
-INPUTS | 9 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | A40<0>  | SIZ40<1>  | SIZ40<0>
-INPUTMC | 6 | 0 | 12 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 16 | 0 | 2
-INPUTP | 3 | 95 | 114 | 116
-EXPORTS | 1 | 7 | 1
-EQ | 5 | 
-       EXP30_.EXP  =  CQ<2> & !CQ<4> & !CQ<5>
-	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<0> & !SIZ40<1> & SIZ40<0>
-
-MACROCELL | 7 | 2 | EXP31_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 1
-INPUTS | 5 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<5>  | CQ<0>
-INPUTMC | 5 | 0 | 16 | 0 | 12 | 0 | 10 | 1 | 17 | 0 | 2
-EXPORTS | 1 | 7 | 1
-EQ | 3 | 
-       EXP31_.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-
-MACROCELL | 7 | 6 | EXP32_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 7
-INPUTS | 12 | CQ<3>  | CQ<5>  | CQ<1>  | CQ<0>  | CQ<2>  | CQ<4>  | A40<27>  | A40<30>  | A40<29>  | A40<28>  | A40<26>  | RW_40
-INPUTMC | 6 | 0 | 10 | 1 | 17 | 0 | 16 | 0 | 2 | 0 | 12 | 0 | 13
-INPUTP | 6 | 28 | 23 | 24 | 26 | 29 | 19
-EXPORTS | 1 | 7 | 7
-EQ | 7 | 
-       EXP32_.EXP  =  CQ<3> & CQ<5>
-	# CQ<1> & !CQ<0> & CQ<5>
-	# !CQ<1> & CQ<2> & CQ<3> & CQ<0> & CQ<4>
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & !CQ<2> & CQ<3> & RW_40
-	# A40<27> & !A40<30> & !A40<29> & !A40<28> & 
-	!A40<26> & CQ<1> & CQ<3> & CQ<4> & RW_40
-
-MACROCELL | 7 | 11 | EXP33_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 12
-INPUTS | 8 | CQ<1>  | CQ<2>  | CQ<0>  | CQ<4>  | CQ<5>  | NQ<1>  | NQ<0>  | CQ<3>
-INPUTMC | 8 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 0 | 10
-EXPORTS | 1 | 7 | 12
-EQ | 10 | 
-       EXP33_.EXP  =  !CQ<1> & CQ<2> & CQ<0> & !CQ<4> & !CQ<5> & !NQ<1> & 
-	NQ<0>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	NQ<1> & !NQ<0>
-	# CQ<1> & CQ<2> & !CQ<3> & !CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<1> & NQ<0>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	NQ<1> & !NQ<0>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & !CQ<4> & !CQ<5> & 
-	!NQ<1> & NQ<0>
-
-MACROCELL | 7 | 14 | EXP34_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 13
-INPUTS | 7 | NQ<1>  | NQ<2>  | NQ<0>  | CQ<1>  | CQ<2>  | CQ<0>  | CQ<3>
-INPUTMC | 7 | 7 | 12 | 7 | 13 | 7 | 9 | 0 | 16 | 0 | 12 | 0 | 2 | 0 | 10
-EXPORTS | 1 | 7 | 13
-EQ | 5 | 
-       EXP34_.EXP  =  !NQ<1> & !NQ<2>
+       EXP26_.EXP  =  CQ<4>
+	# CQ<5>
 	# !NQ<0> & !NQ<2>
-	# CQ<1> & CQ<2> & CQ<0>
-	# !CQ<1> & !CQ<2> & !CQ<3>
-	# NQ<1> & NQ<0> & NQ<2>
+	# !NQ<1> & !NQ<2>
+	# NQ<0> & NQ<1> & NQ<2>
 
-MACROCELL | 7 | 15 | EXP35_
+MACROCELL | 7 | 9 | EXP27_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 7 | 10
+INPUTS | 4 | CQ<1>  | CQ<4>  | CQ<0>  | CQ<5>
+INPUTMC | 4 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0
+EXPORTS | 1 | 7 | 10
+EQ | 1 | 
+       EXP27_.EXP  =  !CQ<1> & !CQ<4> & !CQ<0> & !CQ<5>
+
+MACROCELL | 7 | 15 | EXP28_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 7 | 16
-INPUTS | 9 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<1>  | CQ<0>  | A40<1>  | SIZ40<1>  | SIZ40<0>
-INPUTMC | 6 | 0 | 12 | 0 | 13 | 1 | 17 | 0 | 10 | 0 | 16 | 0 | 2
-INPUTP | 3 | 92 | 114 | 116
+INPUTS | 6 | CQ<2>  | CQ<4>  | CQ<5>  | CQ<3>  | CQ<0>  | CQ<1>
+INPUTMC | 6 | 0 | 11 | 0 | 10 | 5 | 0 | 0 | 15 | 0 | 2 | 0 | 16
 EXPORTS | 1 | 7 | 16
 EQ | 5 | 
-       EXP35_.EXP  =  CQ<2> & !CQ<4> & !CQ<5>
+       EXP28_.EXP  =  !CQ<2> & !CQ<4> & !CQ<5>
 	# !CQ<3> & !CQ<4> & !CQ<5>
-	# !CQ<1> & CQ<2> & !CQ<0> & !CQ<5>
-	# CQ<1> & !CQ<2> & !CQ<3> & CQ<0> & CQ<4>
-	# !CQ<3> & !CQ<5> & A40<1> & !SIZ40<1> & SIZ40<0>
+	# CQ<2> & !CQ<3> & CQ<0> & !CQ<5>
+	# !CQ<2> & !CQ<3> & !CQ<1> & !CQ<4>
+	# CQ<3> & CQ<4> & !CQ<0> & !CQ<5>
 
-MACROCELL | 7 | 17 | EXP36_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 7 | 16
-INPUTS | 6 | CQ<1>  | CQ<2>  | CQ<3>  | CQ<5>  | CQ<0>  | CQ<4>
-INPUTMC | 6 | 0 | 16 | 0 | 12 | 0 | 10 | 1 | 17 | 0 | 2 | 0 | 13
-EXPORTS | 1 | 7 | 16
-EQ | 5 | 
-       EXP36_.EXP  =  !CQ<1> & CQ<2> & !CQ<3> & !CQ<5>
-	# !CQ<1> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<2> & !CQ<3> & !CQ<0> & !CQ<5>
-	# CQ<1> & CQ<2> & CQ<3> & CQ<0> & !CQ<5>
-	# !CQ<2> & !CQ<3> & CQ<0> & CQ<4> & CQ<5>
-
-PIN | A40<27> | 64 | 0 | N/A | 28 | 11 | 1 | 8 | 7 | 10 | 5 | 6 | 2 | 1 | 7 | 8 | 7 | 6 | 2 | 11 | 5 | 8 | 5 | 9 | 5 | 10 | 7 | 7
-PIN | A40<30> | 64 | 0 | N/A | 23 | 13 | 1 | 8 | 7 | 10 | 5 | 6 | 2 | 2 | 7 | 8 | 7 | 6 | 2 | 11 | 2 | 1 | 2 | 0 | 5 | 8 | 5 | 9 | 5 | 10 | 7 | 7
-PIN | A40<29> | 64 | 0 | N/A | 24 | 13 | 1 | 8 | 7 | 10 | 5 | 6 | 2 | 2 | 7 | 8 | 7 | 6 | 2 | 11 | 2 | 1 | 2 | 0 | 5 | 8 | 5 | 9 | 5 | 10 | 7 | 7
-PIN | A40<28> | 64 | 0 | N/A | 26 | 13 | 1 | 8 | 7 | 10 | 5 | 6 | 2 | 2 | 7 | 8 | 7 | 6 | 2 | 11 | 2 | 1 | 2 | 0 | 5 | 8 | 5 | 9 | 5 | 10 | 7 | 7
-PIN | A40<26> | 64 | 0 | N/A | 29 | 13 | 1 | 8 | 7 | 10 | 5 | 6 | 2 | 2 | 7 | 8 | 7 | 6 | 2 | 11 | 2 | 1 | 2 | 0 | 5 | 8 | 5 | 9 | 5 | 10 | 7 | 7
-PIN | A40<25> | 64 | 0 | N/A | 30 | 8 | 1 | 8 | 5 | 6 | 2 | 2 | 2 | 1 | 2 | 0 | 5 | 8 | 5 | 9 | 5 | 10
-PIN | CLK_RAMC | 4160 | 0 | N/A | 33 | 36 | 5 | 13 | 5 | 14 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 7 | 12 | 7 | 9 | 7 | 13 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 3 | 1 | 3 | 5 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 5 | 5 | 1 | 5 | 10
-PIN | RESET | 65600 | 0 | N/A | 160 | 35 | 3 | 15 | 3 | 17 | 3 | 12 | 7 | 10 | 0 | 16 | 0 | 12 | 0 | 10 | 0 | 2 | 0 | 13 | 1 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 3 | 1 | 3 | 5 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10
+PIN | A40<27> | 64 | 0 | N/A | 28 | 10 | 1 | 8 | 7 | 10 | 5 | 7 | 5 | 8 | 7 | 8 | 7 | 7 | 2 | 12 | 2 | 1 | 5 | 5 | 5 | 10
+PIN | A40<30> | 64 | 0 | N/A | 23 | 12 | 1 | 8 | 7 | 10 | 5 | 7 | 5 | 8 | 7 | 8 | 7 | 7 | 2 | 12 | 2 | 1 | 2 | 0 | 2 | 2 | 5 | 5 | 5 | 10
+PIN | A40<29> | 64 | 0 | N/A | 24 | 12 | 1 | 8 | 7 | 10 | 5 | 7 | 5 | 8 | 7 | 8 | 7 | 7 | 2 | 12 | 2 | 1 | 2 | 0 | 2 | 2 | 5 | 5 | 5 | 10
+PIN | A40<28> | 64 | 0 | N/A | 26 | 12 | 1 | 8 | 7 | 10 | 5 | 7 | 5 | 8 | 7 | 8 | 7 | 7 | 2 | 12 | 2 | 1 | 2 | 0 | 2 | 2 | 5 | 5 | 5 | 10
+PIN | A40<26> | 64 | 0 | N/A | 29 | 12 | 1 | 8 | 7 | 10 | 5 | 7 | 5 | 8 | 7 | 8 | 7 | 7 | 2 | 12 | 2 | 1 | 2 | 0 | 2 | 2 | 5 | 5 | 5 | 10
+PIN | A40<25> | 64 | 0 | N/A | 30 | 8 | 1 | 8 | 5 | 7 | 5 | 8 | 2 | 1 | 2 | 0 | 2 | 2 | 5 | 5 | 5 | 10
+PIN | CLK_RAMC | 4160 | 0 | N/A | 33 | 36 | 5 | 13 | 7 | 10 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 7 | 1 | 5 | 17 | 7 | 17 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 3 | 1 | 3 | 5 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10
+PIN | RESET | 65600 | 0 | N/A | 160 | 35 | 3 | 17 | 3 | 15 | 3 | 12 | 7 | 10 | 0 | 11 | 0 | 15 | 0 | 16 | 0 | 10 | 0 | 2 | 5 | 0 | 3 | 11 | 3 | 14 | 3 | 8 | 3 | 4 | 1 | 10 | 1 | 13 | 1 | 14 | 1 | 11 | 3 | 16 | 3 | 13 | 3 | 10 | 3 | 7 | 3 | 1 | 3 | 5 | 5 | 11 | 5 | 7 | 5 | 8 | 5 | 4 | 7 | 16 | 7 | 8 | 7 | 7 | 5 | 14 | 5 | 5 | 5 | 1 | 5 | 10
 PIN | A40<22> | 64 | 0 | N/A | 44 | 4 | 3 | 4 | 2 | 1 | 2 | 0 | 2 | 2
 PIN | A40<21> | 64 | 0 | N/A | 47 | 4 | 3 | 8 | 2 | 1 | 2 | 0 | 2 | 2
 PIN | A40<20> | 64 | 0 | N/A | 49 | 2 | 3 | 7 | 2 | 2
 PIN | A40<19> | 64 | 0 | N/A | 54 | 2 | 3 | 10 | 2 | 2
-PIN | SIZ40<0> | 64 | 0 | N/A | 116 | 13 | 0 | 16 | 0 | 11 | 5 | 1 | 0 | 12 | 1 | 17 | 5 | 4 | 7 | 16 | 7 | 1 | 0 | 3 | 5 | 0 | 5 | 3 | 7 | 0 | 7 | 15
-PIN | SIZ40<1> | 64 | 0 | N/A | 114 | 13 | 0 | 16 | 0 | 11 | 5 | 1 | 0 | 3 | 1 | 17 | 5 | 4 | 7 | 16 | 7 | 1 | 0 | 14 | 5 | 0 | 5 | 3 | 7 | 0 | 7 | 15
-PIN | RW_40 | 64 | 0 | N/A | 19 | 8 | 0 | 14 | 0 | 9 | 0 | 0 | 0 | 4 | 7 | 8 | 7 | 6 | 0 | 17 | 7 | 7
-PIN | SCLK | 64 | 0 | N/A | 4 | 5 | 0 | 14 | 0 | 9 | 0 | 0 | 0 | 4 | 0 | 17
-PIN | INIT | 64 | 0 | N/A | 21 | 1 | 0 | 3
-PIN | C4MHZ | 64 | 0 | N/A | 18 | 8 | 2 | 15 | 2 | 13 | 7 | 4 | 2 | 16 | 2 | 14 | 2 | 12 | 2 | 17 | 4 | 17
-PIN | A40<1> | 64 | 0 | N/A | 92 | 5 | 5 | 4 | 7 | 16 | 7 | 1 | 5 | 1 | 7 | 15
-PIN | A40<0> | 64 | 0 | N/A | 95 | 7 | 5 | 4 | 7 | 16 | 7 | 1 | 5 | 1 | 5 | 0 | 5 | 3 | 7 | 0
+PIN | RW_40 | 64 | 0 | N/A | 19 | 6 | 7 | 7 | 0 | 14 | 0 | 10 | 0 | 2 | 7 | 8 | 0 | 12
+PIN | SCLK | 64 | 0 | N/A | 4 | 4 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 12
+PIN | SIZ40<0> | 64 | 0 | N/A | 116 | 9 | 0 | 13 | 5 | 1 | 0 | 9 | 0 | 0 | 0 | 17 | 5 | 3 | 7 | 16 | 5 | 5 | 5 | 17
+PIN | SIZ40<1> | 64 | 0 | N/A | 114 | 9 | 0 | 13 | 5 | 1 | 0 | 9 | 0 | 0 | 0 | 17 | 5 | 3 | 7 | 16 | 5 | 5 | 5 | 17
+PIN | INIT | 64 | 0 | N/A | 21 | 1 | 0 | 0
+PIN | C4MHZ | 64 | 0 | N/A | 18 | 8 | 2 | 15 | 2 | 13 | 2 | 16 | 2 | 14 | 4 | 17 | 5 | 15 | 4 | 16 | 2 | 17
+PIN | A40<1> | 64 | 0 | N/A | 92 | 4 | 5 | 3 | 7 | 16 | 5 | 5 | 5 | 1
+PIN | A40<0> | 64 | 0 | N/A | 95 | 4 | 5 | 3 | 7 | 16 | 5 | 5 | 5 | 1
 PIN | ICACHE | 64 | 0 | N/A | 6 | 3 | 2 | 1 | 2 | 0 | 2 | 2
 PIN | A40<24> | 64 | 0 | N/A | 36 | 4 | 3 | 5 | 2 | 1 | 2 | 0 | 2 | 2
-PIN | TT40_1 | 64 | 0 | N/A | 2 | 1 | 2 | 11
-PIN | TS40 | 64 | 0 | N/A | 112 | 1 | 2 | 11
+PIN | TT40_1 | 64 | 0 | N/A | 2 | 1 | 2 | 12
+PIN | TS40 | 64 | 0 | N/A | 112 | 1 | 2 | 12
 PIN | A40<2> | 64 | 0 | N/A | 90 | 1 | 3 | 11
 PIN | A40<11> | 64 | 0 | N/A | 64 | 1 | 3 | 11
-PIN | A40<12> | 64 | 0 | N/A | 63 | 1 | 3 | 14
 PIN | A40<3> | 64 | 0 | N/A | 88 | 1 | 3 | 14
+PIN | A40<12> | 64 | 0 | N/A | 63 | 1 | 3 | 14
 PIN | A40<4> | 64 | 0 | N/A | 86 | 1 | 1 | 10
 PIN | A40<13> | 64 | 0 | N/A | 62 | 1 | 1 | 10
 PIN | A40<5> | 64 | 0 | N/A | 82 | 1 | 1 | 13
 PIN | A40<14> | 64 | 0 | N/A | 60 | 1 | 1 | 13
 PIN | A40<6> | 64 | 0 | N/A | 79 | 1 | 1 | 14
 PIN | A40<15> | 64 | 0 | N/A | 59 | 1 | 1 | 14
-PIN | A40<16> | 64 | 0 | N/A | 58 | 1 | 1 | 11
 PIN | A40<7> | 64 | 0 | N/A | 77 | 1 | 1 | 11
+PIN | A40<16> | 64 | 0 | N/A | 58 | 1 | 1 | 11
 PIN | A40<8> | 64 | 0 | N/A | 72 | 1 | 3 | 16
 PIN | A40<17> | 64 | 0 | N/A | 57 | 1 | 3 | 16
 PIN | A40<9> | 64 | 0 | N/A | 69 | 1 | 3 | 13
