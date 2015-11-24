@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: ramcon.prj
 
@@ -87,8 +87,6 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 233: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <ARAM_HIGH>, <ARAM_LOW>, <UDQ0_SIG>, <UDQ1_SIG>, <LDQ0_SIG>, <LDQ1_SIG>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
 
@@ -240,14 +238,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.72 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.71 secs
  
 --> 
 
-Total memory usage is 289772 kilobytes
+Total memory usage is 289792 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

@@ -230,7 +230,7 @@ begin
 								CQ = refresh_wait 
 						else '1'; 
 
-   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40)
+   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40, UDQ0_SIG, UDQ1_SIG, LDQ0_SIG, LDQ1_SIG, ARAM_LOW, ARAM_HIGH)
    begin
       
 
