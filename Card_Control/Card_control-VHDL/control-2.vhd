@@ -149,8 +149,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
-	--PLL_S	<=	"Z0"; --80MHz
+	--PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -312,7 +312,7 @@ begin
 			--QDSACK_D2 <= QDSACK_D1;
 			--QDSACK_D3 <= QDSACK_D2;
 			--QDSACK_D4 <= QDSACK_D3;
-			--QDSACK	<= QDSACK_D2; --14MHz-sync timing@80Mhz
+			--QDSACK	<= QDSACK_D4; --14MHz-sync timing@80Mhz
 		end if;
 	end process QDSACK_SYNC;
 

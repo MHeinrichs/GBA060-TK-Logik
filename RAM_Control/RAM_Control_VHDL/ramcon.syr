@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
 
@@ -42,7 +42,10 @@ Target Device                      : XC9500XL CPLDs
 
 ---- Source Options
 Top Module Name                    : ramcon
-Automatic FSM Extraction           : NO
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : Yes
+CASE Implementation Style          : Parallel
 Mux Extraction                     : Yes
 Resource Sharing                   : YES
 
@@ -103,6 +106,21 @@ WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and lef
 WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found finite state machine <FSM_0> for signal <CQ>.
+    -----------------------------------------------------------------------
+    | States             | 34                                             |
+    | Transitions        | 48                                             |
+    | Inputs             | 10                                             |
+    | Outputs            | 40                                             |
+    | Clock              | CLK_RAMC                  (rising_edge)        |
+    | Reset              | RESET                     (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | powerup                                        |
+    | Power Up State     | powerup                                        |
+    | Recovery State     | powerup                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
     Found 1-bit register for signal <UDQ0>.
     Found 1-bit register for signal <UDQ1>.
     Found 1-bit register for signal <LDQ0>.
@@ -118,17 +136,17 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 6-bit register for signal <CQ>.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0000> created at line 426.
-    Found 3-bit comparator greatequal for signal <CQ_D$cmp_ge0001> created at line 366.
-    Found 8-bit comparator greatequal for signal <CQ_D$cmp_ge0002> created at line 325.
-    Found 8-bit comparator lessequal for signal <CQ_D$cmp_le0000> created at line 327.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 286.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 322.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 322.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 324.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 191.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 199.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <TA40_FB>.
     Found 1-bit register for signal <TRANSFER>.
     Summary:
+	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
 	inferred  27 D-type flip-flop(s).
 	inferred   5 Comparator(s).
@@ -143,9 +161,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 28
+# Registers                                            : 27
  1-bit register                                        : 27
- 6-bit register                                        : 1
 # Comparators                                          : 5
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
@@ -159,11 +176,52 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with user encoding.
+-----------------------------------
+ State                 | Encoding
+-----------------------------------
+ powerup               | 000000
+ init_precharge        | 000001
+ init_precharge_commit | 000010
+ init_refresh          | 000011
+ init_wait             | 000100
+ init_opcode           | 000101
+ end_cycle             | 000110
+ start_state           | 000111
+ refresh_start         | 001000
+ refresh_wait          | 001001
+ read_start_ras        | 001010
+ read_commit_ras       | 001011
+ read_start_cas        | 001100
+ read_commit_cas       | 001101
+ read_data_wait        | 001110
+ read_line_s0          | 001111
+ read_line_s1          | 010000
+ read_line_s2          | 010001
+ read_line_s3          | 010010
+ read_line_s4          | 010011
+ read_line_s5          | 010100
+ read_precharge        | 010101
+ write_start_ras       | 010110
+ write_commit_ras      | 010111
+ write_tra_ack         | 011000
+ write_start_cas       | 011001
+ write_commit_cas      | 011010
+ write_line_s0         | 011011
+ write_line_s1         | 011100
+ write_line_s2         | 011101
+ write_line_s3         | 011110
+ write_line_s4         | 011111
+ write_commit          | 100000
+ write_precharge       | 100001
+-----------------------------------
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# FSMs                                                 : 1
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
@@ -177,12 +235,12 @@ Macro Statistics
 =========================================================================
 
 Optimizing unit <ramcon> ...
-  implementation constraint: INIT=r	 : CQ_3
-  implementation constraint: INIT=r	 : CQ_4
-  implementation constraint: INIT=r	 : CQ_5
-  implementation constraint: INIT=r	 : CQ_1
-  implementation constraint: INIT=r	 : CQ_0
-  implementation constraint: INIT=r	 : CQ_2
+  implementation constraint: INIT=r	 : CQ_FSM_FFd3
+  implementation constraint: INIT=r	 : CQ_FSM_FFd4
+  implementation constraint: INIT=r	 : CQ_FSM_FFd5
+  implementation constraint: INIT=r	 : CQ_FSM_FFd1
+  implementation constraint: INIT=r	 : CQ_FSM_FFd2
+  implementation constraint: INIT=r	 : CQ_FSM_FFd6
 
 =========================================================================
 *                           Partition Report                            *
@@ -214,20 +272,19 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 671
-#      AND2                        : 179
-#      AND3                        : 56
-#      AND4                        : 3
-#      AND5                        : 2
-#      AND6                        : 5
-#      AND8                        : 1
+# BELS                             : 982
+#      AND2                        : 290
+#      AND3                        : 66
+#      AND4                        : 12
+#      AND5                        : 5
+#      AND6                        : 4
 #      GND                         : 1
-#      INV                         : 285
-#      OR2                         : 110
-#      OR3                         : 13
-#      OR4                         : 2
+#      INV                         : 420
+#      OR2                         : 147
+#      OR3                         : 24
+#      OR4                         : 1
 #      VCC                         : 1
-#      XOR2                        : 13
+#      XOR2                        : 11
 # FlipFlops/Latches                : 44
 #      FDC                         : 30
 #      FDP                         : 14
@@ -238,12 +295,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.71 secs
+Total REAL time to Xst completion: 48.00 secs
+Total CPU time to Xst completion: 48.27 secs
  
 --> 
 
-Total memory usage is 289792 kilobytes
+Total memory usage is 337404 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    5 (   0 filtered)

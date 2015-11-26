@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Fri Oct 16 20:29:31 2015">
+  <application stringID="Xst" timeStamp="Thu Nov 26 00:00:33 2015">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -73,7 +73,7 @@
       <item DEFAULT="YES" label="-fsm_extract" stringID="XST_FSMEXTRACT" value="YES"/>
       <item DEFAULT="AUTO" label="-fsm_encoding" stringID="XST_FSMENCODING" value="Auto"/>
       <item DEFAULT="NO" label="-safe_implementation" stringID="XST_SAFEIMPLEMENTATION" value="No"/>
-      <item DEFAULT="YES" stringID="XST_MUXEXTRACT" value="Yes"/>
+      <item DEFAULT="YES" stringID="XST_MUXEXTRACT" value="No"/>
       <item DEFAULT="YES" label="-resource_sharing" stringID="XST_RESOURCESHARING" value="YES"/>
       <item DEFAULT="YES" label="-iobuf" stringID="XST_IOBUF" value="YES"/>
       <item DEFAULT="YES" label="-equivalent_register_removal" stringID="XST_EQUIVALENTREGISTERREMOVAL" value="YES"/>

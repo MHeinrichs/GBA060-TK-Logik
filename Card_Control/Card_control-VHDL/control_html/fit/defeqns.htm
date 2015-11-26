@@ -307,18 +307,18 @@ OE_BS <= ((TT40(1) AND RSTI40)
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S_I(0) <= '0';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(0) <= '0';
+PLL_S(0) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S(1) <= '0';
-</td></tr><tr><td>
-</td></tr><tr><td>
-QDSACK(0)/QDSACK(0)_RSTF__$INT <= (NOT SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd6);
+PLL_S_I(1) <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(1) <= '0';
 </td></tr><tr><td>
 FDCPE_QDSACK0: FDCPE port map (QDSACK(0),QDSACK_D(0),SCLK,NOT QDSACK(0)/QDSACK(0)_RSTF__$INT,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QDSACK_D(0) <= (STERM30 AND DSACK30(0));
+</td></tr><tr><td>
+</td></tr><tr><td>
+QDSACK(0)/QDSACK(0)_RSTF__$INT <= (NOT SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd6);
 </td></tr><tr><td>
 FDCPE_QDSACK1: FDCPE port map (QDSACK(1),QDSACK_D(1),SCLK,NOT QDSACK(0)/QDSACK(0)_RSTF__$INT,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QDSACK_D(1) <= (STERM30 AND DSACK30(1));

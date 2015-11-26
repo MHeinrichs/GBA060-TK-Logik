@@ -34,10 +34,10 @@ end ramcon;
 
 
 architecture ramcon_behav of ramcon is
-   signal RQ_ACLR_ctrl, NQ_ACLR_ctrl,
+   signal RQ_ACLR_ctrl,
 	 RAS_D, CAS_D, TA40_D, WE_D, CE_B1_D,
 	 CE_B0_D, LDQ1_D, LDQ0_D, UDQ1_D, UDQ0_D, LDQ1_SIG, LDQ0_SIG, UDQ1_SIG, UDQ0_SIG, OE40_RAM_D, OERAM_40_D, TRANSFER_ACLR, TRANSFER_CLK, SELRAM1,
-	 SELRAM0, REFRESH, ENACLK, CLRNOPC, CLRREFC,
+	 SELRAM0, REFRESH, ENACLK, CLRREFC,
 	 TRANSFER: std_logic;
    TYPE sdram_state_machine_type IS (
 				powerup, 					--000000
@@ -123,7 +123,20 @@ begin
 			TA40_FB <= '1';	
 			ARAM (11 downto 0) <= "000000000000";
 			CQ	<= powerup;
+			NQ  <= "000";
       elsif rising_edge(CLK_RAMC) then
+		
+			if(
+				CQ = init_precharge_commit or
+				CQ = init_wait or
+				CQ = end_cycle or								
+				CQ = refresh_wait)
+			then
+				NQ <= NQ +1;
+			else 
+				NQ  <= "000";
+			end if;
+		
 			UDQ0 <= UDQ0_D;
 			UDQ1 <= UDQ1_D;
 			LDQ0 <= LDQ0_D;
@@ -144,21 +157,16 @@ begin
    end process;
    TA40 <= TA40_FB when TA40_OE='1' else 'Z';
 
+	CLRREFC <= '1' when 	CQ = init_precharge_commit or
+								CQ = init_opcode or
+								CQ = refresh_start 
+						else '0';
    RQ_ACLR_ctrl <= (not RESET) or CLRREFC;
    process (C4MHZ, RQ_ACLR_ctrl) begin
       if RQ_ACLR_ctrl='1' then
 			RQ<=	"00000000";
       elsif rising_edge(C4MHZ) then
 			RQ <= RQ +1;
-      end if;
-   end process;
-
-   NQ_ACLR_ctrl <= (not RESET) or CLRNOPC;
-   process (CLK_RAMC, NQ_ACLR_ctrl) begin
-      if NQ_ACLR_ctrl='1' then
-			NQ  <= "000";
-      elsif rising_edge(CLK_RAMC) then
-			NQ <= NQ +1;
       end if;
    end process;
 
@@ -218,17 +226,6 @@ begin
 								SIZ40 = "11"
 						 else '1';
 
-	CLRREFC <= '1' when 	CQ = init_precharge_commit or
-								CQ = init_opcode or
-								CQ = refresh_start 
-						else '0';
-	
-	CLRNOPC	<= '0' when 	
-								CQ = init_precharge_commit or
-								CQ = init_wait or
-								CQ = end_cycle or								
-								CQ = refresh_wait 
-						else '1'; 
 
    process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40, UDQ0_SIG, UDQ1_SIG, LDQ0_SIG, LDQ1_SIG, ARAM_LOW, ARAM_HIGH)
    begin

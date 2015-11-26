@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date: 10-16-2015,  8:31PM
+Design Name: control                             Date: 11-26-2015,  0:01AM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -893,18 +893,18 @@ OE_BS <= ((TT40(1) AND RSTI40)
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 
 
-PLL_S_I(0) <= '0';
-PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
-PLL_S_OE(0) <= '0';
+PLL_S(0) <= '0';
 
 
-PLL_S(1) <= '0';
-
-
-QDSACK(0)/QDSACK(0)_RSTF__$INT <= (NOT SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd6);
+PLL_S_I(1) <= '0';
+PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
+PLL_S_OE(1) <= '0';
 
 FDCPE_QDSACK0: FDCPE port map (QDSACK(0),QDSACK_D(0),SCLK,NOT QDSACK(0)/QDSACK(0)_RSTF__$INT,'0');
 QDSACK_D(0) <= (STERM30 AND DSACK30(0));
+
+
+QDSACK(0)/QDSACK(0)_RSTF__$INT <= (NOT SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd6);
 
 FDCPE_QDSACK1: FDCPE port map (QDSACK(1),QDSACK_D(1),SCLK,NOT QDSACK(0)/QDSACK(0)_RSTF__$INT,'0');
 QDSACK_D(1) <= (STERM30 AND DSACK30(1));

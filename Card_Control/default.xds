@@ -6,7 +6,12 @@
   <DeviceList devices="xc9500xl"/>
 
   <Properties>
+    <property name="Synthesize - XST:Optimization Goal" value="Speed"/>
     <property name="Synthesize - XST:Optimization Effort" value="High"/>
+    <property name="Synthesize - XST:FSM Encoding Algorithm" value="Auto"/>
+    <property name="Synthesize - XST:Safe Implementation" value="No"/>
+    <property name="Synthesize - XST:Case Implementation Style" value="None"/>
+    <property name="Synthesize - XST:Mux Extraction" value="No"/>
     <property name="Synthesize - XST:Resource Sharing" value="true"/>
     <property name="Synthesize - XST:Equivalent Register Removal" value="true"/>
     <property name="Synthesize - XST:XOR Preserve" value="true"/>

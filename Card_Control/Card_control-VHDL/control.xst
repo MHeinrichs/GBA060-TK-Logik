@@ -19,7 +19,7 @@ run
 -verilog2001 YES
 -fsm_extract YES -fsm_encoding Auto
 -safe_implementation No
--mux_extract Yes
+-mux_extract No
 -resource_sharing YES
 -iobuf YES
 -pld_mp YES

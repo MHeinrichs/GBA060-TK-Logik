@@ -8,9 +8,10 @@
   <Properties>
     <property name="Synthesize - XST:Optimization Goal" value="Speed"/>
     <property name="Synthesize - XST:Optimization Effort" value="High"/>
-    <property name="Synthesize - XST:FSM Encoding Algorithm" value="None"/>
-    <property name="Synthesize - XST:Safe Implementation" value="Yes"/>
+    <property name="Synthesize - XST:FSM Encoding Algorithm" value="Auto"/>
     <property name="Fit:Implementation Template" value="Optimize Speed"/>
+    <property name="Fit:I/O Pin Termination" value="Float"/>
+    <property name="Fit:Macrocell Power Setting" value="Timing Driven"/>
   </Properties>
 
 </DesignStrategy>
