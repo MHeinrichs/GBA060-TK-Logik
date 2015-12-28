@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: ramcon.prj
 
@@ -136,19 +136,21 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 286.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 322.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 322.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 324.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 302.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 338.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 338.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 340.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 199.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 215.
     Found 8-bit up counter for signal <RQ>.
+    Found 1-bit register for signal <SELRAM0_D>.
+    Found 1-bit register for signal <SELRAM1_D>.
     Found 1-bit register for signal <TA40_FB>.
     Found 1-bit register for signal <TRANSFER>.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  27 D-type flip-flop(s).
+	inferred  29 D-type flip-flop(s).
 	inferred   5 Comparator(s).
 	inferred   1 Tristate(s).
 Unit <ramcon> synthesized.
@@ -161,8 +163,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 27
- 1-bit register                                        : 27
+# Registers                                            : 29
+ 1-bit register                                        : 29
 # Comparators                                          : 5
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
@@ -225,8 +227,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 27
- Flip-Flops                                            : 27
+# Registers                                            : 29
+ Flip-Flops                                            : 29
 
 =========================================================================
 
@@ -272,21 +274,21 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 982
-#      AND2                        : 290
-#      AND3                        : 66
+# BELS                             : 958
+#      AND2                        : 288
+#      AND3                        : 65
 #      AND4                        : 12
 #      AND5                        : 5
-#      AND6                        : 4
+#      AND6                        : 3
 #      GND                         : 1
-#      INV                         : 420
-#      OR2                         : 147
-#      OR3                         : 24
-#      OR4                         : 1
+#      INV                         : 408
+#      OR2                         : 140
+#      OR3                         : 22
+#      OR4                         : 2
 #      VCC                         : 1
 #      XOR2                        : 11
-# FlipFlops/Latches                : 44
-#      FDC                         : 30
+# FlipFlops/Latches                : 46
+#      FDC                         : 32
 #      FDP                         : 14
 # IO Buffers                       : 73
 #      IBUF                        : 42
@@ -296,11 +298,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 48.00 secs
-Total CPU time to Xst completion: 48.27 secs
+Total CPU time to Xst completion: 48.25 secs
  
 --> 
 
-Total memory usage is 337404 kilobytes
+Total memory usage is 337896 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    5 (   0 filtered)

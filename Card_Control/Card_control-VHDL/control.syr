@@ -97,6 +97,7 @@ Entity <control> analyzed. Unit <control> generated.
 =========================================================================
 
 Performing bidirectional port resolution...
+INFO:Xst:2561 - Always blocking tristate driving signal <CLK30> in unit <control> is removed.
 INFO:Xst:2561 - Always blocking tristate driving signal <RESET30> in unit <control> is removed.
 
 Synthesizing Unit <control>.
@@ -106,11 +107,8 @@ WARNING:Xst:647 - Input <BERR30> is never used. This port will be preserved and 
 WARNING:Xst:1306 - Output <TCI40> is never assigned.
 WARNING:Xst:2565 - Inout <CLK30> is never assigned.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1780 - Signal <QDSACK_D4> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <QDSACK_D3> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <QDSACK_D2> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <QDSACK_D1> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <QDSACK_D0> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <QDSACK_D4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
     Register <PCLK> equivalent to <CLK_BS> has been removed
     Found finite state machine <FSM_0> for signal <AMIQ>.
@@ -151,23 +149,22 @@ WARNING:Xst:1780 - Signal <QDSACK_D0> is never used or assigned. This unconnecte
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 173.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 174.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 174.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 175.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <CNTDIS>.
     Found 12-bit up counter for signal <COUNTHALT>.
     Found 11-bit up counter for signal <COUNTRES>.
     Found 1-bit register for signal <DS30_SIG>.
     Found 2-bit register for signal <LDSACK>.
-    Found 1-bit register for signal <LEND>.
-    Found 2-bit register for signal <QDSACK>.
+    Found 2-bit register for signal <QDSACK_D0>.
     Found 1-bit register for signal <RSTI40_SIG>.
     Found 1-bit register for signal <RSTINT>.
     Summary:
 	inferred   2 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  16 D-type flip-flop(s).
+	inferred  15 D-type flip-flop(s).
 	inferred   2 Xor(s).
 	inferred   4 Tristate(s).
 Unit <control> synthesized.
@@ -180,8 +177,8 @@ Macro Statistics
 # Counters                                             : 2
  11-bit up counter                                     : 1
  12-bit up counter                                     : 1
-# Registers                                            : 17
- 1-bit register                                        : 17
+# Registers                                            : 16
+ 1-bit register                                        : 16
 # Tristates                                            : 4
  1-bit tristate buffer                                 : 4
 # Xors                                                 : 2
@@ -223,8 +220,8 @@ Macro Statistics
 # Counters                                             : 2
  11-bit up counter                                     : 1
  12-bit up counter                                     : 1
-# Registers                                            : 16
- Flip-Flops                                            : 16
+# Registers                                            : 15
+ Flip-Flops                                            : 15
 
 =========================================================================
 
@@ -243,11 +240,9 @@ WARNING:Xst:2677 - Node <COUNTRES_8> of sequential type is unconnected in block 
 WARNING:Xst:2677 - Node <COUNTRES_9> of sequential type is unconnected in block <control>.
 WARNING:Xst:2677 - Node <COUNTRES_10> of sequential type is unconnected in block <control>.
 INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <CLK_BS> 
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: LONGPORT_and0001, TEA40_and0000, LONGPORT, TEA40.
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: BWL_BS<2>, BYTEPORT_and0001, BYTEPORT, BWL_BS_2_and0001, BWL_BS_2_or0000.
-WARNING:Xst:2170 - Unit control : the following signal(s) form a combinatorial loop: BWL_BS_1_or0001, WORDPORT_and0001, BWL_BS<1>, WORDPORT, BWL_BS_1_and0003, BWL_BS_1_or0002.
 
 Optimizing unit <control> ...
+  implementation constraint: INIT=r	 : QDSACK_D0_1
   implementation constraint: INIT=r	 : BCLK060_SIG
   implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : DS30_SIG
@@ -255,9 +250,8 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : CLK30_SIG
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
-  implementation constraint: INIT=r	 : QDSACK_0
-  implementation constraint: INIT=r	 : QDSACK_1
   implementation constraint: INIT=s	 : SIZING_FSM_FFd6
+  implementation constraint: INIT=r	 : QDSACK_D0_0
   implementation constraint: INIT=r	 : RSTI40_SIG
   implementation constraint: INIT=r	 : COUNTHALT_2
   implementation constraint: INIT=r	 : COUNTHALT_0
@@ -277,12 +271,11 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
-  implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
-  implementation constraint: INIT=r	 : LEND
   implementation constraint: INIT=r	 : LDSACK_1
   implementation constraint: INIT=r	 : LDSACK_0
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
+  implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
 INFO:Xst:2261 - The FF/Latch <ATERM> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <LE_BS> 
 
 =========================================================================
@@ -315,21 +308,22 @@ Design Statistics
 # IOs                              : 63
 
 Cell Usage :
-# BELS                             : 319
-#      AND2                        : 100
-#      AND3                        : 10
+# BELS                             : 305
+#      AND2                        : 101
+#      AND3                        : 8
 #      AND4                        : 2
-#      AND5                        : 4
+#      AND5                        : 3
 #      AND7                        : 1
 #      GND                         : 1
-#      INV                         : 119
-#      OR2                         : 56
-#      OR3                         : 11
+#      INV                         : 110
+#      OR2                         : 53
+#      OR3                         : 10
+#      OR4                         : 1
 #      VCC                         : 1
 #      XOR2                        : 14
-# FlipFlops/Latches                : 35
+# FlipFlops/Latches                : 34
 #      FD                          : 5
-#      FDC                         : 15
+#      FDC                         : 14
 #      FDCE                        : 12
 #      FDP                         : 3
 # IO Buffers                       : 58
@@ -339,14 +333,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.58 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.59 secs
  
 --> 
 
-Total memory usage is 306004 kilobytes
+Total memory usage is 306564 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   24 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of warnings :   18 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
 

@@ -161,6 +161,7 @@ begin
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
 	--CLK30 <= CLK30_SIG;
+	CLK30 <= 'Z';
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
@@ -291,31 +292,27 @@ begin
 	QDSACK_SYNC: process (NAMIACC,SCLK_SIG)
 	begin
 		if(NAMIACC = '1')then
-			--QDSACK_D0	<="00";
-			--QDSACK_D1	<="00";
-			--QDSACK_D2	<="00";
-			--QDSACK_D3	<="00";
-			--QDSACK_D4	<="00";
-			QDSACK		<="00";
+			QDSACK_D0	<="00";
+			QDSACK_D1	<="00";
+			QDSACK_D2	<="00";
+			QDSACK_D3	<="00";
+			QDSACK_D4	<="00";
+			--QDSACK		<="00";
 		elsif(rising_edge(SCLK_SIG)) then
 			--sample DSACK
 			if(STERM30='0') then
-				QDSACK	<= "11"; -- original timing
-				--QDSACK_D0	<= "11";
+				QDSACK_D0	<= "11";
 			else
-				QDSACK(0) <= not DSACK30(0); -- original timing
-				QDSACK(1) <= not DSACK30(1); -- original timing				
-				--QDSACK_D0(0) <= not DSACK30(0);
-				--QDSACK_D0(1) <= not DSACK30(1);				
+				QDSACK_D0(0) <= not DSACK30(0);
+				QDSACK_D0(1) <= not DSACK30(1);				
 			end if;
-			--QDSACK_D1 <= QDSACK_D0;
-			--QDSACK_D2 <= QDSACK_D1;
-			--QDSACK_D3 <= QDSACK_D2;
-			--QDSACK_D4 <= QDSACK_D3;
-			--QDSACK	<= QDSACK_D4; --14MHz-sync timing@80Mhz
+			QDSACK_D1 <= QDSACK_D0;
+			QDSACK_D2 <= QDSACK_D1;
+			QDSACK_D3 <= QDSACK_D2;
+			QDSACK_D4 <= QDSACK_D3;
 		end if;
 	end process QDSACK_SYNC;
-
+	QDSACK	<= QDSACK_D0; 
 	
 	LDSACK_SYNC: process (NAMIACC,SCLK_SIG)
 	begin
@@ -344,11 +341,14 @@ begin
 	OE_BS		<= AMISEL;
 	DIR_BS	<=	RW40;
 	LONGPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="11" else		--long access
-					'1' when LONGPORT ='1' and LEND ='0' else '0';	-- hold
+					--'1' when LONGPORT ='1' and LEND ='0' else -- hold
+					'0';	
 	WORDPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="10" else		--word access
-					'1' when WORDPORT ='1' and SIZING/="000" else '0';	-- hold
+					--'1' when WORDPORT ='1' and SIZING/="000" else -- hold
+					'0';	
 	BYTEPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="01" else		--byte access
-					'1' when BYTEPORT ='1' and SIZING/="000" else '0';	-- hold
+					--'1' when BYTEPORT ='1' and SIZING/="000" else -- hold
+					'0';	
 
 
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard

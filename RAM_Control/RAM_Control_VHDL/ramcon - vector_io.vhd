@@ -80,6 +80,8 @@ architecture ramcon_behav of ramcon is
 	signal RQ :  STD_LOGIC_VECTOR (7 downto 0);
 	signal CQ :  sdram_state_machine_type;
 	signal CQ_D :  sdram_state_machine_type;
+	signal SELRAM0_D : STD_LOGIC;
+	signal SELRAM1_D : STD_LOGIC;
    signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
@@ -124,6 +126,8 @@ begin
 			ARAM (11 downto 0) <= "000000000000";
 			CQ	<= powerup;
 			NQ  <= "000";
+			SELRAM0_D <= '0';
+			SELRAM1_D <= '0';
       elsif rising_edge(CLK_RAMC) then
 		
 			if(
@@ -136,6 +140,9 @@ begin
 			else 
 				NQ  <= "000";
 			end if;
+
+			SELRAM0_D <= SELRAM0;
+			SELRAM1_D <= SELRAM1;
 		
 			UDQ0 <= UDQ0_D;
 			UDQ1 <= UDQ1_D;
@@ -170,8 +177,8 @@ begin
       end if;
    end process;
 
-   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and A40(30 downto 26) = "00010" else '0';
-   TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
+   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and (SELRAM0 = '1' or SELRAM1 = '1') else '0';
+	TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
 										CQ = write_start_ras or 
 										RESET ='0' else '0';
    process (TRANSFER_CLK, TRANSFER_ACLR) begin
@@ -183,18 +190,27 @@ begin
    end process;
 
 -- Start of original equations
-	SEL16M 	<= '1' when A40(30 downto 25) = "000000" else '0';
    SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
    SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
-   TA40_OE 	<= '1' when A40(30 downto 26) = "00010"  else '0'; -- was: SELRAM0 or SELRAM1;
-   TCI40 	<= '1' when ICACHE ='1' and(	
-													A40(30 downto 19) = "000000011111" 	or
-													A40(30 downto 23) = "00000000"  or 
-													A40(30 downto 21) = "0000000100" ) else
-					'1' when A40(30 downto 21) = "0000001001"  or 
-								A40(30 downto 22) = "000000101"  or 
-								A40(30 downto 21) = "0000001100"  or
-								A40(30 downto 26) = "00010" else '0';
+	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
+   TA40_OE 	<= '1' when (SELRAM0 = '1' or SELRAM1 = '1')  else '0'; -- was: SELRAM0 or SELRAM1;
+	--SEL16M 	<= '1';
+   --SELRAM0 	<= '0'; 
+   --SELRAM1 	<= '0'; 
+   --TA40_OE 	<= '0';
+
+   TCI40 	<= '1' when ICACHE ='1' and(														
+													--A40(30 downto 23) = "00000000" or  
+													--A40(30 downto 21) = "0000000100" or
+													A40(30 downto 19) = "000000011111" 	
+													) 
+					--else
+					--'1' when --A40(30 downto 21) = "0000001001"  or 
+								--A40(30 downto 22) = "000000101"  or 
+								--A40(30 downto 21) = "0000001100"  or
+								--SELRAM0 = '1' or SELRAM1 = '1' 
+								else '0';
+	--TCI40 	<= '0';
    LE_RAM <= '0';
    REFRESH <= '1' when    RQ >= "00111100" else '0';
    CLK_RAM <= (not CLK_RAMC) and ENACLK;
@@ -227,7 +243,7 @@ begin
 						 else '1';
 
 
-   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0, SELRAM1, NQ, RW_40, UDQ0_SIG, UDQ1_SIG, LDQ0_SIG, LDQ1_SIG, ARAM_LOW, ARAM_HIGH)
+   process (CQ, INIT, RQ, REFRESH, TRANSFER, SCLK, A40, SIZ40, SELRAM0_D, SELRAM1_D, NQ, RW_40, UDQ0_SIG, UDQ1_SIG, LDQ0_SIG, LDQ1_SIG, ARAM_LOW, ARAM_HIGH)
    begin
       
 
@@ -432,8 +448,8 @@ begin
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '1';
@@ -448,8 +464,8 @@ begin
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '1';
@@ -458,14 +474,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_start_cas;
       when read_start_cas =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '0';
@@ -474,14 +490,14 @@ begin
 		 ENACLK <= '1';
 		 CQ_D <= read_commit_cas;
       when read_commit_cas =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -490,14 +506,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_data_wait;
       when read_data_wait =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -510,14 +526,14 @@ begin
 		    CQ_D <= read_precharge;
 		 end if;
       when read_line_s0 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -526,14 +542,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s1;
       when read_line_s1 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -542,14 +558,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s2;
       when read_line_s2 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -558,14 +574,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s3;
       when read_line_s3 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -574,14 +590,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s4;
       when read_line_s4 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -590,14 +606,14 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s5;
       when read_line_s5 =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '0';
 		 UDQ1_D <= '0';
 		 LDQ0_D <= '0';
 		 LDQ1_D <= '0';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -606,7 +622,7 @@ begin
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_precharge;
       when read_precharge =>
-		 OERAM_40_D <= not ((SELRAM0 or SELRAM1) and RW_40);
+		 OERAM_40_D <= not ((SELRAM0_D or SELRAM1_D) and RW_40);
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
@@ -628,8 +644,8 @@ begin
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '1';
@@ -639,13 +655,13 @@ begin
 		 CQ_D <= write_commit_ras;
       when write_commit_ras =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '1';
@@ -655,13 +671,13 @@ begin
 		 CQ_D <= write_tra_ack;
       when write_tra_ack =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -671,15 +687,15 @@ begin
 		 CQ_D <= write_start_cas;
       when write_start_cas =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 
 	 	 UDQ0_D <= UDQ0_SIG;
 	 	 UDQ1_D <= UDQ1_SIG;
 	 	 LDQ0_D <= LDQ0_SIG;
 	 	 LDQ1_D <= LDQ1_SIG;
 	
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '0';
 		 TA40_D <= '0';
 		 CAS_D <= '0';
@@ -689,13 +705,13 @@ begin
 		 CQ_D <= write_commit_cas;
       when write_commit_cas =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -709,13 +725,13 @@ begin
 		 end if;
       when write_line_s0 =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 	 	 UDQ0_D <= UDQ0_SIG;
 	 	 UDQ1_D <= UDQ1_SIG;
 	 	 LDQ0_D <= LDQ0_SIG;
 	 	 LDQ1_D <= LDQ1_SIG;
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -725,13 +741,13 @@ begin
 		 CQ_D <= write_line_s1;
       when write_line_s1 =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -741,13 +757,13 @@ begin
 		 CQ_D <= write_line_s2;
       when write_line_s2 =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 	 	 UDQ0_D <= UDQ0_SIG;
 	 	 UDQ1_D <= UDQ1_SIG;
 	 	 LDQ0_D <= LDQ0_SIG;
 	 	 LDQ1_D <= LDQ1_SIG;
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -757,13 +773,13 @@ begin
 		 CQ_D <= write_line_s3;
       when write_line_s3 =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 		 UDQ0_D <= '1';
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -773,15 +789,15 @@ begin
 		 CQ_D <= write_line_s4;
       when write_line_s4 =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= not ((SELRAM0 or SELRAM1) and (not RW_40));
+		 OE40_RAM_D <= not ((SELRAM0_D or SELRAM1_D) and (not RW_40));
 	
 	 	 UDQ0_D <= UDQ0_SIG;
 	 	 UDQ1_D <= UDQ1_SIG;
 	 	 LDQ0_D <= LDQ0_SIG;
 	 	 LDQ1_D <= LDQ1_SIG;
 	
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
 		 CAS_D <= '1';
@@ -796,8 +812,8 @@ begin
 		 UDQ1_D <= '1';
 		 LDQ0_D <= '1';
 		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0;
-		 CE_B1_D <= not SELRAM1;
+		 CE_B0_D <= not SELRAM0_D;
+		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '1';
 		 CAS_D <= '1';
