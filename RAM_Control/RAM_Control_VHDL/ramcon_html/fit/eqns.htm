@@ -18,7 +18,7 @@
       
         specSig["A4030_SPECSIG"]=new Array("A40<30>");
       
-        specSig["A4025_SPECSIG"]=new Array("A40<25>");
+        specSig["A4022_SPECSIG"]=new Array("A40<22>");
       
         specSig["A4021_SPECSIG"]=new Array("A40<21>");
       
@@ -29,6 +29,8 @@
         specSig["SIZ400_SPECSIG"]=new Array("SIZ40<0>");
       
         specSig["SIZ401_SPECSIG"]=new Array("SIZ40<1>");
+      
+        specSig["A4025_SPECSIG"]=new Array("A40<25>");
       
         specSig["A401_SPECSIG"]=new Array("A40<1>");
       
@@ -42,8 +44,6 @@
       
         specSig["A403_SPECSIG"]=new Array("A40<3>");
       
-        specSig["A4022_SPECSIG"]=new Array("A40<22>");
-      
         specSig["A404_SPECSIG"]=new Array("A40<4>");
       
         specSig["A4013_SPECSIG"]=new Array("A40<13>");
@@ -52,9 +52,9 @@
       
         specSig["A4014_SPECSIG"]=new Array("A40<14>");
       
-        specSig["A406_SPECSIG"]=new Array("A40<6>");
-      
         specSig["A4015_SPECSIG"]=new Array("A40<15>");
+      
+        specSig["A406_SPECSIG"]=new Array("A40<6>");
       
         specSig["A4016_SPECSIG"]=new Array("A40<16>");
       
@@ -316,11 +316,13 @@
           
             pterms["FB2_18_5"]=new Array("/CQ_FSM_FFd4","CQ_FSM_FFd3","/CQ_FSM_FFd2","/CQ_FSM_FFd5","CQ_FSM_FFd6","/CQ_FSM_FFd1","/NQ0_SPECSIG","NQ1_SPECSIG");
           
-            pterms["FB3_2_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","/A4027_SPECSIG","/A4025_SPECSIG","ICACHE","A4021_SPECSIG","A4020_SPECSIG","A4019_SPECSIG","/A4026_SPECSIG","A4023_SPECSIG","/A4024_SPECSIG","A4022_SPECSIG");
+            pterms["FB3_2_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","/A4026_SPECSIG");
           
-            pterms["FB3_12_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","A4025_SPECSIG","/A4026_SPECSIG");
+            pterms["FB3_2_2"]=new Array("A4022_SPECSIG","A4021_SPECSIG","A4020_SPECSIG","A4019_SPECSIG","/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","/A4026_SPECSIG","/A4025_SPECSIG","A4023_SPECSIG","/A4024_SPECSIG","ICACHE");
           
-            pterms["FB3_13_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","/A4025_SPECSIG","/A4026_SPECSIG");
+            pterms["FB3_12_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","/A4026_SPECSIG","A4025_SPECSIG");
+          
+            pterms["FB3_13_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","/A4026_SPECSIG","/A4025_SPECSIG");
           
             pterms["FB3_14_1"]=new Array("TRANSFERTRANSFER_RSTF_SPECSIG");
           
@@ -350,9 +352,9 @@
           
             pterms["FB4_2_1"]=new Array("A4023_SPECSIG");
           
-            pterms["FB4_5_1"]=new Array("CQ_FSM_FFd4","/CQ_FSM_FFd3","CQ_FSM_FFd2","CQ_FSM_FFd5","/CQ_FSM_FFd6","/CQ_FSM_FFd1","A4022_SPECSIG");
+            pterms["FB4_5_1"]=new Array("A4022_SPECSIG","CQ_FSM_FFd4","/CQ_FSM_FFd3","CQ_FSM_FFd2","CQ_FSM_FFd5","/CQ_FSM_FFd6","/CQ_FSM_FFd1");
           
-            pterms["FB4_5_2"]=new Array("/CQ_FSM_FFd4","CQ_FSM_FFd3","/CQ_FSM_FFd2","CQ_FSM_FFd5","/CQ_FSM_FFd6","/CQ_FSM_FFd1","A4022_SPECSIG");
+            pterms["FB4_5_2"]=new Array("A4022_SPECSIG","/CQ_FSM_FFd4","CQ_FSM_FFd3","/CQ_FSM_FFd2","CQ_FSM_FFd5","/CQ_FSM_FFd6","/CQ_FSM_FFd1");
           
             pterms["FB4_6_1"]=new Array("A4024_SPECSIG");
           
@@ -774,9 +776,9 @@
             
               gblrst["NQ1_SPECSIG"]=new Array("RESET");
             prld["NQ1_SPECSIG"]="GND";
-          d2["TCI40"]=new Array("FB3_2_1");
+          d2["TCI40"]=new Array("FB3_2_1","FB3_2_2");
           
-            d2imp["TCI40"]=new Array("1");
+            d2imp["TCI40"]=new Array("1","1");
           
           d2["SELRAM1_D"]=new Array("FB3_12_1");
           

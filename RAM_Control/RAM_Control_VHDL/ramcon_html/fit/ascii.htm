@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: ramcon                              Date: 12-28-2015,  2:16AM
+Design Name: ramcon                              Date:  1- 1-2016, 10:28PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -11,7 +11,7 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-53 /144 ( 37%) 274 /720  ( 38%) 128/432 ( 30%)   46 /144 ( 32%) 73 /81  ( 90%)
+53 /144 ( 37%) 275 /720  ( 38%) 128/432 ( 30%)   46 /144 ( 32%) 73 /81  ( 90%)
 
 ** Function Block Resources **
 
@@ -19,14 +19,14 @@ Function    Mcells      FB Inps     Pterms      IO
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
 FB1           5/18       21/54       66/90      10/11
 FB2           8/18       21/54       27/90      10/10*
-FB3           8/18       21/54       16/90       9/10
+FB3           8/18       21/54       17/90       9/10
 FB4          12/18       22/54       38/90      10/10*
 FB5           0/18        0/54        0/90      10/10*
 FB6          13/18       22/54       85/90       9/10
 FB7           0/18        0/54        0/90       7/10
 FB8           7/18       21/54       42/90       8/10
              -----       -----       -----      -----    
-             53/144     128/432     274/720     73/81 
+             53/144     128/432     275/720     73/81 
 
 * - Resource is exhausted
 
@@ -96,7 +96,7 @@ ARAM<5>                 5     8     FB2_12  7    I/O     O       STD  FAST RESET
 ARAM<3>                 4     8     FB2_14  8    I/O     O       STD  FAST RESET
 ARAM<4>                 4     8     FB2_15  9    I/O     O       STD  FAST RESET
 CLKEN                   0     0     FB2_17  10   I/O     O       STD  FAST 
-TCI40                   1     13    FB3_2   23   GCK/I/O O       STD  FAST 
+TCI40                   2     13    FB3_2   23   GCK/I/O O       STD  FAST 
 BA0                     1     1     FB4_2   87   I/O     O       STD  FAST RESET
 ARAM<11>                2     7     FB4_5   89   I/O     O       STD  FAST RESET
 BA1                     1     1     FB4_6   90   I/O     O       STD  FAST RESET
@@ -307,7 +307,7 @@ Number of signals used by logic mapping into function block:  21
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB3_1         (b)     
-TCI40                 1       0     0   4     FB3_2   23    GCK/I/O O
+TCI40                 2       0     0   3     FB3_2   23    GCK/I/O O
 (unused)              0       0     0   5     FB3_3         (b)     
 (unused)              0       0     0   5     FB3_4         (b)     
 (unused)              0       0     0   5     FB3_5   24    I/O     I
@@ -654,10 +654,10 @@ ARAM_D(10) <= ((NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND
 	NOT CQ_FSM_FFd2 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1));
 
 FDCPE_ARAM11: FDCPE port map (ARAM(11),ARAM_D(11),CLK_RAMC,NOT RESET,'0');
-ARAM_D(11) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND 
-	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND A40(22))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND 
-	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND A40(22)));
+ARAM_D(11) <= ((A40(22) AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND 
+	CQ_FSM_FFd2 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1)
+	OR (A40(22) AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+	NOT CQ_FSM_FFd2 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1));
 
 FDCPE_BA0: FDCPE port map (BA0,A40(23),CLK_RAMC,'0',NOT RESET);
 
@@ -1038,11 +1038,11 @@ SEL16M <= NOT ((NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND
 
 FDCPE_SELRAM0_D: FDCPE port map (SELRAM0_D,SELRAM0_D_D,CLK_RAMC,NOT RESET,'0');
 SELRAM0_D_D <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
-	NOT A40(25) AND NOT A40(26));
+	NOT A40(26) AND NOT A40(25));
 
 FDCPE_SELRAM1_D: FDCPE port map (SELRAM1_D,SELRAM1_D_D,CLK_RAMC,NOT RESET,'0');
 SELRAM1_D_D <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
-	A40(25) AND NOT A40(26));
+	NOT A40(26) AND A40(25));
 
 FDCPE_TA40: FDCPE port map (TA40_I,TA40,CLK_RAMC,'0',NOT RESET);
 TA40 <= ((NOT CQ_FSM_FFd2 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND 
@@ -1058,9 +1058,11 @@ TA40_OE <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND
 	NOT A40(26));
 
 
-TCI40 <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(27) AND 
-	NOT A40(25) AND ICACHE AND A40(21) AND A40(20) AND A40(19) AND NOT A40(26) AND 
-	A40(23) AND NOT A40(24) AND A40(22));
+TCI40 <= ((NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
+	NOT A40(26))
+	OR (A40(22) AND A40(21) AND A40(20) AND A40(19) AND 
+	NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND 
+	A40(23) AND NOT A40(24) AND ICACHE));
 
 FDCPE_TRANSFER: FDCPE port map (TRANSFER,'1',TRANSFER_C,TRANSFER/TRANSFER_RSTF,'0');
 TRANSFER_C <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 

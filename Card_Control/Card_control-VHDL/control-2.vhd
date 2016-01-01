@@ -85,8 +85,24 @@ entity control is
 end control;
 
 architecture Behavioral of control is
+   TYPE sm_cycle_termination IS (
+				idle,				--01
+				active,			--11
+				quit				--00
+				);
+				
+	--byteorder: D31-D0: byte3,byte2,byte1,byte0
+	--wordorder: D31-D0: high_word,low_word
+   TYPE sm_sizing IS (
+				idle,					--000
+				size_decode,		--001
+				get_byte2,			--010
+				get_byte1,			--100
+				get_low_word,	--011				
+				cycle_end			--101
+				);
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
-signal	AMIQ : STD_LOGIC_VECTOR (1 downto 0):="00";	--State-Machine Terminierung
+signal	AMIQ : sm_cycle_termination;	--State-Machine Terminierung
 signal	LDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht
 signal	QDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	QDSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
@@ -95,16 +111,13 @@ signal	QDSACK_D2 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verz
 signal	QDSACK_D3 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	QDSACK_D4 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	CNTDIS : STD_LOGIC:='0';	--
-signal	SIZING : STD_LOGIC_VECTOR (2 downto 0):="000";	--State-Machine Sizing
-signal	SIZING_D : STD_LOGIC_VECTOR (2 downto 0):="000";	--State-Machine Sizing
+signal	SIZING : sm_sizing;	--State-Machine Sizing
+signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	LEND : STD_LOGIC:='0';	--
 signal	LEND_D : STD_LOGIC:='0';	--
 signal	ATERM : STD_LOGIC:='0';	--
 signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
-signal	LONGPORT : STD_LOGIC:='0';	--
-signal	WORDPORT : STD_LOGIC:='0';	--
-signal	BYTEPORT : STD_LOGIC:='0';	--
 signal	COUNTHALT : STD_LOGIC_VECTOR (11 downto 0):="000000000000";	--Filter-Counter fuer HALT-Leitung
 signal	COUNTRES : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter für Resetsteuerung
 signal	STOPRES : STD_LOGIC:='0';	--
@@ -149,8 +162,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	--PLL_S	<=	"0Z"; --100MHz
-	PLL_S	<=	"Z0"; --80MHz
+	PLL_S	<=	"0Z"; --100MHz
+	--PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -319,17 +332,17 @@ begin
 		if(NAMIACC = '1')then
 			LDSACK	<="00";
 		elsif(falling_edge(SCLK_SIG)) then
-			--LDSACKx is active in AQ2 & AQ3 !
-			if(((QDSACK(0)='1' or QDSACK(1)='1') and (DSACK30(0)='0' or STERM30='0')) or
-				(LDSACK(0) ='1' and CNTDIS ='0' and AMIQ(1)='1' and AMIQ(0)='1')	--hold to sync with CAQ
+			--LDSACKx is sampled at idle and hold until active ends!
+			if((QDSACK(0) = '1' and (DSACK30(0)='0' or STERM30='0')) or
+				(LDSACK(0) = '1' and CNTDIS ='0' and AMIQ = active)	--hold to sync with CAQ
 				) then
 				LDSACK(0)	<= '1';
 			else
 				LDSACK(0)	<= '0';
 			end if;
 			
-			if(((QDSACK(0)='1' or QDSACK(1)='1') and (DSACK30(1)='0' or STERM30='0')) or
-				(LDSACK(1) ='1' and CNTDIS ='0' and AMIQ(1)='1' and AMIQ(0)='1')	--hold to sync with CAQ
+			if((QDSACK(1) ='1' and (DSACK30(1)='0' or STERM30='0')) or
+				(LDSACK(1) ='1' and CNTDIS ='0' and AMIQ = active)	--hold to sync with CAQ
 				) then
 				LDSACK(1)	<= '1';
 			else
@@ -340,15 +353,6 @@ begin
 	
 	OE_BS		<= AMISEL;
 	DIR_BS	<=	RW40;
-	LONGPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="11" else		--long access
-					--'1' when LONGPORT ='1' and LEND ='0' else -- hold
-					'0';	
-	WORDPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="10" else		--word access
-					--'1' when WORDPORT ='1' and SIZING/="000" else -- hold
-					'0';	
-	BYTEPORT	<=	'1' when RSTI40_SIG = '1' and LDSACK="01" else		--byte access
-					--'1' when BYTEPORT ='1' and SIZING/="000" else -- hold
-					'0';	
 
 
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
@@ -357,10 +361,8 @@ begin
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
-	TEA40		<= '0' when LONGPORT = '1' and WORDPORT = '1' and AS30_SIG = '1' else
-					'0' when LONGPORT = '1' and BYTEPORT = '1' and AS30_SIG = '1' else
-					'0' when WORDPORT = '1' and BYTEPORT = '1' and AS30_SIG = '1' else '1'; --error: two ports open!
-					
+
+	TEA40		<= '1'; -- not needed anymore
 	AS30		<= AS30_SIG when AS30_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' else 'Z';
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
@@ -369,7 +371,7 @@ begin
 	--this is the clocked statemachine transition process
    process (SCLK_SIG, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
-      	SIZING <= "000";
+      	SIZING <= idle;
 			LEND <= '0';
       elsif (rising_edge(SCLK_SIG)) then
 			SIZING <= SIZING_D;
@@ -379,11 +381,11 @@ begin
 	
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
-   SIZING_SM: process (SIZING, TS40, SEL16M, LONGPORT, A40, WORDPORT,
-	 AMISEL, RW40, BYTEPORT, RSTI40_SIG, LDSACK, CNTDIS,
-	 TT40, BYTE, WORD,LONG, SIZ40, TERM)
+   SIZING_SM: process (SIZING, TS40, SEL16M, A40,
+	 AMISEL, RW40, RSTI40_SIG, LDSACK, CNTDIS,
+	 TT40, BYTE, WORD, LONG, SIZ40, TERM)
    begin
-      if(SIZING ="101") then
+      if(SIZING =cycle_end) then
 			TA40_SIG	<= '0';
 			AS30_OE		<= '0';
 			DS30_OE		<= '0';
@@ -399,13 +401,13 @@ begin
 			DS30_OE		<= '1';
 		end if;
 	
-		if(SIZING = "000" or SIZING = "101")then
+		if(SIZING = idle or SIZING = cycle_end)then
 			NAMIACC <= '1';
 		else
 			NAMIACC <= '0';
 		end if;
       C1: case SIZING is
-			when "000" =>
+			when idle =>
 				SIZ30(0)	<= BYTE;
 				SIZ30(1) <= '0';
 					
@@ -414,11 +416,11 @@ begin
 				BWL_BS	<= "111";
 					
 				if( TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
-					SIZING_D <="001";
+					SIZING_D <=size_decode;
 				else
-					SIZING_D <="000";
+					SIZING_D <=idle;
 				end if;					
-			when "001" =>
+			when size_decode =>
 				SIZ30(0)	<= BYTE;
 				SIZ30(1)	<= WORD;
 				
@@ -430,7 +432,7 @@ begin
 
 				--bus code for data latch
 				if(	(AMISEL = '1' and RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
-						(AMISEL = '1' and RW40 ='1' AND (LONGPORT ='1' or WORDPORT  = '1' or BYTEPORT ='1'))) then --READ: any port
+						(AMISEL = '1' and RW40 ='1' AND (LDSACK/="00"))) then --READ: any port
 					BWL_BS(0)	<=	'0';
 				else 
 					BWL_BS(0)	<=	'1';
@@ -439,14 +441,14 @@ begin
 				if(	(AMISEL = '1' and RW40 ='0' and ( LONG = '1' OR			-- WRITE: LONG
 																	(WORD = '1' and A40(1)='0')	or		-- WRITE: WORD A1=0
 																	(BYTE = '1' and A40(1)='0')))or 	-- WRITE: BYTE A1=0
-						(AMISEL = '1' and RW40 ='1' AND (WORDPORT  = '1' or BYTEPORT ='1'))) then --READ: word/byte port
+						(AMISEL = '1' and RW40 ='1' AND (LDSACK="10" or LDSACK="01"))) then --READ: word/byte port
 					BWL_BS(1)	<=	'0';
 				else 
 					BWL_BS(1)	<=	'1';
 				end if;
 
 				if(	(AMISEL = '1' and RW40 ='0') or 	-- WRITE: any access
-						(AMISEL = '1' and RW40 ='1' AND BYTEPORT ='1')) then --READ: byte port
+						(AMISEL = '1' and RW40 ='1' AND LDSACK="01")) then --READ: byte port
 					BWL_BS(2)	<=	'0';
 				else 
 					BWL_BS(2)	<=	'1';
@@ -455,34 +457,34 @@ begin
 				if( TERM ='1' and LDSACK="01" and 					-- byteterm
 					(LONG = '1' or (WORD = '1' and A40(1)='0'))	-- LONG or WORD0
 					) then
-					SIZING_D <= "010";
+					SIZING_D <= get_byte2;
 				elsif( TERM ='1' and LDSACK="01" and  				-- BYTETERM
 					WORD = '1' and A40(1)='1'							-- WORD2
 					) then
-					SIZING_D <= "100";
+					SIZING_D <= get_byte1;
 				elsif(TERM ='1' and LDSACK="10" and 				-- WORDTERM
 					LONG = '1'												-- LONG
 					) then
-					SIZING_D <= "011";
+					SIZING_D <= get_low_word;
 				elsif(TERM ='1' and LDSACK="11"						-- LONGTERM
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				elsif(TERM ='1' and LDSACK="10" 	and				-- WORDTERM
 						(WORD = '1' or BYTE = '1')						-- WORD or BYTE
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				elsif( TERM ='1' and LDSACK="01" and				-- BYTETERM
 						BYTE = '1'											-- BYTE
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				else
-					SIZING_D <= "001";
+					SIZING_D <= size_decode;
 				end if;
-			when "010" =>
+			when get_byte2 =>
 				SIZ30	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
 				AL		<=	"01";
 				BWL_BS(0)	<= '1';
-				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))) then
+				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and LDSACK="01")))) then
 					BWL_BS(1) <= '0';
 					BWL_BS(2) <= '0';
 				else
@@ -493,28 +495,28 @@ begin
 				if(TERM ='1' and LDSACK="01" and  						-- BYTETERM
 					WORD = '1' and A40(1)='0'								-- WORD0
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				elsif(TERM ='1' and LDSACK="01" and  					-- BYTETERM
 					LONG = '1'													-- LONG
 					) then
-					SIZING_D <= "011";
+					SIZING_D <= get_low_word;
 				else
-					SIZING_D <= "010";
+					SIZING_D <= get_byte2;
 				end if;
-			when "011" =>
+			when get_low_word =>
 				SIZ30(0)	<= BYTE;
 				SIZ30(1)	<= LONG;
 					
 				AL	<= "10";
 					
-				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))) then
+				if(( AMISEL ='1' and (RW40='0' or (RW40='1' and LDSACK="01")))) then
 					BWL_BS(0) <= '0';
 					BWL_BS(2) <= '0';
 				else
 					BWL_BS(0) <= '1';
 					BWL_BS(2) <= '1';
 				end if;
-				if( AMISEL ='1' and               RW40='1' and WORDPORT = '1')then
+				if( AMISEL ='1' and               RW40='1' and LDSACK="10" )then
 					BWL_BS(1) <= '0';
 				else
 					BWL_BS(1) <= '1';
@@ -523,19 +525,19 @@ begin
 				if(TERM ='1' and LDSACK="01" and  					-- BYTETERM
 					LONG = '1'												-- LONG
 					) then
-					SIZING_D <= "100";
+					SIZING_D <= get_byte1;
 				elsif(TERM ='1' and LDSACK="10" and  				-- WORDTERM
 					LONG = '1'												-- LONG
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				else
-					SIZING_D <= "011";
+					SIZING_D <= get_low_word;
 				end if;
-			when "100" =>
+			when get_byte1 =>
 				SIZ30	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
 				AL		<=	"11";
 				BWL_BS(1 downto 0) <= "11";
-				if( AMISEL ='1' and (RW40='0' or (RW40='1' and BYTEPORT = '1')))then
+				if( AMISEL ='1' and (RW40='0' or (RW40='1' and LDSACK="01")))then
 					BWL_BS(2) <= '0';
 				else
 					BWL_BS(2) <= '1';
@@ -545,25 +547,18 @@ begin
 					(LONG = '1' or											-- LONG
 					 (WORD = '1' and A40(1)='1'))						-- WORD2						
 					) then
-					SIZING_D <= "101";
+					SIZING_D <= cycle_end;
 				else
-					SIZING_D <= "100";
+					SIZING_D <= get_byte1;
 				end if;
-			when "101"=>
+			when cycle_end=>
 				SIZ30(0)	<= BYTE;
 				SIZ30(1)	<= '0';
 				
 				AL <="00";
 				
 				BWL_BS <= "111";
-				SIZING_D <="000";
-			when others=>					
-				SIZ30(0)	<= BYTE;
-				SIZ30(1)	<= '0';
-					
-				AL <="00";
-				BWL_BS <= "111";
-				SIZING_D <="000";
+				SIZING_D <=idle;
       end case C1;
    end process SIZING_SM;
 
@@ -586,15 +581,15 @@ begin
 			DS30_SIG <= '1';
 			ATERM <= '0';
 			LE_BS <= '0';
-			AMIQ <= "00";
+			AMIQ <= quit;
 		elsif(rising_edge(SCLK_SIG)) then
-			if(AMIQ = "00") then
+			if(AMIQ = quit) then
 				AS30_SIG <= '0';
 				DS30_SIG <= not RW40;
 				ATERM <= '0';
 				LE_BS <= '0';
-				AMIQ <= "01";
-			elsif(AMIQ = "01") then
+				AMIQ <= idle;
+			elsif(AMIQ = idle) then
 				if(LDSACK="00")then					
 					AS30_SIG <= '0';
 					DS30_SIG <= '0';
@@ -606,11 +601,11 @@ begin
 				ATERM <= '0';
 				LE_BS <= '0';
 				if(LDSACK /="00")then
-					AMIQ <="11";
+					AMIQ <=active;
 				else
-					AMIQ <="01";
+					AMIQ <=idle;
 				end if;				
-			elsif(AMIQ = "11") then
+			elsif(AMIQ = active) then
 				AS30_SIG <= not CNTDIS;
 				if( CNTDIS = '1' and RW40 = '1')then					
 					DS30_SIG <= '0';
@@ -620,9 +615,9 @@ begin
 				ATERM <= '1';
 				LE_BS <= '1';
 				if(CNTDIS ='1')then
-					AMIQ <="01";
+					AMIQ <=idle;
 				else
-					AMIQ <="11";
+					AMIQ <=active;
 				end if;								
 			end if;
 		end if;

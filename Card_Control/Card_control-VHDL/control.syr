@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: control.prj
 
@@ -77,18 +77,18 @@ wysiwyg                            : NO
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" in Library work.
 Entity <control> compiled.
-Entity <control> (Architecture <behavioral>) compiled.
+Entity <control> (Architecture <Behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <control> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <control> in library <work> (architecture <Behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <control> in library <work> (Architecture <behavioral>).
+Analyzing Entity <control> in library <work> (Architecture <Behavioral>).
 Entity <control> analyzed. Unit <control> generated.
 
 
@@ -120,8 +120,8 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     | Clock              | SCLK_SIG                  (rising_edge)        |
     | Reset              | RST_TERM                  (positive)           |
     | Reset type         | asynchronous                                   |
-    | Reset State        | 00                                             |
-    | Power Up State     | 00                                             |
+    | Reset State        | quit                                           |
+    | Power Up State     | idle                                           |
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
@@ -130,16 +130,16 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     | States             | 6                                              |
     | Transitions        | 36                                             |
     | Inputs             | 11                                             |
-    | Outputs            | 7                                              |
+    | Outputs            | 8                                              |
     | Clock              | SCLK_SIG                  (rising_edge)        |
     | Reset              | RSTI40_SIG                (negative)           |
     | Reset type         | asynchronous                                   |
-    | Reset State        | 000                                            |
-    | Power Up State     | 000                                            |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<1>>.
+    Found 1-bit tristate buffer for signal <PLL_S<0>>.
     Found 1-bit register for signal <CLK_BS>.
     Found 1-bit register for signal <LE_BS>.
     Found 1-bit tristate buffer for signal <AS30>.
@@ -149,9 +149,9 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 174.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 187.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 175.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 188.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <CNTDIS>.
     Found 12-bit up counter for signal <COUNTHALT>.
@@ -192,25 +192,25 @@ Macro Statistics
 
 Analyzing FSM <FSM_1> for best encoding.
 Optimizing FSM <SIZING/FSM> on signal <SIZING[1:6]> with one-hot encoding.
--------------------
- State | Encoding
--------------------
- 000   | 000001
- 001   | 000010
- 010   | 000100
- 100   | 001000
- 011   | 010000
- 101   | 100000
--------------------
+--------------------------
+ State        | Encoding
+--------------------------
+ idle         | 000001
+ size_decode  | 000010
+ get_byte2    | 000100
+ get_byte1    | 001000
+ get_low_word | 010000
+ cycle_end    | 100000
+--------------------------
 Analyzing FSM <FSM_0> for best encoding.
 Optimizing FSM <AMIQ/FSM> on signal <AMIQ[1:2]> with user encoding.
--------------------
- State | Encoding
--------------------
- 00    | 00
- 01    | 01
- 11    | 11
--------------------
+--------------------
+ State  | Encoding
+--------------------
+ idle   | 00
+ active | 01
+ quit   | 10
+--------------------
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -244,7 +244,7 @@ INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to t
 Optimizing unit <control> ...
   implementation constraint: INIT=r	 : QDSACK_D0_1
   implementation constraint: INIT=r	 : BCLK060_SIG
-  implementation constraint: INIT=r	 : BCLK040_SIG
+  implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : ATERM
   implementation constraint: INIT=r	 : CLK30_SIG
@@ -271,11 +271,11 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
+  implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
+  implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : LDSACK_1
   implementation constraint: INIT=r	 : LDSACK_0
-  implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
-  implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
 INFO:Xst:2261 - The FF/Latch <ATERM> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <LE_BS> 
 
 =========================================================================
@@ -308,24 +308,24 @@ Design Statistics
 # IOs                              : 63
 
 Cell Usage :
-# BELS                             : 305
-#      AND2                        : 101
-#      AND3                        : 8
-#      AND4                        : 2
+# BELS                             : 298
+#      AND2                        : 100
+#      AND3                        : 9
+#      AND4                        : 1
 #      AND5                        : 3
 #      AND7                        : 1
 #      GND                         : 1
-#      INV                         : 110
-#      OR2                         : 53
-#      OR3                         : 10
-#      OR4                         : 1
+#      INV                         : 98
+#      OR2                         : 57
+#      OR3                         : 11
+#      OR4                         : 2
 #      VCC                         : 1
 #      XOR2                        : 14
 # FlipFlops/Latches                : 34
 #      FD                          : 5
-#      FDC                         : 14
+#      FDC                         : 13
 #      FDCE                        : 12
-#      FDP                         : 3
+#      FDP                         : 4
 # IO Buffers                       : 58
 #      IBUF                        : 23
 #      OBUF                        : 31
@@ -333,12 +333,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.59 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.08 secs
  
 --> 
 
-Total memory usage is 306564 kilobytes
+Total memory usage is 306572 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)

@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
 
@@ -136,12 +136,12 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 302.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 338.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 338.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 340.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 301.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 337.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 337.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 339.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 215.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 214.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <SELRAM0_D>.
     Found 1-bit register for signal <SELRAM1_D>.
@@ -274,15 +274,15 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 958
-#      AND2                        : 288
+# BELS                             : 960
+#      AND2                        : 291
 #      AND3                        : 65
 #      AND4                        : 12
-#      AND5                        : 5
+#      AND5                        : 4
 #      AND6                        : 3
 #      GND                         : 1
-#      INV                         : 408
-#      OR2                         : 140
+#      INV                         : 407
+#      OR2                         : 141
 #      OR3                         : 22
 #      OR4                         : 2
 #      VCC                         : 1
@@ -298,11 +298,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 48.00 secs
-Total CPU time to Xst completion: 48.25 secs
+Total CPU time to Xst completion: 48.56 secs
  
 --> 
 
-Total memory usage is 337896 kilobytes
+Total memory usage is 337888 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    5 (   0 filtered)

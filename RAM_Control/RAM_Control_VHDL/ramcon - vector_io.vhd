@@ -199,16 +199,15 @@ begin
    --SELRAM1 	<= '0'; 
    --TA40_OE 	<= '0';
 
-   TCI40 	<= '1' when ICACHE ='1' and(														
+   TCI40 	<= '1' when (ICACHE ='1' and(														
 													--A40(30 downto 23) = "00000000" or  
 													--A40(30 downto 21) = "0000000100" or
 													A40(30 downto 19) = "000000011111" 	
-													) 
-					--else
-					--'1' when --A40(30 downto 21) = "0000001001"  or 
+													))or
+								--A40(30 downto 21) = "0000001001"  or 
 								--A40(30 downto 22) = "000000101"  or 
 								--A40(30 downto 21) = "0000001100"  or
-								--SELRAM0 = '1' or SELRAM1 = '1' 
+								SELRAM0 = '1' or SELRAM1 = '1' 
 								else '0';
 	--TCI40 	<= '0';
    LE_RAM <= '0';
