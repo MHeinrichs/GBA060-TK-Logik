@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.11 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: control.prj
 
@@ -77,18 +77,18 @@ wysiwyg                            : NO
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" in Library work.
 Entity <control> compiled.
-Entity <control> (Architecture <Behavioral>) compiled.
+Entity <control> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <control> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <control> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <control> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <control> in library <work> (Architecture <behavioral>).
 Entity <control> analyzed. Unit <control> generated.
 
 
@@ -333,12 +333,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.08 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.63 secs
  
 --> 
 
-Total memory usage is 306572 kilobytes
+Total memory usage is 306568 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)
