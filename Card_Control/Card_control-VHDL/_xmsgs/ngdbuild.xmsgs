@@ -11,7 +11,7 @@
 <msg type="warning" file="NgdBuild" num="1345" delta="old" >The constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(75)]</arg> is overridden by the constraint <arg fmt="%s" index="2">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(84)]</arg>. The overriden constraint usually comes from the input netlist or ncf files. Please set XIL_NGDBUILD_CONSTR_OVERRIDE_ERROR to promote this message to an error.
 </msg>
 
-<msg type="warning" file="NgdBuild" num="470" delta="old" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">CLK30</arg>&apos; has no legal driver
+<msg type="warning" file="NgdBuild" num="470" delta="new" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">CLK30</arg>&apos; has no legal driver
 </msg>
 
 </messages>
