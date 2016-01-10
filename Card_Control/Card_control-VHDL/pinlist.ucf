@@ -61,6 +61,15 @@ NET "TA40" 			LOC = "P72";
 NET "TEA40" 		LOC = "P73";
 NET "BGR60" 		LOC = "P77";
 NET "ICACHE" 		LOC = "P3";
+NET "BR30"			LOC = "P17";
+NET "BG30"			LOC = "P24";
+NET "BGACK30"		LOC = "P28";
+NET "BR40"			LOC = "P56";
+NET "BG40"			LOC = "P59";
+NET "BB40"			LOC = "P63";
+NET "LOCK40"		LOC = "P67";
+NET "LOCKE40"		LOC = "P71";
+NET "A_OE"			LOC = "P93";
 #Created by Constraints Editor (xc95144xl-tq100-10) - 2015/10/16
 NET "PLL_CLK" TNM_NET = PLL_CLK;
 TIMESPEC TS_PLL_CLK = PERIOD "PLL_CLK" 200 MHz HIGH 50%;

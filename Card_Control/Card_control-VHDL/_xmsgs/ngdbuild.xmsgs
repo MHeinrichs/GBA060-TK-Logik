@@ -5,13 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_BCLK060_SIG = PERIOD &quot;BCLK060_SIG&quot; 20 ns HIGH 50%;&gt; [pinlist.ucf(76)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">BCLK060_SIG</arg>&apos;.
+<msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_BCLK060_SIG = PERIOD &quot;BCLK060_SIG&quot; 20 ns HIGH 50%;&gt; [pinlist.ucf(85)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">BCLK060_SIG</arg>&apos;.
 </msg>
 
-<msg type="warning" file="NgdBuild" num="1345" delta="old" >The constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(66)]</arg> is overridden by the constraint <arg fmt="%s" index="2">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(75)]</arg>. The overriden constraint usually comes from the input netlist or ncf files. Please set XIL_NGDBUILD_CONSTR_OVERRIDE_ERROR to promote this message to an error.
+<msg type="warning" file="NgdBuild" num="1345" delta="old" >The constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(75)]</arg> is overridden by the constraint <arg fmt="%s" index="2">&lt;TIMESPEC TS_PLL_CLK = PERIOD &quot;PLL_CLK&quot; 200 MHz HIGH 50%;&gt; [pinlist.ucf(84)]</arg>. The overriden constraint usually comes from the input netlist or ncf files. Please set XIL_NGDBUILD_CONSTR_OVERRIDE_ERROR to promote this message to an error.
 </msg>
 
-<msg type="warning" file="NgdBuild" num="470" delta="new" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">CLK30</arg>&apos; has no legal driver
+<msg type="warning" file="NgdBuild" num="470" delta="old" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">CLK30</arg>&apos; has no legal driver
 </msg>
 
 </messages>

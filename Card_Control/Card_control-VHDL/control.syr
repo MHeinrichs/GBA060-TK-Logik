@@ -111,7 +111,21 @@ WARNING:Xst:646 - Signal <QDSACK_D4> is assigned but never used. This unconnecte
 WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
     Register <PCLK> equivalent to <CLK_BS> has been removed
-    Found finite state machine <FSM_0> for signal <AMIQ>.
+    Found finite state machine <FSM_0> for signal <DMA_SM>.
+    -----------------------------------------------------------------------
+    | States             | 11                                             |
+    | Transitions        | 28                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 4                                              |
+    | Clock              | BCLK_INT                  (rising_edge)        |
+    | Reset              | RSTI40_SIG                (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | state0                                         |
+    | Power Up State     | state0                                         |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <AMIQ>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
     | Transitions        | 5                                              |
@@ -125,7 +139,7 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found finite state machine <FSM_1> for signal <SIZING>.
+    Found finite state machine <FSM_2> for signal <SIZING>.
     -----------------------------------------------------------------------
     | States             | 6                                              |
     | Transitions        | 36                                             |
@@ -139,19 +153,24 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<0>>.
+    Found 1-bit tristate buffer for signal <PLL_S<1>>.
     Found 1-bit register for signal <CLK_BS>.
+    Found 2-bit tristate buffer for signal <AL>.
     Found 1-bit register for signal <LE_BS>.
     Found 1-bit tristate buffer for signal <AS30>.
     Found 1-bit tristate buffer for signal <DS30>.
+    Found 1-bit tristate buffer for signal <RW30>.
+    Found 2-bit tristate buffer for signal <SIZ30>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 1-bit register for signal <AS30_SIG>.
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 187.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 218.
+    Found 1-bit register for signal <BGACK30_Q>.
+    Found 1-bit register for signal <BR30_Q>.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 188.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 219.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <CNTDIS>.
     Found 12-bit up counter for signal <COUNTHALT>.
@@ -162,11 +181,11 @@ WARNING:Xst:646 - Signal <LEND> is assigned but never used. This unconnected sig
     Found 1-bit register for signal <RSTI40_SIG>.
     Found 1-bit register for signal <RSTINT>.
     Summary:
-	inferred   2 Finite State Machine(s).
+	inferred   3 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  15 D-type flip-flop(s).
+	inferred  17 D-type flip-flop(s).
 	inferred   2 Xor(s).
-	inferred   4 Tristate(s).
+	inferred   9 Tristate(s).
 Unit <control> synthesized.
 
 
@@ -177,10 +196,11 @@ Macro Statistics
 # Counters                                             : 2
  11-bit up counter                                     : 1
  12-bit up counter                                     : 1
-# Registers                                            : 16
- 1-bit register                                        : 16
-# Tristates                                            : 4
- 1-bit tristate buffer                                 : 4
+# Registers                                            : 18
+ 1-bit register                                        : 18
+# Tristates                                            : 7
+ 1-bit tristate buffer                                 : 5
+ 2-bit tristate buffer                                 : 2
 # Xors                                                 : 2
  1-bit xor2                                            : 2
 
@@ -190,7 +210,7 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Analyzing FSM <FSM_1> for best encoding.
+Analyzing FSM <FSM_2> for best encoding.
 Optimizing FSM <SIZING/FSM> on signal <SIZING[1:6]> with one-hot encoding.
 --------------------------
  State        | Encoding
@@ -202,7 +222,7 @@ Optimizing FSM <SIZING/FSM> on signal <SIZING[1:6]> with one-hot encoding.
  get_low_word | 010000
  cycle_end    | 100000
 --------------------------
-Analyzing FSM <FSM_0> for best encoding.
+Analyzing FSM <FSM_1> for best encoding.
 Optimizing FSM <AMIQ/FSM> on signal <AMIQ[1:2]> with user encoding.
 --------------------
  State  | Encoding
@@ -211,17 +231,34 @@ Optimizing FSM <AMIQ/FSM> on signal <AMIQ[1:2]> with user encoding.
  active | 01
  quit   | 10
 --------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <DMA_SM/FSM> on signal <DMA_SM[1:4]> with compact encoding.
+---------------------
+ State   | Encoding
+---------------------
+ state0  | 0000
+ state1  | 1001
+ state2  | 0101
+ state3  | 0111
+ state4  | 0001
+ state5  | 1111
+ state6  | 1101
+ state7  | 0100
+ state8  | 1110
+ state9  | 1100
+ state10 | 1000
+---------------------
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# FSMs                                                 : 2
+# FSMs                                                 : 3
 # Counters                                             : 2
  11-bit up counter                                     : 1
  12-bit up counter                                     : 1
-# Registers                                            : 15
- Flip-Flops                                            : 15
+# Registers                                            : 17
+ Flip-Flops                                            : 17
 
 =========================================================================
 
@@ -242,39 +279,45 @@ WARNING:Xst:2677 - Node <COUNTRES_10> of sequential type is unconnected in block
 INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <CLK_BS> 
 
 Optimizing unit <control> ...
+  implementation constraint: INIT=r	 : COUNTHALT_5
   implementation constraint: INIT=r	 : QDSACK_D0_1
   implementation constraint: INIT=r	 : BCLK060_SIG
-  implementation constraint: INIT=r	 : RSTINT
+  implementation constraint: INIT=r	 : BR30_Q
   implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : ATERM
   implementation constraint: INIT=r	 : CLK30_SIG
+  implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
-  implementation constraint: INIT=s	 : SIZING_FSM_FFd6
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd4
   implementation constraint: INIT=r	 : QDSACK_D0_0
   implementation constraint: INIT=r	 : RSTI40_SIG
-  implementation constraint: INIT=r	 : COUNTHALT_2
-  implementation constraint: INIT=r	 : COUNTHALT_0
-  implementation constraint: INIT=r	 : COUNTHALT_3
-  implementation constraint: INIT=r	 : CNTDIS
   implementation constraint: INIT=r	 : COUNTHALT_1
   implementation constraint: INIT=r	 : COUNTHALT_4
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd4
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd5
-  implementation constraint: INIT=r	 : COUNTHALT_5
+  implementation constraint: INIT=r	 : COUNTHALT_2
+  implementation constraint: INIT=r	 : COUNTHALT_0
+  implementation constraint: INIT=r	 : CNTDIS
+  implementation constraint: INIT=r	 : COUNTHALT_3
   implementation constraint: INIT=r	 : COUNTHALT_6
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd2
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd3
   implementation constraint: INIT=r	 : COUNTHALT_7
   implementation constraint: INIT=r	 : COUNTHALT_8
   implementation constraint: INIT=r	 : COUNTHALT_9
   implementation constraint: INIT=r	 : COUNTHALT_10
+  implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : COUNTHALT_11
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd4
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd5
+  implementation constraint: INIT=s	 : SIZING_FSM_FFd6
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd1
   implementation constraint: INIT=r	 : AMIQ_FSM_FFd1
-  implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : LDSACK_1
   implementation constraint: INIT=r	 : LDSACK_0
+  implementation constraint: INIT=r	 : BGACK30_Q
   implementation constraint: INIT=r	 : AMIQ_FSM_FFd2
 INFO:Xst:2261 - The FF/Latch <ATERM> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <LE_BS> 
 
@@ -305,40 +348,40 @@ Clock Enable                       : YES
 wysiwyg                            : NO
 
 Design Statistics
-# IOs                              : 63
+# IOs                              : 72
 
 Cell Usage :
-# BELS                             : 298
-#      AND2                        : 100
-#      AND3                        : 9
-#      AND4                        : 1
+# BELS                             : 394
+#      AND2                        : 127
+#      AND3                        : 13
+#      AND4                        : 3
 #      AND5                        : 3
 #      AND7                        : 1
 #      GND                         : 1
-#      INV                         : 98
-#      OR2                         : 57
-#      OR3                         : 11
-#      OR4                         : 2
+#      INV                         : 138
+#      OR2                         : 77
+#      OR3                         : 13
+#      OR4                         : 3
 #      VCC                         : 1
 #      XOR2                        : 14
-# FlipFlops/Latches                : 34
+# FlipFlops/Latches                : 40
 #      FD                          : 5
-#      FDC                         : 13
+#      FDC                         : 17
 #      FDCE                        : 12
-#      FDP                         : 4
-# IO Buffers                       : 58
-#      IBUF                        : 23
-#      OBUF                        : 31
-#      OBUFE                       : 4
+#      FDP                         : 6
+# IO Buffers                       : 67
+#      IBUF                        : 29
+#      OBUF                        : 29
+#      OBUFE                       : 9
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.63 secs
+Total REAL time to Xst completion: 38.00 secs
+Total CPU time to Xst completion: 38.21 secs
  
 --> 
 
-Total memory usage is 306568 kilobytes
+Total memory usage is 337896 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)

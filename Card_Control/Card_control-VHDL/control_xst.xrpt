@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sat Jan 02 00:52:51 2016">
+  <application stringID="Xst" timeStamp="Sun Jan 10 14:45:18 2016">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -82,23 +82,23 @@
       <item dataType="int" stringID="XST_COUNTERS" value="2">
         <item dataType="int" stringID="XST_11BIT_UP_COUNTER" value="1"/>
       </item>
-      <item dataType="int" stringID="XST_REGISTERS" value="16">
-        <item dataType="int" stringID="XST_1BIT_REGISTER" value="16"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="18">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="18"/>
       </item>
-      <item dataType="int" stringID="XST_TRISTATES" value="4">
-        <item dataType="int" stringID="XST_1BIT_TRISTATE_BUFFER" value="4"/>
+      <item dataType="int" stringID="XST_TRISTATES" value="7">
+        <item dataType="int" stringID="XST_1BIT_TRISTATE_BUFFER" value="5"/>
       </item>
       <item dataType="int" stringID="XST_XORS" value="2">
         <item dataType="int" stringID="XST_1BIT_XOR2" value="2"/>
       </item>
     </section>
     <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
-      <item dataType="int" stringID="XST_FSMS" value="2"/>
+      <item dataType="int" stringID="XST_FSMS" value="3"/>
       <item dataType="int" stringID="XST_COUNTERS" value="2">
         <item dataType="int" stringID="XST_11BIT_UP_COUNTER" value="1"/>
       </item>
-      <item dataType="int" stringID="XST_REGISTERS" value="15">
-        <item dataType="int" stringID="XST_FLIPFLOPS" value="15"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="17">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="17"/>
       </item>
     </section>
     <section stringID="XST_PARTITION_REPORT">
@@ -115,28 +115,28 @@
         <item stringID="XST_KEEP_HIERARCHY" value="Yes"/>
       </section>
       <section stringID="XST_DESIGN_STATISTICS">
-        <item stringID="XST_IOS" value="63"/>
+        <item stringID="XST_IOS" value="72"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="298">
-          <item dataType="int" stringID="XST_AND2" value="100"/>
-          <item dataType="int" stringID="XST_AND3" value="9"/>
-          <item dataType="int" stringID="XST_AND4" value="1"/>
+        <item dataType="int" stringID="XST_BELS" value="394">
+          <item dataType="int" stringID="XST_AND2" value="127"/>
+          <item dataType="int" stringID="XST_AND3" value="13"/>
+          <item dataType="int" stringID="XST_AND4" value="3"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
-          <item dataType="int" stringID="XST_INV" value="98"/>
-          <item dataType="int" stringID="XST_OR2" value="57"/>
+          <item dataType="int" stringID="XST_INV" value="138"/>
+          <item dataType="int" stringID="XST_OR2" value="77"/>
           <item dataType="int" stringID="XST_VCC" value="1"/>
           <item dataType="int" stringID="XST_XOR2" value="14"/>
         </item>
-        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="34">
+        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="40">
           <item dataType="int" stringID="XST_FD" value="5"/>
-          <item dataType="int" stringID="XST_FDC" value="13"/>
+          <item dataType="int" stringID="XST_FDC" value="17"/>
           <item dataType="int" stringID="XST_FDCE" value="12"/>
-          <item dataType="int" stringID="XST_FDP" value="4"/>
+          <item dataType="int" stringID="XST_FDP" value="6"/>
         </item>
-        <item dataType="int" stringID="XST_IO_BUFFERS" value="58">
-          <item dataType="int" stringID="XST_IBUF" value="23"/>
-          <item dataType="int" stringID="XST_OBUF" value="31"/>
+        <item dataType="int" stringID="XST_IO_BUFFERS" value="67">
+          <item dataType="int" stringID="XST_IBUF" value="29"/>
+          <item dataType="int" stringID="XST_OBUF" value="29"/>
         </item>
       </section>
     </section>

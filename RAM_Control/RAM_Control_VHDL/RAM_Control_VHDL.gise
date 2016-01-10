@@ -68,7 +68,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1451683670" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1451683619">
+    <transform xil_pn:end_ts="1451692866" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1451692815">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -89,7 +89,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1451683678" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1451683670">
+    <transform xil_pn:end_ts="1451692873" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1451692866">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -98,11 +98,10 @@
       <outfile xil_pn:name="ramcon.ngd"/>
       <outfile xil_pn:name="ramcon_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1451683727" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1451683708">
+    <transform xil_pn:end_ts="1451692895" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1451692873">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ramcon.gyd"/>
       <outfile xil_pn:name="ramcon.mfd"/>
       <outfile xil_pn:name="ramcon.nga"/>
@@ -117,15 +116,17 @@
       <outfile xil_pn:name="ramcon_html"/>
       <outfile xil_pn:name="ramcon_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1451683729" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1451683727">
+    <transform xil_pn:end_ts="1451692897" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1451692895">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ramcon.jed"/>
     </transform>
     <transform xil_pn:end_ts="1451683727" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1451683725">
-      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>
 
