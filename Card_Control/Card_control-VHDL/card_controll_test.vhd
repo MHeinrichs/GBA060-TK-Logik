@@ -68,7 +68,7 @@ ARCHITECTURE behavior OF card_controll_test IS
          AL : OUT  std_logic_vector(1 downto 0);
          A30_LE : OUT  std_logic;
          OE_BS : OUT  std_logic;
-         LE_BS : OUT  std_logic;
+         LE_BS : INOUT  std_logic;
          DIR_BS : OUT  std_logic;
          BWL_BS : OUT  std_logic_vector(2 downto 0);
          FC30 : OUT  std_logic_vector(2 downto 0);
@@ -86,8 +86,17 @@ ARCHITECTURE behavior OF card_controll_test IS
          TA40 : OUT  std_logic;
          TEA40 : OUT  std_logic;
          BGR60 : OUT  std_logic;
-         ICACHE : OUT  std_logic
-        );
+         ICACHE : OUT  std_logic;
+           BR30 :  in  STD_LOGIC;								--Busrequest 030-Seite
+			  BGACK30 :  in  STD_LOGIC;							--Bus Grant ack 030-Seite			  
+			  BG30 : out  STD_LOGIC;								--Busgrant 030-Seite
+			  BR40 :  in  STD_LOGIC;								--Busrequest 040-Seite
+			  BG40 :  out  STD_LOGIC;								--Busgrant 040-Seite
+			  BB40 :  in  STD_LOGIC;								--Busbusy 040-Seite
+			  LOCK40 : in  STD_LOGIC;								--Bus Lock 040			  
+			  LOCKE40 : in  STD_LOGIC;							--Bus Lock End 040
+			  A_OE :  out  STD_LOGIC
+			  );
     END COMPONENT;
     
 
@@ -109,9 +118,16 @@ ARCHITECTURE behavior OF card_controll_test IS
    signal TM40 : std_logic_vector(2 downto 0) := (others => '0');
    signal TT40 : std_logic_vector(1 downto 0) := (others => '0');
    signal TS40 : std_logic := '0';
+   signal BR30 : STD_LOGIC := '0';								--Busrequest 030-Seite
+	signal BGACK30 :  STD_LOGIC := '0';							--Bus Grant ack 030-Seite			  
+	signal BR40 :  STD_LOGIC := '0';								--Busrequest 040-Seite
+	signal BB40 :  STD_LOGIC := '0';								--Busbusy 040-Seite
+	signal LOCK40 : STD_LOGIC := '0';								--Bus Lock 040			  
+	signal LOCKE40 : STD_LOGIC := '0';							--Bus Lock End 040
 
 	--BiDirs
    signal RESET30 : std_logic;
+   signal LE_BS : std_logic;
 
  	--Outputs
    signal PLL_S : std_logic_vector(1 downto 0);
@@ -124,7 +140,6 @@ ARCHITECTURE behavior OF card_controll_test IS
    signal AL : std_logic_vector(1 downto 0);
    signal A30_LE : std_logic;
    signal OE_BS : std_logic;
-   signal LE_BS : std_logic;
    signal DIR_BS : std_logic;
    signal BWL_BS : std_logic_vector(2 downto 0);
    signal FC30 : std_logic_vector(2 downto 0);
@@ -142,10 +157,14 @@ ARCHITECTURE behavior OF card_controll_test IS
    signal TEA40 : std_logic;
    signal BGR60 : std_logic;
    signal ICACHE : std_logic;
+	signal BG30 : STD_LOGIC;
+	signal BG40 : STD_LOGIC;
+	signal A_OE : STD_LOGIC;
 
    -- Clock period definitions
    constant PLL_CLK_period : time := 5 ns;
    constant OSC_CLK_period : time := 25 ns;
+   constant CLK030_period : time := 40 ns;
    --constant CLK30_period : time := 10 ns;
 	--timescale 1ns / 1ns
  
@@ -198,7 +217,17 @@ BEGIN
           TA40 => TA40,
           TEA40 => TEA40,
           BGR60 => BGR60,
-          ICACHE => ICACHE
+          ICACHE => ICACHE,
+          BR30 => BR30,
+		    BGACK30 => BGACK30,
+			 BG30 => BG30,
+			 BR40 => BR40,
+			 BG40 => BG40,
+			 BB40 => BB40,
+			 LOCK40 => LOCK40,
+			 LOCKE40 => LOCKE40,
+			 A_OE =>A_OE
+
         );
 
    -- Clock process definitions
@@ -218,7 +247,22 @@ BEGIN
 		wait for OSC_CLK_period/2;
    end process;
  
+   CLK30_process :process
+   begin
+		CLK30 <= '0';
+		wait for CLK030_period/2;
+		CLK30 <= '1';
+		wait for CLK030_period/2;
+   end process;
 
+	DS_PROC :process
+	begin
+		DSACK30 <= "11";
+		wait until AS30 = '0' and rising_edge(CLK30) and STERM30 ='1';
+		DSACK30 <= "10";
+		wait until AS30 = '1';
+	end process;
+	
    -- Stimulus process
    stim_proc: process
    begin		
@@ -240,15 +284,66 @@ BEGIN
 		TT40		<="11";
 		TS40		<='1';
 		
-      wait for 100 ns;	
+     BR30 <='1';
+	  BGACK30 <='1';
+	  BR40 <='0';
+	  BB40 <='1';
+	  LOCK40 <='1';
+	  LOCKE40 <='1';
+		
+		
+      wait for 50 ns;	
 		RESET30 <='1';
 		HALT30<='1';
 
       wait for PLL_CLK_period*100;
+		TS40 <='0';
+		TT40 <="00";
+		TM40 <= "000";
+		RW40 <= '0';
+		SEL16M <='1';
+		A40 <= "00";
+		SIZ40 <="11"; --line
+		
+		wait until AS30 = '0';
+		STERM30 <= '0';
+      
+		wait until TA40 ='0';
+		TS40 <='1';
+		TT40 <="00";
+		TM40 <= "000";
+		RW40 <= '1';
+		SEL16M <='1';
+		A40 <= "00";
+		SIZ40 <="11"; --line
+		
+		wait until AS30 = '1';		
+		STERM30 <= '1';		
+		
+		wait for PLL_CLK_period*4;
+		TS40 <='0';
+		TT40 <="00";
+		TM40 <= "000";
+		RW40 <= '0';
+		SEL16M <='1';
+		A40 <= "00";
+		SIZ40 <="11"; --line
 
-      -- insert stimulus here 
 
-      wait;
+		wait until TA40 ='0';
+		TS40 <='1';
+		TT40 <="00";
+		TM40 <= "000";
+		RW40 <= '1';
+		SEL16M <='1';
+		A40 <= "00";
+		SIZ40 <="11"; --line
+		
+
+		wait for PLL_CLK_period*4;
+
+
+		wait;
    end process;
 
 END;

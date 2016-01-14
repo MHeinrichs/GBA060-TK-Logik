@@ -1,0 +1,58 @@
+ISim log file
+Running: C:\Users\Matze\Amiga\Hardwarehacks\gb_a1k_tk\Logik\Card_Control\Card_control-VHDL\card_controll_test_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test_isim_beh.wdb 
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79480 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 302
+# run all
+Stopped at time : 79532500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 305
+# run all
+Stopped at time : 79552500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 314
+# run all
+Stopped at time : 79572500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 317
+# run all
+Stopped at time : 79600 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 326
+# run all
+at 79660 ns(1), Instance /card_controll_test/uut/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+Stopped at time : 79680 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 329
+# run all
+Stopped at time : 79720 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 332
+# run all
+Stopped at time : 70774472500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 248
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79480 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 309
+# run all
+Stopped at time : 79532500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# run all
+Stopped at time : 79552500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 321
+# run all
+Stopped at time : 79572500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 324
+# run all
+Stopped at time : 80052500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 335
+# run all
+Stopped at time : 80072500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 346

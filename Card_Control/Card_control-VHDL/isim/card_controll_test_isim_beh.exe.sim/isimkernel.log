@@ -1,0 +1,10 @@
+Command line:
+   card_controll_test_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  62652
+
+Thu Jan 14 09:43:48 2016
+
+
+ Elaboration Time: 0.203125 sec
