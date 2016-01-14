@@ -177,6 +177,7 @@ signal	BYTE : STD_LOGIC:='0'; --hilfssignal für die Identifikation von BYTE-Zugr
 signal	WORD : STD_LOGIC:='0'; --hilfssignal für die Identifikation von WORD-Zugriffen
 signal	LONG : STD_LOGIC:='0'; --hilfssignal für die Identifikation von LONG-Zugriffen
 signal	TERM : STD_LOGIC:='0'; --hilfssignal für die Identifikation vom Zyklusende
+signal	TERM_DLY : STD_LOGIC:='0'; --hilfssignal für die Identifikation vom Zyklusende
 signal	TERM_ACK : STD_LOGIC:='0'; --zyklusende erkannt
 signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
@@ -185,6 +186,7 @@ signal	LE_BS_SIG : STD_LOGIC:='0';  --Signal für den latch vom Bus
 signal	LE_BS_D : STD_LOGIC:='0';  --Signal für den latch vom Bus verzögert
 signal	TERM_P : STD_LOGIC:='0'; 	  --Auf der P-Clock gesampeltes Termionierungssignal
 signal	TERM_VALID : STD_LOGIC:='0'; --Signal für ein valides terminierungssignal
+
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -362,15 +364,6 @@ begin
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
-	TERM_SAMPLE: process (CLK_RAMC_SIG)
-	begin 
-		if(rising_edge(CLK_RAMC_SIG))then
-			TERM_P <= TERM;
-			LE_BS_D <= LE_BS_SIG;
-		end if;
-	end process TERM_SAMPLE;
-	
-	TERM_VALID <=  not TERM_ACK AND TERM_P ;
 
 	TEA40		<= BERR30; -- not needed anymore
 	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
@@ -387,7 +380,7 @@ begin
 		elsif(rising_edge(CLK30)) then
 			case SM_030_P is
 				when S0 =>
-					if(SIZING /= idle and SIZING /=cycle_end and TERM_VALID ='0' and TERM = '0') then
+					if(SIZING /= idle and SIZING /=cycle_end and TERM_ACK ='1') then
 						LDSACK	<="00";
 						SM_030_P <= S2;
 					else						
@@ -470,23 +463,48 @@ begin
 	end process STATE_030_N;
 
 	
+   process (SCLK_SIG, SM_030_P) begin
+      if SM_030_P=S2 then
+			TERM_ACK <='0';
+      elsif (rising_edge(SCLK_SIG)) then
+			if(TERM_ACK ='0') then			
+				if(SIZING = idle or SIZING = cycle_end) then
+					TERM_ACK <='1';
+				else
+					TERM_ACK <= TERM_VALID ;
+				end if;
+			end if;
+      end if;
+   end process;
+	
+	TERM_SAMPLE: process (SCLK_SIG,TERM)
+	begin 
+		if(TERM = '1')then
+			TERM_P <= '1';
+		elsif(rising_edge(SCLK_SIG))then
+			TERM_P <= '0';
+		end if;
+	end process TERM_SAMPLE;
+	
+	TERM_VALID <=  not TERM_DLY AND TERM_P ;
+
 	
 	--sizing statemachine
 	--this is the clocked statemachine transition process
    process (SCLK_SIG, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
-			TERM_ACK <= '0';
+			TERM_DLY <= '0';
       elsif (rising_edge(SCLK_SIG)) then
 			SIZING <= SIZING_D;
-			TERM_ACK <= TERM;
+			TERM_DLY <= TERM_P or TERM;
       end if;
    end process;
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, TS40, SEL16M, A40,
 	 AMISEL, RW40, RSTI40_SIG, LDSACK, CNTDIS,
-	 TT40, BYTE, WORD, LONG, SIZ40, TERM_VALID)
+	 TT40, BYTE, WORD, LONG, SIZ40, TERM_VALID,SM_030_P)
    begin
       if(SIZING =cycle_end) then
 			TA40_SIG	<= '0';
@@ -514,7 +532,6 @@ begin
 				AL_D <= "00";
 						
 				BWL_BS	<= "111";
-					
 				if( TS40 ='0' and TT40(1)='0' and SEL16M ='1' and SM_030_P = S0) then
 					SIZING_D <=size_decode;
 				else

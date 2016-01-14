@@ -164,7 +164,7 @@ ARCHITECTURE behavior OF card_controll_test IS
    -- Clock period definitions
    constant PLL_CLK_period : time := 5 ns;
    constant OSC_CLK_period : time := 25 ns;
-   constant CLK030_period : time := 39 ns;
+   constant CLK030_period : time := 19 ns;
    --constant CLK30_period : time := 10 ns;
 	--timescale 1ns / 1ns
  
@@ -296,7 +296,9 @@ BEGIN
 		RESET30 <='1';
 		HALT30<='1';
 
-      wait for PLL_CLK_period*100;
+      wait UNTIL RSTI40 ='1';
+		wait for PLL_CLK_period*16;
+		
 		TS40 <='0';
 		TT40 <="00";
 		TM40 <= "000";

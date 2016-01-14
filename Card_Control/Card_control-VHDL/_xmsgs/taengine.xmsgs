@@ -5,5 +5,8 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="Cpld" num="997" delta="new" >Error during loading TIMESPEC <arg fmt="%s" index="1">AUTO_TS_2001</arg> = <arg fmt="%s" index="2">FROM:INT_CLK_PLL_CLK:TO:INT_TNM_CLK30:10.0</arg>, the timespec parser failed to find any instance/net with an expected TNM defined in TIMEGRP <arg fmt="%s" index="3">INT_TNM_CLK30</arg>. The timing constraint will be ignored.
+</msg>
+
 </messages>
 

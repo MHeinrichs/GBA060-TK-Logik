@@ -5,10 +5,6 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="819" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd</arg>&quot; line <arg fmt="%d" index="2">487</arg>: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-<arg fmt="%s" index="3">&lt;SM_030_P&gt;</arg>
-</msg>
-
 <msg type="info" file="Xst" num="2561" delta="old" >Always blocking tristate driving signal &lt;<arg fmt="%s" index="1">CLK30</arg>&gt; in unit &lt;<arg fmt="%s" index="2">control</arg>&gt; is removed.
 </msg>
 
@@ -48,7 +44,7 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">NAMIACC</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">LE_BS_D</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">LE_BS_D</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">CNTDIS</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
