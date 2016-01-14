@@ -151,7 +151,7 @@ WARNING:Xst:646 - Signal <QDSACK_D4> is assigned but never used. This unconnecte
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<1>>.
+    Found 1-bit tristate buffer for signal <PLL_S<0>>.
     Found 1-bit register for signal <CLK_BS>.
     Found 2-bit tristate buffer for signal <AL>.
     Found 1-bit register for signal <LE_BS>.
@@ -375,12 +375,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 37.00 secs
-Total CPU time to Xst completion: 37.80 secs
+Total REAL time to Xst completion: 38.00 secs
+Total CPU time to Xst completion: 37.89 secs
  
 --> 
 
-Total memory usage is 337932 kilobytes
+Total memory usage is 337904 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)

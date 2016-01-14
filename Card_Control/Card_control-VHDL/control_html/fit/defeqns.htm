@@ -448,15 +448,15 @@ OE_BS <= ((NOT A_OE AND TT40(1) AND RSTI40)
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S(0) <= '0';
+PLL_S_I(0) <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(0) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S_I(1) <= '0';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(1) <= '0';
+PLL_S(1) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S_0_OBUF/PLL_S_0_OBUF_TRST <= ((NOT COUNTRES(7) AND NOT RESET30.PIN)
+PLL_S_1_OBUF/PLL_S_1_OBUF_TRST <= ((NOT COUNTRES(7) AND NOT RESET30.PIN)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT COUNTRES(8) AND NOT RESET30.PIN)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT COUNTRES(9) AND NOT RESET30.PIN)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT COUNTRES(10) AND NOT RESET30.PIN)
@@ -475,7 +475,7 @@ FDCPE_QDSACK_D01: FDCPE port map (QDSACK_D0(1),QDSACK_D0_D(1),SCLK,NOT QDSACK_D0
 </td></tr><tr><td>
 RESET30_I <= '0';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30 <= RESET30_I when RESET30_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30_OE <= PLL_S_0_OBUF/PLL_S_0_OBUF_TRST;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30_OE <= PLL_S_1_OBUF/PLL_S_1_OBUF_TRST;
 </td></tr><tr><td>
 FDCPE_RSTI40: FDCPE port map (RSTI40,RSTI40_D,RSTINT/RSTINT_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSTI40_D <= ((NOT RSTO40)

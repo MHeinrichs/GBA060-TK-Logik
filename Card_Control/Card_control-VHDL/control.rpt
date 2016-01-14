@@ -1,7 +1,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date:  1-14-2016, 11:26AM
+Design Name: control                             Date:  1-14-2016, 11:31AM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -152,7 +152,7 @@ DMA_SM_FSM_FFd1                       9     9     FB2_16  STD  RESET
 DMA_SM_FSM_FFd3                       10    12    FB2_18  STD  RESET
 COUNTRES<10>                          3     13    FB3_13  STD  RESET
 COUNTRES<9>                           4     13    FB3_14  STD  RESET
-PLL_S_0_OBUF/PLL_S_0_OBUF_TRST        5     11    FB3_16  STD  
+PLL_S_1_OBUF/PLL_S_1_OBUF_TRST        5     11    FB3_16  STD  
 COUNTRES<8>                           5     13    FB3_17  STD  RESET
 COUNTRES<7>                           6     13    FB3_18  STD  RESET
 BGACK30_Q                             3     3     FB4_1   STD  RESET
@@ -321,7 +321,7 @@ Signals Used by Logic in Function Block
   3: A_OE              12: LOCK40                          21: SIZING_FSM_FFd2 
   4: BB40              13: LOCKE40                         22: SIZING_FSM_FFd3 
   5: BGACK30_Q         14: PCLK                            23: SIZING_FSM_FFd4 
-  6: BR30_Q            15: PLL_S_0_OBUF/PLL_S_0_OBUF_TRST  24: SIZING_FSM_FFd5 
+  6: BR30_Q            15: PLL_S_1_OBUF/PLL_S_1_OBUF_TRST  24: SIZING_FSM_FFd5 
   7: BR40              16: RSTI40                          25: TM40<0> 
   8: CLK30_SIG         17: RSTINT/RSTINT_CLKF              26: TM40<1> 
   9: DMA_SM_FSM_FFd1   18: SEL16M                          27: TT40<1> 
@@ -364,7 +364,7 @@ FC30<0>               2       0     0   3     FB3_12  30    I/O     O
 COUNTRES<10>          3       0     0   2     FB3_13        (b)     (b)
 COUNTRES<9>           4       0     0   1     FB3_14  32    I/O     (b)
 FC30<2>               4       0     0   1     FB3_15  33    I/O     O
-PLL_S_0_OBUF/PLL_S_0_OBUF_TRST
+PLL_S_1_OBUF/PLL_S_1_OBUF_TRST
                       5       0     0   0     FB3_16        (b)     (b)
 COUNTRES<8>           5       0     0   0     FB3_17  34    I/O     (b)
 COUNTRES<7>           6       1<-   0   0     FB3_18        (b)     (b)
@@ -389,7 +389,7 @@ FC30<0>              .......................XX.XX............ 4
 COUNTRES<10>         ......XXXXXXXXXXX....XX................. 13
 COUNTRES<9>          ......XXXXXXXXXXX....XX................. 13
 FC30<2>              .......................XXXXX............ 5
-PLL_S_0_OBUF/PLL_S_0_OBUF_TRST 
+PLL_S_1_OBUF/PLL_S_1_OBUF_TRST 
                      .XXXXX.X......XXX...X.X................. 11
 COUNTRES<8>          ......XXXXXXXXXXX....XX................. 13
 COUNTRES<7>          ......XXXXXXXXXXX....XX................. 13
@@ -1078,15 +1078,15 @@ OE_BS <= ((NOT A_OE AND TT40(1) AND RSTI40)
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 
 
-PLL_S(0) <= '0';
+PLL_S_I(0) <= '0';
+PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
+PLL_S_OE(0) <= '0';
 
 
-PLL_S_I(1) <= '0';
-PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
-PLL_S_OE(1) <= '0';
+PLL_S(1) <= '0';
 
 
-PLL_S_0_OBUF/PLL_S_0_OBUF_TRST <= ((NOT COUNTRES(7) AND NOT RESET30.PIN)
+PLL_S_1_OBUF/PLL_S_1_OBUF_TRST <= ((NOT COUNTRES(7) AND NOT RESET30.PIN)
 	OR (NOT COUNTRES(8) AND NOT RESET30.PIN)
 	OR (NOT COUNTRES(9) AND NOT RESET30.PIN)
 	OR (NOT COUNTRES(10) AND NOT RESET30.PIN)
@@ -1105,7 +1105,7 @@ QDSACK_D0_D(1) <= (STERM30 AND DSACK30(1));
 
 RESET30_I <= '0';
 RESET30 <= RESET30_I when RESET30_OE = '1' else 'Z';
-RESET30_OE <= PLL_S_0_OBUF/PLL_S_0_OBUF_TRST;
+RESET30_OE <= PLL_S_1_OBUF/PLL_S_1_OBUF_TRST;
 
 FDCPE_RSTI40: FDCPE port map (RSTI40,RSTI40_D,RSTINT/RSTINT_CLKF,'0','0');
 RSTI40_D <= ((NOT RSTO40)
