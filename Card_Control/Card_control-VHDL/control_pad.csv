@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 1-14-2016  9:09AM
+ 1-14-2016 11:26AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -51,14 +51,14 @@ P30,FC30<0>,O,I/O,OUTPUT,,,,,,,,,
 P31,GND,,GND,,,,,,,,,,
 P32,TIE,,I/O,,,,,,,,,,
 P33,FC30<2>,O,I/O,OUTPUT,,,,,,,,,
-P34,CLK30,I,I/O,INPUT,,,,,,,,,
+P34,TIE,,I/O,,,,,,,,,,
 P35,DSACK30<1>,I,I/O,INPUT,,,,,,,,,
 P36,DSACK30<0>,I,I/O,INPUT,,,,,,,,,
 P37,HALT30,I,I/O,INPUT,,,,,,,,,
 P38,VCC,,VCCIO,,,,,,,,,,
 P39,AS30,O,I/O,OUTPUT,,,,,,,,,
 P40,STERM30,I,I/O,INPUT,,,,,,,,,
-P41,BERR30,I,I/O,INPUT,,,,,,,,,
+P41,TIE,,I/O,,,,,,,,,,
 P42,RW30,O,I/O,OUTPUT,,,,,,,,,
 P43,SIZ30<1>,O,I/O,OUTPUT,,,,,,,,,
 P44,GND,,GND,,,,,,,,,,
