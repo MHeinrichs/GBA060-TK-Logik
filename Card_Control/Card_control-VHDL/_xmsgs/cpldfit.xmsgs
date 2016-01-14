@@ -20,16 +20,19 @@
 <msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">TCI40_OBUF</arg>&apos; is missing an input and will be deleted.
 </msg>
 
+<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BERR30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
+</msg>
+
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CIOUT40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
+</msg>
+
+<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CLK30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">OSC_CLK</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1239" delta="old" >The global <arg fmt="%s" index="1">clock</arg> designation (BUFG) on signal &apos;<arg fmt="%s" index="2">A40_0_IBUF</arg>&apos; is ignored. Most likely the signal is gated and therefore cannot be used as a global control signal.
-</msg>
-
-<msg type="warning" file="Cpld" num="997" delta="old" >Error during loading TIMESPEC <arg fmt="%s" index="1">AUTO_TS_2001</arg> = <arg fmt="%s" index="2">FROM:INT_CLK_PLL_CLK:TO:INT_TNM_CLK30:10.0</arg>, the timespec parser failed to find any instance/net with an expected TNM defined in TIMEGRP <arg fmt="%s" index="3">INT_TNM_CLK30</arg>. The timing constraint will be ignored.
 </msg>
 
 </messages>

@@ -75,6 +75,10 @@
     <transform xil_pn:end_ts="1452807853" xil_pn:in_ck="-3762851835950090459" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1452807853">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="card_controll_test.vhd"/>
       <outfile xil_pn:name="control-2.vhd"/>
     </transform>
@@ -85,12 +89,22 @@
     <transform xil_pn:end_ts="1452807853" xil_pn:in_ck="-3762851835950090459" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1452807853">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="card_controll_test.vhd"/>
       <outfile xil_pn:name="control-2.vhd"/>
     </transform>
     <transform xil_pn:end_ts="1452807857" xil_pn:in_ck="-3762851835950090459" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-1494164555962987244" xil_pn:start_ts="1452807853">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="card_controll_test_beh.prj"/>
       <outfile xil_pn:name="card_controll_test_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -101,11 +115,14 @@
     <transform xil_pn:end_ts="1452807857" xil_pn:in_ck="-2421698471727944044" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7492192761027790975" xil_pn:start_ts="1452807857">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="card_controll_test_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
-    <transform xil_pn:end_ts="1452807718" xil_pn:in_ck="4884561763083303664" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-4200084434558824171" xil_pn:start_ts="1452807678">
+    <transform xil_pn:end_ts="1452809928" xil_pn:in_ck="4884561763083303664" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-4200084434558824171" xil_pn:start_ts="1452809888">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -126,7 +143,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1452807725" xil_pn:in_ck="-618112270376107210" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1452807718">
+    <transform xil_pn:end_ts="1452809935" xil_pn:in_ck="-618112270376107210" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1452809928">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -136,7 +153,7 @@
       <outfile xil_pn:name="control.ngd"/>
       <outfile xil_pn:name="control_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1452807746" xil_pn:in_ck="156937794698422024" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="6046712412699006911" xil_pn:start_ts="1452807725">
+    <transform xil_pn:end_ts="1452809953" xil_pn:in_ck="156937794698422024" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="6046712412699006911" xil_pn:start_ts="1452809935">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -154,7 +171,7 @@
       <outfile xil_pn:name="control_html"/>
       <outfile xil_pn:name="control_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1452807748" xil_pn:in_ck="156937794698430888" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1452807746">
+    <transform xil_pn:end_ts="1452809955" xil_pn:in_ck="156937794698430888" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1452809953">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="control.jed"/>
