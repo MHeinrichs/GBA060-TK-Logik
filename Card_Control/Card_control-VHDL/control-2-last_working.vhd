@@ -385,7 +385,7 @@ begin
 			LDSACK	<="00";
 		elsif(falling_edge(SCLK_SIG)) then
 			--LDSACKx is sampled at idle and hold until active ends!
-			if((QDSACK(0) = '1' and (DSACK30(0)='0' or STERM30='0')) or
+			if((QDSACK(0) = '1' and DSACK30(0)='0') or STERM30='0' or
 				(LDSACK(0) = '1' and CNTDIS ='0' and AMIQ = active)	--hold to sync with CAQ
 				) then
 				LDSACK(0)	<= '1';
@@ -393,7 +393,7 @@ begin
 				LDSACK(0)	<= '0';
 			end if;
 			
-			if((QDSACK(1) ='1' and (DSACK30(1)='0' or STERM30='0')) or
+			if((QDSACK(1) ='1' and DSACK30(1)='0') or STERM30='0' or
 				(LDSACK(1) ='1' and CNTDIS ='0' and AMIQ = active)	--hold to sync with CAQ
 				) then
 				LDSACK(1)	<= '1';
@@ -441,7 +441,7 @@ begin
 
 				ATERM <= '0';
 				LE_BS <= '0';
-				if(LDSACK /="00")then
+				if(LDSACK /="00" or STERM30='0')then
 					AMIQ <=active;
 				else
 					AMIQ <=idle;
