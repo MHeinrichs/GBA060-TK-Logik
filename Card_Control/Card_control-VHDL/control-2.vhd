@@ -189,6 +189,8 @@ signal	CLK30_D0 : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-C
 signal	CLK30_D1 : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal 	STERM_D0 : STD_LOGIC:='0';
 signal   DSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";
+signal   DSACK_S_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";
+signal   DSACK_S_D1 : STD_LOGIC_VECTOR (1 downto 0):="00";
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -267,8 +269,8 @@ begin
 	end process HALT_P;
 
 	--Erzeugung der Resets
-	RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
-	--RESET30	<=	'Z'; 
+	--RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
+	RESET30	<=	'Z'; 
 	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
 	RESET_P: process (RSTO40,BCLK_INT)
 	begin
@@ -487,11 +489,25 @@ begin
       	SIZING <= idle;
 			TERM_ACK <= '0';
 			LE_BS_D <= '0';
+			DSACK_S_D0 <= "00";
+			DSACK_S_D1 <= "00";
       elsif (rising_edge(SCLK_SIG)) then
 			SIZING <= SIZING_D;
 			TERM_ACK <= TERM;
 			LE_BS_D <= LE_BS_SIG;
+			if(NAMIACC = '0') then
+				if(STERM_D0 ='0')then
+					DSACK_S_D1 <= "11";
+				else
+					DSACK_S_D1(0) <= not DSACK_D0(0);
+					DSACK_S_D1(1) <= not DSACK_D0(1);
+				end if;
 
+				--DSACK_S_D1 <= DSACK_S_D0;
+			else
+				--DSACK_S_D0 <= "00";
+				DSACK_S_D1 <= "00";
+			end if;
       end if;
    end process;
 	--somehow a lot of signals need to be "latched" in a unclocked process
@@ -544,7 +560,7 @@ begin
 
 				--bus code for data latch
 				if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
-						(RW40 ='1' AND (LDSACK/="00"))) then --READ: any port
+						(RW40 ='1' AND (DSACK_S_D1/="00"))) then --READ: any port
 					BWL_BS(0)	<=	'0';
 				else 
 					BWL_BS(0)	<=	'1';
@@ -553,14 +569,14 @@ begin
 				if(	(RW40 ='0' and ( LONG = '1' OR			-- WRITE: LONG
 																	(WORD = '1' and A40(1)='0')	or		-- WRITE: WORD A1=0
 																	(BYTE = '1' and A40(1)='0')))or 	-- WRITE: BYTE A1=0
-						(RW40 ='1' AND (LDSACK="10" or LDSACK="01"))) then --READ: word/byte port
+						(RW40 ='1' AND (DSACK_S_D1="10" or DSACK_S_D1="01"))) then --READ: word/byte port
 					BWL_BS(1)	<=	'0';
 				else 
 					BWL_BS(1)	<=	'1';
 				end if;
 
 				if(	(RW40 ='0') or 	-- WRITE: any access
-						(RW40 ='1' AND LDSACK="01")) then --READ: byte port
+						(RW40 ='1' AND DSACK_S_D1="01")) then --READ: byte port
 					BWL_BS(2)	<=	'0';
 				else 
 					BWL_BS(2)	<=	'1';
@@ -596,7 +612,7 @@ begin
 				SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
 				AL_D		<=	"01";
 				BWL_BS(0)	<= '1';
-				if((RW40='0' or (RW40='1' and LDSACK="01"))) then
+				if((RW40='0' or (RW40='1' and DSACK_S_D1="01"))) then
 					BWL_BS(1) <= '0';
 					BWL_BS(2) <= '0';
 				else
@@ -621,14 +637,14 @@ begin
 					
 				AL_D	<= "10";
 					
-				if(RW40='0' or (RW40='1' and LDSACK="01")) then
+				if(RW40='0' or (RW40='1' and DSACK_S_D1="01")) then
 					BWL_BS(0) <= '0';
 					BWL_BS(2) <= '0';
 				else
 					BWL_BS(0) <= '1';
 					BWL_BS(2) <= '1';
 				end if;
-				if( AMISEL ='1' and               RW40='1' and LDSACK="10" )then
+				if( RW40='1' and DSACK_S_D1="10" )then
 					BWL_BS(1) <= '0';
 				else
 					BWL_BS(1) <= '1';
@@ -649,7 +665,7 @@ begin
 				SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
 				AL_D		<=	"11";
 				BWL_BS(1 downto 0) <= "11";
-				if(RW40='0' or (RW40='1' and LDSACK="01"))then
+				if(RW40='0' or (RW40='1' and DSACK_S_D1="01"))then
 					BWL_BS(2) <= '0';
 				else
 					BWL_BS(2) <= '1';

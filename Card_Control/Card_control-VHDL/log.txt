@@ -8,22 +8,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/XST_VCC pro
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDPE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/Q prop_name=FPGAINIT prop_terse=XDM_PROPERTY_INT32 "FPGAINIT" 1
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDPE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT\/X_ZERO prop_name=FPGAINIT prop_terse=XDM_PROPERTY_INT32 "FPGAINIT" 1
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BCLK060_SIG\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BCLK060_SIG\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
@@ -126,6 +110,24 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DS30_SIG\/$
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STERM_D0\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BR30_Q\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BR30_Q\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
@@ -165,24 +167,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=T
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_SIG\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_SIG\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_P\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -264,6 +248,24 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK_RAMC_SI
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_ACK\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_ACK\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
@@ -279,6 +281,60 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=T
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_ACK\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_ACK\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_D0\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -318,183 +374,75 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RSTI40_SIG\
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_0\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_0\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_0\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_0\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_1\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_1\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_1\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_1\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_0\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_1\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_1\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_1\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_1\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_2\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_2\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_2\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_2\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_3\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/$1I43 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_3\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_3\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_3\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_D0_1\/$1I43 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_4\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_4\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_4\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_4\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_5\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_5\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_5\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_5\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_6\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_6\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_6\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_6\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_0\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_7\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_7\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_7\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_7\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_8\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_8\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_8\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_8\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_9\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_9\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_9\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_9\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_10\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_10\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_10\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_10\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_0\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_0\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_0\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_0\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_1\/Q prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_1\/Q prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_1\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_1\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_1\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -639,42 +587,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=T
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_11\/X_ZERO prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCE"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_11\/X_ZERO prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_0\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/Q\/FDCP prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/Q\/FDCP prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/Q\/X_ONE prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "FDCP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/Q\/X_ONE prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/$1I55 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "GND"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_1\/$1I55 prop_name=INIT prop_terse=XDM_PROPERTY_STRING "INIT" "0"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -986,46 +898,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_M
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<10>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<9>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<8>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<7>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<6>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<5>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<4>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<3>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<2>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Mxor_Result<1>\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/Mxor_CLK30_SIG_xor0000\/Xo<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -1062,6 +934,14 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TBI401 prop
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/OE_BS1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -1086,15 +966,27 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_cmp_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_cmp_eq00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_mux0001<1>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_cmp_eq00012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D1_mux0001<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_0_mux00012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_S_D0_1_mux00012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1134,46 +1026,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK_RAMC_SI
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00021 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00031 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00041 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00051 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00061 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00071 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000__and00081 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_Madd__add0000_Result_0_not00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -1190,11 +1042,19 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_M
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00081 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000_Result_0_not00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000_Result_0_not00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_Out71 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_Out72 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_Out73 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1226,23 +1086,15 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DMA_SM_FSM_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BCLK040_SIG_Clk_INV1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BCLK040_SIG_N01 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AS30_SIG_N11 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AS30_SIG_N01 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_0_N01 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0_N11 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTRES_0_N01 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1271,6 +1123,46 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LONG_or0000
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LONG_or00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<1>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<1>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<1>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<1>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<1>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<0>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<0>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<0>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL_D<0>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1306,11 +1198,11 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1323,14 +1215,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux00019 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux000110 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_mux000111 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1350,11 +1234,11 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux00016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux00016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1370,23 +1254,59 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux000110 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_1_mux000111 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STOPRES_cmp_eq00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND4"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/STOPHALT_cmp_eq00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND5"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DSACK_VALID_0_or00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR4"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00013 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00014 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_0_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_0_mux00002 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_0_mux00003 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_0_mux00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_1_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_1_mux00002 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_D_1_mux00003 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1398,23 +1318,15 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd6-In7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -1547,78 +1459,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd3-In18 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In9 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In11 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In12 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In13 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In14 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In15 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In16 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In17 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In18 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2006,63 +1846,15 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DMA_SM_FSM_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00002 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR4"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00003 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00006 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00007 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00008 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and00009 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and000010 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and000011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RW30_OUT_and000012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR4"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2074,23 +1866,15 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FS
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In9 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_P_FSM_FFd2-In8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2123,86 +1907,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_N_FS
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SM_030_N_FSM_FFd2-In8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>9 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<0>10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>9 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LDSACK_mux0000<1>10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2254,34 +1958,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/DS30_SIG_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<0>7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AS30_SIG_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -2315,6 +1991,58 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AS30_SIG_mu
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AS30_SIG_mux00019 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00002 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00003 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00006 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00007 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00008 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux00009 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux000010 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux000011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux000012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TERM_mux000013 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2382,7 +2110,7 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd5-In10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd5-In10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2530,94 +2258,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZ30_OUT_mux0001<1>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<1>8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/AL30_OUT_mux0001<0>8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/FC30_1_mux00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -2694,6 +2334,106 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/FC30_2_mux0
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In2 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In3 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In4 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In5 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In6 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In7 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In8 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In9 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In10 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In11 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In12 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In13 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In14 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In15 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In16 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In17 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In18 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In19 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In20 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/SIZING_FSM_FFd2-In21 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_0_or00021 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_0_or00022 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_0_or00023 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_0_or00024 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/TA40_SIG1 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -2766,11 +2506,11 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2778,27 +2518,27 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00007 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00007 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00008 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00008 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00009 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux00009 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000010 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "XOR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000010 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR3"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2814,23 +2554,23 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000016 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000017 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000017 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000018 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000018 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000019 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000019 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000020 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000020 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2838,19 +2578,15 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000022 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000022 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000023 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000023 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000024 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_1_mux000025 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -2914,50 +2650,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_0_mu
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00011 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00012 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR4"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00013 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00014 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/BWL_BS_2_mux00015 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00002 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00003 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "INV"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00004 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00005 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_or00006 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OR2"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RSTI40_SIG__and00001 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND2"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
@@ -2978,21 +2670,31 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_M
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00031 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00081 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND4"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00051 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00031 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND5"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00071 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND3"
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00071 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND5"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/COUNTHALT_Madd__add0000__and00051 prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "AND7"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_IBUF prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "IBUF"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/CLK30_IBUF prop_name=IOCOMP prop_terse=XDM_PROPERTY_BOOL "IOCOMP"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IBUF prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "IBUF"
+
+CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IBUF prop_name=IOCOMP prop_terse=XDM_PROPERTY_BOOL "IOCOMP"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -3173,18 +2875,6 @@ CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=T
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LE_BS_OBUF prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OBUF"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control/LE_BS_OBUF prop_name=IOCOMP prop_terse=XDM_PROPERTY_BOOL "IOCOMP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IOBUFE\/IBUF prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "IBUF"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IOBUFE\/IBUF prop_name=IOCOMP prop_terse=XDM_PROPERTY_BOOL "IOCOMP"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IOBUFE\/OBUFE\/X_TRI prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "OBUFE"
-
-CS: block property: block_name=/control/EXPANDED_FlattenFull/control/RESET30_IOBUFE\/OBUFE\/X_TRI prop_name=IOCOMP prop_terse=XDM_PROPERTY_BOOL "IOCOMP"
 
 CS: block property: block_name=/control/EXPANDED_FlattenFull/control prop_name=TYPE prop_terse=XDM_PROPERTY_STRING "TYPE" "control"
 
@@ -3764,12 +3454,12 @@ Considering device XC95144XL-10-TQ100.
 Flattening design..
 Multi-level logic optimization...
 Timespec optimization
-Timing optimization.......
+Timing optimization...
 Timespec driven global resource optimizationAll paths with TIMESPECs have been optimized.
 
 Timing driven global resource optimization
 General global resource optimization........
 Re-checking device resources ...
-Mapping a total of 89 equations into 8 function blocks........................................
+Mapping a total of 82 equations into 8 function blocks.......................................
 
 Design control has been optimized and fit into device XC95144XL-10-TQ100.
