@@ -258,7 +258,7 @@ BEGIN
 	DS_PROC :process
 	begin
 		DSACK30 <= "11";
-		wait until AS30 = '0' and rising_edge(CLK30) and STERM30 ='1';
+		wait until AS30 = '0' and rising_edge(CLK30) and STERM30 /='0';
 		DSACK30 <= "10";
 		wait until AS30 = '1';
 	end process;
@@ -306,9 +306,11 @@ BEGIN
 		SEL16M <='1';
 		A40 <= "00";
 		SIZ40 <="11"; --line
+		wait for PLL_CLK_period*4;
+		TS40 <='1';
 		
 		wait until AS30 = '0';
-		STERM30 <= '0';
+		--STERM30 <= '0';
       
 		wait until TA40 ='0';
 		TS40 <='1';
@@ -330,6 +332,8 @@ BEGIN
 		SEL16M <='1';
 		A40 <= "00";
 		SIZ40 <="11"; --line
+		wait for PLL_CLK_period*4;
+		TS40 <='1';
 
 
 		wait until TA40 ='0';

@@ -11,9 +11,323 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 5721072500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 293
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 4701167500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 238
+# run all
+Stopped at time : 6809165 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 236
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
 # run all
 Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 310
 # run all
-Stopped at time : 79515 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 313
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 386
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 389
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 391
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 392
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 393
+# step
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 398
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
 # run all
-Stopped at time : 79872500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 348
+Stopped at time : 79422500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 246
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 386
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 391
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 392
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 398
+# step
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 230
+# run all
+Stopped at time : 79522500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79532500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79542500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79552500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79562500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79562500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 559
+# run all
+Stopped at time : 79572500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79581500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 559
+# run all
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 386
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 391
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 398
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 399
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 402
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 230
+# step
+Stopped at time : 79582500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 231
+# run all
+Stopped at time : 79592500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# run all
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 499
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 500
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 501
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 502
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 512
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 411
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 412
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 408
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 260
+# step
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 261
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 236
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 237
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 238
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 252
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 253
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 254
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 255
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 256
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 231
+# step
+Stopped at time : 79630 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 232
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 238
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 239
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 238
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 239
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 240
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 241
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 243
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 244
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 245
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 252
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 229
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 380
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 385
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 386
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 391
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 392
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 398
+# step
+Stopped at time : 79632500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 230
+# run all
+Stopped at time : 79686 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79743 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79800 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79857 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79914 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 393
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# run all
+Stopped at time : 79572 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79686 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79743 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79800 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79857 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79914 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79971 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79980500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 592
+# step
+Stopped at time : 79980500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 616
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 393
+# run all
+Stopped at time : 79505500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 591
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# run all
+Stopped at time : 79572 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79686 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79743 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79800 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run 1.00us
+Stopped at time : 79857 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run 1.00us
+Stopped at time : 79914 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79971 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 393
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# run all
+Stopped at time : 79572 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79686 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79743 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 387
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 400
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 324
+# run all
+Stopped at time : 79772500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 395
+# run all
+Stopped at time : 79819 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 497
+ISim P.68d (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 79492500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 393
+# run all
+Stopped at time : 79512500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 312
+# run all
+Stopped at time : 79572 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79629 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79686 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79743 ns : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 498
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 387
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" Line 400
+# run all
+Stopped at time : 79762500 ps : File "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test.vhd" Line 324
