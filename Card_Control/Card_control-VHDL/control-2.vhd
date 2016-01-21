@@ -147,6 +147,7 @@ signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
 signal	COUNTHALT : STD_LOGIC_VECTOR (11 downto 0):="000000000000";	--Filter-Counter fuer HALT-Leitung
 signal	COUNTRES : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter f?r Resetsteuerung
+signal	COUNTTIMEOUT : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter für Timeout
 signal	STOPRES : STD_LOGIC:='0';	--
 signal	STOPHALT : STD_LOGIC:='0';	--Ausgangsverkettung Filter-Counter
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -154,7 +155,7 @@ signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	BCLK_INT : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
@@ -175,7 +176,9 @@ signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TACK : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TACK_D0 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	BCLK060_SIG_D: STD_LOGIC:='0'; --Signal BUS-CLOCK-D0
-
+signal	CLK30_D0 : STD_LOGIC:='0'; --
+signal	CLK30_D1 : STD_LOGIC:='0'; --
+signal	TS40_D0 : STD_LOGIC:='0'; --
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -200,8 +203,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
-	--PLL_S	<=	"Z0"; --80MHz
+	--PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -211,7 +214,7 @@ begin
 	CLK_RAMC	<= CLK_RAMC_SIG;
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
-	BCLK_INT <= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
+	BCLK_SIG <= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
 	--CLK30 <= CLK30_SIG;
 	CLK30 <= 'Z';
 	--clocks pos edge
@@ -238,11 +241,11 @@ begin
 
 	--Filterung HALT-Leitung vom Mainboard
 	STOPHALT	<=	'1' when COUNTHALT(11 downto 7) = "11111" else '0';
-	HALT_P: process (HALT30,BCLK_INT)
+	HALT_P: process (HALT30,SCLK_SIG)
 	begin
 		if(HALT30 = '0') then
 			COUNTHALT	<= "000000000000";
-		elsif (rising_edge(BCLK_INT)) then
+		elsif (rising_edge(SCLK_SIG)) then
 			if( STOPHALT ='1') then
 				COUNTHALT	<= COUNTHALT;
 			else
@@ -255,11 +258,11 @@ begin
 	--RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
 	RESET30	<=	'Z'; 
 	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
-	RESET_P: process (RSTO40,BCLK_INT)
+	RESET_P: process (RSTO40,SCLK_SIG)
 	begin
 		if(RSTO40 = '0')then
 			COUNTRES	<= "00000000000";
-		elsif(rising_edge(BCLK_INT)) then
+		elsif(rising_edge(SCLK_SIG)) then
 			if( STOPRES ='1') then
 				COUNTRES	<= COUNTRES;
 			else
@@ -267,9 +270,9 @@ begin
 			end if;			
 		end if;
 	end process RESET_P;
-	RESET_40I: process (BCLK_INT)
+	RESET_40I: process (SCLK_SIG)
 	begin
-		if(rising_edge(BCLK_INT)) then
+		if(rising_edge(SCLK_SIG)) then
 			if(RSTO40 = '1' and (RESET30 = '0' or STOPHALT = '0')) then
 				RSTI40_SIG	<=	'0';
 			else 
@@ -280,11 +283,11 @@ begin
 
 	RSTI40 <= RSTI40_SIG;
 
-	RESET_DLY: process (RSTI40_SIG,BCLK_INT)
+	RESET_DLY: process (RSTI40_SIG,SCLK_SIG)
 	begin
 		if(RSTI40_SIG = '0')then
 			RSTINT	<='0';
-		elsif(rising_edge(BCLK_INT)) then
+		elsif(rising_edge(SCLK_SIG)) then
 			RSTINT	<=	RSTI40_SIG;
 		end if;
 	end process RESET_DLY;
@@ -354,42 +357,83 @@ begin
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
+	
 	TRANSFER_SAMPLE: process (RSTI40_SIG,PLL_CLK)
 	begin 
 		if(RSTI40_SIG = '0')then
+			TS40_D0	<= '1';
 			TIP 		<= '0';
-			TACK		<= '1';
-			TERM_P	<= '0';
-			TACK_D0	<= '1';
+--			TACK		<= '1';
+--			TERM_P	<= '0';
+--			TACK_D0	<= '1';
 		elsif(rising_edge(PLL_CLK))then
-			BCLK060_SIG_D <= CLK30_SIG xor CLK_RAMC_SIG;
-			if(TA40_SIG='0' and TIP = '1' and TACK ='1')then --hold TA40_SIG until TIP is released
-				TERM_P <='1';
-			elsif(TIP = '0')then
-				TERM_P<= '0';
-			end if;
-			if(--(CLK30_SIG xor CLK_RAMC_SIG)='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
-				TS40 ='0' and TT40(1)='0' and SEL16M ='1')then --amiga access
+--			CLK30_D0	<= CLK30;
+--			CLK30_D1	<= CLK30_D0;			
+--			BCLK060_SIG_D <= SCLK_SIG;
+--			if(TA40_SIG='0' and TACK ='1')then --hold TA40_SIG until TIP is released
+--				TERM_P <='1';
+--			elsif(TACK = '0')then
+--				TERM_P<= '0';
+--			end if;
+			TS40_D0	<= TS40;
+			if(--SCLK_SIG='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
+				TS40 ='0' and TS40_D0 ='0' and TT40(1)='0' and SEL16M ='1')then --amiga access
 				TIP<='1';
-			elsif(TACK = '0')then --transfer acknowlwedge
+			elsif(--(CLK30_D0='1' and CLK30_D1='0' and SIZING /=idle) or
+					TACK = '0')then --transfer acknowlwedge
 				TIP<='0';					
 			end if;
-			if((CLK30_SIG xor CLK_RAMC_SIG)='0' and BCLK060_SIG_D = '1')then --falling busclock: set TA40
-				TACK_D0 <= TACK;
-				if(TERM_P ='1' and TIP='1' and TACK_D0 = '1')then
-					TACK<='0';
-				else
-					TACK<='1';
-				end if;
-			end if;
+			--if(SCLK_SIG='0' and BCLK060_SIG_D = '1')then --falling busclock: set TA40
+			--	if((TERM_P ='1' or TA40_SIG='0') and TACK = '1' and TIP ='1')then
+			--		TACK<='0';
+			--	else
+			--		TACK<='1';
+			--	end if;
+			--end if;
 		end if;		
 	end process TRANSFER_SAMPLE;
+
+	TERM_P		<= '0' WHEN SIZING =cycle_end or --end of amiga cycle
+									TT40(1 downto 0)="11" --end of interuptvector cycle
+									or COUNTTIMEOUT="00111111111"
+								else '1';
 	
+	TRANSFER_END_SAMPLE: process (TERM_P,SCLK_SIG)
+	begin 
+		if(TERM_P = '0')then
+			TACK_D0	<= '0';
+		elsif(falling_edge(SCLK_SIG))then
+			TACK_D0 <= '1';
+		end if;		
+	end process TRANSFER_END_SAMPLE;
+
+
+	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,SCLK_SIG)
+	begin 
+		if(RSTI40_SIG = '0')then
+			TACK		<= '1';
+			COUNTTIMEOUT <= "00000000000";
+		elsif(falling_edge(SCLK_SIG))then
+			if(TIP='0')	then
+				COUNTTIMEOUT <= "00000000000";
+			else
+				COUNTTIMEOUT <= COUNTTIMEOUT+1;
+			end if;
+
+			if(TIP ='1' or TT40(1 downto 0)="11")then
+				TACK <= TACK_D0;
+			else
+				TACK		<= '1';
+			end if;
+		end if;		
+	end process TRANSFER_ACKNOWLEDGE;
+
+
 	TEA40		<= BERR30; -- not needed anymore
 	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK when AMISEL = '1' else 'Z';
-	LE_BS		<= LE_BS_D;--'0' when NAMIACC = '1' else LE_BS_D;
+	LE_BS		<= LE_BS_SIG;--'0' when NAMIACC = '1' else LE_BS_D;
 	
 	
 	STATE_030_P: process(RSTI40_SIG,CLK30)
@@ -496,7 +540,7 @@ begin
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, TS40, SEL16M, A40,
 	 AMISEL, RW40, RSTI40_SIG, DSACK_VALID,
-	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM)
+	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM, TACK_D0)
    begin
       if(SIZING =cycle_end) then
 			TA40_SIG	<= '0';
@@ -525,7 +569,7 @@ begin
 						
 				BWL_BS	<= "111";
 					
-				if( TIP ='1' and TACK ='1') then
+				if( TIP ='1' and TACK ='1' and TACK_D0= '1') then
 					SIZING_D <=size_decode;
 				else
 					SIZING_D <=idle;
@@ -670,13 +714,13 @@ begin
    end process SIZING_SM;
 
 	
-	DMA_ARBIT: process (BCLK_INT,RSTI40_SIG)
+	DMA_ARBIT: process (BCLK_SIG,RSTI40_SIG)
 	begin
 		if(RSTI40_SIG = '0')then
 			BR30_Q <= '1';
 			BGACK30_Q <= '1';
 			DMA_SM <=STATE0;
-		elsif(rising_edge(BCLK_INT)) then
+		elsif(rising_edge(BCLK_SIG)) then
 			BR30_Q <= BR30;
 			BGACK30_Q <= BGACK30;
 			case DMA_SM is
