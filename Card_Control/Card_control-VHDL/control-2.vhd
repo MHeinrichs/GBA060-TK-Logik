@@ -851,7 +851,7 @@ begin
 	end process DMA_ARBIT;
 	
 	BG30 <= '0' when 
-						COUNTTIMEOUT="00111111111" or --for debugging!
+						--COUNTTIMEOUT="00111111111" or --for debugging!
 						DMA_SM = STATE1 or
 						DMA_SM = STATE2 or
 						DMA_SM = STATE5 or
