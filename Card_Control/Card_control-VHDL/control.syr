@@ -308,32 +308,33 @@ INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to t
 
 Optimizing unit <control> ...
   implementation constraint: INIT=r	 : COUNTTIMEOUT_3
+  implementation constraint: INIT=r	 : BGACK30_Q
   implementation constraint: INIT=r	 : BCLK060_SIG
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : COUNTHALT_2
-  implementation constraint: INIT=r	 : COUNTTIMEOUT_7
   implementation constraint: INIT=r	 : COUNTHALT_1
+  implementation constraint: INIT=r	 : COUNTTIMEOUT_7
   implementation constraint: INIT=r	 : COUNTTIMEOUT_2
   implementation constraint: INIT=r	 : CLK30_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : COUNTTIMEOUT_1
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd4
+  implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : RSTI40_SIG
   implementation constraint: INIT=r	 : COUNTTIMEOUT_5
-  implementation constraint: INIT=r	 : BR30_Q
-  implementation constraint: INIT=r	 : COUNTTIMEOUT_8
-  implementation constraint: INIT=r	 : BCLK040_SIG
-  implementation constraint: INIT=r	 : COUNTHALT_0
   implementation constraint: INIT=r	 : TIP
+  implementation constraint: INIT=r	 : COUNTTIMEOUT_8
+  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : COUNTHALT_0
   implementation constraint: INIT=r	 : COUNTHALT_3
+  implementation constraint: INIT=r	 : COUNTTIMEOUT_6
   implementation constraint: INIT=r	 : COUNTHALT_6
-  implementation constraint: INIT=r	 : COUNTTIMEOUT_0
   implementation constraint: INIT=r	 : COUNTHALT_9
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd2
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd3
   implementation constraint: INIT=r	 : COUNTHALT_10
-  implementation constraint: INIT=r	 : DSACK_VALID_1
   implementation constraint: INIT=r	 : COUNTHALT_11
+  implementation constraint: INIT=r	 : DSACK_VALID_1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
@@ -345,19 +346,18 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : SM_030_N_FSM_FFd1
   implementation constraint: INIT=r	 : TACK_D0
   implementation constraint: INIT=r	 : SM_030_N_FSM_FFd2
-  implementation constraint: INIT=r	 : TS40_D0
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd1
-  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : TS40_D0
+  implementation constraint: INIT=r	 : COUNTTIMEOUT_0
   implementation constraint: INIT=r	 : COUNTHALT_7
   implementation constraint: INIT=r	 : COUNTHALT_8
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : LE_BS_SIG
   implementation constraint: INIT=r	 : TACK
   implementation constraint: INIT=r	 : COUNTTIMEOUT_4
+  implementation constraint: INIT=r	 : BR30_Q
   implementation constraint: INIT=r	 : COUNTHALT_4
   implementation constraint: INIT=r	 : COUNTHALT_5
-  implementation constraint: INIT=r	 : COUNTTIMEOUT_6
-  implementation constraint: INIT=r	 : BGACK30_Q
   implementation constraint: INIT=r	 : DSACK_VALID_0
   implementation constraint: INIT=r	 : COUNTTIMEOUT_10
   implementation constraint: INIT=r	 : COUNTTIMEOUT_9
@@ -392,14 +392,14 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 469
+# BELS                             : 470
 #      AND2                        : 163
 #      AND3                        : 18
 #      AND4                        : 5
 #      AND5                        : 1
 #      AND8                        : 1
 #      GND                         : 1
-#      INV                         : 150
+#      INV                         : 151
 #      OR2                         : 89
 #      OR3                         : 12
 #      OR4                         : 4
@@ -407,9 +407,9 @@ Cell Usage :
 #      XOR2                        : 24
 # FlipFlops/Latches                : 54
 #      FD                          : 5
-#      FDC                         : 28
+#      FDC                         : 27
 #      FDCE                        : 13
-#      FDP                         : 8
+#      FDP                         : 9
 # IO Buffers                       : 69
 #      IBUF                        : 31
 #      OBUF                        : 29
@@ -418,11 +418,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 38.00 secs
-Total CPU time to Xst completion: 37.95 secs
+Total CPU time to Xst completion: 38.02 secs
  
 --> 
 
-Total memory usage is 337956 kilobytes
+Total memory usage is 337904 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   20 (   0 filtered)

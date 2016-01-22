@@ -58,7 +58,7 @@ EQ | 5 |
 
 MACROCELL | 6 | 17 | TIP
 ATTRIBUTES | 8553232 | 0
-OUTPUTMC | 15 | 7 | 14 | 6 | 17 | 7 | 17 | 7 | 13 | 3 | 3 | 3 | 13 | 3 | 12 | 3 | 11 | 3 | 9 | 3 | 8 | 2 | 16 | 2 | 15 | 2 | 13 | 2 | 12 | 2 | 17
+OUTPUTMC | 16 | 7 | 14 | 6 | 17 | 7 | 17 | 7 | 13 | 3 | 3 | 3 | 13 | 3 | 12 | 3 | 11 | 3 | 9 | 3 | 8 | 2 | 16 | 2 | 15 | 2 | 13 | 2 | 12 | 2 | 17 | 7 | 11
 INPUTS | 7 | TA40  | TIP  | SEL16M  | TT40<1>  | TS40  | TS40_D0  | RSTI40
 INPUTMC | 4 | 7 | 14 | 6 | 17 | 1 | 4 | 5 | 16
 INPUTP | 3 | 8 | 157 | 109
@@ -938,7 +938,7 @@ EQ | 6 |
 
 MACROCELL | 1 | 5 | BCLK060_SIG
 ATTRIBUTES | 8815362 | 0
-OUTPUTMC | 29 | 7 | 14 | 5 | 1 | 5 | 10 | 5 | 4 | 5 | 3 | 5 | 2 | 5 | 9 | 5 | 15 | 5 | 7 | 5 | 0 | 5 | 6 | 5 | 17 | 5 | 12 | 3 | 3 | 3 | 13 | 3 | 12 | 3 | 11 | 3 | 9 | 3 | 8 | 2 | 16 | 2 | 15 | 2 | 13 | 2 | 12 | 2 | 17 | 5 | 16 | 5 | 13 | 3 | 2 | 7 | 11 | 7 | 12
+OUTPUTMC | 28 | 7 | 14 | 5 | 1 | 5 | 10 | 5 | 4 | 5 | 3 | 5 | 2 | 5 | 9 | 5 | 15 | 5 | 7 | 5 | 0 | 5 | 6 | 5 | 17 | 5 | 12 | 3 | 3 | 3 | 13 | 3 | 12 | 3 | 11 | 3 | 9 | 3 | 8 | 2 | 16 | 2 | 15 | 2 | 13 | 2 | 12 | 2 | 17 | 5 | 16 | 5 | 13 | 3 | 2 | 7 | 12
 INPUTS | 2 | PCLK  | CLK30_SIG
 INPUTMC | 2 | 5 | 11 | 1 | 3
 EQ | 3 | 
@@ -1002,14 +1002,14 @@ EQ | 3 |
    RSTINT.AR = !RSTI40;
 
 MACROCELL | 7 | 11 | TACK_D0
-ATTRIBUTES | 8520496 | 0
+ATTRIBUTES | 8520608 | 0
 OUTPUTMC | 3 | 7 | 14 | 7 | 17 | 7 | 13
-INPUTS | 2 | SCLK  | TACK_D0/TACK_D0_RSTF
-INPUTMC | 2 | 1 | 5 | 2 | 9
+INPUTS | 2 | TACK_D0/TACK_D0_CLKF  | TIP
+INPUTMC | 2 | 2 | 9 | 6 | 17
 EQ | 3 | 
-   TACK_D0.D = Vcc;
-   TACK_D0.CLK = !SCLK;
-   TACK_D0.AR = TACK_D0/TACK_D0_RSTF;
+   TACK_D0.D = Gnd;
+   TACK_D0.CLK = TACK_D0/TACK_D0_CLKF;
+   TACK_D0.AP = !TIP;
 
 MACROCELL | 1 | 3 | CLK30_SIG
 ATTRIBUTES | 4358912 | 0
@@ -1287,14 +1287,14 @@ EQ | 2 |
    DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF = SCLK & CPU40_60
 	# BCLK040_SIG & !CPU40_60;
 
-MACROCELL | 2 | 9 | TACK_D0/TACK_D0_RSTF
+MACROCELL | 2 | 9 | TACK_D0/TACK_D0_CLKF
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 7 | 11
 INPUTS | 14 | SIZING_FSM_FFd1  | TT40<1>  | TT40<0>  | COUNTTIMEOUT<0>  | COUNTTIMEOUT<1>  | COUNTTIMEOUT<2>  | COUNTTIMEOUT<3>  | COUNTTIMEOUT<4>  | COUNTTIMEOUT<5>  | COUNTTIMEOUT<6>  | COUNTTIMEOUT<7>  | COUNTTIMEOUT<8>  | COUNTTIMEOUT<9>  | COUNTTIMEOUT<10>
 INPUTMC | 12 | 1 | 0 | 3 | 3 | 3 | 13 | 3 | 12 | 3 | 11 | 3 | 9 | 3 | 8 | 2 | 16 | 2 | 15 | 2 | 13 | 2 | 12 | 2 | 17
 INPUTP | 2 | 157 | 155
 EQ | 6 | 
-   TACK_D0/TACK_D0_RSTF = SIZING_FSM_FFd1
+   TACK_D0/TACK_D0_CLKF = SIZING_FSM_FFd1
 	# TT40<1> & TT40<0>
 	# COUNTTIMEOUT<0> & COUNTTIMEOUT<1> & 
 	COUNTTIMEOUT<2> & COUNTTIMEOUT<3> & COUNTTIMEOUT<4> & 

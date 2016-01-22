@@ -398,12 +398,12 @@ begin
 									or COUNTTIMEOUT="00111111111"
 								else '1';
 	
-	TRANSFER_END_SAMPLE: process (TERM_P,SCLK_SIG)
+	TRANSFER_END_SAMPLE: process (TIP,TERM_P)
 	begin 
-		if(TERM_P = '0')then
-			TACK_D0	<= '0';
-		elsif(falling_edge(SCLK_SIG))then
-			TACK_D0 <= '1';
+		if(TIP ='0')then
+			TACK_D0	<= '1';
+		elsif(falling_edge(TERM_P))then
+			TACK_D0 <= '0';
 		end if;		
 	end process TRANSFER_END_SAMPLE;
 

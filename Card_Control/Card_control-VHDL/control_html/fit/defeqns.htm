@@ -579,10 +579,10 @@ FDCPE_TA40: FDCPE port map (TA40_I,TA40,NOT SCLK,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TA40 <= TA40_I when TA40_OE = '1' else 'Z';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TA40_OE <= NOT TBI40_OBUF__$INT;
 </td></tr><tr><td>
-FDCPE_TACK_D0: FDCPE port map (TACK_D0,'1',NOT SCLK,TACK_D0/TACK_D0_RSTF,'0');
+FDCPE_TACK_D0: FDCPE port map (TACK_D0,'0',TACK_D0/TACK_D0_CLKF,'0',NOT TIP);
 </td></tr><tr><td>
 </td></tr><tr><td>
-TACK_D0/TACK_D0_RSTF <= ((SIZING_FSM_FFd1)
+TACK_D0/TACK_D0_CLKF <= ((SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (TT40(1) AND TT40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (COUNTTIMEOUT(0) AND COUNTTIMEOUT(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	COUNTTIMEOUT(2) AND COUNTTIMEOUT(3) AND COUNTTIMEOUT(4) AND 

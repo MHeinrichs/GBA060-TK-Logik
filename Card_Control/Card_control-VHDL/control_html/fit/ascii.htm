@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date:  1-21-2016, 10:02PM
+Design Name: control                             Date:  1-22-2016,  1:57PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -143,7 +143,7 @@ BCLK040_SIG                           2     2     FB2_9   STD  RESET
 BGACK30_Q                             3     3     FB2_10  STD  RESET
 SIZING_FSM_FFd4                       8     10    FB2_13  STD  RESET
 SIZING_FSM_FFd3                       8     11    FB2_16  STD  RESET
-TACK_D0/TACK_D0_RSTF                  3     14    FB3_10  STD  
+TACK_D0/TACK_D0_CLKF                  3     14    FB3_10  STD  
 COUNTTIMEOUT<9>                       4     13    FB3_13  STD  RESET
 COUNTTIMEOUT<8>                       4     12    FB3_14  STD  RESET
 COUNTTIMEOUT<7>                       4     11    FB3_16  STD  RESET
@@ -351,7 +351,7 @@ BG30                  2       0     0   3     FB3_5   24    I/O     O
 (unused)              0       0     0   5     FB3_7         (b)     
 (unused)              0       0     0   5     FB3_8   27    GCK/I/O I
 (unused)              0       0     0   5     FB3_9   28    I/O     I
-TACK_D0/TACK_D0_RSTF
+TACK_D0/TACK_D0_CLKF
                       3       0     0   2     FB3_10        (b)     (b)
 FC30<1>               3       0     0   2     FB3_11  29    I/O     O
 FC30<0>               2       0     0   3     FB3_12  30    I/O     O
@@ -375,7 +375,7 @@ Signals Used by Logic in Function Block
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 BG30                 X...........XXX......................... 4
-TACK_D0/TACK_D0_RSTF 
+TACK_D0/TACK_D0_CLKF 
                      .XXXXXXXXXXX.....X....XX................ 14
 FC30<1>              ...................XX.XX................ 4
 FC30<0>              ...................XX.XX................ 4
@@ -612,7 +612,7 @@ SIZING_FSM_FFd5       5       0     0   0     FB8_18        (b)     (b)
 Signals Used by Logic in Function Block
   1: BCLK040_SIG        9: SIZING_FSM_FFd1    17: TA40 
   2: CLK30             10: SIZING_FSM_FFd2    18: TACK_D0 
-  3: CPU40_60          11: SIZING_FSM_FFd3    19: TACK_D0/TACK_D0_RSTF 
+  3: CPU40_60          11: SIZING_FSM_FFd3    19: TACK_D0/TACK_D0_CLKF 
   4: DSACK_VALID<0>    12: SIZING_FSM_FFd4    20: TBI40_OBUF__$INT 
   5: DSACK_VALID<1>    13: SIZING_FSM_FFd5    21: BERR30 
   6: LE_BS             14: SIZING_FSM_FFd6    22: TIP 
@@ -621,7 +621,7 @@ Signals Used by Logic in Function Block
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-TACK_D0              .......X..........X..................... 2
+TACK_D0              ..................X..X.................. 2
 DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF 
                      X.X....X................................ 3
 SIZING_FSM_FFd6      .X....X.X....X..XX...X.................. 7
@@ -1209,10 +1209,10 @@ TA40 <= ((TIP AND NOT TACK_D0)
 TA40 <= TA40_I when TA40_OE = '1' else 'Z';
 TA40_OE <= NOT TBI40_OBUF__$INT;
 
-FDCPE_TACK_D0: FDCPE port map (TACK_D0,'1',NOT SCLK,TACK_D0/TACK_D0_RSTF,'0');
+FDCPE_TACK_D0: FDCPE port map (TACK_D0,'0',TACK_D0/TACK_D0_CLKF,'0',NOT TIP);
 
 
-TACK_D0/TACK_D0_RSTF <= ((SIZING_FSM_FFd1)
+TACK_D0/TACK_D0_CLKF <= ((SIZING_FSM_FFd1)
 	OR (TT40(1) AND TT40(0))
 	OR (COUNTTIMEOUT(0) AND COUNTTIMEOUT(1) AND 
 	COUNTTIMEOUT(2) AND COUNTTIMEOUT(3) AND COUNTTIMEOUT(4) AND 
