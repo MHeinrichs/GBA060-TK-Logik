@@ -182,6 +182,8 @@ signal	BCLK060_SIG_D: STD_LOGIC:='0'; --Signal BUS-CLOCK-D0
 signal	CLK30_D0 : STD_LOGIC:='0'; --
 signal	CLK30_D1 : STD_LOGIC:='0'; --
 signal	TS40_D0 : STD_LOGIC:='0'; --
+signal	TERM_P_D0 : STD_LOGIC:='0'; --
+signal	TERM_P_D1 : STD_LOGIC:='0'; --
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -313,6 +315,8 @@ begin
 	SIZ30	<= SIZ30_SIG when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_SIG when CONTROL40_OE ='1' else "ZZ";
 	A30_LE	<= '0'; -- Adress-Latch zum Mainboard transparent geschal.
+	--	A30_LE	<= '1' when COUNTTIMEOUT="00111111111" and TIP = '0' else '0'; --for debugging!; -- Adress-Latch zum Mainboard transparent geschal.
+
 	ICACHE	<= '1' when TT40(1) = '0' AND (TM40 ="010" or TM40 = "110") else '0'; -- !TT1 -> normal/move16 TM2..0 -> user code access   // !TT1 -> normal/move16 TM2..0 -> supervisor code access
 
 --	1  0	/DSACK						SIZ1 SIZ0  Size030	FC2 FC1 FC0  Space
@@ -366,6 +370,8 @@ begin
 		if(RSTI40_SIG = '0')then
 			TS40_D0	<= '1';
 			TIP 		<= '0';
+			TERM_P_D0<= '1'; 
+			TERM_P_D1<= '1';
 --			TACK		<= '1';
 --			TERM_P	<= '0';
 --			TACK_D0	<= '1';
@@ -379,6 +385,8 @@ begin
 --				TERM_P<= '0';
 --			end if;
 			TS40_D0	<= TS40;
+			TERM_P_D0 <= TERM_P;
+			TERM_P_D1 <= TERM_P_D0;
 			if(--SCLK_SIG='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
 				TS40 ='0' and TS40_D0 ='0' and TT40(1)='0' and SEL16M ='1')then --amiga access
 				TIP<='1';
@@ -386,6 +394,13 @@ begin
 					TACK = '0')then --transfer acknowlwedge
 				TIP<='0';					
 			end if;
+			
+			if(TIP='0' or TACK = '0') then
+				TACK_D0 <= '1';
+			elsif( TERM_P_D1 = '1' and TERM_P_D0 = '0' ) then
+				TACK_D0<='0';
+			end if;
+			
 			--if(SCLK_SIG='0' and BCLK060_SIG_D = '1')then --falling busclock: set TA40
 			--	if((TERM_P ='1' or TA40_SIG='0') and TACK = '1' and TIP ='1')then
 			--		TACK<='0';
@@ -396,19 +411,19 @@ begin
 		end if;		
 	end process TRANSFER_SAMPLE;
 
-	TERM_P		<= '0' WHEN SIZING =cycle_end or --end of amiga cycle
-									TT40(1 downto 0)="11" --end of interuptvector cycle
-									or COUNTTIMEOUT="00111111111"
+	TERM_P		<= '0' WHEN SIZING = cycle_end --end of amiga cycle
+									or TT40(1 downto 0)="11" --end of interuptvector cycle
+									--or COUNTTIMEOUT="00111111111"
 								else '1';
 	
-	TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
-	begin 
-		if(TIP ='0' or TACK ='0')then
-			TACK_D0	<= '1';
-		elsif(falling_edge(TERM_P))then
-			TACK_D0 <= '0';
-		end if;		
-	end process TRANSFER_END_SAMPLE;
+	--TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
+	--begin 
+	--	if(TIP ='0' or TACK ='0')then
+	--		TACK_D0	<= '1';
+	--	elsif(falling_edge(TERM_P))then
+	--		TACK_D0 <= '0';
+	--	end if;		
+	--end process TRANSFER_END_SAMPLE;
 
 
 	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,SCLK_SIG)
@@ -416,7 +431,7 @@ begin
 		if(RSTI40_SIG = '0')then
 			TACK		<= '1';
 			COUNTTIMEOUT <= "00000000000";
-		elsif(falling_edge(SCLK_SIG))then
+		elsif(rising_edge(SCLK_SIG))then
 			if(TIP='0')	then
 				COUNTTIMEOUT <= "00000000000";
 			else
@@ -836,6 +851,7 @@ begin
 	end process DMA_ARBIT;
 	
 	BG30 <= '0' when 
+						COUNTTIMEOUT="00111111111" or --for debugging!
 						DMA_SM = STATE1 or
 						DMA_SM = STATE2 or
 						DMA_SM = STATE5 or
