@@ -140,7 +140,10 @@ signal	SM_030_P : sm_030_positive_flank :=S0;
 signal	SM_030_N : sm_030_negative_flank :=S5; 
 signal	DSACK_VALID : STD_LOGIC_VECTOR (1 downto 0):="00";	--Valid DSACK sample
 signal	SIZ30_D : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
+signal	SIZ30_SIG : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
 signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
+signal	AL_SIG : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
+signal	RW30_SIG : STD_LOGIC:='0';	--
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	NAMIACC : STD_LOGIC:='0';	--
@@ -306,9 +309,9 @@ begin
 	--MDIS40			= RSTINT															// MMU-Disable deativiert		(ein Pullup tut es)
 	--				# !RSTINT & DLE_off;											// 040: DLE-Mode deaktiviert	060: keine Bedeutung
 	BGR60	<= '0'; --no DMA!
-	RW30	<= RW40 when CONTROL40_OE ='1' else 'Z';
-	SIZ30	<= SIZ30_D when CONTROL40_OE ='1' else "ZZ";
-	AL 	<= AL_D when CONTROL40_OE ='1' else "ZZ";
+	RW30	<= RW30_SIG when CONTROL40_OE ='1' else 'Z';
+	SIZ30	<= SIZ30_SIG when CONTROL40_OE ='1' else "ZZ";
+	AL 	<= AL_SIG when CONTROL40_OE ='1' else "ZZ";
 	A30_LE	<= '0'; -- Adress-Latch zum Mainboard transparent geschal.
 	ICACHE	<= '1' when TT40(1) = '0' AND (TM40 ="010" or TM40 = "110") else '0'; -- !TT1 -> normal/move16 TM2..0 -> user code access   // !TT1 -> normal/move16 TM2..0 -> supervisor code access
 
@@ -398,9 +401,9 @@ begin
 									or COUNTTIMEOUT="00111111111"
 								else '1';
 	
-	TRANSFER_END_SAMPLE: process (TIP,TERM_P)
+	TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
 	begin 
-		if(TIP ='0')then
+		if(TIP ='0' or TACK ='0')then
 			TACK_D0	<= '1';
 		elsif(falling_edge(TERM_P))then
 			TACK_D0 <= '0';
@@ -531,9 +534,13 @@ begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
 			LE_BS_D <= '0';
+			SIZ30_SIG <="11";
       elsif (rising_edge(CLK30)) then
-			SIZING <= SIZING_D;
-			LE_BS_D <= LE_BS_SIG;			
+			SIZ30_SIG<= SIZ30_D;
+			AL_SIG	<= AL_D;
+			RW30_SIG	<= RW40;
+			SIZING	<= SIZING_D;
+			LE_BS_D	<= LE_BS_SIG;			
       end if;
    end process;
 	--somehow a lot of signals need to be "latched" in a unclocked process
