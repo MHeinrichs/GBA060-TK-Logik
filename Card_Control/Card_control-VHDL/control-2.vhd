@@ -208,8 +208,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	--PLL_S	<=	"0Z"; --100MHz
-	PLL_S	<=	"Z0"; --80MHz
+	PLL_S	<=	"0Z"; --100MHz
+	--PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -412,7 +412,7 @@ begin
 	end process TRANSFER_SAMPLE;
 
 	TERM_P		<= '0' WHEN SIZING = cycle_end --end of amiga cycle
-									or TT40(1 downto 0)="11" --end of interuptvector cycle
+									--or TT40(1 downto 0)="11" --end of interuptvector cycle
 									--or COUNTTIMEOUT="00111111111"
 								else '1';
 	
@@ -438,8 +438,10 @@ begin
 				COUNTTIMEOUT <= COUNTTIMEOUT+1;
 			end if;
 
-			if(TIP ='1' or TT40(1 downto 0)="11")then
+			if(TIP ='1')then
 				TACK <= TACK_D0;
+			elsif(TT40(1 downto 0)="11")then
+				TACK <= '0';
 			else
 				TACK		<= '1';
 			end if;
@@ -451,7 +453,7 @@ begin
 	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK when AMISEL = '1' else 'Z';
-	LE_BS		<= LE_BS_SIG;--'0' when NAMIACC = '1' else LE_BS_D;
+	LE_BS		<= LE_BS_SIG;-- when TIP='1' and TACK = '1' else '0';--'0' when NAMIACC = '1' else LE_BS_D;
 	
 	
 	STATE_030_P: process(RSTI40_SIG,CLK30)
@@ -463,7 +465,7 @@ begin
 			LE_BS_D	<= LE_BS_SIG;
 			case SM_030_P is
 				when S0 =>
-					if(SIZING /= idle and SIZING /=cycle_end) then												
+					if(SIZING_D /= idle and SIZING_D /=cycle_end) then												
 						SM_030_P <= S2;
 					else		
 						SM_030_P <= S0;
@@ -515,21 +517,25 @@ begin
 						LE_BS_SIG<= '1';
 						SM_030_N <= S1; --short termination		
 						TERM <= '1';						
-					elsif(	DSACK30 /= "11" or 
+					else --wait here until bus cycle is finished
+						DS30_SIG <= '0';
+						AS30_SIG <= '0';						
+						LE_BS_SIG<= '0';
+						TERM <= '0';
+						if(	DSACK30 /= "11" or 
 								BERR30  = '0' or 
 								STERM30  ='0'
-							)then --wait here until bus cycle is finished
-						AS30_SIG <= '0';
-						DS30_SIG <= '0';
-						if(STERM30 = '0') then
-							DSACK_VALID <= "11";
+							)then --finished!
+							if(STERM30 = '0') then
+								DSACK_VALID <= "11";
+							else
+								DSACK_VALID(0) <= not DSACK30(0);
+								DSACK_VALID(1) <= not DSACK30(1);				
+							end if;
+							SM_030_N <= S5;
 						else
-							DSACK_VALID(0) <= not DSACK30(0);
-							DSACK_VALID(1) <= not DSACK30(1);				
+							SM_030_N <= S3;
 						end if;
-						LE_BS_SIG<= '0';
-						SM_030_N <= S5;
-						TERM <= '0';
 					end if;
 				when S5 =>
 					AS30_SIG <= '1';

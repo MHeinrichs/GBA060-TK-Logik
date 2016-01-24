@@ -71,37 +71,37 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTRES_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COUNTTIMEOUT_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">CLK_RAMC_SIG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">control</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;CLK_BS&gt; </arg>
