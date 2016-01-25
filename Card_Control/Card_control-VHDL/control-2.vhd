@@ -208,8 +208,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
-	--PLL_S	<=	"Z0"; --80MHz
+	--PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -260,8 +260,8 @@ begin
 	end process HALT_P;
 
 	--Erzeugung der Resets
-	--RESET30	<=	'0' when (RSTO40 ='0' AND STOPHALT='1') OR (RESET30 ='0' AND STOPRES = '0') else 'Z'; 
-	RESET30	<=	'Z'; 
+	RESET30	<=	'0' when (RSTO40 ='0' AND HALT30='1') else 'Z'; 
+	--RESET30	<=	'Z'; 
 	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
 	RESET_P: process (RSTO40,SCLK_SIG)
 	begin
@@ -278,7 +278,7 @@ begin
 	RESET_40I: process (SCLK_SIG)
 	begin
 		if(rising_edge(SCLK_SIG)) then
-			if(RSTO40 = '1' and (RESET30 = '0' or STOPHALT = '0')) then
+			if(RSTO40 = '1' and (RESET30 = '0' )) then
 				RSTI40_SIG	<=	'0';
 			else 
 				RSTI40_SIG	<=	'1';
@@ -370,23 +370,8 @@ begin
 		if(RSTI40_SIG = '0')then
 			TS40_D0	<= '1';
 			TIP 		<= '0';
-			TERM_P_D0<= '1'; 
-			TERM_P_D1<= '1';
---			TACK		<= '1';
---			TERM_P	<= '0';
---			TACK_D0	<= '1';
 		elsif(rising_edge(PLL_CLK))then
---			CLK30_D0	<= CLK30;
---			CLK30_D1	<= CLK30_D0;			
---			BCLK060_SIG_D <= SCLK_SIG;
---			if(TA40_SIG='0' and TACK ='1')then --hold TA40_SIG until TIP is released
---				TERM_P <='1';
---			elsif(TACK = '0')then
---				TERM_P<= '0';
---			end if;
 			TS40_D0	<= TS40;
-			TERM_P_D0 <= TERM_P;
-			TERM_P_D1 <= TERM_P_D0;
 			if(--SCLK_SIG='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
 				TS40 ='0' and TS40_D0 ='0' and TT40(1)='0' and SEL16M ='1')then --amiga access
 				TIP<='1';
@@ -395,48 +380,27 @@ begin
 				TIP<='0';					
 			end if;
 			
-			if(TIP='0' or TACK = '0') then
-				TACK_D0 <= '1';
-			elsif( TERM_P_D1 = '1' and TERM_P_D0 = '0' ) then
-				TACK_D0<='0';
-			end if;
-			
-			--if(SCLK_SIG='0' and BCLK060_SIG_D = '1')then --falling busclock: set TA40
-			--	if((TERM_P ='1' or TA40_SIG='0') and TACK = '1' and TIP ='1')then
-			--		TACK<='0';
-			--	else
-			--		TACK<='1';
-			--	end if;
-			--end if;
 		end if;		
 	end process TRANSFER_SAMPLE;
 
 	TERM_P		<= '0' WHEN SIZING = cycle_end --end of amiga cycle
-									--or TT40(1 downto 0)="11" --end of interuptvector cycle
-									--or COUNTTIMEOUT="00111111111"
 								else '1';
 	
-	--TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
-	--begin 
-	--	if(TIP ='0' or TACK ='0')then
-	--		TACK_D0	<= '1';
-	--	elsif(falling_edge(TERM_P))then
-	--		TACK_D0 <= '0';
-	--	end if;		
-	--end process TRANSFER_END_SAMPLE;
+	TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
+	begin 
+		if(TIP ='0' or TACK ='0')then
+			TACK_D0	<= '1';
+		elsif(falling_edge(TERM_P))then
+			TACK_D0 <= '0';
+		end if;		
+	end process TRANSFER_END_SAMPLE;
 
 
 	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,SCLK_SIG)
 	begin 
 		if(RSTI40_SIG = '0')then
 			TACK		<= '1';
-			COUNTTIMEOUT <= "00000000000";
 		elsif(rising_edge(SCLK_SIG))then
-			if(TIP='0')	then
-				COUNTTIMEOUT <= "00000000000";
-			else
-				COUNTTIMEOUT <= COUNTTIMEOUT+1;
-			end if;
 
 			if(TIP ='1')then
 				TACK <= TACK_D0;
@@ -597,7 +561,7 @@ begin
 						
 				BWL_BS	<= "111";
 					
-				if( TIP ='1' and TACK ='1' and TACK_D0= '1') then
+				if( TIP ='1' and TACK ='1' and TACK_D0= '1' AND HALT30='1') then
 					SIZING_D <=size_decode;
 				else
 					SIZING_D <=idle;
