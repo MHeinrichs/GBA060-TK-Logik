@@ -3,9 +3,9 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "control";
       var device = "XC95144XL";
-      signals = new Array("A30_LE","AL0_SPECSIG","AL1_SPECSIG","AS30","A_OE","BCLK","BCLK040_SIG","BG30","BG40","BGACK30_Q","BGR60","BR30_Q","BWL_BS0_SPECSIG","BWL_BS1_SPECSIG","BWL_BS2_SPECSIG","CDIS40","CLK30_SIG","CLK_BS","CLK_RAMC","DIR_BS","DMA_SM_FSM_FFd1","DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG","DS30","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","FC300_SPECSIG","FC301_SPECSIG","FC302_SPECSIG","ICACHE","IPL400_SPECSIG","IPL401_SPECSIG","IPL402_SPECSIG","LE_BS","MDIS40","OE_BS","PCLK","PLL_S0_SPECSIG","PLL_S1_SPECSIG","RESET30","RSTI40","RSTINT","RW30","SCLK","SIZ300_SPECSIG","SIZ301_SPECSIG","SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG","SIZING_FSM_FFd1","SIZING_FSM_FFd2","SIZING_FSM_FFd3","SM_030_N_FSM_FFd1","SM_030_N_FSM_FFd2","SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2","TA40","TACK_D0","TACK_D0TACK_D0_CLKF_SPECSIG","TACK_D0TACK_D0_SETF__INT_SPECSIG","TBI40","TBI40_OBUF__INT_SPECSIG","TEA40","TIP","TS40_D0");
-      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
-      sigTypes = new Array("","D","D","D","","","D","","","D","","D","","","","","T","D","D","","D","D","D","D","","D","D","D","","","","","","","","D","","","T","","","","D","D","D","D","D","D","","T","T","T","D","T","D","T","D","D","","","","","","D","D");
+      signals = new Array("A30_LE","AL0_SPECSIG","AL1_SPECSIG","AS30","A_OE","BCLK","BCLK040_SIG","BG30","BG40","BGACK30_Q","BGR60","BR30_Q","BWL_BS0_SPECSIG","BWL_BS1_SPECSIG","BWL_BS2_SPECSIG","CDIS40","CLK30_SIG","CLK_BS","CLK_RAMC","DIR_BS","DMA_SM_FSM_FFd1","DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG","DS30","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","FC300_SPECSIG","FC301_SPECSIG","FC302_SPECSIG","ICACHE","IPL400_SPECSIG","IPL401_SPECSIG","IPL402_SPECSIG","LE_BS","MDIS40","OE_BS","PCLK","PLL_S0_SPECSIG","PLL_S1_SPECSIG","RESET30","RSTI40","RSTINT","RW30","SCLK","SIZ300_SPECSIG","SIZ301_SPECSIG","SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG","SIZING_FSM_FFd1","SIZING_FSM_FFd2","SIZING_FSM_FFd3","SM_030_N_FSM_FFd1","SM_030_N_FSM_FFd2","SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2","TA40","TACK_D0","TACK_D0TACK_D0_CLKF_SPECSIG","TACK_D0TACK_D0_SETF__INT_SPECSIG","TBI40","TBI40_OBUF__INT_SPECSIG","TCI40","TEA40","TIP","TS40_D0");
+      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("","D","D","D","","","D","","","D","","D","","","","","T","D","D","","D","D","D","D","","D","D","D","","","","","","","","D","","","T","","","","D","D","D","D","D","D","","T","T","T","D","T","D","T","D","D","","","","","","","D","D");
 
       
         specSig["TT401_SPECSIG"]=new Array("TT40<1>");
@@ -66,7 +66,7 @@
       
         specSig["SIZ300_SPECSIG"]=new Array("SIZ30<0>");
       
-        specSig["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF");
+        specSig["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("SIZ30_SIG<0>/SIZ30_SIG<0>_TRST");
       
         specSig["IPL401_SPECSIG"]=new Array("IPL40<1>");
       
@@ -80,9 +80,9 @@
       
         specSig["DSACK_VALID1_SPECSIG"]=new Array("DSACK_VALID<1>");
       
-        specSig["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("SIZ30_SIG<0>/SIZ30_SIG<0>_TRST");
-      
         specSig["TBI40_OBUF__INT_SPECSIG"]=new Array("TBI40_OBUF__$INT");
+      
+        specSig["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF");
       
         specSig["TACK_D0TACK_D0_SETF__INT_SPECSIG"]=new Array("TACK_D0/TACK_D0_SETF__$INT");
       
@@ -438,29 +438,29 @@
           
             pterms["FB6_1_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q","BGACK30_Q");
           
-            pterms["FB6_7_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
+            pterms["FB6_5_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
-            pterms["FB6_7_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
+            pterms["FB6_5_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
           
-            pterms["FB6_8_1"]=new Array("SCLK","CPU40_60");
+            pterms["FB6_7_1"]=new Array("SCLK","CPU40_60");
           
-            pterms["FB6_8_2"]=new Array("BCLK040_SIG","/CPU40_60");
+            pterms["FB6_7_2"]=new Array("BCLK040_SIG","/CPU40_60");
+          
+            pterms["FB6_8_1"]=new Array("/RSTO40","RSTI40");
+          
+            pterms["FB6_8_2"]=new Array("RESET30PIN_SPECSIG","RSTI40");
+          
+            pterms["FB6_8_3"]=new Array("SCLK");
           
             pterms["FB6_9_1"]=new Array("/RSTI40");
           
             pterms["FB6_9_2"]=new Array("/SEL16M","/TT401_SPECSIG");
           
-            pterms["FB6_10_1"]=new Array("/RSTO40","RSTI40");
+            pterms["FB6_10_1"]=new Array("BR30");
           
-            pterms["FB6_10_2"]=new Array("RESET30PIN_SPECSIG","RSTI40");
+            pterms["FB6_10_2"]=new Array("/RSTI40");
           
-            pterms["FB6_10_3"]=new Array("SCLK");
-          
-            pterms["FB6_11_1"]=new Array("BR30");
-          
-            pterms["FB6_11_2"]=new Array("/RSTI40");
-          
-            pterms["FB6_11_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
+            pterms["FB6_10_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
             pterms["FB6_12_1"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
           
@@ -978,42 +978,50 @@
               
                 trstimp["SIZ300_SPECSIG"]=new Array("1");
               prld["SIZ300_SPECSIG"]="VCC";
+          d2["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("FB6_5_1","FB6_5_2");
+          
+            d2imp["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("1","1");
+          
           d2["BGR60"]=new Array("GND");
           
             d2imp["BGR60"]=new Array("1");
           
-          d2["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("FB6_7_1","FB6_7_2");
-          
-            d2imp["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("1","1");
-          
-          d2["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("FB6_8_1","FB6_8_2");
+          d2["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("FB6_7_1","FB6_7_2");
           
             d2imp["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("1","1");
           
+          d2["RSTINT"]=new Array("FB6_8_1","FB6_8_2");
+          
+            d2imp["RSTINT"]=new Array("1","1");
+          
+              clk["RSTINT"]=new Array("FB6_8_3");
+              
+                clkimp["RSTINT"]=new Array("1");
+              prld["RSTINT"]="GND";
           d2["TBI40"]=new Array("FB6_9_1","FB6_9_2");
           
             d2imp["TBI40"]=new Array("1","1");
           
-          d2["RSTINT"]=new Array("FB6_10_1","FB6_10_2");
-          
-            d2imp["RSTINT"]=new Array("1","1");
-          
-              clk["RSTINT"]=new Array("FB6_10_3");
-              
-                clkimp["RSTINT"]=new Array("1");
-              prld["RSTINT"]="GND";
-          d2["BR30_Q"]=new Array("FB6_11_1");
+          d2["BR30_Q"]=new Array("FB6_10_1");
           
             d2imp["BR30_Q"]=new Array("1");
           
-              clk["BR30_Q"]=new Array("FB6_11_3");
+              clk["BR30_Q"]=new Array("FB6_10_3");
               
                 clkimp["BR30_Q"]=new Array("1");
               
-              set["BR30_Q"]=new Array("FB6_11_2");
+              set["BR30_Q"]=new Array("FB6_10_2");
               
                 setimp["BR30_Q"]=new Array("1");
               prld["BR30_Q"]="GND";
+          d2["TCI40"]=new Array("GND");
+          
+            d2imp["TCI40"]=new Array("1");
+          
+              trst["TCI40"]=new Array("GND");
+              
+                trstimp["TCI40"]=new Array("1");
+              
           d2["PCLK"]=new Array("VCC");
           
             d2imp["PCLK"]=new Array("1");
@@ -1084,6 +1092,10 @@
           
             d2imp["PLL_S0_SPECSIG"]=new Array("1");
           
+              trst["PLL_S0_SPECSIG"]=new Array("GND");
+              
+                trstimp["PLL_S0_SPECSIG"]=new Array("1");
+              
           d2["BG40"]=new Array("FB7_14_1","FB7_14_2","FB7_14_3");
           
             d2imp["BG40"]=new Array("1","1","1");

@@ -1,7 +1,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date:  1-25-2016,  5:46PM
+Design Name: control                             Date:  1-25-2016,  5:57PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -9,7 +9,7 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-65 /144 ( 45%) 255 /720  ( 35%) 157/432 ( 36%)   35 /144 ( 24%) 69 /81  ( 85%)
+66 /144 ( 46%) 255 /720  ( 35%) 157/432 ( 36%)   35 /144 ( 24%) 70 /81  ( 86%)
 
 ** Function Block Resources **
 
@@ -20,11 +20,11 @@ FB2           8/18       22/54       22/90      10/10*
 FB3           8/18       20/54       30/90       7/10
 FB4           6/18       13/54        7/90       9/10
 FB5          10/18       21/54       55/90      10/10*
-FB6          13/18       20/54       39/90       6/10
+FB6          14/18       20/54       39/90       7/10
 FB7           4/18       21/54       22/90       8/10
 FB8           4/18       20/54       21/90       8/10
              -----       -----       -----      -----    
-             65/144     157/432     255/720     69/81 
+             66/144     157/432     255/720     70/81 
 
 * - Resource is exhausted
 
@@ -38,18 +38,18 @@ Global set/reset net(s) unused.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :   29          29    |  I/O              :    62      73
-Output        :   38          38    |  GCK/IO           :     2       3
+Input         :   29          29    |  I/O              :    63      73
+Output        :   39          39    |  GCK/IO           :     2       3
 Bidirectional :    1           1    |  GTS/IO           :     4       4
 GCK           :    1           1    |  GSR/IO           :     1       1
 GTS           :    0           0    |
 GSR           :    0           0    |
                  ----        ----
-        Total     69          69
+        Total     70          70
 
 ** Power Data **
 
-There are 65 macrocells in high performance mode (MCHP).
+There are 66 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
@@ -71,8 +71,6 @@ INFO:Cpld - Inferring BUFG constraint for signal 'OSC_CLK' based upon the LOC
    in your design. Note that for certain device families the output of a BUFG
    constraint can not drive a gated clock, and the BUFG constraint will be
    ignored.
-WARNING:Cpld:936 - The output buffer 'TCI40_OBUF' is missing an input and will
-   be deleted.
 WARNING:Cpld:1007 - Removing unused input(s) 'CIOUT40'.  The input(s) are unused
    after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'OSC_CLK'.  The input(s) are unused
@@ -86,7 +84,7 @@ WARNING:Cpld:997 - Error during loading TIMESPEC AUTO_TS_2001 =
    The timing constraint will be ignored.
 *************************  Summary of Mapped Logic  ************************
 
-** 39 Outputs **
+** 40 Outputs **
 
 Signal                                Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
 Name                                  Pts   Inps          No.  Type    Use     Mode Rate State
@@ -120,6 +118,7 @@ DS30                                  7     9     FB5_15  46   I/O     O       S
 SIZ30<0>                              6     8     FB5_17  49   I/O     O       STD  FAST SET
 BGR60                                 0     0     FB6_6   77   I/O     O       STD  FAST 
 TBI40                                 2     3     FB6_9   79   I/O     O       STD  FAST 
+TCI40                                 0     0     FB6_11  80   I/O     O       STD  FAST 
 PCLK                                  0     0     FB6_12  81   I/O     O       STD  FAST RESET
 BCLK                                  2     3     FB6_14  82   I/O     O       STD  FAST 
 IPL40<1>                              1     2     FB6_15  85   I/O     O       STD  FAST 
@@ -150,10 +149,10 @@ SM_030_N_FSM_FFd2                     5     10    FB5_2   STD  RESET
 SM_030_N_FSM_FFd1                     5     10    FB5_3   STD  RESET
 DSACK_VALID<1>                        7     11    FB5_4   STD  RESET
 DSACK_VALID<0>                        7     11    FB5_5   STD  RESET
-SIZ30_SIG<0>/SIZ30_SIG<0>_TRST        2     4     FB6_7   STD  
-DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF  2     3     FB6_8   STD  
-RSTINT                                3     4     FB6_10  STD  RESET
-BR30_Q                                3     3     FB6_11  STD  RESET
+SIZ30_SIG<0>/SIZ30_SIG<0>_TRST        2     4     FB6_5   STD  
+DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF  2     3     FB6_7   STD  
+RSTINT                                3     4     FB6_8   STD  RESET
+BR30_Q                                3     3     FB6_10  STD  RESET
 DMA_SM_FSM_FFd4                       6     8     FB6_13  STD  RESET
 DMA_SM_FSM_FFd2                       8     10    FB6_16  STD  RESET
 DMA_SM_FSM_FFd1                       8     9     FB6_18  STD  RESET
@@ -450,15 +449,15 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB6_2   74    I/O     
 (unused)              0       0     0   5     FB6_3         (b)     
 (unused)              0       0     0   5     FB6_4         (b)     
-(unused)              0       0     0   5     FB6_5   76    I/O     
-BGR60                 0       0     0   5     FB6_6   77    I/O     O
 SIZ30_SIG<0>/SIZ30_SIG<0>_TRST
-                      2       0     0   3     FB6_7         (b)     (b)
+                      2       0     0   3     FB6_5   76    I/O     (b)
+BGR60                 0       0     0   5     FB6_6   77    I/O     O
 DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF
-                      2       0     0   3     FB6_8   78    I/O     (b)
+                      2       0     0   3     FB6_7         (b)     (b)
+RSTINT                3       0     0   2     FB6_8   78    I/O     (b)
 TBI40                 2       0     0   3     FB6_9   79    I/O     O
-RSTINT                3       0     0   2     FB6_10        (b)     (b)
-BR30_Q                3       0     0   2     FB6_11  80    I/O     (b)
+BR30_Q                3       0     0   2     FB6_10        (b)     (b)
+TCI40                 0       0     0   5     FB6_11  80    I/O     O
 PCLK                  0       0   \/1   4     FB6_12  81    I/O     O
 DMA_SM_FSM_FFd4       6       1<-   0   0     FB6_13        (b)     (b)
 BCLK                  2       0     0   3     FB6_14  82    I/O     O
@@ -478,14 +477,15 @@ Signals Used by Logic in Function Block
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-BGR60                ........................................ 0
 SIZ30_SIG<0>/SIZ30_SIG<0>_TRST 
                      .......XXXX............................. 4
+BGR60                ........................................ 0
 DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF 
                      .X....X..........X...................... 3
-TBI40                ..............X...XX.................... 3
 RSTINT               .............XX.XX...................... 4
+TBI40                ..............X...XX.................... 3
 BR30_Q               ...X.......X..X......................... 3
+TCI40                ........................................ 0
 PCLK                 ........................................ 0
 DMA_SM_FSM_FFd4      ..X.X..XXXXX..X......................... 8
 BCLK                 .X....X..........X...................... 3
@@ -870,7 +870,9 @@ OE_BS <= ((SEL16M AND NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 
 
-PLL_S(0) <= '0';
+PLL_S_I(0) <= '0';
+PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
+PLL_S_OE(0) <= '0';
 
 
 PLL_S_I(1) <= '0';
@@ -1059,6 +1061,11 @@ TBI40_OBUF__$INT <= ((NOT RSTI40)
 	OR (NOT SEL16M AND NOT TT40(1)));
 
 
+TCI40_I <= '0';
+TCI40 <= TCI40_I when TCI40_OE = '1' else 'Z';
+TCI40_OE <= '0';
+
+
 TEA40 <= BERR30;
 
 FDCPE_TIP: FDCPE port map (TIP,TIP_D,PLL_CLK,NOT RSTI40,'0');
@@ -1141,7 +1148,7 @@ No. Name                           No. Name
  27 A40<0>                           77 BGR60                         
  28 BGACK30                          78 KPR                           
  29 FC30<1>                          79 TBI40                         
- 30 FC30<0>                          80 KPR                           
+ 30 FC30<0>                          80 TCI40                         
  31 GND                              81 PCLK                          
  32 KPR                              82 BCLK                          
  33 FC30<2>                          83 TDO                           

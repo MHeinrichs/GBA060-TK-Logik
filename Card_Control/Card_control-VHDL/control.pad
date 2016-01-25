@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 1-25-2016  5:46PM
+ 1-25-2016  5:57PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -97,7 +97,7 @@ P76|TIE||I/O||||||||||
 P77|BGR60|O|I/O|OUTPUT|||||||||
 P78|TIE||I/O||||||||||
 P79|TBI40|O|I/O|OUTPUT|||||||||
-P80|TIE||I/O||||||||||
+P80|TCI40|O|I/O|OUTPUT|||||||||
 P81|PCLK|O|I/O|OUTPUT|||||||||
 P82|BCLK|O|I/O|OUTPUT|||||||||
 P83|TDO||TDO||||||||||

@@ -292,7 +292,9 @@ OE_BS <= ((SEL16M AND NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S(0) <= '0';
+PLL_S_I(0) <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(0) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
 PLL_S_I(1) <= '0';
@@ -479,6 +481,11 @@ TBI40 <= ((NOT RSTI40)
 </td></tr><tr><td>
 TBI40_OBUF__$INT <= ((NOT RSTI40)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SEL16M AND NOT TT40(1)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+TCI40_I <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCI40 <= TCI40_I when TCI40_OE = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCI40_OE <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
 TEA40 <= BERR30;

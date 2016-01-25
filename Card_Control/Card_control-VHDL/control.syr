@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: control.prj
 
@@ -102,7 +102,6 @@ INFO:Xst:2561 - Always blocking tristate driving signal <CLK30> in unit <control
 Synthesizing Unit <control>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd".
 WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <TCI40> is never assigned.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
     Register <PCLK> equivalent to <CLK_BS> has been removed
@@ -167,7 +166,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<1>>.
+    Found 2-bit tristate buffer for signal <PLL_S>.
     Found 1-bit register for signal <CLK_BS>.
     Found 2-bit tristate buffer for signal <AL>.
     Found 1-bit tristate buffer for signal <AS30>.
@@ -175,6 +174,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     Found 1-bit tristate buffer for signal <RW30>.
     Found 2-bit tristate buffer for signal <SIZ30>.
     Found 1-bit tristate buffer for signal <RESET30>.
+    Found 1-bit tristate buffer for signal <TCI40>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 2-bit register for signal <AL_SIG>.
     Found 1-bit register for signal <AS30_SIG>.
@@ -201,7 +201,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
 	inferred   4 Finite State Machine(s).
 	inferred  17 D-type flip-flop(s).
 	inferred   2 Xor(s).
-	inferred  10 Tristate(s).
+	inferred  12 Tristate(s).
 Unit <control> synthesized.
 
 
@@ -212,8 +212,8 @@ Macro Statistics
 # Registers                                            : 21
  1-bit register                                        : 19
  2-bit register                                        : 2
-# Tristates                                            : 8
- 1-bit tristate buffer                                 : 6
+# Tristates                                            : 10
+ 1-bit tristate buffer                                 : 8
  2-bit tristate buffer                                 : 2
 # Xors                                                 : 2
  1-bit xor2                                            : 2
@@ -369,22 +369,22 @@ Cell Usage :
 #      FDC                         : 13
 #      FDCE                        : 1
 #      FDP                         : 13
-# IO Buffers                       : 69
+# IO Buffers                       : 70
 #      IBUF                        : 30
 #      IOBUFE                      : 1
-#      OBUF                        : 29
-#      OBUFE                       : 9
+#      OBUF                        : 28
+#      OBUFE                       : 11
 =========================================================================
 
 
 Total REAL time to Xst completion: 38.00 secs
-Total CPU time to Xst completion: 37.70 secs
+Total CPU time to Xst completion: 37.68 secs
  
 --> 
 
-Total memory usage is 337896 kilobytes
+Total memory usage is 337888 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    3 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

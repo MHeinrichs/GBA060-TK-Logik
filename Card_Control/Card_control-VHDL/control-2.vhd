@@ -265,6 +265,7 @@ begin
 	--MDIS40			= RSTINT															// MMU-Disable deativiert		(ein Pullup tut es)
 	--				# !RSTINT & DLE_off;											// 040: DLE-Mode deaktiviert	060: keine Bedeutung
 	BGR60	<= '0'; --no DMA!
+	TCI40 <= 'Z';
 	RW30	<= RW30_SIG when CONTROL40_OE ='1' else 'Z';
 	SIZ30	<= SIZ30_SIG when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_SIG when CONTROL40_OE ='1' else "ZZ";
