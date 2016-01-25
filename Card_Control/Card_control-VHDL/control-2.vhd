@@ -146,20 +146,13 @@ signal	AL_SIG : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	RW30_SIG : STD_LOGIC:='0';	--
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
-signal	NAMIACC : STD_LOGIC:='0';	--
-signal	AMISEL : STD_LOGIC:='0';	--
-signal	COUNTHALT : STD_LOGIC_VECTOR (11 downto 0):="000000000000";	--Filter-Counter fuer HALT-Leitung
-signal	COUNTRES : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter f?r Resetsteuerung
-signal	COUNTTIMEOUT : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter für Timeout
-signal	STOPRES : STD_LOGIC:='0';	--
-signal	STOPHALT : STD_LOGIC:='0';	--Ausgangsverkettung Filter-Counter
+signal	AMISEL : STD_LOGIC:='0';	--AMiga or interrupt select
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
@@ -173,17 +166,11 @@ signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
-signal	LE_BS_D : STD_LOGIC:='0';  --Signal f?r den latch vom Bus verz?gert
 signal	TERM_P : STD_LOGIC:='0'; 	  --Auf der P-Clock gesampeltes Termionierungssignal
 signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TACK : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TACK_D0 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
-signal	BCLK060_SIG_D: STD_LOGIC:='0'; --Signal BUS-CLOCK-D0
-signal	CLK30_D0 : STD_LOGIC:='0'; --
-signal	CLK30_D1 : STD_LOGIC:='0'; --
-signal	TS40_D0 : STD_LOGIC:='0'; --
-signal	TERM_P_D0 : STD_LOGIC:='0'; --
-signal	TERM_P_D1 : STD_LOGIC:='0'; --
+signal	TS40_D0 : STD_LOGIC:='0'; --Delayed variant of Transfer start for edge detection
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -244,58 +231,25 @@ begin
 		end if;
 	end process CLOCKS_N;
 
-	--Filterung HALT-Leitung vom Mainboard
-	STOPHALT	<=	'1' when COUNTHALT(11 downto 7) = "11111" else '0';
-	HALT_P: process (HALT30,SCLK_SIG)
-	begin
-		if(HALT30 = '0') then
-			COUNTHALT	<= "000000000000";
-		elsif (rising_edge(SCLK_SIG)) then
-			if( STOPHALT ='1') then
-				COUNTHALT	<= COUNTHALT;
-			else
-				COUNTHALT	<= COUNTHALT + 1;
-			end if;
-		end if;
-	end process HALT_P;
-
 	--Erzeugung der Resets
 	RESET30	<=	'0' when (RSTO40 ='0' AND HALT30='1') else 'Z'; 
 	--RESET30	<=	'Z'; 
-	STOPRES	<= '1' when COUNTRES(10 downto 7) = "1111" else '0';
-	RESET_P: process (RSTO40,SCLK_SIG)
-	begin
-		if(RSTO40 = '0')then
-			COUNTRES	<= "00000000000";
-		elsif(rising_edge(SCLK_SIG)) then
-			if( STOPRES ='1') then
-				COUNTRES	<= COUNTRES;
-			else
-				COUNTRES	<= COUNTRES + 1;
-			end if;			
-		end if;
-	end process RESET_P;
+
 	RESET_40I: process (SCLK_SIG)
 	begin
 		if(rising_edge(SCLK_SIG)) then
 			if(RSTO40 = '1' and (RESET30 = '0' )) then
 				RSTI40_SIG	<=	'0';
+				RSTINT	<='0';
 			else 
 				RSTI40_SIG	<=	'1';
+				RSTINT		<=RSTI40_SIG;
+
 			end if;
 		end if;
 	end process RESET_40I;
 
-	RSTI40 <= RSTI40_SIG;
-
-	RESET_DLY: process (RSTI40_SIG,SCLK_SIG)
-	begin
-		if(RSTI40_SIG = '0')then
-			RSTINT	<='0';
-		elsif(rising_edge(SCLK_SIG)) then
-			RSTINT	<=	RSTI40_SIG;
-		end if;
-	end process RESET_DLY;
+	RSTI40 <= RSTI40_SIG;	
 
 	--CPU Konfiguration
 	IPL40		<= "111"	when RSTINT ='0' else IPL30;	
@@ -424,9 +378,7 @@ begin
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;
-			LE_BS_D	<= '0';
 		elsif(rising_edge(CLK30)) then			
-			LE_BS_D	<= LE_BS_SIG;
 			case SM_030_P is
 				when S0 =>
 					if(SIZING_D /= idle and SIZING_D /=cycle_end) then												
@@ -518,40 +470,28 @@ begin
    process (CLK30, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
-			LE_BS_D <= '0';
 			SIZ30_SIG <="11";
+			AL_SIG	<= "11";
+			RW30_SIG	<= '1';
       elsif (rising_edge(CLK30)) then
 			SIZ30_SIG<= SIZ30_D;
 			AL_SIG	<= AL_D;
 			RW30_SIG	<= RW40;
 			SIZING	<= SIZING_D;
-			LE_BS_D	<= LE_BS_SIG;			
       end if;
    end process;
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, TS40, SEL16M, A40,
 	 AMISEL, RW40, RSTI40_SIG, DSACK_VALID,
-	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM, TACK_D0)
+	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM, TACK_D0, HALT30)
    begin
       if(SIZING =cycle_end) then
-			TA40_SIG	<= '0';
 			AS30_OE		<= '0';
 			DS30_OE		<= '0';
 		else
-			if(TT40(1 downto 0)="11") then
-				TA40_SIG	<= '0';
-			else
-				TA40_SIG	<= '1';
-			end if;
 			AS30_OE		<= '1';
 			DS30_OE		<= '1';
-		end if;
-	
-		if(SIZING = idle or SIZING = cycle_end)then
-			NAMIACC <= '1';
-		else
-			NAMIACC <= '0';
 		end if;
       C1: case SIZING is
 			when idle =>
@@ -821,7 +761,6 @@ begin
 	end process DMA_ARBIT;
 	
 	BG30 <= '0' when 
-						--COUNTTIMEOUT="00111111111" or --for debugging!
 						DMA_SM = STATE1 or
 						DMA_SM = STATE2 or
 						DMA_SM = STATE5 or

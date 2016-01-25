@@ -56,8 +56,6 @@
       
         specSig["b_SPECSIG"]=new Array("(b)");
       
-        specSig["TBI40_OBUF__INT_SPECSIG"]=new Array("TBI40_OBUF__$INT");
-      
         specSig["FC302_SPECSIG"]=new Array("FC30<2>");
       
         specSig["IPL400_SPECSIG"]=new Array("IPL40<0>");
@@ -68,7 +66,7 @@
       
         specSig["SIZ300_SPECSIG"]=new Array("SIZ30<0>");
       
-        specSig["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("SIZ30_SIG<0>/SIZ30_SIG<0>_TRST");
+        specSig["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF");
       
         specSig["IPL401_SPECSIG"]=new Array("IPL40<1>");
       
@@ -82,7 +80,9 @@
       
         specSig["DSACK_VALID1_SPECSIG"]=new Array("DSACK_VALID<1>");
       
-        specSig["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF");
+        specSig["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("SIZ30_SIG<0>/SIZ30_SIG<0>_TRST");
+      
+        specSig["TBI40_OBUF__INT_SPECSIG"]=new Array("TBI40_OBUF__$INT");
       
         specSig["TACK_D0TACK_D0_SETF__INT_SPECSIG"]=new Array("TACK_D0/TACK_D0_SETF__$INT");
       
@@ -220,11 +220,11 @@
           
             pterms["FB2_12_2"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
           
-            pterms["FB2_12_3"]=new Array("CLK30");
+            pterms["FB2_12_3"]=new Array("/RSTI40");
           
-            pterms["FB2_12_4"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
+            pterms["FB2_12_4"]=new Array("CLK30");
           
-            pterms["FB2_12_5"]=new Array("RSTI40");
+            pterms["FB2_12_5"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
           
             pterms["FB2_13_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd1","A401_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
           
@@ -232,11 +232,11 @@
           
             pterms["FB2_14_2"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd1","SIZ401_SPECSIG","/SIZ400_SPECSIG","A400_SPECSIG");
           
-            pterms["FB2_14_3"]=new Array("CLK30");
+            pterms["FB2_14_3"]=new Array("/RSTI40");
           
-            pterms["FB2_14_4"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
+            pterms["FB2_14_4"]=new Array("CLK30");
           
-            pterms["FB2_14_5"]=new Array("RSTI40");
+            pterms["FB2_14_5"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
           
             pterms["FB2_15_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd1","/SIZ401_SPECSIG","SIZ400_SPECSIG","A400_SPECSIG");
           
@@ -274,9 +274,9 @@
           
             pterms["FB3_12_2"]=new Array("/TT401_SPECSIG","TM401_SPECSIG","/TM400_SPECSIG");
           
-            pterms["FB3_14_1"]=new Array("/RSTI40");
+            pterms["FB3_14_1"]=new Array("TS40");
           
-            pterms["FB3_14_2"]=new Array("/SEL16M","/TT401_SPECSIG");
+            pterms["FB3_14_2"]=new Array("/RSTI40");
           
             pterms["FB3_15_1"]=new Array("TT401_SPECSIG","TT400_SPECSIG");
           
@@ -286,11 +286,9 @@
           
             pterms["FB3_15_4"]=new Array("/TM401_SPECSIG","TM400_SPECSIG","TM402_SPECSIG");
           
-            pterms["FB3_16_1"]=new Array("BR30");
+            pterms["FB3_16_1"]=new Array("/RSTI40");
           
-            pterms["FB3_16_2"]=new Array("/RSTI40");
-          
-            pterms["FB3_16_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
+            pterms["FB3_16_2"]=new Array("/SEL16M","/TT401_SPECSIG");
           
             pterms["FB3_17_1"]=new Array("BGACK30");
           
@@ -318,27 +316,15 @@
           
             pterms["FB4_11_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
-            pterms["FB4_15_1"]=new Array("TS40");
-          
-            pterms["FB4_15_2"]=new Array("/RSTI40");
-          
-            pterms["FB4_16_1"]=new Array("/TACK_D0TACK_D0_SETF__INT_SPECSIG");
-          
-            pterms["FB4_16_2"]=new Array("TACK_D0TACK_D0_CLKF_SPECSIG");
-          
-            pterms["FB4_17_1"]=new Array("SCLK","CPU40_60");
-          
-            pterms["FB4_17_2"]=new Array("BCLK040_SIG","/CPU40_60");
-          
             pterms["FB4_18_1"]=new Array("TA40","TIP");
           
             pterms["FB4_18_2"]=new Array("SEL16M","/TT401_SPECSIG","/TS40","/TS40_D0");
           
             pterms["FB4_18_3"]=new Array("/RSTI40");
           
-            pterms["FB5_1_1"]=new Array("/RSTI40");
+            pterms["FB5_1_1"]=new Array("/TACK_D0TACK_D0_SETF__INT_SPECSIG");
           
-            pterms["FB5_1_2"]=new Array("SCLK");
+            pterms["FB5_1_2"]=new Array("TACK_D0TACK_D0_CLKF_SPECSIG");
           
             pterms["FB5_1_3"]=new Array("STERM30","DSACK300_SPECSIG","DSACK301_SPECSIG","BERR30","SM_030_N_FSM_FFd2");
           
@@ -402,11 +388,11 @@
           
             pterms["FB5_12_1"]=new Array("RW40");
           
-            pterms["FB5_12_2"]=new Array("CLK30");
+            pterms["FB5_12_2"]=new Array("/RSTI40");
           
-            pterms["FB5_12_3"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
+            pterms["FB5_12_3"]=new Array("CLK30");
           
-            pterms["FB5_12_4"]=new Array("RSTI40");
+            pterms["FB5_12_4"]=new Array("SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG");
           
             pterms["FB5_13_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
@@ -452,13 +438,29 @@
           
             pterms["FB6_1_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q","BGACK30_Q");
           
+            pterms["FB6_7_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
+          
+            pterms["FB6_7_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
+          
+            pterms["FB6_8_1"]=new Array("SCLK","CPU40_60");
+          
+            pterms["FB6_8_2"]=new Array("BCLK040_SIG","/CPU40_60");
+          
             pterms["FB6_9_1"]=new Array("/RSTI40");
           
             pterms["FB6_9_2"]=new Array("/SEL16M","/TT401_SPECSIG");
           
-            pterms["FB6_11_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
+            pterms["FB6_10_1"]=new Array("/RSTO40","RSTI40");
           
-            pterms["FB6_11_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
+            pterms["FB6_10_2"]=new Array("RESET30PIN_SPECSIG","RSTI40");
+          
+            pterms["FB6_10_3"]=new Array("SCLK");
+          
+            pterms["FB6_11_1"]=new Array("BR30");
+          
+            pterms["FB6_11_2"]=new Array("/RSTI40");
+          
+            pterms["FB6_11_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
             pterms["FB6_12_1"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
           
@@ -716,34 +718,34 @@
           
             d2imp["AL1_SPECSIG"]=new Array("1","1","1","1");
           
-              clk["AL1_SPECSIG"]=new Array("FB2_12_3");
+              clk["AL1_SPECSIG"]=new Array("FB2_12_4");
               
                 clkimp["AL1_SPECSIG"]=new Array("1");
               
-              trst["AL1_SPECSIG"]=new Array("FB2_12_4");
+              set["AL1_SPECSIG"]=new Array("FB2_12_3");
+              
+                setimp["AL1_SPECSIG"]=new Array("1");
+              
+              trst["AL1_SPECSIG"]=new Array("FB2_12_5");
               
                 trstimp["AL1_SPECSIG"]=new Array("1");
-              
-          ce["AL1_SPECSIG"]=new Array("FB2_12_5");
-          
-            ceimp["AL1_SPECSIG"]=new Array("1");
-          prld["AL1_SPECSIG"]="VCC";
+              prld["AL1_SPECSIG"]="VCC";
           d2["AL0_SPECSIG"]=new Array("FB2_14_1","FB2_14_2","FB2_15_1");
           
             d2imp["AL0_SPECSIG"]=new Array("1","1","1");
           
-              clk["AL0_SPECSIG"]=new Array("FB2_14_3");
+              clk["AL0_SPECSIG"]=new Array("FB2_14_4");
               
                 clkimp["AL0_SPECSIG"]=new Array("1");
               
-              trst["AL0_SPECSIG"]=new Array("FB2_14_4");
+              set["AL0_SPECSIG"]=new Array("FB2_14_3");
+              
+                setimp["AL0_SPECSIG"]=new Array("1");
+              
+              trst["AL0_SPECSIG"]=new Array("FB2_14_5");
               
                 trstimp["AL0_SPECSIG"]=new Array("1");
-              
-          ce["AL0_SPECSIG"]=new Array("FB2_14_5");
-          
-            ceimp["AL0_SPECSIG"]=new Array("1");
-          prld["AL0_SPECSIG"]="VCC";
+              prld["AL0_SPECSIG"]="VCC";
           d2["A30_LE"]=new Array("GND");
           
             d2imp["A30_LE"]=new Array("1");
@@ -764,26 +766,24 @@
           
             d2imp["FC300_SPECSIG"]=new Array("1","1");
           
-          d2["TBI40_OBUF__INT_SPECSIG"]=new Array("FB3_14_1","FB3_14_2");
+          d2["TS40_D0"]=new Array("FB3_14_1");
           
-            d2imp["TBI40_OBUF__INT_SPECSIG"]=new Array("1","1");
+            d2imp["TS40_D0"]=new Array("1");
           
+              gblclk["TS40_D0"]=new Array("PLL_CLK");
+            
+              set["TS40_D0"]=new Array("FB3_14_2");
+              
+                setimp["TS40_D0"]=new Array("1");
+              prld["TS40_D0"]="GND";
           d2["FC302_SPECSIG"]=new Array("FB3_15_1","FB3_15_2","FB3_15_3","FB3_15_4");
           
             d2imp["FC302_SPECSIG"]=new Array("1","1","1","1");
           
-          d2["BR30_Q"]=new Array("FB3_16_1");
+          d2["TBI40_OBUF__INT_SPECSIG"]=new Array("FB3_16_1","FB3_16_2");
           
-            d2imp["BR30_Q"]=new Array("1");
+            d2imp["TBI40_OBUF__INT_SPECSIG"]=new Array("1","1");
           
-              clk["BR30_Q"]=new Array("FB3_16_3");
-              
-                clkimp["BR30_Q"]=new Array("1");
-              
-              set["BR30_Q"]=new Array("FB3_16_2");
-              
-                setimp["BR30_Q"]=new Array("1");
-              prld["BR30_Q"]="GND";
           d2["BGACK30_Q"]=new Array("FB3_17_1");
           
             d2imp["BGACK30_Q"]=new Array("1");
@@ -828,32 +828,6 @@
           
             d2imp["A_OE"]=new Array("1","1");
           
-          d2["TS40_D0"]=new Array("FB4_15_1");
-          
-            d2imp["TS40_D0"]=new Array("1");
-          
-              gblclk["TS40_D0"]=new Array("PLL_CLK");
-            
-              set["TS40_D0"]=new Array("FB4_15_2");
-              
-                setimp["TS40_D0"]=new Array("1");
-              prld["TS40_D0"]="GND";
-          d2["TACK_D0"]=new Array("GND");
-          
-            d2imp["TACK_D0"]=new Array("1");
-          
-              clk["TACK_D0"]=new Array("FB4_16_2");
-              
-                clkimp["TACK_D0"]=new Array("1");
-              
-              set["TACK_D0"]=new Array("FB4_16_1");
-              
-                setimp["TACK_D0"]=new Array("1");
-              prld["TACK_D0"]="GND";
-          d2["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("FB4_17_1","FB4_17_2");
-          
-            d2imp["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("1","1");
-          
           d2["TIP"]=new Array("FB4_18_1","FB4_18_2");
           
             d2imp["TIP"]=new Array("1","1");
@@ -864,18 +838,18 @@
               
                 rstimp["TIP"]=new Array("1");
               prld["TIP"]="GND";
-          d2["RSTINT"]=new Array("VCC");
+          d2["TACK_D0"]=new Array("GND");
           
-            d2imp["RSTINT"]=new Array("1");
+            d2imp["TACK_D0"]=new Array("1");
           
-              clk["RSTINT"]=new Array("FB5_1_2");
+              clk["TACK_D0"]=new Array("FB5_1_2");
               
-                clkimp["RSTINT"]=new Array("1");
+                clkimp["TACK_D0"]=new Array("1");
               
-              rst["RSTINT"]=new Array("FB5_1_1");
+              set["TACK_D0"]=new Array("FB5_1_1");
               
-                rstimp["RSTINT"]=new Array("1");
-              prld["RSTINT"]="GND";
+                setimp["TACK_D0"]=new Array("1");
+              prld["TACK_D0"]="GND";
           d2["SM_030_N_FSM_FFd2"]=new Array("FB5_2_1","FB5_2_2","FB5_1_3");
           
             d2imp["SM_030_N_FSM_FFd2"]=new Array("1","1","1");
@@ -944,18 +918,18 @@
           
             d2imp["RW30"]=new Array("1");
           
-              clk["RW30"]=new Array("FB5_12_2");
+              clk["RW30"]=new Array("FB5_12_3");
               
                 clkimp["RW30"]=new Array("1");
               
-              trst["RW30"]=new Array("FB5_12_3");
+              set["RW30"]=new Array("FB5_12_2");
+              
+                setimp["RW30"]=new Array("1");
+              
+              trst["RW30"]=new Array("FB5_12_4");
               
                 trstimp["RW30"]=new Array("1");
-              
-          ce["RW30"]=new Array("FB5_12_4");
-          
-            ceimp["RW30"]=new Array("1");
-          prld["RW30"]="GND";
+              prld["RW30"]="GND";
           d2["SIZ301_SPECSIG"]=new Array("FB5_14_1","FB5_14_2","FB5_13_1");
           
             d2imp["SIZ301_SPECSIG"]=new Array("1","1","1");
@@ -1008,14 +982,38 @@
           
             d2imp["BGR60"]=new Array("1");
           
+          d2["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("FB6_7_1","FB6_7_2");
+          
+            d2imp["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("1","1");
+          
+          d2["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("FB6_8_1","FB6_8_2");
+          
+            d2imp["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("1","1");
+          
           d2["TBI40"]=new Array("FB6_9_1","FB6_9_2");
           
             d2imp["TBI40"]=new Array("1","1");
           
-          d2["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("FB6_11_1","FB6_11_2");
+          d2["RSTINT"]=new Array("FB6_10_1","FB6_10_2");
           
-            d2imp["SIZ30_SIG0SIZ30_SIG<0>_TRST_SPECSIG"]=new Array("1","1");
+            d2imp["RSTINT"]=new Array("1","1");
           
+              clk["RSTINT"]=new Array("FB6_10_3");
+              
+                clkimp["RSTINT"]=new Array("1");
+              prld["RSTINT"]="GND";
+          d2["BR30_Q"]=new Array("FB6_11_1");
+          
+            d2imp["BR30_Q"]=new Array("1");
+          
+              clk["BR30_Q"]=new Array("FB6_11_3");
+              
+                clkimp["BR30_Q"]=new Array("1");
+              
+              set["BR30_Q"]=new Array("FB6_11_2");
+              
+                setimp["BR30_Q"]=new Array("1");
+              prld["BR30_Q"]="GND";
           d2["PCLK"]=new Array("VCC");
           
             d2imp["PCLK"]=new Array("1");

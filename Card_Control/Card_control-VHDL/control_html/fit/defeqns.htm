@@ -8,7 +8,7 @@
 </td></tr><tr><td>
 A30_LE <= '0';
 </td></tr><tr><td>
-FDCPE_AL0: FDCPE port map (AL_I(0),AL(0),CLK30,'0','0',RSTI40);
+FDCPE_AL0: FDCPE port map (AL_I(0),AL(0),CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(0) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND NOT SIZ40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0) AND A40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
@@ -17,7 +17,7 @@ FDCPE_AL0: FDCPE port map (AL_I(0),AL(0),CLK30,'0','0',RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(0) <= AL_I(0) when AL_OE(0) = '1' else 'Z';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL_OE(0) <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
 </td></tr><tr><td>
-FDCPE_AL1: FDCPE port map (AL_I(1),AL(1),CLK30,'0','0',RSTI40);
+FDCPE_AL1: FDCPE port map (AL_I(1),AL(1),CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(1) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
@@ -307,9 +307,11 @@ RESET30_I <= '0';
 FDCPE_RSTI40: FDCPE port map (RSTI40,RSTI40_D,SCLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSTI40_D <= (RSTO40 AND NOT RESET30.PIN);
 </td></tr><tr><td>
-FDCPE_RSTINT: FDCPE port map (RSTINT,'1',SCLK,NOT RSTI40,'0');
+FDCPE_RSTINT: FDCPE port map (RSTINT,RSTINT_D,SCLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSTINT_D <= ((NOT RSTO40 AND RSTI40)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET30.PIN AND RSTI40));
 </td></tr><tr><td>
-FDCPE_RW30: FDCPE port map (RW30_I,RW40,CLK30,'0','0',RSTI40);
+FDCPE_RW30: FDCPE port map (RW30_I,RW40,CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30 <= RW30_I when RW30_OE = '1' else 'Z';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30_OE <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
 </td></tr><tr><td>
