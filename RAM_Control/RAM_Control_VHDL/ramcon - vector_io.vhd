@@ -190,8 +190,8 @@ begin
    end process;
 
 -- Start of original equations
-   SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
-   SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
+   SELRAM0 	<= '0';--'1' when A40(30 downto 25) = "000100" else '0'; 
+   SELRAM1 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
 	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
    TA40_OE 	<= '1' when (SELRAM0 = '1' or SELRAM1 = '1')  else '0'; -- was: SELRAM0 or SELRAM1;
 	--SEL16M 	<= '1';

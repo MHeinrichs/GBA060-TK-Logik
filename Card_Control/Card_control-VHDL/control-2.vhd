@@ -166,11 +166,14 @@ signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
-signal	TERM_P : STD_LOGIC:='0'; 	  --Auf der P-Clock gesampeltes Termionierungssignal
+signal	TERM_P : STD_LOGIC:='0'; 	  --Terminierungssignal
 signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TACK : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TACK_D0 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TS40_D0 : STD_LOGIC:='0'; --Delayed variant of Transfer start for edge detection
+signal	TERM_P_D0: STD_LOGIC:='0'; --Delayed variant of TERM_P for edge detection
+signal	TERM_P_D1: STD_LOGIC:='0'; --Delayed variant of TERM_P for edge detection
+signal	COUNT_CLK30 : STD_LOGIC_VECTOR (1 downto 0):="11";		--Clock-count for amisel
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -207,6 +210,8 @@ begin
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
 	BCLK_SIG <= BCLK060_SIG when CPU40_60 = '1' ELSE BCLK040_SIG;
+	--BCLK	<= BCLK060_SIG;
+	--BCLK_SIG <= BCLK060_SIG;
 	--CLK30 <= CLK30_SIG;
 	CLK30 <= 'Z';
 	--clocks pos edge
@@ -270,7 +275,6 @@ begin
 	SIZ30	<= SIZ30_SIG when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_SIG when CONTROL40_OE ='1' else "ZZ";
 	A30_LE	<= '0'; -- Adress-Latch zum Mainboard transparent geschal.
-	--	A30_LE	<= '1' when COUNTTIMEOUT="00111111111" and TIP = '0' else '0'; --for debugging!; -- Adress-Latch zum Mainboard transparent geschal.
 
 	ICACHE	<= '1' when TT40(1) = '0' AND (TM40 ="010" or TM40 = "110") else '0'; -- !TT1 -> normal/move16 TM2..0 -> user code access   // !TT1 -> normal/move16 TM2..0 -> supervisor code access
 
@@ -325,6 +329,9 @@ begin
 		if(RSTI40_SIG = '0')then
 			TS40_D0	<= '1';
 			TIP 		<= '0';
+			TACK_D0	<= '1';
+			TERM_P_D0<= '0';
+			TERM_P_D1<= '0';
 		elsif(rising_edge(PLL_CLK))then
 			TS40_D0	<= TS40;
 			if(--SCLK_SIG='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
@@ -335,20 +342,29 @@ begin
 				TIP<='0';					
 			end if;
 			
+			TERM_P_D0 <= TERM_P;
+			TERM_P_D1 <= TERM_P_D0;
+			
+			if(TIP='0' or TACK = '0') then
+				TACK_D0 <= '1';
+			elsif( TERM_P_D1 = '1' and TERM_P_D0 = '0' ) then
+				TACK_D0<='0';
+			end if;
+			
 		end if;		
 	end process TRANSFER_SAMPLE;
 
 	TERM_P		<= '0' WHEN SIZING = cycle_end --end of amiga cycle
 								else '1';
-	
-	TRANSFER_END_SAMPLE: process (TACK,TIP,TERM_P)
-	begin 
-		if(TIP ='0' or TACK ='0')then
-			TACK_D0	<= '1';
-		elsif(falling_edge(TERM_P))then
-			TACK_D0 <= '0';
-		end if;		
-	end process TRANSFER_END_SAMPLE;
+
+	INTERRUPT_COUNT: process(AMISEL, CLK30)
+	begin
+		if(AMISEL='0')then
+			COUNT_CLK30 <="00";
+		elsif(rising_edge(CLK30))then
+			COUNT_CLK30 <= COUNT_CLK30+1;
+		end if;
+	end process INTERRUPT_COUNT;
 
 
 	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,SCLK_SIG)
@@ -359,7 +375,9 @@ begin
 
 			if(TIP ='1')then
 				TACK <= TACK_D0;
-			elsif(TT40(1 downto 0)="11")then
+			elsif(	TT40(1 downto 0)="11" 
+						--and COUNT_CLK30 ="11"
+					)then
 				TACK <= '0';
 			else
 				TACK		<= '1';
@@ -754,10 +772,7 @@ begin
 					else
 						DMA_SM <= STATE8; -- somehow a new 040 bus cycle started
 					end if;
-			end case;
-				
-			
-			
+			end case;			
 		end if;
 	end process DMA_ARBIT;
 	
@@ -778,6 +793,7 @@ begin
 						DMA_SM = STATE9 or
 						DMA_SM = STATE10  
 					else '1';
+	--CONTROL40_OE <= '1';
 	CONTROL40_OE <= '1' when
 						DMA_SM = STATE0 or
 						DMA_SM = STATE7 or
