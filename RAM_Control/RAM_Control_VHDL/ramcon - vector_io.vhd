@@ -87,6 +87,7 @@ architecture ramcon_behav of ramcon is
    signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0);   
    signal ARAM_OPTCODE: STD_LOGIC_VECTOR (11 downto 0);   
+	signal ENACLK_PRE : STD_LOGIC;
    
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
@@ -212,8 +213,8 @@ begin
 	--TCI40 	<= '0';
    LE_RAM <= '0';
    REFRESH <= '1' when    RQ >= "00111100" else '0';
-   CLK_RAM <= (not CLK_RAMC) and ENACLK;
-   CLKEN <= '1';
+   CLK_RAM <= (not CLK_RAMC);
+   CLKEN <=	ENACLK_PRE;
 
 	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
 	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
@@ -261,6 +262,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (INIT)='1' then
 		    CQ_D <= init_precharge;
@@ -282,6 +284,7 @@ begin
 		 RAS_D <= '0';
 		 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= init_precharge_commit;
       when init_precharge_commit =>
 		 OERAM_40_D <= '1';
@@ -297,6 +300,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= init_refresh;
@@ -317,6 +321,7 @@ begin
 		 CAS_D <= '0';
 		 RAS_D <= '0';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= init_wait;
       when init_wait =>
@@ -333,6 +338,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (	NQ >= "110" and
 		      RQ >= "00000100") then
@@ -359,6 +365,7 @@ begin
 		 RAS_D <= '0';
 		 ARAM_D <= ARAM_OPTCODE;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= end_cycle;
       when end_cycle =>
 		 OERAM_40_D <= '1';
@@ -374,6 +381,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= start_state;
@@ -394,6 +402,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (REFRESH='1') then
 		    CQ_D <= refresh_start;
@@ -418,6 +427,7 @@ begin
 		 CAS_D <= '0';
 		 RAS_D <= '0';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= refresh_wait;
       when refresh_wait =>
@@ -434,6 +444,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 if (NQ >= "110") then
 		    CQ_D <= start_state;
@@ -455,6 +466,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_HIGH;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= read_commit_ras;
 	  when read_commit_ras =>
 		 OERAM_40_D <= '1';
@@ -470,6 +482,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_start_cas;
       when read_start_cas =>
@@ -487,6 +500,7 @@ begin
 		 RAS_D <= '1';
 	 	 ARAM_D <= ARAM_LOW;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= read_commit_cas;
       when read_commit_cas =>
 		 OERAM_40_D <= '0';
@@ -502,6 +516,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_data_wait;
       when read_data_wait =>
@@ -519,6 +534,7 @@ begin
 		 RAS_D <= '1';
 		 ARAM_D <= "000000000000";
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 if (SIZ40 ="11") then
 		    CQ_D <= read_line_s0;
 		 else
@@ -538,6 +554,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s1;
       when read_line_s1 =>
@@ -554,6 +571,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s2;
       when read_line_s2 =>
@@ -570,6 +588,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s3;
       when read_line_s3 =>
@@ -586,6 +605,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s4;
       when read_line_s4 =>
@@ -602,6 +622,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s5;
       when read_line_s5 =>
@@ -618,6 +639,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= read_precharge;
       when read_precharge =>
@@ -635,6 +657,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= end_cycle;
       when write_start_ras =>
 		 OERAM_40_D <= '1';
@@ -651,6 +674,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_HIGH;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= write_commit_ras;
       when write_commit_ras =>
 		 OERAM_40_D <= '1';
@@ -666,6 +690,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_tra_ack;
       when write_tra_ack =>
@@ -682,6 +707,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_start_cas;
       when write_start_cas =>
@@ -701,6 +727,7 @@ begin
 		 RAS_D <= '1';
 		 ARAM_D <= ARAM_LOW;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= write_commit_cas;
       when write_commit_cas =>
 		 OERAM_40_D <= '1';
@@ -718,8 +745,10 @@ begin
 		 ENACLK <= '1';
 		 ARAM_D <= "000000000000";
 		 if (SIZ40 ="11") then
+			 ENACLK_PRE <= '0';
 		    CQ_D <= write_line_s0;
 		 else
+			 ENACLK_PRE <= '1';
 		    CQ_D <= write_commit;
 		 end if;
       when write_line_s0 =>
@@ -736,6 +765,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s1;
       when write_line_s1 =>
@@ -752,6 +782,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s2;
       when write_line_s2 =>
@@ -768,6 +799,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s3;
       when write_line_s3 =>
@@ -784,6 +816,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s4;
       when write_line_s4 =>
@@ -802,6 +835,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '0';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_commit;
       when write_commit =>
@@ -818,6 +852,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
 		 CQ_D <= write_precharge;
       when write_precharge =>
@@ -835,6 +870,7 @@ begin
 		 RAS_D <= '0';
 	 	 ARAM_D <= ARAM_PRECHARGE;
 		 ENACLK <= '1';
+		 ENACLK_PRE <= '1';
 		 CQ_D <= end_cycle;
 		end case;
    end process;
