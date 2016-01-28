@@ -1,7 +1,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: ramcon                              Date:  1-28-2016,  7:41PM
+Design Name: ramcon                              Date:  1-28-2016,  9:13PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -9,7 +9,7 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-53 /144 ( 37%) 274 /720  ( 38%) 139/432 ( 32%)   46 /144 ( 32%) 73 /81  ( 90%)
+53 /144 ( 37%) 279 /720  ( 39%) 139/432 ( 32%)   46 /144 ( 32%) 73 /81  ( 90%)
 
 ** Function Block Resources **
 
@@ -17,14 +17,14 @@ Function    Mcells      FB Inps     Pterms      IO
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
 FB1           4/18       21/54       55/90      10/11
 FB2           9/18       22/54       37/90      10/10*
-FB3           7/18       23/54       19/90       9/10
+FB3           7/18       23/54       24/90       9/10
 FB4          10/18       21/54       31/90      10/10*
 FB5           2/18        9/54        6/90      10/10*
 FB6          10/18       22/54       79/90       9/10
 FB7           0/18        0/54        0/90       7/10
 FB8          11/18       21/54       47/90       8/10
              -----       -----       -----      -----    
-             53/144     139/432     274/720     73/81 
+             53/144     139/432     279/720     73/81 
 
 * - Resource is exhausted
 
@@ -94,7 +94,7 @@ ARAM<5>                 5     8     FB2_12  7    I/O     O       STD  FAST RESET
 ARAM<3>                 4     8     FB2_14  8    I/O     O       STD  FAST RESET
 ARAM<4>                 4     8     FB2_15  9    I/O     O       STD  FAST RESET
 CLKEN                   8     8     FB2_17  10   I/O     O       STD  FAST 
-TCI40                   2     13    FB3_2   23   GCK/I/O O       STD  FAST 
+TCI40                   7     13    FB3_2   23   GCK/I/O O       STD  FAST 
 BA0                     1     1     FB4_2   87   I/O     O       STD  FAST RESET
 ARAM<11>                2     7     FB4_5   89   I/O     O       STD  FAST RESET
 BA1                     1     1     FB4_6   90   I/O     O       STD  FAST RESET
@@ -307,9 +307,9 @@ Number of function block inputs used/remaining:               23/31
 Number of signals used by logic mapping into function block:  23
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB3_1         (b)     
-TCI40                 2       0     0   3     FB3_2   23    GCK/I/O O
-(unused)              0       0     0   5     FB3_3         (b)     
+(unused)              0       0   \/1   4     FB3_1         (b)     (b)
+TCI40                 7       2<-   0   0     FB3_2   23    GCK/I/O O
+(unused)              0       0   /\1   4     FB3_3         (b)     (b)
 (unused)              0       0     0   5     FB3_4         (b)     
 (unused)              0       0     0   5     FB3_5   24    I/O     I
 (unused)              0       0     0   5     FB3_6   25    I/O     I
@@ -674,13 +674,12 @@ FDCPE_BA1: FDCPE port map (BA1,A40(24),CLK_RAMC,'0',NOT RESET);
 
 FDCPE_CAS: FDCPE port map (CAS,CAS_D,CLK_RAMC,'0',NOT RESET);
 CAS_D <= ((CLK_RAM_OBUF.EXP)
+	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1)
 	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd2 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND CQ_FSM_FFd6 AND 
-	NOT CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1));
+	OR (CQ_FSM_FFd2 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1));
 
 FDCPE_CE_B0: FDCPE port map (CE_B0,CE_B0_D,CLK_RAMC,'0',NOT RESET);
 CE_B0_D <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND 
@@ -746,7 +745,7 @@ CQ_FSM_FFd1_D <= ((NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND
 	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND NOT SIZ40(0)));
 
 FTCPE_CQ_FSM_FFd2: FTCPE port map (CQ_FSM_FFd2,CQ_FSM_FFd2_T,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd2_T <= ((EXP26_.EXP)
+CQ_FSM_FFd2_T <= ((EXP28_.EXP)
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND 
 	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND NOT SIZ40(1))
 	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND 
@@ -836,7 +835,7 @@ CQ_FSM_FFd5_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND CQ_FSM_FFd5 AND
 FTCPE_CQ_FSM_FFd6: FTCPE port map (CQ_FSM_FFd6,CQ_FSM_FFd6_T,CLK_RAMC,NOT RESET,'0');
 CQ_FSM_FFd6_T <= ((CQ_FSM_FFd2 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd6 AND RQ(6))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND NQ(1) AND 
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND NQ(1) AND 
 	NQ(2))
 	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND INIT)
@@ -859,6 +858,10 @@ CQ_FSM_FFd6_T <= ((CQ_FSM_FFd2 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 	TRANSFER)
 	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd6 AND RQ(3) AND RQ(5) AND 
 	RQ(2) AND RQ(4)));
+
+
+
+
 
 
 
@@ -1070,11 +1073,21 @@ TA40_OE <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND
 	NOT A40(26));
 
 
-TCI40 <= ((NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
-	NOT A40(26))
+TCI40 <= ((NOT A40(22) AND NOT A40(21) AND NOT A40(30) AND NOT A40(29) AND 
+	NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND ICACHE AND NOT A40(24))
 	OR (A40(22) AND A40(21) AND A40(20) AND A40(19) AND 
-	NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND 
-	A40(23) AND NOT A40(24) AND ICACHE));
+	NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND ICACHE AND 
+	NOT A40(24))
+	OR (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
+	NOT A40(26))
+	OR (A40(22) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
+	NOT A40(26) AND NOT A40(25) AND A40(24) AND NOT A40(23))
+	OR (A40(21) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
+	NOT A40(26) AND NOT A40(25) AND A40(24) AND NOT A40(23))
+	OR (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND 
+	NOT A40(25) AND ICACHE AND NOT A40(24) AND NOT A40(23))
+	OR (NOT A40(22) AND NOT A40(21) AND NOT A40(30) AND NOT A40(29) AND 
+	NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND A40(24) AND A40(23)));
 
 FDCPE_TRANSFER: FDCPE port map (TRANSFER,'1',TRANSFER_C,TRANSFER/TRANSFER_RSTF,'0');
 TRANSFER_C <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
@@ -1186,12 +1199,12 @@ No. Name                           No. Name
   6 ARAM<2>                          56 A40<1>                        
   7 ARAM<5>                          57 VCC                           
   8 ARAM<3>                          58 A40<0>                        
-  9 ARAM<4>                          59 KPR                           
- 10 CLKEN                            60 KPR                           
- 11 C4MHZ                            61 KPR                           
+  9 ARAM<4>                          59 TIE                           
+ 10 CLKEN                            60 TIE                           
+ 11 C4MHZ                            61 TIE                           
  12 RW_40                            62 GND                           
- 13 INIT                             63 KPR                           
- 14 KPR                              64 KPR                           
+ 13 INIT                             63 TIE                           
+ 14 TIE                              64 TIE                           
  15 A40<30>                          65 LE_RAM                        
  16 A40<29>                          66 OERAM_40                      
  17 A40<28>                          67 OE40_RAM                      
@@ -1204,7 +1217,7 @@ No. Name                           No. Name
  24 A40<24>                          74 UDQ1                          
  25 A40<23>                          75 GND                           
  26 VCC                              76 LDQ0                          
- 27 KPR                              77 UDQ0                          
+ 27 TIE                              77 UDQ0                          
  28 A40<22>                          78 CE_B0                         
  29 A40<21>                          79 CE_B1                         
  30 A40<20>                          80 WE                            
@@ -1213,7 +1226,7 @@ No. Name                           No. Name
  33 A40<18>                          83 TDO                           
  34 A40<17>                          84 GND                           
  35 A40<16>                          85 RAS                           
- 36 A40<15>                          86 KPR                           
+ 36 A40<15>                          86 TIE                           
  37 A40<14>                          87 BA0                           
  38 VCC                              88 VCC                           
  39 A40<13>                          89 ARAM<11>                      
@@ -1257,9 +1270,9 @@ Keep Unused Inputs                          : OFF
 Slew Rate                                   : FAST
 Power Mode                                  : STD
 Ground on Unused IOs                        : OFF
-Set I/O Pin Termination                     : KEEPER
+Set I/O Pin Termination                     : FLOAT
 Global Clock Optimization                   : ON
 Global Set/Reset Optimization               : ON
 Global Ouput Enable Optimization            : ON
-Input Limit                                 : 54
+Input Limit                                 : 50
 Pterm Limit                                 : 25

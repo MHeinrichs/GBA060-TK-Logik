@@ -127,13 +127,12 @@ FDCPE_BA1: FDCPE port map (BA1,A40(24),CLK_RAMC,'0',NOT RESET);
 </td></tr><tr><td>
 FDCPE_CAS: FDCPE port map (CAS,CAS_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CAS_D <= ((CLK_RAM_OBUF.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd2 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND CQ_FSM_FFd6 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND NOT CQ_FSM_FFd1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd2 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1));
 </td></tr><tr><td>
 FDCPE_CE_B0: FDCPE port map (CE_B0,CE_B0_D,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CE_B0_D <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND 
@@ -199,7 +198,7 @@ FDCPE_CQ_FSM_FFd1: FDCPE port map (CQ_FSM_FFd1,CQ_FSM_FFd1_D,CLK_RAMC,NOT RESET,
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND NOT SIZ40(0)));
 </td></tr><tr><td>
 FTCPE_CQ_FSM_FFd2: FTCPE port map (CQ_FSM_FFd2,CQ_FSM_FFd2_T,CLK_RAMC,NOT RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_FSM_FFd2_T <= ((EXP26_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_FSM_FFd2_T <= ((EXP28_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND NOT SIZ40(1))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd2 AND 
@@ -289,7 +288,7 @@ FDCPE_CQ_FSM_FFd5: FDCPE port map (CQ_FSM_FFd5,CQ_FSM_FFd5_D,CLK_RAMC,NOT RESET,
 FTCPE_CQ_FSM_FFd6: FTCPE port map (CQ_FSM_FFd6,CQ_FSM_FFd6_T,CLK_RAMC,NOT RESET,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CQ_FSM_FFd6_T <= ((CQ_FSM_FFd2 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd6 AND RQ(6))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd6 AND NOT CQ_FSM_FFd1 AND NQ(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND NQ(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NQ(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT CQ_FSM_FFd1 AND INIT)
@@ -312,6 +311,10 @@ FTCPE_CQ_FSM_FFd6: FTCPE port map (CQ_FSM_FFd6,CQ_FSM_FFd6_T,CLK_RAMC,NOT RESET,
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	TRANSFER)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd6 AND RQ(3) AND RQ(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RQ(2) AND RQ(4)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+</td></tr><tr><td>
+</td></tr><tr><td>
 </td></tr><tr><td>
 </td></tr><tr><td>
 </td></tr><tr><td>
@@ -523,11 +526,21 @@ FDCPE_TA40: FDCPE port map (TA40_I,TA40,CLK_RAMC,'0',NOT RESET);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26));
 </td></tr><tr><td>
 </td></tr><tr><td>
-TCI40 <= ((NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26))
+TCI40 <= ((NOT A40(22) AND NOT A40(21) AND NOT A40(30) AND NOT A40(29) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND ICACHE AND NOT A40(24))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND A40(21) AND A40(20) AND A40(19) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A40(23) AND NOT A40(24) AND ICACHE));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND ICACHE AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(24))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(22) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND A40(24) AND NOT A40(23))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (A40(21) AND NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(26) AND NOT A40(25) AND A40(24) AND NOT A40(23))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND NOT A40(26) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(25) AND ICACHE AND NOT A40(24) AND NOT A40(23))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT A40(22) AND NOT A40(21) AND NOT A40(30) AND NOT A40(29) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A40(28) AND NOT A40(26) AND NOT A40(25) AND A40(24) AND A40(23)));
 </td></tr><tr><td>
 FDCPE_TRANSFER: FDCPE port map (TRANSFER,'1',TRANSFER_C,TRANSFER/TRANSFER_RSTF,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRANSFER_C <= (NOT A40(30) AND NOT A40(29) AND NOT A40(28) AND A40(27) AND 

@@ -106,7 +106,6 @@ WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and lef
 WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <ENACLK> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
     | States             | 34                                             |
@@ -137,12 +136,12 @@ WARNING:Xst:646 - Signal <ENACLK> is assigned but never used. This unconnected s
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 305.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 343.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 343.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 345.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 297.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 333.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 333.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 335.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 215.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 210.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <SELRAM0_D>.
     Found 1-bit register for signal <SELRAM1_D>.
@@ -275,15 +274,15 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 965
+# BELS                             : 977
 #      AND2                        : 289
-#      AND3                        : 69
+#      AND3                        : 70
 #      AND4                        : 12
 #      AND5                        : 4
 #      AND6                        : 3
 #      GND                         : 1
-#      INV                         : 412
-#      OR2                         : 140
+#      INV                         : 416
+#      OR2                         : 147
 #      OR3                         : 21
 #      OR4                         : 2
 #      VCC                         : 1
@@ -298,14 +297,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 48.00 secs
-Total CPU time to Xst completion: 48.39 secs
+Total REAL time to Xst completion: 49.00 secs
+Total CPU time to Xst completion: 49.18 secs
  
 --> 
 
 Total memory usage is 337936 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

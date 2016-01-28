@@ -71,6 +71,10 @@
     <transform xil_pn:end_ts="1453984207" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1453984207">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="RamCon-Test.vhd"/>
       <outfile xil_pn:name="ramcon - vector_io.vhd"/>
     </transform>
@@ -81,12 +85,22 @@
     <transform xil_pn:end_ts="1453984207" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1453984207">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="RamCon-Test.vhd"/>
       <outfile xil_pn:name="ramcon - vector_io.vhd"/>
     </transform>
     <transform xil_pn:end_ts="1453984211" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6871362751115993354" xil_pn:start_ts="1453984207">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="RamConTest_beh.prj"/>
       <outfile xil_pn:name="RamConTest_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -97,16 +111,19 @@
     <transform xil_pn:end_ts="1453984211" xil_pn:in_ck="-7988374877643175345" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="4901641165608405399" xil_pn:start_ts="1453984211">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="RamConTest_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
-    <transform xil_pn:end_ts="1453983504" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1453983453">
+    <transform xil_pn:end_ts="1454010510" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1454010459">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="RamConTest_beh.prj"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="ramcon.lso"/>
@@ -125,19 +142,21 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1453983512" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1453983504">
+    <transform xil_pn:end_ts="1454010518" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1454010510">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="ramcon.bld"/>
       <outfile xil_pn:name="ramcon.ngd"/>
       <outfile xil_pn:name="ramcon_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1453983533" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1453983512">
+    <transform xil_pn:end_ts="1454010533" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1454010518">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="ramcon.gyd"/>
       <outfile xil_pn:name="ramcon.mfd"/>
       <outfile xil_pn:name="ramcon.nga"/>
@@ -152,16 +171,19 @@
       <outfile xil_pn:name="ramcon_html"/>
       <outfile xil_pn:name="ramcon_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1453983535" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1453983533">
+    <transform xil_pn:end_ts="1454010535" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1454010533">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="ramcon.jed"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1453982638" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1453982636">
       <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>
