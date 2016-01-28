@@ -22,9 +22,16 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="RAM_Control_VHDL.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="RamConTest_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="RamConTest_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="RamConTest_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="ramcon.bld"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="ramcon.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_GYD" xil_pn:name="ramcon.gyd"/>
@@ -55,23 +62,52 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ramcon_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="ramcon_xst.xrpt"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1448556767" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1448556767">
+    <transform xil_pn:end_ts="1453984207" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1453984207">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="RamCon-Test.vhd"/>
+      <outfile xil_pn:name="ramcon - vector_io.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1453982070" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-559429293382263258" xil_pn:start_ts="1453982070">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1448556767" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="7434813061324488923" xil_pn:start_ts="1448556767">
+    <transform xil_pn:end_ts="1453984207" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1453984207">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="RamCon-Test.vhd"/>
+      <outfile xil_pn:name="ramcon - vector_io.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1453846130" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1453846079">
+    <transform xil_pn:end_ts="1453984211" xil_pn:in_ck="3910983877511190404" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6871362751115993354" xil_pn:start_ts="1453984207">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="RamConTest_beh.prj"/>
+      <outfile xil_pn:name="RamConTest_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1453984211" xil_pn:in_ck="-7988374877643175345" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="4901641165608405399" xil_pn:start_ts="1453984211">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="RamConTest_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1453983504" xil_pn:in_ck="3521417347668936487" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="5800487133491234433" xil_pn:start_ts="1453983453">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="RamConTest_beh.prj"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="ramcon.lso"/>
       <outfile xil_pn:name="ramcon.ngc"/>
@@ -85,11 +121,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1448487588" xil_pn:in_ck="5432108599669260" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-39609358951156256" xil_pn:start_ts="1448487588">
+    <transform xil_pn:end_ts="1453982608" xil_pn:in_ck="5432108599669260" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-39609358951156256" xil_pn:start_ts="1453982608">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1453846137" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1453846130">
+    <transform xil_pn:end_ts="1453983512" xil_pn:in_ck="7006690224696391250" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1453983504">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -98,7 +134,7 @@
       <outfile xil_pn:name="ramcon.ngd"/>
       <outfile xil_pn:name="ramcon_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1453846155" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1453846137">
+    <transform xil_pn:end_ts="1453983533" xil_pn:in_ck="5432108599661767" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-1125162176576539267" xil_pn:start_ts="1453983512">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -116,12 +152,12 @@
       <outfile xil_pn:name="ramcon_html"/>
       <outfile xil_pn:name="ramcon_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1453846157" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1453846155">
+    <transform xil_pn:end_ts="1453983535" xil_pn:in_ck="5432108599670631" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1453983533">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ramcon.jed"/>
     </transform>
-    <transform xil_pn:end_ts="1451683727" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1451683725">
+    <transform xil_pn:end_ts="1453982638" xil_pn:in_ck="5432108599670631" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1453982636">
       <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>

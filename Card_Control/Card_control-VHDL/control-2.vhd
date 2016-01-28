@@ -95,6 +95,8 @@ entity control is
 end control;
 
 architecture Behavioral of control is
+
+	constant TACK_DELAY : integer := 0; --every number (up to three) generates a 10ns delay for the TACK Sampling
    TYPE sm_cycle_termination IS (
 				idle,				--01
 				active,			--11
@@ -171,8 +173,7 @@ signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TACK : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TACK_D0 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TS40_D0 : STD_LOGIC:='0'; --Delayed variant of Transfer start for edge detection
-signal	TERM_P_D0: STD_LOGIC:='0'; --Delayed variant of TERM_P for edge detection
-signal	TERM_P_D1: STD_LOGIC:='0'; --Delayed variant of TERM_P for edge detection
+signal	TERM_P_D: STD_LOGIC_VECTOR (3 downto 0):="0000"; --Delayed variant of TERM_P for edge detection
 signal	COUNT_CLK30 : STD_LOGIC_VECTOR (1 downto 0):="11";		--Clock-count for amisel
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
@@ -198,8 +199,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	--PLL_S	<=	"0Z"; --100MHz
-	PLL_S	<=	"Z0"; --80MHz
+	PLL_S	<=	"0Z"; --100MHz
+	--PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -330,8 +331,7 @@ begin
 			TS40_D0	<= '1';
 			TIP 		<= '0';
 			TACK_D0	<= '1';
-			TERM_P_D0<= '0';
-			TERM_P_D1<= '0';
+			TERM_P_D	<= "0000";
 		elsif(rising_edge(PLL_CLK))then
 			TS40_D0	<= TS40;
 			if(--SCLK_SIG='1' and BCLK060_SIG_D = '0' and --rising bus clock: sample TS
@@ -342,12 +342,12 @@ begin
 				TIP<='0';					
 			end if;
 			
-			TERM_P_D0 <= TERM_P;
-			TERM_P_D1 <= TERM_P_D0;
-			
+			TERM_P_D(3 downto 1)  <= TERM_P_D(2 downto 0);
+			TERM_P_D(0) <= TERM_P;
+
 			if(TIP='0' or TACK = '0') then
 				TACK_D0 <= '1';
-			elsif( TERM_P_D1 = '1' and TERM_P_D0 = '0' ) then
+			elsif( TERM_P_D(TACK_DELAY+1) = '1' and TERM_P_D(TACK_DELAY) = '0' ) then
 				TACK_D0<='0';
 			end if;
 			

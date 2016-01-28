@@ -121,7 +121,7 @@ ARCHITECTURE behavior OF RamConTest IS
 
    -- Clock period definitions
    constant CLK_RAMC_period : time := 10 ns;
-   constant SCLK_period : time := 10 ns;
+   constant SCLK_period : time := 20 ns;
    constant CLK_RAM_period : time := 10 ns;
    constant CLKEN_period : time := 10 ns;
 	constant C4MHZ_period : time := 250 ns;
@@ -209,12 +209,29 @@ BEGIN
 		INIT <='1';
       wait for CLK_RAMC_period*100;
 		-- start a cycle
+		
 		A40(30 downto 25) <= "000100";
 		TT40_1 <='0';
-		SIZ40 <="00";
+		SIZ40 <="11";
+		RW_40 <= '1';
 		wait for 1 ns;	
 		TS40 <='0';
 
+		wait until TA40 = '0';		
+		wait until TA40 = '1';
+		TS40 <='1';
+      wait for CLK_RAMC_period*4;
+
+		TT40_1 <='0';
+		SIZ40 <="11";
+		RW_40 <= '0';
+		wait for 1 ns;	
+		TS40 <='0';
+
+		wait until TA40 = '0';		
+		wait until TA40 = '1';
+
+		
       wait;
    end process;
 

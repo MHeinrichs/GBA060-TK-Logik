@@ -1,9 +1,9 @@
 V3 3
-FL C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd 2016/01/26.22:40:16 P.68d
-EN work/control 1453844418 \
+FL C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd 2016/01/27.21:46:02 P.68d
+EN work/control 1453927566 \
       FL C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd \
       PB ieee/std_logic_1164 1370735607 PB ieee/std_logic_arith 1370735608 \
       PB ieee/STD_LOGIC_UNSIGNED 1370735609
-AR work/control/Behavioral 1453844419 \
+AR work/control/Behavioral 1453927567 \
       FL C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd \
-      EN work/control 1453844418
+      EN work/control 1453927566

@@ -12,18 +12,10 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="43" />
    <wvobject fp_name="/ramcontest/clk_ramc" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_ramc</obj_property>
       <obj_property name="ObjectShortName">clk_ramc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/ramcontest/uut/cq_d" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">cq_d[5:0]</obj_property>
-      <obj_property name="ObjectShortName">cq_d[5:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/ramcontest/uut/cq" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">cq[5:0]</obj_property>
-      <obj_property name="ObjectShortName">cq[5:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/ramcontest/reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">reset</obj_property>
@@ -124,6 +116,18 @@
    <wvobject fp_name="/ramcontest/clken" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clken</obj_property>
       <obj_property name="ObjectShortName">clken</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ramcontest/uut/cq" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">cq</obj_property>
+      <obj_property name="ObjectShortName">cq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ramcontest/uut/enaclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enaclk</obj_property>
+      <obj_property name="ObjectShortName">enaclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ramcontest/uut/enaclk_d" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enaclk_d</obj_property>
+      <obj_property name="ObjectShortName">enaclk_d</obj_property>
    </wvobject>
    <wvobject fp_name="/ramcontest/ba0" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">ba0</obj_property>

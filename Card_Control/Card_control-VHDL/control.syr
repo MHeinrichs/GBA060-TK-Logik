@@ -103,6 +103,7 @@ Synthesizing Unit <control>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd".
 WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <TERM_P_D<3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Register <SCLK_SIG> equivalent to <BCLK060_SIG> has been removed
     Register <PCLK> equivalent to <CLK_BS> has been removed
     Register <TERM> equivalent to <LE_BS_SIG> has been removed
@@ -111,7 +112,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     | States             | 11                                             |
     | Transitions        | 28                                             |
     | Inputs             | 6                                              |
-    | Outputs            | 3                                              |
+    | Outputs            | 4                                              |
     | Clock              | BCLK_SIG                  (rising_edge)        |
     | Reset              | RSTI40_SIG                (negative)           |
     | Reset type         | asynchronous                                   |
@@ -166,10 +167,13 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<1>>.
+    Found 1-bit tristate buffer for signal <PLL_S<0>>.
     Found 1-bit register for signal <CLK_BS>.
+    Found 2-bit tristate buffer for signal <AL>.
     Found 1-bit tristate buffer for signal <AS30>.
     Found 1-bit tristate buffer for signal <DS30>.
+    Found 1-bit tristate buffer for signal <RW30>.
+    Found 2-bit tristate buffer for signal <SIZ30>.
     Found 1-bit tristate buffer for signal <RESET30>.
     Found 1-bit tristate buffer for signal <TCI40>.
     Found 1-bit tristate buffer for signal <TA40>.
@@ -177,11 +181,11 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     Found 1-bit register for signal <AS30_SIG>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 226.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 227.
     Found 1-bit register for signal <BGACK30_Q>.
     Found 1-bit register for signal <BR30_Q>.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 227.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 228.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 2-bit up counter for signal <COUNT_CLK30>.
     Found 1-bit register for signal <DS30_SIG>.
@@ -193,8 +197,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     Found 2-bit register for signal <SIZ30_SIG>.
     Found 1-bit register for signal <TACK>.
     Found 1-bit register for signal <TACK_D0>.
-    Found 1-bit register for signal <TERM_P_D0>.
-    Found 1-bit register for signal <TERM_P_D1>.
+    Found 2-bit register for signal <TERM_P_D<1:0>>.
     Found 1-bit register for signal <TIP>.
     Found 1-bit register for signal <TS40_D0>.
     Summary:
@@ -202,7 +205,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
 	inferred   1 Counter(s).
 	inferred  19 D-type flip-flop(s).
 	inferred   2 Xor(s).
-	inferred   6 Tristate(s).
+	inferred  11 Tristate(s).
 Unit <control> synthesized.
 
 
@@ -215,8 +218,9 @@ Macro Statistics
 # Registers                                            : 23
  1-bit register                                        : 21
  2-bit register                                        : 2
-# Tristates                                            : 6
- 1-bit tristate buffer                                 : 6
+# Tristates                                            : 9
+ 1-bit tristate buffer                                 : 7
+ 2-bit tristate buffer                                 : 2
 # Xors                                                 : 2
  1-bit xor2                                            : 2
 
@@ -257,21 +261,21 @@ Optimizing FSM <SM_030_N/FSM> on signal <SM_030_N[1:2]> with johnson encoding.
  s5    | 00
 -------------------
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <DMA_SM/FSM> on signal <DMA_SM[1:4]> with gray encoding.
+Optimizing FSM <DMA_SM/FSM> on signal <DMA_SM[1:4]> with compact encoding.
 ---------------------
  State   | Encoding
 ---------------------
  state0  | 0000
- state1  | 0011
- state2  | 0110
+ state1  | 1001
+ state2  | 0101
  state3  | 0111
  state4  | 0001
- state5  | 0101
- state6  | 0100
- state7  | 0010
- state8  | 1100
- state9  | 1101
- state10 | 1111
+ state5  | 1111
+ state6  | 1101
+ state7  | 0100
+ state8  | 1110
+ state9  | 1100
+ state10 | 1000
 ---------------------
 
 =========================================================================
@@ -294,41 +298,41 @@ WARNING:Xst:2677 - Node <COUNT_CLK30_1> of sequential type is unconnected in blo
 INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <CLK_BS> 
 
 Optimizing unit <control> ...
-  implementation constraint: INIT=r	 : DSACK_VALID_0
+  implementation constraint: INIT=r	 : TIP
   implementation constraint: INIT=r	 : BCLK060_SIG
   implementation constraint: INIT=r	 : BGACK30_Q
-  implementation constraint: INIT=r	 : TIP
-  implementation constraint: INIT=r	 : TERM_P_D1
+  implementation constraint: INIT=r	 : DSACK_VALID_0
+  implementation constraint: INIT=r	 : LE_BS_SIG
+  implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : SM_030_P_FSM_FFd2
   implementation constraint: INIT=r	 : TACK_D0
-  implementation constraint: INIT=r	 : TERM_P_D0
   implementation constraint: INIT=r	 : SM_030_N_FSM_FFd1
-  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : TS40_D0
   implementation constraint: INIT=r	 : CLK30_SIG
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
   implementation constraint: INIT=r	 : SM_030_P_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
-  implementation constraint: INIT=r	 : DSACK_VALID_1
+  implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd4
-  implementation constraint: INIT=r	 : LE_BS_SIG
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
-  implementation constraint: INIT=r	 : BCLK040_SIG
-  implementation constraint: INIT=r	 : AS30_SIG
+  implementation constraint: INIT=r	 : TACK
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : RSTI40_SIG
-  implementation constraint: INIT=r	 : TACK
+  implementation constraint: INIT=r	 : RW30_SIG
   implementation constraint: INIT=r	 : SM_030_N_FSM_FFd2
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd1
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd3
-  implementation constraint: INIT=r	 : RW30_SIG
   implementation constraint: INIT=s	 : SIZ30_SIG_0
   implementation constraint: INIT=s	 : SIZ30_SIG_1
   implementation constraint: INIT=s	 : AL_SIG_0
   implementation constraint: INIT=s	 : AL_SIG_1
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd2
-  implementation constraint: INIT=r	 : TS40_D0
+  implementation constraint: INIT=r	 : DSACK_VALID_1
   implementation constraint: INIT=r	 : BR30_Q
+  implementation constraint: INIT=r	 : BCLK040_SIG
+  implementation constraint: INIT=r	 : TERM_P_D_0
+  implementation constraint: INIT=r	 : TERM_P_D_1
 
 =========================================================================
 *                           Partition Report                            *
@@ -360,14 +364,14 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 452
-#      AND2                        : 128
-#      AND3                        : 30
+# BELS                             : 461
+#      AND2                        : 130
+#      AND3                        : 32
 #      AND4                        : 6
 #      GND                         : 1
-#      INV                         : 183
-#      OR2                         : 86
-#      OR3                         : 8
+#      INV                         : 186
+#      OR2                         : 90
+#      OR3                         : 6
 #      OR4                         : 4
 #      OR5                         : 1
 #      VCC                         : 1
@@ -381,19 +385,19 @@ Cell Usage :
 # IO Buffers                       : 70
 #      IBUF                        : 30
 #      IOBUFE                      : 1
-#      OBUF                        : 34
-#      OBUFE                       : 5
+#      OBUF                        : 29
+#      OBUFE                       : 10
 =========================================================================
 
 
 Total REAL time to Xst completion: 38.00 secs
-Total CPU time to Xst completion: 37.98 secs
+Total CPU time to Xst completion: 38.01 secs
  
 --> 
 
-Total memory usage is 337904 kilobytes
+Total memory usage is 337948 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    4 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 
