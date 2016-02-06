@@ -187,8 +187,19 @@ begin
 			TRANSFER <= '0';
       elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
 			TRANSFER <= '1';
-      end if;
+     end if;
    end process;
+
+   --process (TRANSFER_CLK, TRANSFER_ACLR) begin
+   --   if TRANSFER_ACLR='1' then
+	--		TRANSFER <= '0';
+   --   elsif rising_edge(CLK_RAMC) then
+	--		if (TS40 ='0' and TT40_1 ='0' and (SELRAM0 = '1' or SELRAM1 = '1')) then
+	--			TRANSFER <= '1';
+	--		end if;
+   --   end if;
+   --end process;
+
 
 -- Start of original equations
    SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
@@ -395,8 +406,10 @@ begin
 		    CQ_D <= refresh_start;
 		 elsif ((not REFRESH) and TRANSFER and RW_40 and (not SCLK))='1' then
 		    CQ_D <= read_start_ras;
+			 --CQ_D <= write_line_s3;
 		 elsif ((not REFRESH) and TRANSFER and (not RW_40) and SCLK)='1' then
 		    CQ_D <= write_start_ras;
+			 --CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;

@@ -6,10 +6,10 @@
   <DeviceList devices="xc9500xl"/>
 
   <Properties>
-    <property name="Synthesize - XST:Optimization Goal" value="Speed"/>
-    <property name="Synthesize - XST:Optimization Effort" value="High"/>
+    <property name="Synthesize - XST:Optimization Goal" value="Area"/>
+    <property name="Synthesize - XST:Optimization Effort" value="Normal"/>
     <property name="Synthesize - XST:FSM Encoding Algorithm" value="Auto"/>
-    <property name="Fit:Implementation Template" value="Optimize Speed"/>
+    <property name="Fit:Implementation Template" value="Optimize Balance"/>
   </Properties>
 
 </DesignStrategy>

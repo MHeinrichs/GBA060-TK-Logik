@@ -8,26 +8,26 @@
 </td></tr><tr><td>
 A30_LE <= '0';
 </td></tr><tr><td>
-FDCPE_AL0: FDCPE port map (AL_I(0),AL(0),CLK30,'0',NOT RSTI40);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(0) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND NOT SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0) AND A40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0) AND A40(0)));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(0) <= AL_I(0) when AL_OE(0) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL_OE(0) <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
 </td></tr><tr><td>
-FDCPE_AL1: FDCPE port map (AL_I(1),AL(1),CLK30,'0',NOT RSTI40);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(1) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(1) AND NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
+AL_I(0) <= ((SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(0) AND A40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND NOT SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0) AND A40(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(0) <= AL_I(0) when AL_OE(0) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL_OE(0) <= SIZ30_D(0)/SIZ30_D(0)_TRST;
+</td></tr><tr><td>
+</td></tr><tr><td>
+AL_I(1) <= ((SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND A40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZ40(1) AND SIZ40(0)));
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL(1) <= AL_I(1) when AL_OE(1) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL_OE(1) <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL_OE(1) <= SIZ30_D(0)/SIZ30_D(0)_TRST;
 </td></tr><tr><td>
 FDCPE_AS30: FDCPE port map (AS30_I,AS30,NOT CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS30 <= ((SM_030_N_FSM_FFd2 AND NOT SM_030_P_FSM_FFd1 AND 
@@ -51,14 +51,10 @@ AS30_SIG/AS30_SIG_TRST <= ((NOT SIZING_FSM_FFd1 AND NOT DMA_SM_FSM_FFd4 AND
 A_OE <= ((DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3));
 </td></tr><tr><td>
-</td></tr><tr><td>
-BCLK <= ((SCLK AND CPU40_60)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (BCLK040_SIG AND NOT CPU40_60));
-</td></tr><tr><td>
-FDCPE_BCLK040_SIG: FDCPE port map (BCLK040_SIG,BCLK040_SIG_D,NOT PLL_CLK,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BCLK040_SIG_D <= PCLK
+FDCPE_BCLK: FDCPE port map (BCLK,BCLK_D,PLL_CLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BCLK_D <= PCLK
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 XOR 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BCLK040_SIG_D <= CLK30_SIG;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BCLK_D <= CLK30_SIG;
 </td></tr><tr><td>
 </td></tr><tr><td>
 BG30 <= ((NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3)
@@ -74,12 +70,12 @@ BG40 <= ((DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd3 AND DMA_SM_FSM_FFd1));
 </td></tr><tr><td>
-FDCPE_BGACK30_Q: FDCPE port map (BGACK30_Q,BGACK30,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,'0',NOT RSTI40);
+FDCPE_BGACK30_Q: FDCPE port map (BGACK30_Q,BGACK30,SCLK,'0',NOT RSTI40);
 </td></tr><tr><td>
 </td></tr><tr><td>
 BGR60 <= '0';
 </td></tr><tr><td>
-FDCPE_BR30_Q: FDCPE port map (BR30_Q,BR30,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,'0',NOT RSTI40);
+FDCPE_BR30_Q: FDCPE port map (BR30_Q,BR30,SCLK,'0',NOT RSTI40);
 </td></tr><tr><td>
 </td></tr><tr><td>
 BWL_BS(0) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
@@ -134,13 +130,13 @@ FDCPE_CLK_RAMC: FDCPE port map (CLK_RAMC,NOT PCLK,PLL_CLK,'0','0');
 </td></tr><tr><td>
 DIR_BS <= RW40;
 </td></tr><tr><td>
-FDCPE_DMA_SM_FSM_FFd1: FDCPE port map (DMA_SM_FSM_FFd1,DMA_SM_FSM_FFd1_D,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,NOT RSTI40,'0');
+FDCPE_DMA_SM_FSM_FFd1: FDCPE port map (DMA_SM_FSM_FFd1,DMA_SM_FSM_FFd1_D,SCLK,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA_SM_FSM_FFd1_D <= ((NOT BB40 AND NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DMA_SM_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd3 AND NOT DMA_SM_FSM_FFd1 AND NOT BR30_Q)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd1 AND NOT BR30_Q AND BGACK30_Q)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd3 AND NOT DMA_SM_FSM_FFd1 AND NOT BR30_Q)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd4 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd3)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd3 AND 
@@ -148,7 +144,7 @@ FDCPE_DMA_SM_FSM_FFd1: FDCPE port map (DMA_SM_FSM_FFd1,DMA_SM_FSM_FFd1_D,DMA_SM_
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd1 AND NOT BR30_Q AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT BGACK30_Q));
 </td></tr><tr><td>
-FDCPE_DMA_SM_FSM_FFd2: FDCPE port map (DMA_SM_FSM_FFd2,DMA_SM_FSM_FFd2_D,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,NOT RSTI40,'0');
+FDCPE_DMA_SM_FSM_FFd2: FDCPE port map (DMA_SM_FSM_FFd2,DMA_SM_FSM_FFd2_D,SCLK,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA_SM_FSM_FFd2_D <= ((NOT BB40 AND NOT DMA_SM_FSM_FFd3 AND DMA_SM_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd1)
@@ -160,7 +156,7 @@ FDCPE_DMA_SM_FSM_FFd2: FDCPE port map (DMA_SM_FSM_FFd2,DMA_SM_FSM_FFd2_D,DMA_SM_
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DMA_SM_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND NOT BR30_Q));
 </td></tr><tr><td>
-FDCPE_DMA_SM_FSM_FFd3: FDCPE port map (DMA_SM_FSM_FFd3,DMA_SM_FSM_FFd3_D,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,NOT RSTI40,'0');
+FDCPE_DMA_SM_FSM_FFd3: FDCPE port map (DMA_SM_FSM_FFd3,DMA_SM_FSM_FFd3_D,SCLK,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA_SM_FSM_FFd3_D <= ((DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd4 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DMA_SM_FSM_FFd3 AND DMA_SM_FSM_FFd1 AND BR30_Q)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4 AND 
@@ -178,7 +174,7 @@ FDCPE_DMA_SM_FSM_FFd3: FDCPE port map (DMA_SM_FSM_FFd3,DMA_SM_FSM_FFd3_D,DMA_SM_
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd1 AND NOT BGACK30_Q));
 </td></tr><tr><td>
-FDCPE_DMA_SM_FSM_FFd4: FDCPE port map (DMA_SM_FSM_FFd4,DMA_SM_FSM_FFd4_D,DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF,NOT RSTI40,'0');
+FDCPE_DMA_SM_FSM_FFd4: FDCPE port map (DMA_SM_FSM_FFd4,DMA_SM_FSM_FFd4_D,SCLK,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA_SM_FSM_FFd4_D <= ((NOT DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd1 AND NOT BGACK30_Q)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND DMA_SM_FSM_FFd4)
@@ -186,10 +182,6 @@ FDCPE_DMA_SM_FSM_FFd4: FDCPE port map (DMA_SM_FSM_FFd4,DMA_SM_FSM_FFd4_D,DMA_SM_
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DMA_SM_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd3 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DMA_SM_FSM_FFd1 AND NOT BR30_Q));
-</td></tr><tr><td>
-</td></tr><tr><td>
-DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF <= ((SCLK AND CPU40_60)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (BCLK040_SIG AND NOT CPU40_60));
 </td></tr><tr><td>
 FDCPE_DS30: FDCPE port map (DS30_I,DS30,NOT CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DS30 <= ((NOT SM_030_N_FSM_FFd2 AND NOT SM_030_N_FSM_FFd1)
@@ -201,26 +193,28 @@ FDCPE_DS30: FDCPE port map (DS30_I,DS30,NOT CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DS30_OE <= AS30_SIG/AS30_SIG_TRST;
 </td></tr><tr><td>
 FDCPE_DSACK_VALID0: FDCPE port map (DSACK_VALID(0),DSACK_VALID_D(0),NOT CLK30,NOT RSTI40,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSACK_VALID_D(0) <= ((SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSACK_VALID_D(0) <= ((DSACK_VALID(0) AND NOT SM_030_N_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_N_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK30(1) AND DSACK_VALID(0) AND SM_030_N_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_P_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK30(1) AND BERR30 AND DSACK_VALID(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT STERM30 AND SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DSACK30(0) AND SM_030_N_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK_VALID(0) AND NOT SM_030_N_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_N_FSM_FFd1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT BERR30 AND SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1));
 </td></tr><tr><td>
 FDCPE_DSACK_VALID1: FDCPE port map (DSACK_VALID(1),DSACK_VALID_D(1),NOT CLK30,NOT RSTI40,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSACK_VALID_D(1) <= ((SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_P_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK30(0) AND BERR30 AND DSACK_VALID(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT STERM30 AND SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DSACK30(1) AND SM_030_N_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSACK_VALID_D(1) <= ((DSACK_VALID(1) AND NOT SM_030_N_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_N_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK30(0) AND DSACK_VALID(1) AND SM_030_N_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DSACK_VALID(1) AND NOT SM_030_N_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_N_FSM_FFd1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_P_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT STERM30 AND SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT BERR30 AND SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DSACK30(1) AND SM_030_N_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd1));
 </td></tr><tr><td>
 </td></tr><tr><td>
 </td></tr><tr><td>
@@ -314,7 +308,7 @@ PLL_S(1) <= '0';
 </td></tr><tr><td>
 RESET30_I <= '0';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30 <= RESET30_I when RESET30_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30_OE <= (HALT30 AND NOT RSTO40);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET30_OE <= NOT RSTO40;
 </td></tr><tr><td>
 FDCPE_RSTI40: FDCPE port map (RSTI40,RSTI40_D,SCLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSTI40_D <= (RSTO40 AND NOT RESET30.PIN);
@@ -323,59 +317,85 @@ FDCPE_RSTINT: FDCPE port map (RSTINT,RSTINT_D,SCLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSTINT_D <= ((NOT RSTO40 AND RSTI40)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET30.PIN AND RSTI40));
 </td></tr><tr><td>
-FDCPE_RW30: FDCPE port map (RW30_I,RW40,CLK30,'0',NOT RSTI40);
+FDCPE_RW30: FDCPE port map (RW30_I,RW30,CLK30,'0',NOT RSTI40,RW30_CE);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30 <= ((RW40)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP26_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT TA40 AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT TIP AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT TACK_D0 AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZ30_D(1).EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT HALT30 AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND DSACK_VALID(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(1) AND SIZ40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(1) AND NOT SIZ40(1) AND SIZ40(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30_CE <= (NOT SM_030_P_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30 <= RW30_I when RW30_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30_OE <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW30_OE <= SIZ30_D(0)/SIZ30_D(0)_TRST;
 </td></tr><tr><td>
 FDCPE_SCLK: FDCPE port map (SCLK,SCLK_D,PLL_CLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCLK_D <= PCLK
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 XOR 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCLK_D <= CLK30_SIG;
 </td></tr><tr><td>
-FDCPE_SIZ300: FDCPE port map (SIZ30_I(0),SIZ30(0),CLK30,'0',NOT RSTI40);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30(0) <= ((NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND NOT SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND NOT SIZ40(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0)));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30(0) <= SIZ30_I(0) when SIZ30_OE(0) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30_OE(0) <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
 </td></tr><tr><td>
-FDCPE_SIZ301: FDCPE port map (SIZ30_I(1),SIZ30(1),CLK30,'0',NOT RSTI40);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30(1) <= ((NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND NOT SIZ40(1) AND NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+SIZ30_I(0) <= ((SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd1 AND NOT SIZ40(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND NOT SIZ40(1) AND SIZ40(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30(0) <= SIZ30_I(0) when SIZ30_OE(0) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30_OE(0) <= SIZ30_D(0)/SIZ30_D(0)_TRST;
+</td></tr><tr><td>
+</td></tr><tr><td>
+SIZ30_I(1) <= ((SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND SIZ40(1) AND SIZ40(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZING_FSM_FFd1 AND NOT SIZ40(1) AND NOT SIZ40(0)));
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30(1) <= SIZ30_I(1) when SIZ30_OE(1) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30_OE(1) <= SIZ30_SIG(0)/SIZ30_SIG(0)_TRST;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZ30_OE(1) <= SIZ30_D(0)/SIZ30_D(0)_TRST;
 </td></tr><tr><td>
 </td></tr><tr><td>
-SIZ30_SIG(0)/SIZ30_SIG(0)_TRST <= ((NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3)
+SIZ30_D(0)/SIZ30_D(0)_TRST <= ((NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (DMA_SM_FSM_FFd2 AND NOT DMA_SM_FSM_FFd4 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DMA_SM_FSM_FFd1));
 </td></tr><tr><td>
 FTCPE_SIZING_FSM_FFd1: FTCPE port map (SIZING_FSM_FFd1,SIZING_FSM_FFd1_T,CLK30,NOT RSTI40,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZING_FSM_FFd1_T <= ((EXP15_.EXP)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND SIZING_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZING_FSM_FFd1_T <= ((LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND A40(1) AND NOT SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND NOT SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND NOT A40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd3 AND SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd1 AND DSACK_VALID(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd1 AND DSACK_VALID(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(1))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT SIZ40(1) AND SIZ40(0)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND NOT SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND NOT A40(1) AND NOT SIZ40(0)));
 </td></tr><tr><td>
 FTCPE_SIZING_FSM_FFd2: FTCPE port map (SIZING_FSM_FFd2,SIZING_FSM_FFd2_T,CLK30,NOT RSTI40,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZING_FSM_FFd2_T <= ((SIZING_FSM_FFd2 AND SIZING_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZING_FSM_FFd2_T <= ((LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND DSACK_VALID(0) AND NOT DSACK_VALID(1) AND SIZ40(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd2 AND DSACK_VALID(0) AND 
@@ -394,9 +414,9 @@ FTCPE_SIZING_FSM_FFd2: FTCPE port map (SIZING_FSM_FFd2,SIZING_FSM_FFd2_T,CLK30,N
 FTCPE_SIZING_FSM_FFd3: FTCPE port map (SIZING_FSM_FFd3,SIZING_FSM_FFd3_T,CLK30,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZING_FSM_FFd3_T <= ((SIZING_FSM_FFd3 AND SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(0) AND DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(0) AND DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
@@ -404,9 +424,9 @@ FTCPE_SIZING_FSM_FFd3: FTCPE port map (SIZING_FSM_FFd3,SIZING_FSM_FFd3_T,CLK30,N
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (TA40 AND TIP AND TACK_D0 AND HALT30 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT DSACK_VALID(0) AND DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT DSACK_VALID(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND NOT SIZING_FSM_FFd3 AND SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND DSACK_VALID(0) AND NOT DSACK_VALID(1) AND NOT A40(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SIZ40(1) AND NOT SIZ40(0))
@@ -420,16 +440,16 @@ FTCPE_SIZING_FSM_FFd3: FTCPE port map (SIZING_FSM_FFd3,SIZING_FSM_FFd3_T,CLK30,N
 FDCPE_SM_030_N_FSM_FFd1: FDCPE port map (SM_030_N_FSM_FFd1,SM_030_N_FSM_FFd1_D,NOT CLK30,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM_030_N_FSM_FFd1_D <= ((SM_030_N_FSM_FFd2 AND NOT SM_030_N_FSM_FFd1 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_P_FSM_FFd1 AND SM_030_P_FSM_FFd2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND DSACK30(1) AND BERR30 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND BERR30 AND DSACK30(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND SM_030_P_FSM_FFd1)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND DSACK30(1) AND BERR30 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND BERR30 AND DSACK30(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd2 AND SM_030_N_FSM_FFd1 AND SM_030_P_FSM_FFd2));
 </td></tr><tr><td>
 FTCPE_SM_030_N_FSM_FFd2: FTCPE port map (SM_030_N_FSM_FFd2,SM_030_N_FSM_FFd2_T,NOT CLK30,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM_030_N_FSM_FFd2_T <= ((SM_030_N_FSM_FFd2 AND NOT SM_030_N_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (SM_030_N_FSM_FFd2 AND NOT SM_030_P_FSM_FFd1 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SM_030_P_FSM_FFd2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND DSACK30(1) AND BERR30 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (STERM30 AND DSACK30(0) AND BERR30 AND DSACK30(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_N_FSM_FFd2));
 </td></tr><tr><td>
 FDCPE_SM_030_P_FSM_FFd1: FDCPE port map (SM_030_P_FSM_FFd1,SM_030_P_FSM_FFd1_D,CLK30,NOT RSTI40,'0');
@@ -438,7 +458,8 @@ FDCPE_SM_030_P_FSM_FFd1: FDCPE port map (SM_030_P_FSM_FFd1,SM_030_P_FSM_FFd1_D,C
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	SM_030_P_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2));
 </td></tr><tr><td>
 FTCPE_SM_030_P_FSM_FFd2: FTCPE port map (SM_030_P_FSM_FFd2,SM_030_P_FSM_FFd2_T,CLK30,NOT RSTI40,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM_030_P_FSM_FFd2_T <= ((NOT TA40 AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM_030_P_FSM_FFd2_T <= ((EXP20_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT TA40 AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT TIP AND NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
@@ -448,7 +469,6 @@ FTCPE_SM_030_P_FSM_FFd2: FTCPE port map (SM_030_P_FSM_FFd2,SM_030_P_FSM_FFd2_T,C
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT SIZING_FSM_FFd1 AND NOT SM_030_P_FSM_FFd2)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND DSACK_VALID(1) AND NOT SM_030_P_FSM_FFd2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP25_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	DSACK_VALID(0) AND NOT SM_030_P_FSM_FFd2 AND NOT SIZ40(1) AND SIZ40(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LE_BS AND SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2 AND 
@@ -491,11 +511,11 @@ TCI40_I <= '0';
 </td></tr><tr><td>
 TEA40 <= BERR30;
 </td></tr><tr><td>
-FDCPE_TERM_P_D0: FDCPE port map (TERM_P_D(0),TERM_P_D_D(0),PLL_CLK,NOT RSTI40,'0');
+FDCPE_TERM_P_D0: FDCPE port map (TERM_P_D(0),TERM_P_D_D(0),PLL_CLK,'0',NOT RSTI40);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TERM_P_D_D(0) <= ((NOT SIZING_FSM_FFd1)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SIZING_FSM_FFd3 AND NOT SIZING_FSM_FFd2));
 </td></tr><tr><td>
-FDCPE_TERM_P_D1: FDCPE port map (TERM_P_D(1),TERM_P_D(0),PLL_CLK,NOT RSTI40,'0');
+FDCPE_TERM_P_D1: FDCPE port map (TERM_P_D(1),TERM_P_D(0),PLL_CLK,'0',NOT RSTI40);
 </td></tr><tr><td>
 FDCPE_TIP: FDCPE port map (TIP,TIP_D,PLL_CLK,NOT RSTI40,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIP_D <= ((TA40 AND TIP)
