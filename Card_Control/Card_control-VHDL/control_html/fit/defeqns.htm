@@ -298,12 +298,12 @@ OE_BS <= ((NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND TT40(1) AND
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S_I(0) <= '0';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(0) <= '0';
+PLL_S(0) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
-PLL_S(1) <= '0';
+PLL_S_I(1) <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLL_S_OE(1) <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
 RESET30_I <= '0';

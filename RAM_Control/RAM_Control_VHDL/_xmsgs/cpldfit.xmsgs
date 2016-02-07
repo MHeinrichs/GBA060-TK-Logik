@@ -17,63 +17,6 @@
 <msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">ARAM&lt;12&gt;_OBUF</arg>&apos; is missing an input and will be deleted.
 </msg>
 
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;0&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;10&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;11&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;12&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;13&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;14&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;15&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;16&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;17&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;18&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;1&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;2&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;3&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;4&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;5&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;6&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;7&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;8&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A40&lt;9&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">D30&lt;28&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
@@ -87,12 +30,6 @@
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">OE_FLASH</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">SIZ40&lt;0&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="new" >Removing unused input(s) &apos;<arg fmt="%s" index="1">SIZ40&lt;1&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">TBI40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.

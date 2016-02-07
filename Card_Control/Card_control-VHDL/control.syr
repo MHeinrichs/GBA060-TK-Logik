@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: control.prj
 
@@ -168,7 +168,7 @@ WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and
     | Encoding           | automatic                                      |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <PLL_S<0>>.
+    Found 1-bit tristate buffer for signal <PLL_S<1>>.
     Found 1-bit register for signal <CLK_BS>.
     Found 2-bit tristate buffer for signal <AL>.
     Found 1-bit tristate buffer for signal <AS30>.
@@ -375,11 +375,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 38.00 secs
-Total CPU time to Xst completion: 37.76 secs
+Total CPU time to Xst completion: 37.77 secs
  
 --> 
 
-Total memory usage is 337952 kilobytes
+Total memory usage is 353608 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    3 (   0 filtered)

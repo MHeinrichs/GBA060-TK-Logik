@@ -413,11 +413,11 @@ begin
 		 if (REFRESH='1') then
 		    CQ_D <= refresh_start;
 		 elsif (TRANSFER and RW_40 and (not SCLK))='1' then
-		    --CQ_D <= read_start_ras;
-			 CQ_D <= write_line_s3;
+		    CQ_D <= read_start_ras;
+			 --CQ_D <= write_line_s3;
 		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
-		    --CQ_D <= write_start_ras;
-			 CQ_D <= write_line_s3;
+		    CQ_D <= write_start_ras;
+			 --CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;
