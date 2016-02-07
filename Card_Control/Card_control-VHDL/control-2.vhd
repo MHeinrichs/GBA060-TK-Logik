@@ -210,8 +210,8 @@ begin
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
 	BCLK_SIG <= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
-	--BCLK	<= BCLK060_SIG;
-	--BCLK_SIG <= BCLK060_SIG;
+	--BCLK	<= BCLK040_SIG;
+	--BCLK_SIG <= BCLK040_SIG;
 	--CLK30 <= CLK30_SIG;
 	CLK30 <= 'Z';
 	--clocks pos edge
@@ -390,11 +390,11 @@ begin
 								else '1';
 
 
-	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,SCLK_SIG)
+	TRANSFER_ACKNOWLEDGE: process (RSTI40_SIG,BCLK_SIG)
 	begin 
 		if(RSTI40_SIG = '0')then
 			TACK		<= '1';
-		elsif(rising_edge(SCLK_SIG))then
+		elsif(rising_edge(BCLK_SIG))then
 			if(TIP ='1')then
 				TACK <= TACK_D0;
 			else
@@ -531,10 +531,8 @@ begin
 		end if;
       C1: case SIZING is
 			when idle =>
-				SIZ30_D <= "00";
-					
-				AL_D <= "00";
-						
+				SIZ30_D <= "00";					
+				AL_D <= "00";						
 				BWL_BS	<= "111";
 					
 				if( TRANSFER_START  = '1' AND HALT30='1') then
