@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 2- 6-2016  9:00PM
+ 2- 7-2016  5:37PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -109,7 +109,7 @@ P88|VCC||VCCIO||||||||||
 P89|IPL40<0>|O|I/O|OUTPUT|||||||||
 P90|IPL40<2>|O|I/O|OUTPUT|||||||||
 P91|CDIS40|O|I/O|OUTPUT|||||||||
-P92|TIE||I/O||||||||||
+P92|CPU40_60|I|I/O|INPUT|||||||||
 P93|A_OE|O|I/O|OUTPUT|||||||||
 P94|RSTO40|I|I/O|INPUT|||||||||
 P95|TIE||I/O||||||||||

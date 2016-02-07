@@ -3,24 +3,24 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "control";
       var device = "XC95144XL";
-      signals = new Array("A30_LE","AL0_SPECSIG","AL1_SPECSIG","AS30","AS30_SIGAS30_SIG_TRST_SPECSIG","A_OE","BCLK","BG30","BG40","BGACK30_Q","BGR60","BR30_Q","BWL_BS0_SPECSIG","BWL_BS1_SPECSIG","BWL_BS2_SPECSIG","CDIS40","CLK30_SIG","CLK_BS","CLK_RAMC","DIR_BS","DMA_SM_FSM_FFd1","DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd4","DS30","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","FC300_SPECSIG","FC301_SPECSIG","FC302_SPECSIG","ICACHE","IPL400_SPECSIG","IPL401_SPECSIG","IPL402_SPECSIG","LE_BS","MDIS40","OE_BS","PCLK","PLL_S0_SPECSIG","PLL_S1_SPECSIG","RESET30","RSTI40","RSTINT","RW30","SCLK","SIZ300_SPECSIG","SIZ301_SPECSIG","SIZ30_D0SIZ30_D<0>_TRST_SPECSIG","SIZING_FSM_FFd1","SIZING_FSM_FFd2","SIZING_FSM_FFd3","SM_030_N_FSM_FFd1","SM_030_N_FSM_FFd2","SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2","TA40","TACK_D0","TBI40","TBI40_OBUF__INT_SPECSIG","TCI40","TEA40","TERM_P_D0_SPECSIG","TERM_P_D1_SPECSIG","TIP","TS40_D0");
-      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
-      sigTypes = new Array("","","","D","","","D","","","D","","D","","","","","T","D","D","","D","D","D","D","D","D","D","","","","","","","","D","","","T","","","","D","D","D","D","","","","T","T","T","D","T","D","T","D","D","","","","","D","D","D","D");
+      signals = new Array("A30_LE","AL0_SPECSIG","AL1_SPECSIG","AS30","A_OE","BCLK","BCLK060_SIG","BG30","BG40","BGACK30_Q","BGR60","BR30_Q","BWL_BS0_SPECSIG","BWL_BS1_SPECSIG","BWL_BS2_SPECSIG","CDIS40","CLK30_SIG","CLK_BS","CLK_RAMC","DIR_BS","DMA_SM_FSM_FFd1","DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG","DS30","DS30_SIGDS30_SIG_TRST_SPECSIG","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","FC300_SPECSIG","FC301_SPECSIG","FC302_SPECSIG","ICACHE","IPL400_SPECSIG","IPL401_SPECSIG","IPL402_SPECSIG","LE_BS","MDIS40","OE_BS","PCLK","PLL_S0_SPECSIG","PLL_S1_SPECSIG","RESET30","RSTI40","RSTINT","RW30","SCLK","SIZ300_SPECSIG","SIZ301_SPECSIG","SIZ30_D1SIZ30_D<1>_TRST_SPECSIG","SIZING_FSM_FFd1","SIZING_FSM_FFd2","SIZING_FSM_FFd3","SM_030_N_FSM_FFd1","SM_030_N_FSM_FFd2","SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2","TA40","TACK_D0","TBI40","TBI40_OBUF__INT_SPECSIG","TCI40","TEA40","TERM_P_D0_SPECSIG","TERM_P_D1_SPECSIG","TIP","TRANSFER_START","TS40_D0");
+      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("","","","D","","","D","","","D","","D","","","","","T","D","D","","D","D","D","D","","D","","D","D","","","","","","","","D","","","T","","","","D","D","","D","","","","T","T","T","D","T","D","T","D","D","","","","","D","D","D","D","D");
 
+      
+        specSig["DSACK300_SPECSIG"]=new Array("DSACK30<0>");
+      
+        specSig["DSACK301_SPECSIG"]=new Array("DSACK30<1>");
+      
+        specSig["TT401_SPECSIG"]=new Array("TT40<1>");
+      
+        specSig["TT400_SPECSIG"]=new Array("TT40<0>");
       
         specSig["SIZ400_SPECSIG"]=new Array("SIZ40<0>");
       
         specSig["SIZ401_SPECSIG"]=new Array("SIZ40<1>");
       
         specSig["A401_SPECSIG"]=new Array("A40<1>");
-      
-        specSig["TT401_SPECSIG"]=new Array("TT40<1>");
-      
-        specSig["TT400_SPECSIG"]=new Array("TT40<0>");
-      
-        specSig["DSACK300_SPECSIG"]=new Array("DSACK30<0>");
-      
-        specSig["DSACK301_SPECSIG"]=new Array("DSACK30<1>");
       
         specSig["A400_SPECSIG"]=new Array("A40<0>");
       
@@ -66,6 +66,8 @@
       
         specSig["SIZ300_SPECSIG"]=new Array("SIZ30<0>");
       
+        specSig["TERM_P_D1_SPECSIG"]=new Array("TERM_P_D<1>");
+      
         specSig["IPL401_SPECSIG"]=new Array("IPL40<1>");
       
         specSig["PLL_S1_SPECSIG"]=new Array("PLL_S<1>");
@@ -76,25 +78,27 @@
       
         specSig["DSACK_VALID1_SPECSIG"]=new Array("DSACK_VALID<1>");
       
-        specSig["TERM_P_D1_SPECSIG"]=new Array("TERM_P_D<1>");
-      
         specSig["TBI40_OBUF__INT_SPECSIG"]=new Array("TBI40_OBUF__$INT");
       
-        specSig["SIZ30_D0SIZ30_D<0>_TRST_SPECSIG"]=new Array("SIZ30_D<0>/SIZ30_D<0>_TRST");
+        specSig["SIZ30_D1SIZ30_D<1>_TRST_SPECSIG"]=new Array("SIZ30_D<1>/SIZ30_D<1>_TRST");
       
         specSig["TERM_P_D0_SPECSIG"]=new Array("TERM_P_D<0>");
       
-        specSig["AS30_SIGAS30_SIG_TRST_SPECSIG"]=new Array("AS30_SIG/AS30_SIG_TRST");
+        specSig["DS30_SIGDS30_SIG_TRST_SPECSIG"]=new Array("DS30_SIG/DS30_SIG_TRST");
       
-            pterms["FB1_1_1"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
+        specSig["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("DMA_SM_FSM_FFd4/DMA_SM_FSM_FFd4_CLKF");
+      
+            pterms["FB1_1_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
           
-            pterms["FB1_2_1"]=new Array("RW40","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG");
+            pterms["FB1_1_2"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
           
-            pterms["FB1_2_2"]=new Array("RW40","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG");
+            pterms["FB1_2_1"]=new Array("/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","RW40");
           
-            pterms["FB1_2_3"]=new Array("RW40","/SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG");
+            pterms["FB1_2_2"]=new Array("/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","RW40");
           
-            pterms["FB1_2_4"]=new Array("RW40","/SIZING_FSM_FFd1","DSACK_VALID1_SPECSIG");
+            pterms["FB1_2_3"]=new Array("/SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","RW40");
+          
+            pterms["FB1_2_4"]=new Array("/SIZING_FSM_FFd1","DSACK_VALID1_SPECSIG","RW40");
           
             pterms["FB1_2_5"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
           
@@ -102,35 +106,57 @@
           
             pterms["FB1_3_2"]=new Array("SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
           
-            pterms["FB1_3_3"]=new Array("RW40","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID1_SPECSIG");
+            pterms["FB1_3_3"]=new Array("/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID1_SPECSIG","RW40");
           
-            pterms["FB1_3_4"]=new Array("RW40","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG");
+            pterms["FB1_3_4"]=new Array("/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","RW40");
           
-            pterms["FB1_3_5"]=new Array("/RW40","/SIZING_FSM_FFd1","/SIZ401_SPECSIG","SIZ400_SPECSIG","A400_SPECSIG");
+            pterms["FB1_3_5"]=new Array("/SIZING_FSM_FFd1","/RW40","/SIZ401_SPECSIG","SIZ400_SPECSIG","A400_SPECSIG");
           
-            pterms["FB1_4_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
+            pterms["FB1_4_1"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
           
-            pterms["FB1_5_1"]=new Array("/RW40","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2");
+            pterms["FB1_4_2"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
           
-            pterms["FB1_5_2"]=new Array("RW40","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG");
+            pterms["FB1_4_3"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG");
           
-            pterms["FB1_5_3"]=new Array("RW40","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG");
+            pterms["FB1_4_4"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","RW40");
           
-            pterms["FB1_5_4"]=new Array("/RW40","/SIZING_FSM_FFd2","A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_5_1"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/RW40");
           
-            pterms["FB1_5_5"]=new Array("/RW40","/SIZING_FSM_FFd2","A401_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_5_2"]=new Array("/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","RW40");
+          
+            pterms["FB1_5_3"]=new Array("/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","RW40");
+          
+            pterms["FB1_5_4"]=new Array("/SIZING_FSM_FFd2","/RW40","A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+          
+            pterms["FB1_5_5"]=new Array("/SIZING_FSM_FFd2","/RW40","A401_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
           
             pterms["FB1_6_1"]=new Array("/PCLK");
           
-            pterms["FB1_6_2"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
+            pterms["FB1_6_2"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_6_3"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1");
+            pterms["FB1_6_3"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_6_4"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG");
+            pterms["FB1_6_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","A401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_6_5"]=new Array("RW40","/SIZING_FSM_FFd3","/SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG");
+            pterms["FB1_7_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG");
+          
+            pterms["FB1_7_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_7_3"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","/SIZ400_SPECSIG");
+          
+            pterms["FB1_7_4"]=new Array("/RSTI40");
+          
+            pterms["FB1_7_5"]=new Array("CLK30");
           
             pterms["FB1_8_1"]=new Array("RW40");
+          
+            pterms["FB1_8_2"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1");
+          
+            pterms["FB1_8_3"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1");
+          
+            pterms["FB1_8_4"]=new Array("LE_BS","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_8_5"]=new Array("LE_BS","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
             pterms["FB1_9_1"]=new Array("/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
@@ -140,63 +166,89 @@
           
             pterms["FB1_9_4"]=new Array("/CLK30");
           
-            pterms["FB1_11_1"]=new Array("TS40");
+            pterms["FB1_10_1"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1");
           
-            pterms["FB1_11_2"]=new Array("/RSTI40");
+            pterms["FB1_10_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_11_3"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_10_3"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_11_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","A401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_10_4"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_12_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG");
+            pterms["FB1_10_5"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_12_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_11_1"]=new Array("TRANSFER_START","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","HALT30");
           
-            pterms["FB1_12_3"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_11_2"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_12_4"]=new Array("/RSTI40");
+            pterms["FB1_11_3"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_12_5"]=new Array("CLK30");
+            pterms["FB1_11_4"]=new Array("/RSTI40");
           
-            pterms["FB1_13_1"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1");
+            pterms["FB1_11_5"]=new Array("CLK30");
           
-            pterms["FB1_13_2"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1");
+            pterms["FB1_12_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","SIZ401_SPECSIG");
           
-            pterms["FB1_13_3"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_12_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_13_4"]=new Array("LE_BS","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_12_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_13_5"]=new Array("LE_BS","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_12_4"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_14_1"]=new Array("STERM30","/SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2");
+            pterms["FB1_13_1"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_14_2"]=new Array("/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB1_13_2"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_14_3"]=new Array("/RSTI40");
+            pterms["FB1_13_3"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","A401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_14_4"]=new Array("CLK30");
+            pterms["FB1_14_1"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1");
           
-            pterms["FB1_14_5"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG");
+            pterms["FB1_14_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG");
           
-            pterms["FB1_15_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_14_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_15_2"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_14_4"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_15_3"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_14_5"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB1_15_4"]=new Array("/RSTI40");
+            pterms["FB1_15_1"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_15_5"]=new Array("CLK30");
+            pterms["FB1_15_2"]=new Array("/RSTI40");
           
-            pterms["FB1_16_1"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1");
+            pterms["FB1_15_3"]=new Array("CLK30");
           
-            pterms["FB1_16_2"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB1_15_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","A401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_16_3"]=new Array("LE_BS","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_15_5"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB1_16_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","A401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_16_1"]=new Array("/TRANSFER_START","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
-            pterms["FB1_16_5"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB1_16_2"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2","/HALT30");
+          
+            pterms["FB1_16_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2");
+          
+            pterms["FB1_16_4"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_16_5"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+          
+            pterms["FB1_17_1"]=new Array("SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+          
+            pterms["FB1_17_2"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+          
+            pterms["FB1_17_3"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+          
+            pterms["FB1_17_4"]=new Array("/RSTI40");
+          
+            pterms["FB1_17_5"]=new Array("CLK30");
+          
+            pterms["FB1_18_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_18_2"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_18_3"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+          
+            pterms["FB1_18_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","SIZ400_SPECSIG");
+          
+            pterms["FB1_18_5"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
             pterms["FB2_2_1"]=new Array("/RSTO40");
           
@@ -208,13 +260,13 @@
           
             pterms["FB2_8_1"]=new Array("/TT401_SPECSIG","TM401_SPECSIG","/TM400_SPECSIG");
           
-            pterms["FB2_9_1"]=new Array("TERM_P_D0_SPECSIG");
+            pterms["FB2_9_1"]=new Array("/RSTI40");
           
-            pterms["FB2_9_2"]=new Array("/RSTI40");
+            pterms["FB2_9_2"]=new Array("/TT401_SPECSIG","/SEL16M");
           
-            pterms["FB2_10_1"]=new Array("/RSTI40");
+            pterms["FB2_10_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
-            pterms["FB2_10_2"]=new Array("/SEL16M","/TT401_SPECSIG");
+            pterms["FB2_10_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
           
             pterms["FB2_11_1"]=new Array("/PCLK");
           
@@ -226,11 +278,11 @@
           
             pterms["FB2_12_4"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd1","A401_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB2_12_5"]=new Array("SIZ30_D0SIZ30_D<0>_TRST_SPECSIG");
+            pterms["FB2_12_5"]=new Array("SIZ30_D1SIZ30_D<1>_TRST_SPECSIG");
           
-            pterms["FB2_13_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
+            pterms["FB2_13_1"]=new Array("PCLK");
           
-            pterms["FB2_13_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
+            pterms["FB2_13_2"]=new Array("CLK30_SIG");
           
             pterms["FB2_14_1"]=new Array("SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
           
@@ -238,7 +290,7 @@
           
             pterms["FB2_14_3"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd1","/SIZ401_SPECSIG","SIZ400_SPECSIG","A400_SPECSIG");
           
-            pterms["FB2_14_4"]=new Array("SIZ30_D0SIZ30_D<0>_TRST_SPECSIG");
+            pterms["FB2_14_4"]=new Array("SIZ30_D1SIZ30_D<1>_TRST_SPECSIG");
           
             pterms["FB2_16_1"]=new Array("/SIZING_FSM_FFd1");
           
@@ -246,13 +298,13 @@
           
             pterms["FB2_16_3"]=new Array("/RSTI40");
           
-            pterms["FB2_17_1"]=new Array("SEL16M","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","RSTI40");
+            pterms["FB2_17_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","TT401_SPECSIG","RSTI40");
           
-            pterms["FB2_17_2"]=new Array("TT401_SPECSIG","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","RSTI40");
+            pterms["FB2_17_2"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","RSTI40","SEL16M");
           
-            pterms["FB2_17_3"]=new Array("SEL16M","DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","RSTI40");
+            pterms["FB2_17_3"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","TT401_SPECSIG","RSTI40");
           
-            pterms["FB2_17_4"]=new Array("TT401_SPECSIG","DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","RSTI40");
+            pterms["FB2_17_4"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","RSTI40","SEL16M");
           
             pterms["FB2_18_1"]=new Array("/SIZING_FSM_FFd1","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
@@ -262,21 +314,37 @@
           
             pterms["FB2_18_4"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_1_1"]=new Array("/STERM30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_1_1"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1","BR30_Q");
           
-            pterms["FB3_1_2"]=new Array("/BERR30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_1_2"]=new Array("/DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
           
-            pterms["FB3_1_3"]=new Array("/DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_1_3"]=new Array("/BR40","/BB40","/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_1_4"]=new Array("/RSTI40");
+            pterms["FB3_1_4"]=new Array("/BB40","DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","LOCKE40","/LOCK40");
           
-            pterms["FB3_1_5"]=new Array("/CLK30");
+            pterms["FB3_1_5"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1","LOCKE40","/LOCK40");
           
-            pterms["FB3_2_1"]=new Array("DSACK_VALID1_SPECSIG","/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
+            pterms["FB3_2_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","BR30_Q");
           
-            pterms["FB3_2_2"]=new Array("DSACK300_SPECSIG","DSACK_VALID1_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_2_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
           
-            pterms["FB3_2_3"]=new Array("SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB3_2_3"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
+          
+            pterms["FB3_2_4"]=new Array("/RSTI40");
+          
+            pterms["FB3_2_5"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
+          
+            pterms["FB3_3_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4");
+          
+            pterms["FB3_3_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
+          
+            pterms["FB3_3_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
+          
+            pterms["FB3_3_4"]=new Array("/RSTI40");
+          
+            pterms["FB3_3_5"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
+          
+            pterms["FB3_4_1"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
           
             pterms["FB3_5_1"]=new Array("/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
@@ -285,6 +353,12 @@
             pterms["FB3_5_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
           
             pterms["FB3_5_4"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
+          
+            pterms["FB3_10_1"]=new Array("BR30");
+          
+            pterms["FB3_10_2"]=new Array("/RSTI40");
+          
+            pterms["FB3_10_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
             pterms["FB3_11_1"]=new Array("TT401_SPECSIG","TM401_SPECSIG");
           
@@ -296,49 +370,51 @@
           
             pterms["FB3_12_2"]=new Array("/TT401_SPECSIG","TM401_SPECSIG","/TM400_SPECSIG");
           
-            pterms["FB3_14_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
+            pterms["FB3_14_1"]=new Array("TT401_SPECSIG","TT400_SPECSIG");
           
-            pterms["FB3_14_2"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB3_14_2"]=new Array("TM401_SPECSIG","/TM400_SPECSIG","TM402_SPECSIG");
           
-            pterms["FB3_14_3"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2");
+            pterms["FB3_14_3"]=new Array("/TM401_SPECSIG","TM400_SPECSIG","TM402_SPECSIG");
           
-            pterms["FB3_14_4"]=new Array("/RSTI40");
+            pterms["FB3_15_1"]=new Array("TT401_SPECSIG","TM402_SPECSIG");
           
-            pterms["FB3_14_5"]=new Array("/CLK30");
+            pterms["FB3_15_2"]=new Array("/BB40","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_15_1"]=new Array("TT401_SPECSIG","TT400_SPECSIG");
+            pterms["FB3_15_3"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
           
-            pterms["FB3_15_2"]=new Array("TT401_SPECSIG","TM402_SPECSIG");
+            pterms["FB3_15_4"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_15_3"]=new Array("TM401_SPECSIG","/TM400_SPECSIG","TM402_SPECSIG");
+            pterms["FB3_15_5"]=new Array("/BR40","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","BR30_Q","BGACK30_Q");
           
-            pterms["FB3_15_4"]=new Array("/TM401_SPECSIG","TM400_SPECSIG","TM402_SPECSIG");
+            pterms["FB3_16_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_16_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2");
+            pterms["FB3_16_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/BR30_Q");
           
-            pterms["FB3_16_2"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd1");
+            pterms["FB3_16_3"]=new Array("/RSTI40");
           
-            pterms["FB3_16_3"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd2");
+            pterms["FB3_16_4"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
-            pterms["FB3_16_4"]=new Array("/RSTI40");
+            pterms["FB3_16_5"]=new Array("/BB40","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_16_5"]=new Array("/CLK30");
+            pterms["FB3_17_1"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
-            pterms["FB3_17_1"]=new Array("DSACK_VALID0_SPECSIG","/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
+            pterms["FB3_17_2"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB3_17_2"]=new Array("DSACK301_SPECSIG","DSACK_VALID0_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_17_3"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd1","/BR30_Q","/BGACK30_Q");
           
-            pterms["FB3_17_3"]=new Array("SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB3_17_4"]=new Array("/RSTI40");
           
-            pterms["FB3_18_1"]=new Array("/STERM30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_17_5"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
-            pterms["FB3_18_2"]=new Array("/DSACK300_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_18_1"]=new Array("BGACK30");
           
-            pterms["FB3_18_3"]=new Array("/BERR30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
+            pterms["FB3_18_2"]=new Array("/RSTI40");
           
-            pterms["FB3_18_4"]=new Array("/RSTI40");
+            pterms["FB3_18_3"]=new Array("DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG");
           
-            pterms["FB3_18_5"]=new Array("/CLK30");
+            pterms["FB3_18_4"]=new Array("/DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
+          
+            pterms["FB3_18_5"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q","BGACK30_Q");
           
             pterms["FB4_5_1"]=new Array("RSTINT","/IPL300_SPECSIG");
           
@@ -348,71 +424,63 @@
           
             pterms["FB4_11_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
           
-            pterms["FB5_1_1"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","A401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB4_18_1"]=new Array("TA40","TIP","/TACK_D0");
           
-            pterms["FB5_1_2"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB4_18_2"]=new Array("TA40","TIP","/TERM_P_D0_SPECSIG","TERM_P_D1_SPECSIG");
           
-            pterms["FB5_1_3"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB4_18_3"]=new Array("/RSTI40");
           
-            pterms["FB5_1_4"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_1_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
-            pterms["FB5_2_1"]=new Array("/TA40","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_1_2"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
-            pterms["FB5_2_2"]=new Array("/TIP","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_1_3"]=new Array("/RSTI40");
           
-            pterms["FB5_2_3"]=new Array("/TACK_D0","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_1_4"]=new Array("/CLK30");
           
-            pterms["FB5_2_4"]=new Array("/HALT30","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_1_5"]=new Array("DSACK_VALID1_SPECSIG","/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
-            pterms["FB5_2_5"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2");
+            pterms["FB5_2_1"]=new Array("/STERM30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_3_1"]=new Array("SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_2_2"]=new Array("/BERR30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_3_2"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_2_3"]=new Array("/DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_3_3"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_2_4"]=new Array("/RSTI40");
           
-            pterms["FB5_3_4"]=new Array("/RSTI40");
+            pterms["FB5_2_5"]=new Array("/CLK30");
           
-            pterms["FB5_3_5"]=new Array("CLK30");
+            pterms["FB5_3_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2");
           
-            pterms["FB5_4_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_3_2"]=new Array("/RSTI40");
           
-            pterms["FB5_4_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_3_3"]=new Array("/CLK30");
           
-            pterms["FB5_4_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_3_4"]=new Array("DSACK300_SPECSIG","DSACK_VALID1_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_4_4"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_3_5"]=new Array("SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
-            pterms["FB5_4_5"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SM_030_P_FSM_FFd2","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_4_1"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd1");
           
-            pterms["FB5_5_1"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1");
+            pterms["FB5_4_2"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd2");
           
-            pterms["FB5_5_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_5_1"]=new Array("DSACK_VALID0_SPECSIG","/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
-            pterms["FB5_5_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_5_2"]=new Array("DSACK301_SPECSIG","DSACK_VALID0_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_5_4"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_5_3"]=new Array("SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
-            pterms["FB5_5_5"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_6_1"]=new Array("/STERM30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_6_1"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","SIZ401_SPECSIG");
+            pterms["FB5_6_2"]=new Array("/DSACK300_SPECSIG","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
-            pterms["FB5_6_2"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
-          
-            pterms["FB5_6_3"]=new Array("LE_BS","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_6_3"]=new Array("/BERR30","SM_030_N_FSM_FFd2","SM_030_N_FSM_FFd1");
           
             pterms["FB5_6_4"]=new Array("/RSTI40");
           
-            pterms["FB5_6_5"]=new Array("CLK30");
+            pterms["FB5_6_5"]=new Array("/CLK30");
           
-            pterms["FB5_7_1"]=new Array("TA40","TIP","TACK_D0","HALT30","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
-          
-            pterms["FB5_7_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
-          
-            pterms["FB5_7_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
-          
-            pterms["FB5_7_4"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","/SIZING_FSM_FFd1","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_7_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
             pterms["FB5_8_1"]=new Array("/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
@@ -422,49 +490,11 @@
           
             pterms["FB5_8_4"]=new Array("/CLK30");
           
-            pterms["FB5_8_5"]=new Array("AS30_SIGAS30_SIG_TRST_SPECSIG");
-          
-            pterms["FB5_9_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
-          
-            pterms["FB5_10_1"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
-          
-            pterms["FB5_10_2"]=new Array("LE_BS","SIZING_FSM_FFd1","/DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
-          
-            pterms["FB5_10_3"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","A401_SPECSIG","/SIZ400_SPECSIG");
-          
-            pterms["FB5_10_4"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","SIZ400_SPECSIG");
-          
-            pterms["FB5_10_5"]=new Array("LE_BS","SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
-          
-            pterms["FB5_11_1"]=new Array("SIZING_FSM_FFd3","SIZING_FSM_FFd1");
-          
-            pterms["FB5_11_2"]=new Array("SIZING_FSM_FFd2","SIZING_FSM_FFd1");
-          
-            pterms["FB5_11_3"]=new Array("/TA40","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
-          
-            pterms["FB5_11_4"]=new Array("/TIP","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
-          
-            pterms["FB5_11_5"]=new Array("/TACK_D0","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
+            pterms["FB5_8_5"]=new Array("DS30_SIGDS30_SIG_TRST_SPECSIG");
           
             pterms["FB5_12_1"]=new Array("RW40");
           
-            pterms["FB5_12_2"]=new Array("/RSTI40");
-          
-            pterms["FB5_12_3"]=new Array("CLK30");
-          
-            pterms["FB5_12_4"]=new Array("SIZ30_D0SIZ30_D<0>_TRST_SPECSIG");
-          
-            pterms["FB5_12_5"]=new Array("/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
-          
-            pterms["FB5_13_1"]=new Array("/HALT30","/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
-          
-            pterms["FB5_13_2"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","DSACK_VALID1_SPECSIG");
-          
-            pterms["FB5_13_3"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
-          
-            pterms["FB5_13_4"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
-          
-            pterms["FB5_13_5"]=new Array("LE_BS","SIZING_FSM_FFd3","/SIZING_FSM_FFd2","DSACK_VALID1_SPECSIG","/SIZ401_SPECSIG","SIZ400_SPECSIG");
+            pterms["FB5_12_2"]=new Array("SIZ30_D1SIZ30_D<1>_TRST_SPECSIG");
           
             pterms["FB5_14_1"]=new Array("SIZING_FSM_FFd3","/SIZING_FSM_FFd2","/SIZING_FSM_FFd1","SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
@@ -472,23 +502,21 @@
           
             pterms["FB5_14_3"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/SIZ401_SPECSIG","/SIZ400_SPECSIG");
           
-            pterms["FB5_14_4"]=new Array("SIZ30_D0SIZ30_D<0>_TRST_SPECSIG");
+            pterms["FB5_14_4"]=new Array("SIZ30_D1SIZ30_D<1>_TRST_SPECSIG");
           
-            pterms["FB5_14_5"]=new Array("LE_BS","/SIZING_FSM_FFd3","SIZING_FSM_FFd2","DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","/A401_SPECSIG","SIZ401_SPECSIG","/SIZ400_SPECSIG");
+            pterms["FB5_14_5"]=new Array("/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
           
-            pterms["FB5_15_1"]=new Array("/RW40","/SM_030_N_FSM_FFd1");
+            pterms["FB5_15_1"]=new Array("/SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd1");
           
-            pterms["FB5_15_2"]=new Array("/SM_030_N_FSM_FFd1","SM_030_P_FSM_FFd1");
+            pterms["FB5_15_2"]=new Array("/SM_030_N_FSM_FFd1","/RW40");
           
             pterms["FB5_15_3"]=new Array("/RSTI40");
           
             pterms["FB5_15_4"]=new Array("/CLK30");
           
-            pterms["FB5_15_5"]=new Array("AS30_SIGAS30_SIG_TRST_SPECSIG");
+            pterms["FB5_15_5"]=new Array("DS30_SIGDS30_SIG_TRST_SPECSIG");
           
-            pterms["FB5_16_1"]=new Array("/SM_030_N_FSM_FFd2","/SM_030_N_FSM_FFd1");
-          
-            pterms["FB5_16_2"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
+            pterms["FB5_16_1"]=new Array("SM_030_N_FSM_FFd2","/SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
             pterms["FB5_17_1"]=new Array("SIZING_FSM_FFd2","/SIZING_FSM_FFd1");
           
@@ -496,91 +524,69 @@
           
             pterms["FB5_17_3"]=new Array("/SIZING_FSM_FFd3","/SIZING_FSM_FFd2","SIZING_FSM_FFd1","/SIZ401_SPECSIG","SIZ400_SPECSIG");
           
-            pterms["FB5_17_4"]=new Array("SIZ30_D0SIZ30_D<0>_TRST_SPECSIG");
+            pterms["FB5_17_4"]=new Array("SIZ30_D1SIZ30_D<1>_TRST_SPECSIG");
           
-            pterms["FB6_1_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","BR30_Q");
+            pterms["FB5_18_1"]=new Array("STERM30","/SM_030_P_FSM_FFd1","SM_030_P_FSM_FFd2");
           
-            pterms["FB6_1_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
+            pterms["FB5_18_2"]=new Array("/DSACK_VALID0_SPECSIG","/DSACK_VALID1_SPECSIG","SM_030_P_FSM_FFd1","/SM_030_P_FSM_FFd2");
           
-            pterms["FB6_1_3"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
+            pterms["FB5_18_3"]=new Array("/RSTI40");
           
-            pterms["FB6_1_4"]=new Array("/RSTI40");
+            pterms["FB5_18_4"]=new Array("CLK30");
           
-            pterms["FB6_1_5"]=new Array("SCLK");
+            pterms["FB5_18_5"]=new Array("STERM30","DSACK300_SPECSIG","BERR30","DSACK301_SPECSIG","SM_030_N_FSM_FFd2");
           
-            pterms["FB6_8_1"]=new Array("/RSTO40","RSTI40");
+            pterms["FB6_1_1"]=new Array("TS40");
           
-            pterms["FB6_8_2"]=new Array("RESET30PIN_SPECSIG","RSTI40");
+            pterms["FB6_1_2"]=new Array("/RSTI40");
           
-            pterms["FB6_8_3"]=new Array("SCLK");
+            pterms["FB6_2_1"]=new Array("TERM_P_D0_SPECSIG");
+          
+            pterms["FB6_2_2"]=new Array("/RSTI40");
+          
+            pterms["FB6_3_1"]=new Array("SCLK","CPU40_60");
+          
+            pterms["FB6_3_2"]=new Array("BCLK060_SIG","/CPU40_60");
+          
+            pterms["FB6_4_1"]=new Array("/RSTO40","RSTI40");
+          
+            pterms["FB6_4_2"]=new Array("RESET30PIN_SPECSIG","RSTI40");
+          
+            pterms["FB6_4_3"]=new Array("SCLK");
+          
+            pterms["FB6_5_1"]=new Array("TA40","TIP");
+          
+            pterms["FB6_5_2"]=new Array("/TS40","/TS40_D0","TT401_SPECSIG","TT400_SPECSIG");
+          
+            pterms["FB6_5_3"]=new Array("/TS40","/TS40_D0","/TT401_SPECSIG","SEL16M");
+          
+            pterms["FB6_5_4"]=new Array("/RSTI40");
+          
+            pterms["FB6_6_1"]=new Array("/TS40","/TS40_D0","TT401_SPECSIG","TT400_SPECSIG");
+          
+            pterms["FB6_7_1"]=new Array("TRANSFER_START","/SIZING_FSM_FFd3");
+          
+            pterms["FB6_7_2"]=new Array("TRANSFER_START","SIZING_FSM_FFd2");
+          
+            pterms["FB6_7_3"]=new Array("TRANSFER_START","SIZING_FSM_FFd1");
+          
+            pterms["FB6_7_4"]=new Array("/TS40","/TS40_D0","/TT401_SPECSIG","SEL16M");
+          
+            pterms["FB6_7_5"]=new Array("/RSTI40");
           
             pterms["FB6_9_1"]=new Array("/RSTI40");
           
-            pterms["FB6_9_2"]=new Array("/SEL16M","/TT401_SPECSIG");
+            pterms["FB6_9_2"]=new Array("/TT401_SPECSIG","/SEL16M");
           
-            pterms["FB6_9_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BGACK30_Q");
+            pterms["FB6_14_1"]=new Array("SCLK","CPU40_60");
           
-            pterms["FB6_10_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4");
-          
-            pterms["FB6_10_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_10_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
-          
-            pterms["FB6_10_4"]=new Array("/RSTI40");
-          
-            pterms["FB6_10_5"]=new Array("SCLK");
-          
-            pterms["FB6_12_1"]=new Array("/BB40","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_12_2"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_13_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_13_2"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_13_3"]=new Array("DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/BR30_Q");
-          
-            pterms["FB6_13_4"]=new Array("/RSTI40");
-          
-            pterms["FB6_13_5"]=new Array("SCLK");
-          
-            pterms["FB6_14_1"]=new Array("PCLK");
-          
-            pterms["FB6_14_2"]=new Array("CLK30_SIG");
-          
-            pterms["FB6_14_3"]=new Array("/BR40","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","BR30_Q","BGACK30_Q");
+            pterms["FB6_14_2"]=new Array("BCLK060_SIG","/CPU40_60");
           
             pterms["FB6_15_1"]=new Array("RSTINT","/IPL301_SPECSIG");
-          
-            pterms["FB6_15_2"]=new Array("/BB40","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_15_3"]=new Array("/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q","BGACK30_Q");
-          
-            pterms["FB6_16_1"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3");
-          
-            pterms["FB6_16_2"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_16_3"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd1","/BR30_Q","/BGACK30_Q");
-          
-            pterms["FB6_16_4"]=new Array("/RSTI40");
-          
-            pterms["FB6_16_5"]=new Array("SCLK");
           
             pterms["FB6_17_1"]=new Array("RSTO40","/RESET30PIN_SPECSIG");
           
             pterms["FB6_17_2"]=new Array("SCLK");
-          
-            pterms["FB6_17_3"]=new Array("/DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
-          
-            pterms["FB6_18_1"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1","BR30_Q");
-          
-            pterms["FB6_18_2"]=new Array("/DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","/DMA_SM_FSM_FFd1","/BR30_Q");
-          
-            pterms["FB6_18_3"]=new Array("/BR40","/BB40","/DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
-          
-            pterms["FB6_18_4"]=new Array("/BB40","DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd1","LOCKE40","/LOCK40");
-          
-            pterms["FB6_18_5"]=new Array("DMA_SM_FSM_FFd2","/DMA_SM_FSM_FFd4","DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1","LOCKE40","/LOCK40");
           
             pterms["FB7_14_1"]=new Array("DMA_SM_FSM_FFd2","DMA_SM_FSM_FFd4");
           
@@ -588,51 +594,25 @@
           
             pterms["FB7_14_3"]=new Array("/DMA_SM_FSM_FFd3","DMA_SM_FSM_FFd1");
           
-            pterms["FB8_13_1"]=new Array("TA40","TIP");
-          
-            pterms["FB8_13_2"]=new Array("SEL16M","/TT401_SPECSIG","/TS40","/TS40_D0");
-          
-            pterms["FB8_13_3"]=new Array("/RSTI40");
-          
-            pterms["FB8_14_1"]=new Array("TA40","TIP","/TACK_D0");
-          
-            pterms["FB8_14_2"]=new Array("TA40","TIP","/TERM_P_D0_SPECSIG","TERM_P_D1_SPECSIG");
-          
-            pterms["FB8_14_3"]=new Array("/RSTI40");
-          
             pterms["FB8_15_1"]=new Array("TIP","/TACK_D0");
           
-            pterms["FB8_15_2"]=new Array("/TIP","TT401_SPECSIG","TT400_SPECSIG");
+            pterms["FB8_15_2"]=new Array("/RSTI40");
           
-            pterms["FB8_15_3"]=new Array("/RSTI40");
+            pterms["FB8_15_3"]=new Array("SCLK");
           
-            pterms["FB8_15_4"]=new Array("SCLK");
-          
-            pterms["FB8_15_5"]=new Array("/TBI40_OBUF__INT_SPECSIG");
-          
-            pterms["FB8_16_1"]=new Array("BR30");
-          
-            pterms["FB8_16_2"]=new Array("/RSTI40");
-          
-            pterms["FB8_16_3"]=new Array("SCLK");
+            pterms["FB8_15_4"]=new Array("/TBI40_OBUF__INT_SPECSIG");
           
             pterms["FB8_17_1"]=new Array("BERR30");
           
-            pterms["FB8_18_1"]=new Array("BGACK30");
-          
-            pterms["FB8_18_2"]=new Array("/RSTI40");
-          
-            pterms["FB8_18_3"]=new Array("SCLK");
-          
-          d2["BWL_BS2_SPECSIG"]=new Array("FB1_2_1","FB1_2_2","FB1_2_3","FB1_2_4","FB1_2_5","FB1_1_1");
+          d2["BWL_BS2_SPECSIG"]=new Array("FB1_2_1","FB1_2_2","FB1_2_3","FB1_2_4","FB1_1_1","FB1_1_2");
           
             d2imp["BWL_BS2_SPECSIG"]=new Array("1","1","1","1","1","1");
           
-          d2["BWL_BS0_SPECSIG"]=new Array("FB1_3_1","FB1_3_2","FB1_3_3","FB1_3_4","FB1_3_5","FB1_4_1");
+          d2["BWL_BS0_SPECSIG"]=new Array("FB1_3_1","FB1_3_2","FB1_3_3","FB1_3_4","FB1_3_5","FB1_2_5");
           
             d2imp["BWL_BS0_SPECSIG"]=new Array("1","1","1","1","1","1");
           
-          d2["BWL_BS1_SPECSIG"]=new Array("FB1_5_1","FB1_5_2","FB1_5_3","FB1_5_4","FB1_5_5","FB1_6_2","FB1_6_3","FB1_6_4","FB1_6_5");
+          d2["BWL_BS1_SPECSIG"]=new Array("FB1_5_1","FB1_5_2","FB1_5_3","FB1_5_4","FB1_5_5","FB1_4_1","FB1_4_2","FB1_4_3","FB1_4_4");
           
             d2imp["BWL_BS1_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1");
           
@@ -642,6 +622,18 @@
           
               gblclk["CLK_BS"]=new Array("PLL_CLK");
             prld["CLK_BS"]="GND";
+          d2["SIZING_FSM_FFd1"]=new Array("FB1_7_1","FB1_7_2","FB1_7_3","FB1_6_2","FB1_6_3","FB1_6_4","FB1_8_2","FB1_8_3","FB1_8_4","FB1_8_5");
+          
+            d2imp["SIZING_FSM_FFd1"]=new Array("1","1","1","1","1","1","1","1","1","1");
+          
+              clk["SIZING_FSM_FFd1"]=new Array("FB1_7_5");
+              
+                clkimp["SIZING_FSM_FFd1"]=new Array("1");
+              
+              rst["SIZING_FSM_FFd1"]=new Array("FB1_7_4");
+              
+                rstimp["SIZING_FSM_FFd1"]=new Array("1");
+              prld["SIZING_FSM_FFd1"]="GND";
           d2["DIR_BS"]=new Array("FB1_8_1");
           
             d2imp["DIR_BS"]=new Array("1");
@@ -658,52 +650,42 @@
               
                 rstimp["LE_BS"]=new Array("1");
               prld["LE_BS"]="GND";
-          d2["TS40_D0"]=new Array("FB1_11_1");
+          d2["SIZING_FSM_FFd3"]=new Array("FB1_11_1","FB1_11_2","FB1_11_3","FB1_10_1","FB1_10_2","FB1_10_3","FB1_10_4","FB1_10_5","FB1_12_1","FB1_12_2","FB1_12_3","FB1_12_4");
           
-            d2imp["TS40_D0"]=new Array("1");
+            d2imp["SIZING_FSM_FFd3"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1");
           
-              gblclk["TS40_D0"]=new Array("PLL_CLK");
-            
-              set["TS40_D0"]=new Array("FB1_11_2");
+              clk["SIZING_FSM_FFd3"]=new Array("FB1_11_5");
               
-                setimp["TS40_D0"]=new Array("1");
-              prld["TS40_D0"]="GND";
-          d2["SIZING_FSM_FFd1"]=new Array("FB1_12_1","FB1_12_2","FB1_12_3","FB1_11_3","FB1_11_4","FB1_13_1","FB1_13_2","FB1_13_3","FB1_13_4","FB1_13_5");
-          
-            d2imp["SIZING_FSM_FFd1"]=new Array("1","1","1","1","1","1","1","1","1","1");
-          
-              clk["SIZING_FSM_FFd1"]=new Array("FB1_12_5");
+                clkimp["SIZING_FSM_FFd3"]=new Array("1");
               
-                clkimp["SIZING_FSM_FFd1"]=new Array("1");
+              rst["SIZING_FSM_FFd3"]=new Array("FB1_11_4");
               
-              rst["SIZING_FSM_FFd1"]=new Array("FB1_12_4");
-              
-                rstimp["SIZING_FSM_FFd1"]=new Array("1");
-              prld["SIZING_FSM_FFd1"]="GND";
-          d2["SM_030_P_FSM_FFd1"]=new Array("FB1_14_1","FB1_14_2");
-          
-            d2imp["SM_030_P_FSM_FFd1"]=new Array("1","1");
-          
-              clk["SM_030_P_FSM_FFd1"]=new Array("FB1_14_4");
-              
-                clkimp["SM_030_P_FSM_FFd1"]=new Array("1");
-              
-              rst["SM_030_P_FSM_FFd1"]=new Array("FB1_14_3");
-              
-                rstimp["SM_030_P_FSM_FFd1"]=new Array("1");
-              prld["SM_030_P_FSM_FFd1"]="GND";
-          d2["SIZING_FSM_FFd2"]=new Array("FB1_15_1","FB1_15_2","FB1_15_3","FB1_14_5","FB1_16_1","FB1_16_2","FB1_16_3","FB1_16_4","FB1_16_5");
+                rstimp["SIZING_FSM_FFd3"]=new Array("1");
+              prld["SIZING_FSM_FFd3"]="GND";
+          d2["SIZING_FSM_FFd2"]=new Array("FB1_15_1","FB1_14_1","FB1_14_2","FB1_14_3","FB1_14_4","FB1_14_5","FB1_13_1","FB1_13_2","FB1_13_3");
           
             d2imp["SIZING_FSM_FFd2"]=new Array("1","1","1","1","1","1","1","1","1");
           
-              clk["SIZING_FSM_FFd2"]=new Array("FB1_15_5");
+              clk["SIZING_FSM_FFd2"]=new Array("FB1_15_3");
               
                 clkimp["SIZING_FSM_FFd2"]=new Array("1");
               
-              rst["SIZING_FSM_FFd2"]=new Array("FB1_15_4");
+              rst["SIZING_FSM_FFd2"]=new Array("FB1_15_2");
               
                 rstimp["SIZING_FSM_FFd2"]=new Array("1");
               prld["SIZING_FSM_FFd2"]="GND";
+          d2["SM_030_P_FSM_FFd2"]=new Array("FB1_17_1","FB1_17_2","FB1_17_3","FB1_16_1","FB1_16_2","FB1_16_3","FB1_16_4","FB1_16_5","FB1_15_4","FB1_15_5","FB1_18_1","FB1_18_2","FB1_18_3","FB1_18_4","FB1_18_5");
+          
+            d2imp["SM_030_P_FSM_FFd2"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+          
+              clk["SM_030_P_FSM_FFd2"]=new Array("FB1_17_5");
+              
+                clkimp["SM_030_P_FSM_FFd2"]=new Array("1");
+              
+              rst["SM_030_P_FSM_FFd2"]=new Array("FB1_17_4");
+              
+                rstimp["SM_030_P_FSM_FFd2"]=new Array("1");
+              prld["SM_030_P_FSM_FFd2"]="GND";
           d2["RESET30"]=new Array("GND");
           
             d2imp["RESET30"]=new Array("1");
@@ -732,19 +714,13 @@
           
             d2imp["ICACHE"]=new Array("1");
           
-          d2["TERM_P_D1_SPECSIG"]=new Array("FB2_9_1");
-          
-            d2imp["TERM_P_D1_SPECSIG"]=new Array("1");
-          
-              gblclk["TERM_P_D1_SPECSIG"]=new Array("PLL_CLK");
-            
-              set["TERM_P_D1_SPECSIG"]=new Array("FB2_9_2");
-              
-                setimp["TERM_P_D1_SPECSIG"]=new Array("1");
-              prld["TERM_P_D1_SPECSIG"]="GND";
-          d2["TBI40_OBUF__INT_SPECSIG"]=new Array("FB2_10_1","FB2_10_2");
+          d2["TBI40_OBUF__INT_SPECSIG"]=new Array("FB2_9_1","FB2_9_2");
           
             d2imp["TBI40_OBUF__INT_SPECSIG"]=new Array("1","1");
+          
+          d2["SIZ30_D1SIZ30_D<1>_TRST_SPECSIG"]=new Array("FB2_10_1","FB2_10_2");
+          
+            d2imp["SIZ30_D1SIZ30_D<1>_TRST_SPECSIG"]=new Array("1","1");
           
           d2["CLK_RAMC"]=new Array("FB2_11_1");
           
@@ -760,10 +736,16 @@
               
                 trstimp["AL1_SPECSIG"]=new Array("1");
               
-          d2["SIZ30_D0SIZ30_D<0>_TRST_SPECSIG"]=new Array("FB2_13_1","FB2_13_2");
+          d1["BCLK060_SIG"]=new Array("FB2_13_1");
           
-            d2imp["SIZ30_D0SIZ30_D<0>_TRST_SPECSIG"]=new Array("1","1");
+            d1imp["BCLK060_SIG"]=new Array("1");
           
+          d2["BCLK060_SIG"]=new Array("FB2_13_2");
+          
+            d2imp["BCLK060_SIG"]=new Array("1");
+          clkNegs["BCLK060_SIG"]=1;
+              gblclk["BCLK060_SIG"]=new Array("PLL_CLK");
+            prld["BCLK060_SIG"]="GND";
           d2["AL0_SPECSIG"]=new Array("FB2_14_1","FB2_14_2","FB2_14_3");
           
             d2imp["AL0_SPECSIG"]=new Array("1","1","1");
@@ -790,26 +772,50 @@
           
             d2imp["OE_BS"]=new Array("1","1","1","1");
           
-          d2["AS30_SIGAS30_SIG_TRST_SPECSIG"]=new Array("FB2_18_1","FB2_18_2","FB2_18_3","FB2_18_4");
+          d2["DS30_SIGDS30_SIG_TRST_SPECSIG"]=new Array("FB2_18_1","FB2_18_2","FB2_18_3","FB2_18_4");
           
-            d2imp["AS30_SIGAS30_SIG_TRST_SPECSIG"]=new Array("1","1","1","1");
+            d2imp["DS30_SIGDS30_SIG_TRST_SPECSIG"]=new Array("1","1","1","1");
           
-          d2["DSACK_VALID1_SPECSIG"]=new Array("FB3_1_1","FB3_1_2","FB3_1_3","FB3_2_1","FB3_2_2","FB3_2_3");
+          d2["DMA_SM_FSM_FFd3"]=new Array("FB3_2_1","FB3_2_2","FB3_2_3","FB3_1_1","FB3_1_2","FB3_1_3","FB3_1_4","FB3_1_5");
           
-            d2imp["DSACK_VALID1_SPECSIG"]=new Array("1","1","1","1","1","1");
+            d2imp["DMA_SM_FSM_FFd3"]=new Array("1","1","1","1","1","1","1","1");
           
-              clk["DSACK_VALID1_SPECSIG"]=new Array("FB3_1_5");
+              clk["DMA_SM_FSM_FFd3"]=new Array("FB3_2_5");
               
-                clkimp["DSACK_VALID1_SPECSIG"]=new Array("1");
+                clkimp["DMA_SM_FSM_FFd3"]=new Array("1");
               
-              rst["DSACK_VALID1_SPECSIG"]=new Array("FB3_1_4");
+              rst["DMA_SM_FSM_FFd3"]=new Array("FB3_2_4");
               
-                rstimp["DSACK_VALID1_SPECSIG"]=new Array("1");
-              prld["DSACK_VALID1_SPECSIG"]="GND";
+                rstimp["DMA_SM_FSM_FFd3"]=new Array("1");
+              prld["DMA_SM_FSM_FFd3"]="GND";
+          d2["DMA_SM_FSM_FFd4"]=new Array("FB3_3_1","FB3_3_2","FB3_3_3","FB3_4_1");
+          
+            d2imp["DMA_SM_FSM_FFd4"]=new Array("1","1","1","1");
+          
+              clk["DMA_SM_FSM_FFd4"]=new Array("FB3_3_5");
+              
+                clkimp["DMA_SM_FSM_FFd4"]=new Array("1");
+              
+              rst["DMA_SM_FSM_FFd4"]=new Array("FB3_3_4");
+              
+                rstimp["DMA_SM_FSM_FFd4"]=new Array("1");
+              prld["DMA_SM_FSM_FFd4"]="GND";
           d2["BG30"]=new Array("FB3_5_1","FB3_5_2","FB3_5_3","FB3_5_4");
           
             d2imp["BG30"]=new Array("1","1","1","1");
           
+          d2["BR30_Q"]=new Array("FB3_10_1");
+          
+            d2imp["BR30_Q"]=new Array("1");
+          
+              clk["BR30_Q"]=new Array("FB3_10_3");
+              
+                clkimp["BR30_Q"]=new Array("1");
+              
+              set["BR30_Q"]=new Array("FB3_10_2");
+              
+                setimp["BR30_Q"]=new Array("1");
+              prld["BR30_Q"]="GND";
           d2["FC301_SPECSIG"]=new Array("FB3_11_1","FB3_11_2","FB3_11_3");
           
             d2imp["FC301_SPECSIG"]=new Array("1","1","1");
@@ -818,46 +824,46 @@
           
             d2imp["FC300_SPECSIG"]=new Array("1","1");
           
-          d2["SM_030_N_FSM_FFd2"]=new Array("FB3_14_1","FB3_14_2","FB3_14_3");
-          
-            d2imp["SM_030_N_FSM_FFd2"]=new Array("1","1","1");
-          
-              clk["SM_030_N_FSM_FFd2"]=new Array("FB3_14_5");
-              
-                clkimp["SM_030_N_FSM_FFd2"]=new Array("1");
-              
-              set["SM_030_N_FSM_FFd2"]=new Array("FB3_14_4");
-              
-                setimp["SM_030_N_FSM_FFd2"]=new Array("1");
-              prld["SM_030_N_FSM_FFd2"]="GND";
-          d2["FC302_SPECSIG"]=new Array("FB3_15_1","FB3_15_2","FB3_15_3","FB3_15_4");
+          d2["FC302_SPECSIG"]=new Array("FB3_15_1","FB3_14_1","FB3_14_2","FB3_14_3");
           
             d2imp["FC302_SPECSIG"]=new Array("1","1","1","1");
           
-          d2["SM_030_N_FSM_FFd1"]=new Array("FB3_16_1","FB3_16_2","FB3_16_3");
+          d2["DMA_SM_FSM_FFd2"]=new Array("FB3_16_1","FB3_16_2","FB3_15_2","FB3_15_3","FB3_15_4","FB3_15_5");
           
-            d2imp["SM_030_N_FSM_FFd1"]=new Array("1","1","1");
+            d2imp["DMA_SM_FSM_FFd2"]=new Array("1","1","1","1","1","1");
           
-              clk["SM_030_N_FSM_FFd1"]=new Array("FB3_16_5");
+              clk["DMA_SM_FSM_FFd2"]=new Array("FB3_16_4");
               
-                clkimp["SM_030_N_FSM_FFd1"]=new Array("1");
+                clkimp["DMA_SM_FSM_FFd2"]=new Array("1");
               
-              rst["SM_030_N_FSM_FFd1"]=new Array("FB3_16_4");
+              rst["DMA_SM_FSM_FFd2"]=new Array("FB3_16_3");
               
-                rstimp["SM_030_N_FSM_FFd1"]=new Array("1");
-              prld["SM_030_N_FSM_FFd1"]="GND";
-          d2["DSACK_VALID0_SPECSIG"]=new Array("FB3_18_1","FB3_18_2","FB3_18_3","FB3_17_1","FB3_17_2","FB3_17_3");
+                rstimp["DMA_SM_FSM_FFd2"]=new Array("1");
+              prld["DMA_SM_FSM_FFd2"]="GND";
+          d2["DMA_SM_FSM_FFd1"]=new Array("FB3_17_1","FB3_17_2","FB3_17_3","FB3_16_5","FB3_18_4","FB3_18_5");
           
-            d2imp["DSACK_VALID0_SPECSIG"]=new Array("1","1","1","1","1","1");
+            d2imp["DMA_SM_FSM_FFd1"]=new Array("1","1","1","1","1","1");
           
-              clk["DSACK_VALID0_SPECSIG"]=new Array("FB3_18_5");
+              clk["DMA_SM_FSM_FFd1"]=new Array("FB3_17_5");
               
-                clkimp["DSACK_VALID0_SPECSIG"]=new Array("1");
+                clkimp["DMA_SM_FSM_FFd1"]=new Array("1");
               
-              rst["DSACK_VALID0_SPECSIG"]=new Array("FB3_18_4");
+              rst["DMA_SM_FSM_FFd1"]=new Array("FB3_17_4");
               
-                rstimp["DSACK_VALID0_SPECSIG"]=new Array("1");
-              prld["DSACK_VALID0_SPECSIG"]="GND";
+                rstimp["DMA_SM_FSM_FFd1"]=new Array("1");
+              prld["DMA_SM_FSM_FFd1"]="GND";
+          d2["BGACK30_Q"]=new Array("FB3_18_1");
+          
+            d2imp["BGACK30_Q"]=new Array("1");
+          
+              clk["BGACK30_Q"]=new Array("FB3_18_3");
+              
+                clkimp["BGACK30_Q"]=new Array("1");
+              
+              set["BGACK30_Q"]=new Array("FB3_18_2");
+              
+                setimp["BGACK30_Q"]=new Array("1");
+              prld["BGACK30_Q"]="GND";
           d2["MDIS40"]=new Array("VCC");
           
             d2imp["MDIS40"]=new Array("1");
@@ -878,31 +884,65 @@
           
             d2imp["A_OE"]=new Array("1","1");
           
-          d2["SM_030_P_FSM_FFd2"]=new Array("FB5_3_1","FB5_3_2","FB5_3_3","FB5_2_1","FB5_2_2","FB5_2_3","FB5_2_4","FB5_2_5","FB5_1_1","FB5_1_2","FB5_1_3","FB5_1_4","FB5_4_1","FB5_4_2","FB5_4_3","FB5_4_4","FB5_4_5");
+          d2["TACK_D0"]=new Array("FB4_18_1","FB4_18_2");
           
-            d2imp["SM_030_P_FSM_FFd2"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["TACK_D0"]=new Array("1","1");
           
-              clk["SM_030_P_FSM_FFd2"]=new Array("FB5_3_5");
+              gblclk["TACK_D0"]=new Array("PLL_CLK");
+            
+              set["TACK_D0"]=new Array("FB4_18_3");
               
-                clkimp["SM_030_P_FSM_FFd2"]=new Array("1");
-              
-              rst["SM_030_P_FSM_FFd2"]=new Array("FB5_3_4");
-              
-                rstimp["SM_030_P_FSM_FFd2"]=new Array("1");
-              prld["SM_030_P_FSM_FFd2"]="GND";
-          d2["SIZING_FSM_FFd3"]=new Array("FB5_6_1","FB5_6_2","FB5_6_3","FB5_5_1","FB5_5_2","FB5_5_3","FB5_5_4","FB5_5_5","FB5_7_1","FB5_7_2","FB5_7_3","FB5_7_4");
+                setimp["TACK_D0"]=new Array("1");
+              prld["TACK_D0"]="GND";
+          d2["SM_030_N_FSM_FFd2"]=new Array("FB5_1_1","FB5_1_2","FB5_18_5");
           
-            d2imp["SIZING_FSM_FFd3"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["SM_030_N_FSM_FFd2"]=new Array("1","1","1");
           
-              clk["SIZING_FSM_FFd3"]=new Array("FB5_6_5");
+              clk["SM_030_N_FSM_FFd2"]=new Array("FB5_1_4");
               
-                clkimp["SIZING_FSM_FFd3"]=new Array("1");
+                clkimp["SM_030_N_FSM_FFd2"]=new Array("1");
               
-              rst["SIZING_FSM_FFd3"]=new Array("FB5_6_4");
+              set["SM_030_N_FSM_FFd2"]=new Array("FB5_1_3");
               
-                rstimp["SIZING_FSM_FFd3"]=new Array("1");
-              prld["SIZING_FSM_FFd3"]="GND";
-          d2["AS30"]=new Array("FB5_8_1","FB5_8_2","FB5_9_1");
+                setimp["SM_030_N_FSM_FFd2"]=new Array("1");
+              prld["SM_030_N_FSM_FFd2"]="GND";
+          d2["DSACK_VALID1_SPECSIG"]=new Array("FB5_2_1","FB5_2_2","FB5_2_3","FB5_1_5","FB5_3_4","FB5_3_5");
+          
+            d2imp["DSACK_VALID1_SPECSIG"]=new Array("1","1","1","1","1","1");
+          
+              clk["DSACK_VALID1_SPECSIG"]=new Array("FB5_2_5");
+              
+                clkimp["DSACK_VALID1_SPECSIG"]=new Array("1");
+              
+              rst["DSACK_VALID1_SPECSIG"]=new Array("FB5_2_4");
+              
+                rstimp["DSACK_VALID1_SPECSIG"]=new Array("1");
+              prld["DSACK_VALID1_SPECSIG"]="GND";
+          d2["SM_030_N_FSM_FFd1"]=new Array("FB5_3_1","FB5_4_1","FB5_4_2");
+          
+            d2imp["SM_030_N_FSM_FFd1"]=new Array("1","1","1");
+          
+              clk["SM_030_N_FSM_FFd1"]=new Array("FB5_3_3");
+              
+                clkimp["SM_030_N_FSM_FFd1"]=new Array("1");
+              
+              rst["SM_030_N_FSM_FFd1"]=new Array("FB5_3_2");
+              
+                rstimp["SM_030_N_FSM_FFd1"]=new Array("1");
+              prld["SM_030_N_FSM_FFd1"]="GND";
+          d2["DSACK_VALID0_SPECSIG"]=new Array("FB5_6_1","FB5_6_2","FB5_6_3","FB5_5_1","FB5_5_2","FB5_5_3");
+          
+            d2imp["DSACK_VALID0_SPECSIG"]=new Array("1","1","1","1","1","1");
+          
+              clk["DSACK_VALID0_SPECSIG"]=new Array("FB5_6_5");
+              
+                clkimp["DSACK_VALID0_SPECSIG"]=new Array("1");
+              
+              rst["DSACK_VALID0_SPECSIG"]=new Array("FB5_6_4");
+              
+                rstimp["DSACK_VALID0_SPECSIG"]=new Array("1");
+              prld["DSACK_VALID0_SPECSIG"]="GND";
+          d2["AS30"]=new Array("FB5_8_1","FB5_8_2","FB5_7_1");
           
             d2imp["AS30"]=new Array("1","1","1");
           
@@ -918,26 +958,14 @@
               
                 trstimp["AS30"]=new Array("1");
               prld["AS30"]="GND";
-          d2["RW30"]=new Array("FB5_12_1","FB5_11_1","FB5_11_2","FB5_11_3","FB5_11_4","FB5_11_5","FB5_10_1","FB5_10_2","FB5_10_3","FB5_10_4","FB5_10_5","FB5_13_1","FB5_13_2","FB5_13_3","FB5_13_4","FB5_13_5","FB5_14_5");
+          d2["RW30"]=new Array("FB5_12_1");
           
-            d2imp["RW30"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["RW30"]=new Array("1");
           
-              clk["RW30"]=new Array("FB5_12_3");
-              
-                clkimp["RW30"]=new Array("1");
-              
-              set["RW30"]=new Array("FB5_12_2");
-              
-                setimp["RW30"]=new Array("1");
-              
-              trst["RW30"]=new Array("FB5_12_4");
+              trst["RW30"]=new Array("FB5_12_2");
               
                 trstimp["RW30"]=new Array("1");
               
-          ce["RW30"]=new Array("FB5_12_5");
-          
-            ceimp["RW30"]=new Array("1");
-          prld["RW30"]="VCC";
           d2["SIZ301_SPECSIG"]=new Array("FB5_14_1","FB5_14_2","FB5_14_3");
           
             d2imp["SIZ301_SPECSIG"]=new Array("1","1","1");
@@ -946,7 +974,7 @@
               
                 trstimp["SIZ301_SPECSIG"]=new Array("1");
               
-          d2["DS30"]=new Array("FB5_15_1","FB5_15_2","FB5_16_1","FB5_16_2");
+          d2["DS30"]=new Array("FB5_15_1","FB5_15_2","FB5_14_5","FB5_16_1");
           
             d2imp["DS30"]=new Array("1","1","1","1");
           
@@ -970,46 +998,78 @@
               
                 trstimp["SIZ300_SPECSIG"]=new Array("1");
               
-          d2["DMA_SM_FSM_FFd3"]=new Array("FB6_1_1","FB6_1_2","FB6_1_3","FB6_18_1","FB6_18_2","FB6_18_3","FB6_18_4","FB6_18_5");
+          d2["SM_030_P_FSM_FFd1"]=new Array("FB5_18_1","FB5_18_2");
           
-            d2imp["DMA_SM_FSM_FFd3"]=new Array("1","1","1","1","1","1","1","1");
+            d2imp["SM_030_P_FSM_FFd1"]=new Array("1","1");
           
-              clk["DMA_SM_FSM_FFd3"]=new Array("FB6_1_5");
+              clk["SM_030_P_FSM_FFd1"]=new Array("FB5_18_4");
               
-                clkimp["DMA_SM_FSM_FFd3"]=new Array("1");
+                clkimp["SM_030_P_FSM_FFd1"]=new Array("1");
               
-              rst["DMA_SM_FSM_FFd3"]=new Array("FB6_1_4");
+              rst["SM_030_P_FSM_FFd1"]=new Array("FB5_18_3");
               
-                rstimp["DMA_SM_FSM_FFd3"]=new Array("1");
-              prld["DMA_SM_FSM_FFd3"]="GND";
+                rstimp["SM_030_P_FSM_FFd1"]=new Array("1");
+              prld["SM_030_P_FSM_FFd1"]="GND";
+          d2["TS40_D0"]=new Array("FB6_1_1");
+          
+            d2imp["TS40_D0"]=new Array("1");
+          
+              gblclk["TS40_D0"]=new Array("PLL_CLK");
+            
+              set["TS40_D0"]=new Array("FB6_1_2");
+              
+                setimp["TS40_D0"]=new Array("1");
+              prld["TS40_D0"]="GND";
+          d2["TERM_P_D1_SPECSIG"]=new Array("FB6_2_1");
+          
+            d2imp["TERM_P_D1_SPECSIG"]=new Array("1");
+          
+              gblclk["TERM_P_D1_SPECSIG"]=new Array("PLL_CLK");
+            
+              set["TERM_P_D1_SPECSIG"]=new Array("FB6_2_2");
+              
+                setimp["TERM_P_D1_SPECSIG"]=new Array("1");
+              prld["TERM_P_D1_SPECSIG"]="GND";
+          d2["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("FB6_3_1","FB6_3_2");
+          
+            d2imp["DMA_SM_FSM_FFd4DMA_SM_FSM_FFd4_CLKF_SPECSIG"]=new Array("1","1");
+          
+          d2["RSTINT"]=new Array("FB6_4_1","FB6_4_2");
+          
+            d2imp["RSTINT"]=new Array("1","1");
+          
+              clk["RSTINT"]=new Array("FB6_4_3");
+              
+                clkimp["RSTINT"]=new Array("1");
+              prld["RSTINT"]="GND";
+          d2["TIP"]=new Array("FB6_5_1","FB6_5_2","FB6_5_3");
+          
+            d2imp["TIP"]=new Array("1","1","1");
+          
+              gblclk["TIP"]=new Array("PLL_CLK");
+            
+              rst["TIP"]=new Array("FB6_5_4");
+              
+                rstimp["TIP"]=new Array("1");
+              prld["TIP"]="GND";
           d2["BGR60"]=new Array("GND");
           
             d2imp["BGR60"]=new Array("1");
           
-          d2["RSTINT"]=new Array("FB6_8_1","FB6_8_2");
+          d2["TRANSFER_START"]=new Array("FB6_7_1","FB6_7_2","FB6_7_3","FB6_7_4","FB6_6_1");
           
-            d2imp["RSTINT"]=new Array("1","1");
+            d2imp["TRANSFER_START"]=new Array("1","1","1","1","1");
           
-              clk["RSTINT"]=new Array("FB6_8_3");
+              gblclk["TRANSFER_START"]=new Array("PLL_CLK");
+            
+              rst["TRANSFER_START"]=new Array("FB6_7_5");
               
-                clkimp["RSTINT"]=new Array("1");
-              prld["RSTINT"]="GND";
+                rstimp["TRANSFER_START"]=new Array("1");
+              prld["TRANSFER_START"]="GND";
           d2["TBI40"]=new Array("FB6_9_1","FB6_9_2");
           
             d2imp["TBI40"]=new Array("1","1");
           
-          d2["DMA_SM_FSM_FFd4"]=new Array("FB6_10_1","FB6_10_2","FB6_10_3","FB6_9_3");
-          
-            d2imp["DMA_SM_FSM_FFd4"]=new Array("1","1","1","1");
-          
-              clk["DMA_SM_FSM_FFd4"]=new Array("FB6_10_5");
-              
-                clkimp["DMA_SM_FSM_FFd4"]=new Array("1");
-              
-              rst["DMA_SM_FSM_FFd4"]=new Array("FB6_10_4");
-              
-                rstimp["DMA_SM_FSM_FFd4"]=new Array("1");
-              prld["DMA_SM_FSM_FFd4"]="GND";
           d2["TCI40"]=new Array("GND");
           
             d2imp["TCI40"]=new Array("1");
@@ -1024,44 +1084,14 @@
           
               gblclk["PCLK"]=new Array("PLL_CLK");
             prld["PCLK"]="GND";
-          d2["DMA_SM_FSM_FFd2"]=new Array("FB6_13_1","FB6_13_2","FB6_13_3","FB6_12_1","FB6_12_2","FB6_14_3");
+          d2["BCLK"]=new Array("FB6_14_1","FB6_14_2");
           
-            d2imp["DMA_SM_FSM_FFd2"]=new Array("1","1","1","1","1","1");
+            d2imp["BCLK"]=new Array("1","1");
           
-              clk["DMA_SM_FSM_FFd2"]=new Array("FB6_13_5");
-              
-                clkimp["DMA_SM_FSM_FFd2"]=new Array("1");
-              
-              rst["DMA_SM_FSM_FFd2"]=new Array("FB6_13_4");
-              
-                rstimp["DMA_SM_FSM_FFd2"]=new Array("1");
-              prld["DMA_SM_FSM_FFd2"]="GND";
-          d1["BCLK"]=new Array("FB6_14_1");
-          
-            d1imp["BCLK"]=new Array("1");
-          
-          d2["BCLK"]=new Array("FB6_14_2");
-          
-            d2imp["BCLK"]=new Array("1");
-          
-              gblclk["BCLK"]=new Array("PLL_CLK");
-            prld["BCLK"]="GND";
           d2["IPL401_SPECSIG"]=new Array("FB6_15_1");
           
             d2imp["IPL401_SPECSIG"]=new Array("1");
           
-          d2["DMA_SM_FSM_FFd1"]=new Array("FB6_16_1","FB6_16_2","FB6_16_3","FB6_15_2","FB6_15_3","FB6_17_3");
-          
-            d2imp["DMA_SM_FSM_FFd1"]=new Array("1","1","1","1","1","1");
-          
-              clk["DMA_SM_FSM_FFd1"]=new Array("FB6_16_5");
-              
-                clkimp["DMA_SM_FSM_FFd1"]=new Array("1");
-              
-              rst["DMA_SM_FSM_FFd1"]=new Array("FB6_16_4");
-              
-                rstimp["DMA_SM_FSM_FFd1"]=new Array("1");
-              prld["DMA_SM_FSM_FFd1"]="GND";
           d2["RSTI40"]=new Array("FB6_17_1");
           
             d2imp["RSTI40"]=new Array("1");
@@ -1086,70 +1116,26 @@
           
             d2imp["BG40"]=new Array("1","1","1");
           
-          d2["TIP"]=new Array("FB8_13_1","FB8_13_2");
+          d2["TA40"]=new Array("FB8_15_1");
           
-            d2imp["TIP"]=new Array("1","1");
+            d2imp["TA40"]=new Array("1");
           
-              gblclk["TIP"]=new Array("PLL_CLK");
-            
-              rst["TIP"]=new Array("FB8_13_3");
-              
-                rstimp["TIP"]=new Array("1");
-              prld["TIP"]="GND";
-          d2["TACK_D0"]=new Array("FB8_14_1","FB8_14_2");
-          
-            d2imp["TACK_D0"]=new Array("1","1");
-          
-              gblclk["TACK_D0"]=new Array("PLL_CLK");
-            
-              set["TACK_D0"]=new Array("FB8_14_3");
-              
-                setimp["TACK_D0"]=new Array("1");
-              prld["TACK_D0"]="GND";
-          d2["TA40"]=new Array("FB8_15_1","FB8_15_2");
-          
-            d2imp["TA40"]=new Array("1","1");
-          
-              clk["TA40"]=new Array("FB8_15_4");
+              clk["TA40"]=new Array("FB8_15_3");
               
                 clkimp["TA40"]=new Array("1");
               
-              set["TA40"]=new Array("FB8_15_3");
+              set["TA40"]=new Array("FB8_15_2");
               
                 setimp["TA40"]=new Array("1");
               
-              trst["TA40"]=new Array("FB8_15_5");
+              trst["TA40"]=new Array("FB8_15_4");
               
                 trstimp["TA40"]=new Array("1");
               prld["TA40"]="GND";
-          d2["BR30_Q"]=new Array("FB8_16_1");
-          
-            d2imp["BR30_Q"]=new Array("1");
-          
-              clk["BR30_Q"]=new Array("FB8_16_3");
-              
-                clkimp["BR30_Q"]=new Array("1");
-              
-              set["BR30_Q"]=new Array("FB8_16_2");
-              
-                setimp["BR30_Q"]=new Array("1");
-              prld["BR30_Q"]="GND";
           d2["TEA40"]=new Array("FB8_17_1");
           
             d2imp["TEA40"]=new Array("1");
           
-          d2["BGACK30_Q"]=new Array("FB8_18_1");
-          
-            d2imp["BGACK30_Q"]=new Array("1");
-          
-              clk["BGACK30_Q"]=new Array("FB8_18_3");
-              
-                clkimp["BGACK30_Q"]=new Array("1");
-              
-              set["BGACK30_Q"]=new Array("FB8_18_2");
-              
-                setimp["BGACK30_Q"]=new Array("1");
-              prld["BGACK30_Q"]="GND";
 
       uimSignals = new Array();
 

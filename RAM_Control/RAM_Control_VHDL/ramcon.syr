@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
@@ -106,12 +106,33 @@ WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and lef
 WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+INFO:Xst:1799 - State read_commit_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_start_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_start_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_commit_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_data_wait is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s0 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_precharge is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s1 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s2 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s3 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s4 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_s5 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_commit_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_start_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_tra_ack is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_start_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_commit_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_line_s0 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_line_s1 is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_line_s2 is never reached in FSM <CQ>.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
-    | States             | 34                                             |
-    | Transitions        | 48                                             |
+    | States             | 14                                             |
+    | Transitions        | 26                                             |
     | Inputs             | 10                                             |
-    | Outputs            | 41                                             |
+    | Outputs            | 14                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
     | Reset type         | asynchronous                                   |
@@ -136,12 +157,13 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 308.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 344.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 344.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 346.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 316.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 352.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 352.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 354.
     Found 3-bit up counter for signal <NQ>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 221.
+    Found 1-bit register for signal <REFRESH>.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 135.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <SELRAM0_D>.
     Found 1-bit register for signal <SELRAM1_D>.
@@ -163,8 +185,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 29
- 1-bit register                                        : 29
+# Registers                                            : 30
+ 1-bit register                                        : 30
 # Comparators                                          : 5
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
@@ -179,45 +201,54 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with user encoding.
+Optimizing FSM <CQ/FSM> on signal <CQ[1:4]> with gray encoding.
 -----------------------------------
  State                 | Encoding
 -----------------------------------
- powerup               | 000000
- init_precharge        | 000001
- init_precharge_commit | 000010
- init_refresh          | 000011
- init_wait             | 000100
- init_opcode           | 000101
- end_cycle             | 000110
- start_state           | 000111
- refresh_start         | 001000
- refresh_wait          | 001001
- read_start_ras        | 001010
- read_commit_ras       | 001011
- read_start_cas        | 001100
- read_commit_cas       | 001101
- read_data_wait        | 001110
- read_line_s0          | 001111
- read_line_s1          | 010000
- read_line_s2          | 010001
- read_line_s3          | 010010
- read_line_s4          | 010011
- read_line_s5          | 010100
- read_precharge        | 010101
- write_start_ras       | 010110
- write_commit_ras      | 010111
- write_tra_ack         | 011000
- write_start_cas       | 011001
- write_commit_cas      | 011010
- write_line_s0         | 011011
- write_line_s1         | 011100
- write_line_s2         | 011101
- write_line_s3         | 011110
- write_line_s4         | 011111
- write_commit          | 100000
- write_precharge       | 100001
+ powerup               | 0000
+ init_precharge        | 0001
+ init_precharge_commit | 0011
+ init_refresh          | 0010
+ init_wait             | 0110
+ init_opcode           | 0111
+ end_cycle             | 0101
+ start_state           | 0100
+ refresh_start         | 1100
+ refresh_wait          | 1111
+ read_start_ras        | unreached
+ read_commit_ras       | unreached
+ read_start_cas        | unreached
+ read_commit_cas       | unreached
+ read_data_wait        | unreached
+ read_line_s0          | unreached
+ read_line_s1          | unreached
+ read_line_s2          | unreached
+ read_line_s3          | unreached
+ read_line_s4          | unreached
+ read_line_s5          | unreached
+ read_precharge        | unreached
+ write_start_ras       | unreached
+ write_commit_ras      | unreached
+ write_tra_ack         | unreached
+ write_start_cas       | unreached
+ write_commit_cas      | unreached
+ write_line_s0         | unreached
+ write_line_s1         | unreached
+ write_line_s2         | unreached
+ write_line_s3         | 1101
+ write_line_s4         | 1010
+ write_commit          | 1110
+ write_precharge       | 1011
 -----------------------------------
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_3>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_6>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_7>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_8>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <ARAM_9>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -235,14 +266,15 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1710 - FF/Latch <ARAM_0> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <ramcon> ...
   implementation constraint: INIT=r	 : CQ_FSM_FFd3
   implementation constraint: INIT=r	 : CQ_FSM_FFd4
-  implementation constraint: INIT=r	 : CQ_FSM_FFd5
-  implementation constraint: INIT=r	 : CQ_FSM_FFd1
   implementation constraint: INIT=r	 : CQ_FSM_FFd2
-  implementation constraint: INIT=r	 : CQ_FSM_FFd6
+  implementation constraint: INIT=r	 : CQ_FSM_FFd1
+INFO:Xst:2261 - The FF/Latch <LDQ1> in Unit <ramcon> is equivalent to the following 3 FFs/Latches, which will be removed : <LDQ0> <UDQ1> <UDQ0> 
+INFO:Xst:2261 - The FF/Latch <TA40_FB> in Unit <ramcon> is equivalent to the following FF/Latch, which will be removed : <OE40_RAM> 
 
 =========================================================================
 *                           Partition Report                            *
@@ -274,35 +306,35 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 528
-#      AND2                        : 187
-#      AND3                        : 19
+# BELS                             : 208
+#      AND2                        : 65
+#      AND3                        : 11
 #      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 178
-#      OR2                         : 114
-#      OR3                         : 15
+#      INV                         : 70
+#      OR2                         : 45
+#      OR3                         : 3
 #      OR4                         : 1
-#      VCC                         : 1
 #      XOR2                        : 11
-# FlipFlops/Latches                : 46
-#      FDC                         : 32
-#      FDP                         : 14
-# IO Buffers                       : 73
-#      IBUF                        : 42
+# FlipFlops/Latches                : 31
+#      FDC                         : 19
+#      FDCE                        : 2
+#      FDP                         : 10
+# IO Buffers                       : 52
+#      IBUF                        : 21
 #      OBUF                        : 30
 #      OBUFE                       : 1
 =========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.03 secs
+Total CPU time to Xst completion: 7.67 secs
  
 --> 
 
-Total memory usage is 306560 kilobytes
+Total memory usage is 290364 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    5 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
+Number of infos    :   22 (   0 filtered)
 

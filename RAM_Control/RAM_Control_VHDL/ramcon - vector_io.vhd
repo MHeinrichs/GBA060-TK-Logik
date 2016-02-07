@@ -39,7 +39,8 @@ architecture ramcon_behav of ramcon is
 	 CE_B0_D, LDQ1_D, LDQ0_D, UDQ1_D, UDQ0_D, LDQ1_SIG, LDQ0_SIG, UDQ1_SIG, UDQ0_SIG, OE40_RAM_D, OERAM_40_D, TRANSFER_ACLR, TRANSFER_CLK, SELRAM1,
 	 SELRAM0, REFRESH, CLRREFC,
 	 TRANSFER: std_logic;
-   TYPE sdram_state_machine_type IS (
+   constant MAX_RAM_ADRESS : integer := 25;
+	TYPE sdram_state_machine_type IS (
 				powerup, 					--000000
 				init_precharge,			--000001 
 				init_precharge_commit,  --000011
@@ -75,7 +76,7 @@ architecture ramcon_behav of ramcon is
 				write_commit,				--110001
 				write_precharge			--110011
 				);
-	signal TA40_FB, TA40_OE: std_logic;
+	signal TA40_FB: std_logic;
 	signal NQ :  STD_LOGIC_VECTOR (2 downto 0);
 	signal RQ :  STD_LOGIC_VECTOR (7 downto 0);
 	signal CQ :  sdram_state_machine_type;
@@ -107,7 +108,6 @@ begin
 
 -- Register Section
 
-
    process (CLK_RAMC, RESET) begin
       if RESET='0' then
 			UDQ0 <= '1';
@@ -129,8 +129,14 @@ begin
 			NQ  <= "000";
 			SELRAM0_D <= '0';
 			SELRAM1_D <= '0';
+			REFRESH <='0';
       elsif rising_edge(CLK_RAMC) then
-		
+			if(CLRREFC ='1')then
+				REFRESH <= '0';
+			elsif(RQ >= "00111100") then
+				REFRESH <= '1';
+			end if;
+						
 			if(
 				CQ = init_precharge_commit or
 				CQ = init_wait or
@@ -163,15 +169,15 @@ begin
 			CQ	<= CQ_D;
       end if;
    end process;
-   TA40 <= TA40_FB when TA40_OE='1' else 'Z';
 
-	CLRREFC <= '1' when 	CQ = init_precharge_commit or
-								CQ = init_opcode or
-								CQ = refresh_start 
+	CLRREFC <= '1' when 	CQ = init_precharge_commit
+								or CQ = init_opcode
+								or CQ = refresh_start 
+								or RESET ='0'
 						else '0';
-   RQ_ACLR_ctrl <= (not RESET) or CLRREFC;
-   process (C4MHZ, RQ_ACLR_ctrl) begin
-      if RQ_ACLR_ctrl='1' then
+
+   process (C4MHZ, CLRREFC) begin
+      if CLRREFC='1' then
 			RQ<=	"00000000";
       elsif rising_edge(C4MHZ) then
 			RQ <= RQ +1;
@@ -182,22 +188,23 @@ begin
 	TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
 										CQ = write_start_ras or 
 										RESET ='0' else '0';
-   process (TRANSFER_CLK, TRANSFER_ACLR) begin
-      if TRANSFER_ACLR='1' then
-			TRANSFER <= '0';
-      elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
-			TRANSFER <= '1';
-     end if;
-   end process;
+
+   process (CLK_RAMC) begin
+		if falling_edge(CLK_RAMC) then
+			if(TRANSFER_ACLR ='1')then
+				TRANSFER <= '0';
+			elsif(TRANSFER_CLK = '1') then
+				TRANSFER <= '1';
+			end if;
+		end if;
+	end process;
 
    --process (TRANSFER_CLK, TRANSFER_ACLR) begin
    --   if TRANSFER_ACLR='1' then
 	--		TRANSFER <= '0';
-   --   elsif rising_edge(CLK_RAMC) then
-	--		if (TS40 ='0' and TT40_1 ='0' and (SELRAM0 = '1' or SELRAM1 = '1')) then
-	--			TRANSFER <= '1';
-	--		end if;
-   --   end if;
+   --  elsif TRANSFER_CLK'event and TRANSFER_CLK='1' then
+	--		TRANSFER <= '1';
+   --  end if;
    --end process;
 
 
@@ -205,20 +212,21 @@ begin
    SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
    SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
 	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
-   TA40_OE 	<= '1' when (SELRAM0 = '1' or SELRAM1 = '1')  else '0'; -- was: SELRAM0 or SELRAM1;
+
+   TA40 		<= TA40_FB when (SELRAM0 = '1' or SELRAM1 = '1') else 'Z'; --tristate on amiga access
 
    TCI40 	<= '1' when (ICACHE ='1' and(														
-													A40(30 downto 23) = "00000000" or  
-													A40(30 downto 21) = "0000000100" or
+								--					A40(30 downto 23) = "00000000" or  
+								--					A40(30 downto 21) = "0000000100" or
 													A40(30 downto 19) = "000000011111" 	
 													))or
-								A40(30 downto 21) = "0000001001"  or 
-								A40(30 downto 22) = "000000101"  or 
-								A40(30 downto 21) = "0000001100"  or
+								--A40(30 downto 21) = "0000001001"  or 
+								--A40(30 downto 22) = "000000101"  or 
+								--A40(30 downto 21) = "0000001100"  or
 								SELRAM0 = '1' or SELRAM1 = '1' 
 								else '0';
-   LE_RAM <= '0';
-   REFRESH <= '1' when    RQ >= "00111100" else '0';
+   LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
+  
    CLK_RAM <= (not CLK_RAMC);
    CLKEN <=	ENACLK_PRE;
 
@@ -404,12 +412,12 @@ begin
 		 ARAM_D <= "000000000000";
 		 if (REFRESH='1') then
 		    CQ_D <= refresh_start;
-		 elsif ((not REFRESH) and TRANSFER and RW_40 and (not SCLK))='1' then
-		    CQ_D <= read_start_ras;
-			 --CQ_D <= write_line_s3;
-		 elsif ((not REFRESH) and TRANSFER and (not RW_40) and SCLK)='1' then
-		    CQ_D <= write_start_ras;
-			 --CQ_D <= write_line_s3;
+		 elsif (TRANSFER and RW_40 and (not SCLK))='1' then
+		    --CQ_D <= read_start_ras;
+			 CQ_D <= write_line_s3;
+		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
+		    --CQ_D <= write_start_ras;
+			 CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;

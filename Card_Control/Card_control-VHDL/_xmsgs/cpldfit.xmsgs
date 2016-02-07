@@ -20,9 +20,6 @@
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CIOUT40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CPU40_60</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">OSC_CLK</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
