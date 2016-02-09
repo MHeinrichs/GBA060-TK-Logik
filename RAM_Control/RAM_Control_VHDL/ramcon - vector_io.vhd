@@ -62,7 +62,7 @@ architecture ramcon_behav of ramcon is
 				read_line_s3,				--011011
 				read_line_s4,				--011010
 				read_line_s5,				--011110
-				read_precharge,			--011111
+				--read_precharge,			--011111
 				write_start_ras,			--011100
 				write_commit_ras,			--010100
 				write_tra_ack,				--010101
@@ -74,7 +74,7 @@ architecture ramcon_behav of ramcon is
 				write_line_s3,				--010000
 				write_line_s4,				--110000
 				write_commit,				--110001
-				write_precharge			--110011
+				precharge			--110011
 				);
 	signal TA40_FB: std_logic;
 	signal NQ :  STD_LOGIC_VECTOR (2 downto 0);
@@ -539,7 +539,7 @@ begin
 		 if (SIZ40 ="11") then
 		    CQ_D <= read_line_s0;
 		 else
-		    CQ_D <= read_precharge;
+		    CQ_D <= precharge;
 		 end if;
       when read_line_s0 =>
 		 OERAM_40_D <= '0';
@@ -636,23 +636,7 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
-		 CQ_D <= read_precharge;
-      when read_precharge =>
-		 OERAM_40_D <= '0';
-		 OE40_RAM_D <= '1';
-		 UDQ0_D <= '1';
-		 UDQ1_D <= '1';
-		 LDQ0_D <= '1';
-		 LDQ1_D <= '1';
-		 CE_B0_D <= '0';
-		 CE_B1_D <= '0';
-		 WE_D <= '0';
-		 TA40_D <= '0';
-		 CAS_D <= '1';
-		 RAS_D <= '0';
-	 	 ARAM_D <= ARAM_PRECHARGE;
-		 ENACLK_PRE <= '1';
-		 CQ_D <= end_cycle;
+		 CQ_D <= precharge;
       when write_start_ras =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
@@ -835,8 +819,8 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
-		 CQ_D <= write_precharge;
-      when write_precharge =>
+		 CQ_D <= precharge;
+      when precharge =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '1';

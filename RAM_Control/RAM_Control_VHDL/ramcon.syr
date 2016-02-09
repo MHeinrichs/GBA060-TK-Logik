@@ -109,10 +109,10 @@ WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved an
 WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
-    | States             | 34                                             |
-    | Transitions        | 48                                             |
+    | States             | 33                                             |
+    | Transitions        | 47                                             |
     | Inputs             | 10                                             |
-    | Outputs            | 40                                             |
+    | Outputs            | 39                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
     | Reset type         | asynchronous                                   |
@@ -181,44 +181,43 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with user encoding.
+Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with gray encoding.
 -----------------------------------
  State                 | Encoding
 -----------------------------------
  powerup               | 000000
  init_precharge        | 000001
- init_precharge_commit | 000010
- init_refresh          | 000011
- init_wait             | 000100
- init_opcode           | 000101
- end_cycle             | 000110
- start_state           | 000111
- refresh_start         | 001000
- refresh_wait          | 001001
- read_start_ras        | 001010
- read_commit_ras       | 001011
- read_start_cas        | 001100
- read_commit_cas       | 001101
- read_data_wait        | 001110
- read_line_s0          | 001111
- read_line_s1          | 010000
- read_line_s2          | 010001
- read_line_s3          | 010010
- read_line_s4          | 010011
- read_line_s5          | 010100
- read_precharge        | 010101
- write_start_ras       | 010110
- write_commit_ras      | 010111
- write_tra_ack         | 011000
- write_start_cas       | 011001
- write_commit_cas      | 011010
- write_line_s0         | 011011
- write_line_s1         | 011100
- write_line_s2         | 011101
- write_line_s3         | 011110
- write_line_s4         | 011111
- write_commit          | 100000
- write_precharge       | 100001
+ init_precharge_commit | 000011
+ init_refresh          | 000010
+ init_wait             | 000110
+ init_opcode           | 000111
+ end_cycle             | 000101
+ start_state           | 000100
+ refresh_start         | 001100
+ refresh_wait          | 001110
+ read_start_ras        | 001101
+ read_commit_ras       | 001010
+ read_start_cas        | 001011
+ read_commit_cas       | 001001
+ read_data_wait        | 001000
+ read_line_s0          | 011000
+ read_line_s1          | 011011
+ read_line_s2          | 011010
+ read_line_s3          | 011110
+ read_line_s4          | 011111
+ read_line_s5          | 011101
+ write_start_ras       | 001111
+ write_commit_ras      | 011100
+ write_tra_ack         | 010100
+ write_start_cas       | 010101
+ write_commit_cas      | 010111
+ write_line_s0         | 010110
+ write_line_s1         | 010011
+ write_line_s2         | 010001
+ write_line_s3         | 010000
+ write_line_s4         | 110000
+ write_commit          | 010010
+ precharge             | 011001
 -----------------------------------
 
 =========================================================================
@@ -239,12 +238,12 @@ Macro Statistics
 =========================================================================
 
 Optimizing unit <ramcon> ...
-  implementation constraint: INIT=r	 : CQ_FSM_FFd2
-  implementation constraint: INIT=r	 : CQ_FSM_FFd3
-  implementation constraint: INIT=r	 : CQ_FSM_FFd5
-  implementation constraint: INIT=r	 : CQ_FSM_FFd4
   implementation constraint: INIT=r	 : CQ_FSM_FFd1
+  implementation constraint: INIT=r	 : CQ_FSM_FFd2
+  implementation constraint: INIT=r	 : CQ_FSM_FFd5
+  implementation constraint: INIT=r	 : CQ_FSM_FFd3
   implementation constraint: INIT=r	 : CQ_FSM_FFd6
+  implementation constraint: INIT=r	 : CQ_FSM_FFd4
 
 =========================================================================
 *                           Partition Report                            *
@@ -276,15 +275,16 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 516
-#      AND2                        : 184
-#      AND3                        : 21
+# BELS                             : 532
+#      AND2                        : 204
+#      AND3                        : 13
 #      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 174
-#      OR2                         : 111
-#      OR3                         : 15
-#      XOR2                        : 9
+#      INV                         : 173
+#      OR2                         : 119
+#      OR3                         : 10
+#      OR4                         : 1
+#      XOR2                        : 10
 # FlipFlops/Latches                : 47
 #      FDC                         : 31
 #      FDCE                        : 2
@@ -297,11 +297,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.92 secs
+Total CPU time to Xst completion: 8.02 secs
  
 --> 
 
-Total memory usage is 306516 kilobytes
+Total memory usage is 306572 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)
