@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date:  2- 7-2016,  6:55PM
+Design Name: control                             Date:  2- 9-2016, 10:37PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -866,12 +866,12 @@ OE_BS <= ((NOT DMA_SM_FSM_FFd4 AND NOT DMA_SM_FSM_FFd3 AND TT40(1) AND
 FTCPE_PCLK: FTCPE port map (PCLK,'1',PLL_CLK,'0','0');
 
 
-PLL_S(0) <= '0';
+PLL_S_I(0) <= '0';
+PLL_S(0) <= PLL_S_I(0) when PLL_S_OE(0) = '1' else 'Z';
+PLL_S_OE(0) <= '0';
 
 
-PLL_S_I(1) <= '0';
-PLL_S(1) <= PLL_S_I(1) when PLL_S_OE(1) = '1' else 'Z';
-PLL_S_OE(1) <= '0';
+PLL_S(1) <= '0';
 
 
 RESET30_I <= '0';

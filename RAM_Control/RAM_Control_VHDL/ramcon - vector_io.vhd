@@ -62,7 +62,6 @@ architecture ramcon_behav of ramcon is
 				read_line_s3,				--011011
 				read_line_s4,				--011010
 				read_line_s5,				--011110
-				--read_precharge,			--011111
 				write_start_ras,			--011100
 				write_commit_ras,			--010100
 				write_tra_ack,				--010101
@@ -73,7 +72,6 @@ architecture ramcon_behav of ramcon is
 				write_line_s2,				--010001
 				write_line_s3,				--010000
 				write_line_s4,				--110000
-				write_commit,				--110001
 				precharge			--110011
 				);
 	signal TA40_FB: std_logic;
@@ -717,7 +715,7 @@ begin
 		    CQ_D <= write_line_s0;
 		 else
 			 ENACLK_PRE <= '1';
-		    CQ_D <= write_commit;
+		    CQ_D <= precharge;
 		 end if;
       when write_line_s0 =>
 		 OERAM_40_D <= '1';
@@ -794,22 +792,6 @@ begin
 		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '1';
 		 TA40_D <= '0';
-		 CAS_D <= '1';
-		 RAS_D <= '1';
-		 ENACLK_PRE <= '1';
-		 ARAM_D <= "000000000000";
-		 CQ_D <= write_commit;
-      when write_commit =>
-		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= '1';
-		 UDQ0_D <= '1';
-		 UDQ1_D <= '1';
-		 LDQ0_D <= '1';
-		 LDQ1_D <= '1';
-		 CE_B0_D <= not SELRAM0_D;
-		 CE_B1_D <= not SELRAM1_D;
-		 WE_D <= '1';
-		 TA40_D <= '1';
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
