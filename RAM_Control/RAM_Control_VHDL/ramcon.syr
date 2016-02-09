@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: ramcon.prj
 
@@ -90,6 +90,8 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 273: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <ROW_CHARGED>, <ARAM_LAST>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
 
@@ -110,8 +112,8 @@ WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconne
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
     | States             | 33                                             |
-    | Transitions        | 47                                             |
-    | Inputs             | 10                                             |
+    | Transitions        | 52                                             |
+    | Inputs             | 12                                             |
     | Outputs            | 39                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
@@ -137,13 +139,16 @@ WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconne
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 316.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 352.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 352.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 354.
+    Found 15-bit register for signal <ARAM_LAST>.
+    Found 15-bit comparator equal for signal <CQ$cmp_eq0000> created at line 447.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 329.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 365.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 365.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 367.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <REFRESH>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 135.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 138.
+    Found 1-bit register for signal <ROW_CHARGED>.
     Found 8-bit up counter for signal <RQ>.
     Found 1-bit register for signal <SELRAM0_D>.
     Found 1-bit register for signal <SELRAM1_D>.
@@ -152,8 +157,8 @@ WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconne
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  29 D-type flip-flop(s).
-	inferred   5 Comparator(s).
+	inferred  30 D-type flip-flop(s).
+	inferred   6 Comparator(s).
 	inferred   1 Tristate(s).
 Unit <ramcon> synthesized.
 
@@ -165,9 +170,11 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 30
- 1-bit register                                        : 30
-# Comparators                                          : 5
+# Registers                                            : 32
+ 1-bit register                                        : 31
+ 15-bit register                                       : 1
+# Comparators                                          : 6
+ 15-bit comparator equal                               : 1
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
  8-bit comparator lessequal                            : 1
@@ -181,43 +188,43 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with gray encoding.
+Optimizing FSM <CQ/FSM> on signal <CQ[1:6]> with user encoding.
 -----------------------------------
  State                 | Encoding
 -----------------------------------
  powerup               | 000000
  init_precharge        | 000001
- init_precharge_commit | 000011
- init_refresh          | 000010
- init_wait             | 000110
- init_opcode           | 000111
- end_cycle             | 000101
- start_state           | 000100
- refresh_start         | 001100
- refresh_wait          | 001110
- read_start_ras        | 001101
- read_commit_ras       | 001010
- read_start_cas        | 001011
- read_commit_cas       | 001001
- read_data_wait        | 001000
- read_line_s0          | 011000
- read_line_s1          | 011011
- read_line_s2          | 011010
- read_line_s3          | 011110
- read_line_s4          | 011111
- read_line_s5          | 011101
- write_start_ras       | 001111
- write_commit_ras      | 011100
- write_tra_ack         | 010100
- write_start_cas       | 010101
- write_commit_cas      | 010111
- write_line_s0         | 010110
- write_line_s1         | 010011
- write_line_s2         | 010001
- write_line_s3         | 010000
- write_line_s4         | 110000
- write_commit          | 010010
- precharge             | 011001
+ init_precharge_commit | 000010
+ init_refresh          | 000011
+ init_wait             | 000100
+ init_opcode           | 000101
+ precharge_end         | 000110
+ start_state           | 000111
+ refresh_start         | 001000
+ refresh_wait          | 001001
+ read_start_ras        | 001010
+ read_commit_ras       | 001011
+ read_start_cas        | 001100
+ read_commit_cas       | 001101
+ read_data_wait        | 001110
+ read_line_s0          | 001111
+ read_line_s1          | 010000
+ read_line_s2          | 010001
+ read_line_s3          | 010010
+ read_line_s4          | 010011
+ read_line_s5          | 010100
+ write_start_ras       | 010101
+ write_commit_ras      | 010110
+ write_tra_ack         | 010111
+ write_start_cas       | 011000
+ write_commit_cas      | 011001
+ write_line_s0         | 011010
+ write_line_s1         | 011011
+ write_line_s2         | 011100
+ write_line_s3         | 011101
+ write_line_s4         | 011110
+ write_commit          | 011111
+ precharge             | 100000
 -----------------------------------
 
 =========================================================================
@@ -228,8 +235,10 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 29
- Flip-Flops                                            : 29
+# Registers                                            : 30
+ Flip-Flops                                            : 30
+# Comparators                                          : 1
+ 15-bit comparator equal                               : 1
 
 =========================================================================
 
@@ -240,10 +249,10 @@ Macro Statistics
 Optimizing unit <ramcon> ...
   implementation constraint: INIT=r	 : CQ_FSM_FFd1
   implementation constraint: INIT=r	 : CQ_FSM_FFd2
-  implementation constraint: INIT=r	 : CQ_FSM_FFd5
+  implementation constraint: INIT=r	 : CQ_FSM_FFd4
   implementation constraint: INIT=r	 : CQ_FSM_FFd3
   implementation constraint: INIT=r	 : CQ_FSM_FFd6
-  implementation constraint: INIT=r	 : CQ_FSM_FFd4
+  implementation constraint: INIT=r	 : CQ_FSM_FFd5
 
 =========================================================================
 *                           Partition Report                            *
@@ -275,18 +284,17 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 532
-#      AND2                        : 204
-#      AND3                        : 13
-#      AND4                        : 1
+# BELS                             : 637
+#      AND2                        : 233
+#      AND3                        : 15
+#      AND4                        : 2
 #      GND                         : 1
-#      INV                         : 173
-#      OR2                         : 119
-#      OR3                         : 10
-#      OR4                         : 1
-#      XOR2                        : 10
-# FlipFlops/Latches                : 47
-#      FDC                         : 31
+#      INV                         : 200
+#      OR2                         : 147
+#      OR3                         : 13
+#      XOR2                        : 26
+# FlipFlops/Latches                : 63
+#      FDC                         : 47
 #      FDCE                        : 2
 #      FDP                         : 14
 # IO Buffers                       : 73
@@ -297,13 +305,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.02 secs
+Total CPU time to Xst completion: 8.05 secs
  
 --> 
 
-Total memory usage is 306572 kilobytes
+Total memory usage is 306604 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
+Number of warnings :    7 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
