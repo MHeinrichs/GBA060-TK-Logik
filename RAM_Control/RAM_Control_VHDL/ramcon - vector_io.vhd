@@ -47,7 +47,7 @@ architecture ramcon_behav of ramcon is
 				init_refresh,				--000010
 				init_wait,					--000110
 				init_opcode,				--000111
-				precharge_end,					--000101
+				end_cycle,					--000101
 				start_state,				--000100
 				refresh_start,				--001100
 				refresh_wait,				--001101
@@ -62,6 +62,7 @@ architecture ramcon_behav of ramcon is
 				read_line_s3,				--011011
 				read_line_s4,				--011010
 				read_line_s5,				--011110
+				--read_precharge,			--011111
 				write_start_ras,			--011100
 				write_commit_ras,			--010100
 				write_tra_ack,				--010101
@@ -83,8 +84,6 @@ architecture ramcon_behav of ramcon is
 	signal SELRAM0_D : STD_LOGIC;
 	signal SELRAM1_D : STD_LOGIC;
    signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
-   signal ARAM_LAST: STD_LOGIC_VECTOR (14 downto 0);      
-	signal ROW_CHARGED  : STD_LOGIC;
    signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0);   
@@ -126,13 +125,11 @@ begin
 			OE40_RAM <= '1';
 			TA40_FB <= '1';	
 			ARAM (11 downto 0) <= "000000000000";
-			ARAM_LAST (14 downto 0) <= "000000000000000";
 			CQ	<= powerup;
 			NQ  <= "000";
 			SELRAM0_D <= '0';
 			SELRAM1_D <= '0';
 			REFRESH <='0';
-			ROW_CHARGED <= '0';
       elsif rising_edge(CLK_RAMC) then
 			if(CLRREFC ='1')then
 				REFRESH <= '0';
@@ -142,23 +139,14 @@ begin
 						
 			if(
 				CQ = init_precharge_commit or
-				CQ = init_wait or
-				CQ = precharge_end or								
+				CQ = init_wait or								
 				CQ = refresh_wait)
 			then
 				NQ <= NQ +1;
 			else 
 				NQ  <= "000";
 			end if;
-			
-			if(CQ = read_start_ras or CQ = write_start_ras)then
-				ROW_CHARGED <= '1';
-				ARAM_LAST <= A40(25 downto 11);
-			elsif(CQ= precharge_end or CQ= refresh_start)then
-				ROW_CHARGED <= '0';
-				ARAM_LAST <= "000000000000000";
-			end if;
-			
+
 			SELRAM0_D <= SELRAM0;
 			SELRAM1_D <= SELRAM1;
 		
@@ -197,9 +185,7 @@ begin
 
    TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and (SELRAM0 = '1' or SELRAM1 = '1') else '0';
 	TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
-										CQ = read_start_cas or										
-										CQ = write_start_ras or
-										CQ = write_start_cas or										
+										CQ = write_start_ras or 
 										RESET ='0' else '0';
 
    process (CLK_RAMC) begin
@@ -387,24 +373,8 @@ begin
 		 RAS_D <= '0';
 		 ARAM_D <= ARAM_OPTCODE;
 		 ENACLK_PRE <= '1';
-		 CQ_D <= precharge_end;
-      when precharge =>
-		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= '1';
-		 UDQ0_D <= '1';
-		 UDQ1_D <= '1';
-		 LDQ0_D <= '1';
-		 LDQ1_D <= '1';
-		 CE_B0_D <= '0';
-		 CE_B1_D <= '0';
-		 WE_D <= '0';
-		 TA40_D <= '1';
-		 CAS_D <= '1';
-		 RAS_D <= '0';
-	 	 ARAM_D <= ARAM_PRECHARGE;
-		 ENACLK_PRE <= '1';
-		 CQ_D <= precharge_end;
-      when precharge_end =>
+		 CQ_D <= end_cycle;
+      when end_cycle =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
 		 UDQ0_D <= '1';
@@ -419,13 +389,7 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
-		 if (TRANSFER and RW_40 and (not SCLK))='1' then
-			CQ_D <= read_start_ras;				
-		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
-			CQ_D <= write_start_ras;
-		 else
-			CQ_D <= precharge_end;
-		 end if;			 
+	    CQ_D <= start_state;
       when start_state =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
@@ -443,19 +407,12 @@ begin
 		 ARAM_D <= "000000000000";
 		 if (REFRESH='1') then
 		    CQ_D <= refresh_start;
-		 elsif (TRANSFER and RW_40 )='1' then
-			if(ROW_CHARGED ='1' and ARAM_LAST = A40(25 downto 11))then
-				CQ_D <= read_start_cas;
-			else
-				CQ_D <= precharge;
-			end if;
+		 elsif (TRANSFER and RW_40 and (not SCLK))='1' then
+		    CQ_D <= read_start_ras;
 			 --CQ_D <= write_line_s3;
-		 elsif (TRANSFER and (not RW_40))='1' then
-			if(ROW_CHARGED ='1' and ARAM_LAST = A40(25 downto 11))then
-				CQ_D <= write_start_cas;
-			else
-				CQ_D <= precharge;
-			end if;
+		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
+		    CQ_D <= write_start_ras;
+			 --CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;
@@ -577,7 +534,7 @@ begin
 		 if (SIZ40 ="11") then
 		    CQ_D <= read_line_s0;
 		 else
-		    CQ_D <= start_state;
+		    CQ_D <= precharge;
 		 end if;
       when read_line_s0 =>
 		 OERAM_40_D <= '0';
@@ -674,7 +631,7 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
 		 ARAM_D <= "000000000000";
-		 CQ_D <= start_state;
+		 CQ_D <= precharge;
       when write_start_ras =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';
@@ -725,11 +682,13 @@ begin
 		 CQ_D <= write_start_cas;
       when write_start_cas =>
 		 OERAM_40_D <= '1';
-		 OE40_RAM_D <= '0';		 
+		 OE40_RAM_D <= '0';
+		 
 	 	 UDQ0_D <= UDQ0_SIG;
 	 	 UDQ1_D <= UDQ1_SIG;
 	 	 LDQ0_D <= LDQ0_SIG;
-	 	 LDQ1_D <= LDQ1_SIG;	
+	 	 LDQ1_D <= LDQ1_SIG;
+	
 		 CE_B0_D <= not SELRAM0_D;
 		 CE_B1_D <= not SELRAM1_D;
 		 WE_D <= '0';
@@ -855,7 +814,23 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
-		 CQ_D <= start_state;
-		end case;		 		 
+		 CQ_D <= precharge;
+      when precharge =>
+		 OERAM_40_D <= '1';
+		 OE40_RAM_D <= '1';
+		 UDQ0_D <= '1';
+		 UDQ1_D <= '1';
+		 LDQ0_D <= '1';
+		 LDQ1_D <= '1';
+		 CE_B0_D <= '0';
+		 CE_B1_D <= '0';
+		 WE_D <= '0';
+		 TA40_D <= '1';
+		 CAS_D <= '1';
+		 RAS_D <= '0';
+	 	 ARAM_D <= ARAM_PRECHARGE;
+		 ENACLK_PRE <= '1';
+		 CQ_D <= end_cycle;
+		end case;
    end process;
 end ramcon_behav;
