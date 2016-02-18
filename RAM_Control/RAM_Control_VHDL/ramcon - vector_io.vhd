@@ -274,11 +274,11 @@ begin
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
 		 ARAM_D <= "000000000000";
-		 if (INIT)='1' then
+		 --if (INIT)='1' then
 		    CQ_D <= init_precharge;
-		 else
-		    CQ_D <= powerup;
-		 end if;
+		 --else
+		 --   CQ_D <= powerup;
+		 --end if;
       when init_precharge =>
 		 OERAM_40_D <= '1';
 		 OE40_RAM_D <= '1';

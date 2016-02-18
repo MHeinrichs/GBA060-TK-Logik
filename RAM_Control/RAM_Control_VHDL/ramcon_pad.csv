@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 2- 9-2016 10:34PM
+ 2-18-2016  8:13PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -30,7 +30,7 @@ P9,ARAM<4>,O,I/O,OUTPUT,,,,,,,,,
 P10,CLKEN,O,I/O,OUTPUT,,,,,,,,,
 P11,C4MHZ,I,I/O,INPUT,,,,,,,,,
 P12,RW_40,I,I/O,INPUT,,,,,,,,,
-P13,INIT,I,I/O,INPUT,,,,,,,,,
+P13,TIE,,I/O,,,,,,,,,,
 P14,TIE,,I/O,,,,,,,,,,
 P15,A40<30>,I,I/O,INPUT,,,,,,,,,
 P16,A40<29>,I,I/O,INPUT,,,,,,,,,

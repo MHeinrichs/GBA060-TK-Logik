@@ -141,15 +141,20 @@ signal	DMA_SM: sm_dma;
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
 signal	SM_030_P : sm_030_positive_flank :=S0; 
 signal	SM_030_N : sm_030_negative_flank :=S5; 
+signal	STERM_SAMPLED : STD_LOGIC := '0';	--SATERM sample
+signal	DSACK_SAMPLED : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACK sample
 signal	DSACK_VALID : STD_LOGIC_VECTOR (1 downto 0):="00";	--Valid DSACK sample
 signal	SIZ30_D : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
 signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
+signal	SIZING_030 : sm_sizing;	--State-Machine Sizing sampled for clk030
 signal	AMISEL : STD_LOGIC:='0';	--AMiga or interrupt select
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	CLK30_RING : STD_LOGIC_VECTOR (6 downto 0);	--internes Signal f?r die Takttung der Statemachine
+signal	CLK30_SM : STD_LOGIC:='0';	--internes Signal f?r die Takttung der Statemachine
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -198,8 +203,8 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
-	--PLL_S	<=	"Z0"; --80MHz
+	--PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
 	--PLL_S	<=	"ZZ"; --50MHz
@@ -214,14 +219,19 @@ begin
 	--BCLK_SIG <= BCLK040_SIG;
 	--CLK30 <= CLK30_SIG;
 	CLK30 <= 'Z';
+	CLK30_SM <= CLK30;
+	STERM_SAMPLED <= STERM30;
+	DSACK_SAMPLED <= DSACK30;
+	SIZING_030	<=SIZING_D;
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
 		if (rising_edge(PLL_CLK)) then
+			--CLK30_RING(6 downto 1) <= CLK30_RING(5 downto 0);
+			--CLK30_RING(0) <= CLK30;
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
 			CLK_BS	<= not CLK_RAMC_SIG;
-			PCLK	<= not CLK_RAMC_SIG;
-			--CLK30_SIG	<= CLK30;			
+			PCLK	<= not CLK_RAMC_SIG;		
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			--BCLK040_SIG	<= BCLK060_SIG;
@@ -232,7 +242,7 @@ begin
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
-		if (falling_edge(PLL_CLK)) then
+		if (falling_edge(PLL_CLK)) then			
 			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 		end if;
 	end process CLOCKS_N;
@@ -411,21 +421,21 @@ begin
 	LE_BS		<= LE_BS_SIG;-- when TIP='1' and TACK = '1' else '0';--'0' when NAMIACC = '1' else LE_BS_D;
 	
 	
-	STATE_030_P: process(RSTI40_SIG,CLK30)
+	STATE_030_P: process(RSTI40_SIG,CLK30_SM)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;
-		elsif(rising_edge(CLK30)) then			
+		elsif(rising_edge(CLK30_SM)) then			
 			case SM_030_P is
 				when S0 =>
-					if(--SIZING /= idle and SIZING /=cycle_end and 
-						SIZING_D /= idle and SIZING_D /=cycle_end) then												
+					if(TIP ='1' and
+						SIZING_030 /= idle and SIZING_030 /=cycle_end) then												
 						SM_030_P <= S2;
 					else		
 						SM_030_P <= S0;
 					end if;
 				when S2 =>
-					if(STERM30 = '0') then
+					if(STERM_SAMPLED = '0') then
 						--cool:short termination!
 						SM_030_P <= S0;
 					else  --wait in S4 for dsack end
@@ -439,7 +449,7 @@ begin
 		end if;		
 	end process STATE_030_P;
 	
-	STATE_030_N: process(RSTI40_SIG,CLK30)
+	STATE_030_N: process(RSTI40_SIG,CLK30_SM)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_N <= S1;
@@ -448,7 +458,7 @@ begin
 			DS30_SIG <= '1';
 			LE_BS_SIG 	<= '0';
 			TERM <= '0';
-		elsif(falling_edge(CLK30)) then
+		elsif(falling_edge(CLK30_SM)) then
 			case SM_030_N is
 				when S1 =>
 					DSACK_VALID <= "00";
@@ -476,19 +486,19 @@ begin
 						AS30_SIG <= '0';						
 						LE_BS_SIG<= '0';
 						TERM <= '0';
-						if(	DSACK30 /= "11"
+						if(	DSACK_SAMPLED /= "11"
 								or BERR30  = '0'
-								or STERM30  ='0'
+								or STERM_SAMPLED  ='0'
 								--or TT40(1 downto 0)="11"
 							)then --finished!
-							if(STERM30 = '0'
+							if(STERM_SAMPLED = '0'
 								or BERR30 = '0'
 								--or TT40(1 downto 0)="11"
 								) then
 								DSACK_VALID <= "11";
 							else
-								DSACK_VALID(0) <= not DSACK30(0);
-								DSACK_VALID(1) <= not DSACK30(1);				
+								DSACK_VALID <= not DSACK_SAMPLED;
+								--DSACK_VALID(1) <= not DSACK_SAMPLED(1);				
 							end if;
 							SM_030_N <= S5;
 						else
@@ -509,10 +519,10 @@ begin
 	
 	--sizing statemachine
 	--this is the clocked statemachine transition process
-   process (CLK30, RSTI40_SIG) begin
+   process (CLK30_SM, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
-      elsif (rising_edge(CLK30)) then
+      elsif (rising_edge(CLK30_SM)) then
 			SIZING	<= SIZING_D;
       end if;
    end process;
@@ -520,7 +530,7 @@ begin
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, TS40, SEL16M, A40,
 	 AMISEL, RW40, RSTI40_SIG, DSACK_VALID,
-	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM, TACK_D0, HALT30)
+	 TT40, BYTE, WORD, LONG, SIZ40, TIP,TACK,TERM, TACK_D0, HALT30,TRANSFER_START)
    begin
       if(SIZING =cycle_end) then
 			AS30_OE		<= '0';
@@ -680,141 +690,141 @@ begin
    end process SIZING_SM;
 
 	
-	DMA_ARBIT: process (BCLK_SIG,RSTI40_SIG)
-	begin
-		if(RSTI40_SIG = '0')then
-			BR30_Q <= '1';
-			BGACK30_Q <= '1';
-			DMA_SM <=STATE0;
-		elsif(rising_edge(BCLK_SIG)) then
-			BR30_Q <= BR30;
-			BGACK30_Q <= BGACK30;
-			case DMA_SM is
-				when STATE0 => 
-					-- This is the idle state.  If neither master wants the
-					-- bus, we stick aroun here.  As soon as one does, we
-					-- jump to either's particular mastership branch. 
-					if(BGACK30_Q = '0') then --030-BUS (again) in process
-						DMA_SM <= STATE4; 
-					elsif(BR30_Q = '0') then --030-Bus request
-						DMA_SM <= STATE1;
-					elsif(BR40 = '0')then --040-Bus request
-						DMA_SM <= STATE7;
-					else
-						DMA_SM <= STATE0;
-					end if;
-				when STATE1 =>
-					-- This starts the 68030 bus as master branch.  Here we
-					-- simply assert a bus grant to the '030 bus. 
-					DMA_SM <= STATE2;
-				when STATE2 =>
-					-- At this stage, we wait for a bus grant acknowledge back
-					-- from the '030 bus.  Upon receipt of that, or negation of
-					-- the '030 request, we go on to the next state. 
-					if(BGACK30_Q = '0') then --030-BUS Ack in process
-						DMA_SM <= STATE3; 
-					elsif(BR30_Q = '1') then --030-Bus request released: advance to the next state
-						DMA_SM <= STATE3;
-					else
-						DMA_SM <= STATE2; -- wait
-					end if;
-				when STATE3 =>
-					-- This state simply drops the 68030 bus grant. 
-					DMA_SM <= STATE4;
-				when STATE4 =>
-					-- This is the main '030-as-master running state.  As long as
-					-- the '030 bus is master and no new grants some in, we hang 
-					-- out here.  If BGACK goes away, the arbiter goes back to 
-					-- to the idle state.  If a new bus request is asserted, a
-					-- grant must be presented to that master.
-					if(BR30_Q = '0') then -- Another 030-BUS request 
-						DMA_SM <= STATE5; 
-					elsif(BGACK30_Q = '1') then --end of 030 cycle
-						DMA_SM <= STATE0;
-					else
-						DMA_SM <= STATE4; --030-Bus cycle pending:wait
-					end if;
-				when STATE5 =>
-					-- Here a 68030 bus grant is supplied to a potential new master
-					-- while the '030 bus is mastered by the original '030 master.
-					DMA_SM<=STATE6;
-				when STATE6 =>
-					-- This state holds bus grant to the '030 bus active, waiting
-					-- for either the current '030 master to negate BGACK, or the
-					-- new '030 master to negate bus request. 
-					if(BR30_Q = '1') then -- No BR anymore: drop BG 
-						DMA_SM <= STATE3; 
-					elsif(BGACK30_Q = '1') then -- end of 030 cycle
-						DMA_SM <= STATE2;
-					else
-						DMA_SM <= STATE6; --030-Bus cycle running
-					end if;
-				when STATE7 =>
-					-- The remaining states manage the 68040 as master.  Here, a
-					-- grant is simply driven to the '040 bus.
-					DMA_SM <= STATE8;
-				when STATE8 =>
-					-- This is the main 68040 as master running state. As long
-					-- as the '040 wants the bus and the '030 doesn't, stay
-					-- here. 
-					if( BR30_Q='0' and
-						((LOCK40='0' and LOCKE40='0') or LOCK40='1')) then -- BR030 and no lock or lockend: go to busbusy test
-						DMA_SM <= STATE9; 
-					else
-						DMA_SM <= STATE8; -- stay here
-					end if;
-				when STATE9 =>
-					-- At this point we drop grant to the '040, and would like
-					-- to let the '030 on the bus.  If the '040 has dropped bus
-					-- bus, it's ok to proceed.  If not, either hang out here
-					-- as long as bus busy is asserted and we're not starting
-					-- a new locked cycle.  If we are, go back to the running
-					-- state.
-					if(BB40='1') then --040- bus not busy: go to state10
-						DMA_SM <= STATE10;
-					elsif(LOCK40='0' and LOCKE40='1')then  --040-Bus busy locked and no end: goto state 8 to wait for finished bus actvity						
-						DMA_SM <= STATE8;
-					else -- wait
-						DMA_SM <= STATE9;
-					end if;
-				when STATE10 =>
-					-- Just for safety's sake, make sure we really did see the
-					--	'040 give the bus back.
-					if(BB40='1') then --040- bus not busy: go to arbiter
-						DMA_SM <= STATE0;					
-					elsif(BR40='1')then -- no 040 request: wait another round
-						DMA_SM <= STATE9;					
-					else
-						DMA_SM <= STATE8; -- somehow a new 040 bus cycle started
-					end if;
-			end case;			
-		end if;
-	end process DMA_ARBIT;
+	--DMA_ARBIT: process (BCLK_SIG,RSTI40_SIG)
+	--begin
+	--	if(RSTI40_SIG = '0')then
+	--		BR30_Q <= '1';
+	--		BGACK30_Q <= '1';
+	--		DMA_SM <=STATE0;
+	--	elsif(rising_edge(BCLK_SIG)) then
+	--		BR30_Q <= BR30;
+	--		BGACK30_Q <= BGACK30;
+	--		case DMA_SM is
+	--			when STATE0 => 
+	--				-- This is the idle state.  If neither master wants the
+	--				-- bus, we stick aroun here.  As soon as one does, we
+	--				-- jump to either's particular mastership branch. 
+	--				if(BGACK30_Q = '0') then --030-BUS (again) in process
+	--					DMA_SM <= STATE4; 
+	--				elsif(BR30_Q = '0') then --030-Bus request
+	--					DMA_SM <= STATE1;
+	--				elsif(BR40 = '0')then --040-Bus request
+	--					DMA_SM <= STATE7;
+	--				else
+	--					DMA_SM <= STATE0;
+	--				end if;
+	--			when STATE1 =>
+	--				-- This starts the 68030 bus as master branch.  Here we
+	--				-- simply assert a bus grant to the '030 bus. 
+	--				DMA_SM <= STATE2;
+	--			when STATE2 =>
+	--				-- At this stage, we wait for a bus grant acknowledge back
+	--				-- from the '030 bus.  Upon receipt of that, or negation of
+	--				-- the '030 request, we go on to the next state. 
+	--				if(BGACK30_Q = '0') then --030-BUS Ack in process
+	--					DMA_SM <= STATE3; 
+	--				elsif(BR30_Q = '1') then --030-Bus request released: advance to the next state
+	--					DMA_SM <= STATE3;
+	--				else
+	--					DMA_SM <= STATE2; -- wait
+	--				end if;
+	--			when STATE3 =>
+	--				-- This state simply drops the 68030 bus grant. 
+	--				DMA_SM <= STATE4;
+	--			when STATE4 =>
+	--				-- This is the main '030-as-master running state.  As long as
+	--				-- the '030 bus is master and no new grants some in, we hang 
+	--				-- out here.  If BGACK goes away, the arbiter goes back to 
+	--				-- to the idle state.  If a new bus request is asserted, a
+	--				-- grant must be presented to that master.
+	--				if(BR30_Q = '0') then -- Another 030-BUS request 
+	--					DMA_SM <= STATE5; 
+	--				elsif(BGACK30_Q = '1') then --end of 030 cycle
+	--					DMA_SM <= STATE0;
+	--				else
+	--					DMA_SM <= STATE4; --030-Bus cycle pending:wait
+	--				end if;
+	--			when STATE5 =>
+	--				-- Here a 68030 bus grant is supplied to a potential new master
+	--				-- while the '030 bus is mastered by the original '030 master.
+	--				DMA_SM<=STATE6;
+	--			when STATE6 =>
+	--				-- This state holds bus grant to the '030 bus active, waiting
+	--				-- for either the current '030 master to negate BGACK, or the
+	--				-- new '030 master to negate bus request. 
+	--				if(BR30_Q = '1') then -- No BR anymore: drop BG 
+	--					DMA_SM <= STATE3; 
+	--				elsif(BGACK30_Q = '1') then -- end of 030 cycle
+	--					DMA_SM <= STATE2;
+	--				else
+	--					DMA_SM <= STATE6; --030-Bus cycle running
+	--				end if;
+	--			when STATE7 =>
+	--				-- The remaining states manage the 68040 as master.  Here, a
+	--				-- grant is simply driven to the '040 bus.
+	--				DMA_SM <= STATE8;
+	--			when STATE8 =>
+	--				-- This is the main 68040 as master running state. As long
+	--				-- as the '040 wants the bus and the '030 doesn't, stay
+	--				-- here. 
+	--				if( BR30_Q='0' and
+	--					((LOCK40='0' and LOCKE40='0') or LOCK40='1')) then -- BR030 and no lock or lockend: go to busbusy test
+	--					DMA_SM <= STATE9; 
+	--				else
+	--					DMA_SM <= STATE8; -- stay here
+	--				end if;
+	--			when STATE9 =>
+	--				-- At this point we drop grant to the '040, and would like
+	--				-- to let the '030 on the bus.  If the '040 has dropped bus
+	--				-- bus, it's ok to proceed.  If not, either hang out here
+	--				-- as long as bus busy is asserted and we're not starting
+	--				-- a new locked cycle.  If we are, go back to the running
+	--				-- state.
+	--				if(BB40='1') then --040- bus not busy: go to state10
+	--					DMA_SM <= STATE10;
+	--				elsif(LOCK40='0' and LOCKE40='1')then  --040-Bus busy locked and no end: goto state 8 to wait for finished bus actvity						
+	--					DMA_SM <= STATE8;
+	--				else -- wait
+	--					DMA_SM <= STATE9;
+	--				end if;
+	--			when STATE10 =>
+	--				-- Just for safety's sake, make sure we really did see the
+	--				--	'040 give the bus back.
+	--				if(BB40='1') then --040- bus not busy: go to arbiter
+	--					DMA_SM <= STATE0;					
+	--				elsif(BR40='1')then -- no 040 request: wait another round
+	--					DMA_SM <= STATE9;					
+	--				else
+	--					DMA_SM <= STATE8; -- somehow a new 040 bus cycle started
+	--				end if;
+	--		end case;			
+	--	end if;
+	--end process DMA_ARBIT;
 	
-	BG30 <= '0' when 
-						DMA_SM = STATE1 or
-						DMA_SM = STATE2 or
-						DMA_SM = STATE5 or
-						DMA_SM = STATE6 
-					else '1';
-	BG40 <= '0' when 
-						DMA_SM = STATE7 or
-						DMA_SM = STATE8 
-					else '1';
-	A_OE <= '0' when 
-						DMA_SM = STATE0 or
-						DMA_SM = STATE7 or
-						DMA_SM = STATE8 or
-						DMA_SM = STATE9 or
-						DMA_SM = STATE10  
-					else '1';
-	--CONTROL40_OE <= '1';
-	CONTROL40_OE <= '1' when
-						DMA_SM = STATE0 or
-						DMA_SM = STATE7 or
-						DMA_SM = STATE8 or
-						DMA_SM = STATE9 or
-						DMA_SM = STATE10 
-					else '0';
+	--BG30 <= '0' when 
+	--					DMA_SM = STATE1 or
+	--					DMA_SM = STATE2 or
+	--					DMA_SM = STATE5 or
+	--					DMA_SM = STATE6 
+	--				else '1';
+	--BG40 <= '0' when 
+	--					DMA_SM = STATE7 or
+	--					DMA_SM = STATE8 
+	--				else '1';
+	--A_OE <= '0' when 
+	--					DMA_SM = STATE0 or
+	--					DMA_SM = STATE7 or
+	--					DMA_SM = STATE8 or
+	--					DMA_SM = STATE9 or
+	--					DMA_SM = STATE10  
+	--				else '1';
+	CONTROL40_OE <= '1';
+	--CONTROL40_OE <= '1' when
+	--					DMA_SM = STATE0 or
+	--					DMA_SM = STATE7 or
+	--					DMA_SM = STATE8 or
+	--					DMA_SM = STATE9 or
+	--					DMA_SM = STATE10 
+	--				else '0';
 end Behavioral;
 

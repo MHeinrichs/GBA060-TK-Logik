@@ -8,18 +8,9 @@
   <Properties>
     <property name="Synthesize - XST:Optimization Goal" value="Speed"/>
     <property name="Synthesize - XST:Optimization Effort" value="High"/>
-    <property name="Synthesize - XST:FSM Encoding Algorithm" value="Auto"/>
     <property name="Synthesize - XST:Safe Implementation" value="Yes"/>
-    <property name="Synthesize - XST:Case Implementation Style" value="None"/>
-    <property name="Synthesize - XST:Mux Extraction" value="No"/>
-    <property name="Synthesize - XST:Resource Sharing" value="true"/>
-    <property name="Synthesize - XST:Equivalent Register Removal" value="true"/>
-    <property name="Synthesize - XST:XOR Preserve" value="true"/>
-    <property name="Fit:Implementation Template" value="Optimize Speed"/>
-    <property name="Fit:I/O Pin Termination" value="Float"/>
-    <property name="Fit:Macrocell Power Setting" value="Timing Driven"/>
-    <property name="Fit:Logic Optimization" value="Speed"/>
-    <property name="Fit:Exhaustive Fit Mode" value="true"/>
+    <property name="Synthesize - XST:Case Implementation Style" value="Full"/>
+    <property name="Synthesize - XST:Mux Extraction" value="Yes"/>
   </Properties>
 
 </DesignStrategy>

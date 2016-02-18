@@ -27,7 +27,7 @@
   <TD WIDTH="65%" CLASS="cpldta_text_normal"><A HREF="Javascript:popWin('http://www.xilinx.com/literature/index.htm','800','800','test');">XC95144XL</A>, -10 (3.0)</TD>
  </TR>
  <TR>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal_bold"><B>Date Created</B></TD>  <TD WIDTH="65%" CLASS="cpldta_text_normal">Sat Jan 23 17:37:19 2016
+  <TD WIDTH="35%" CLASS="cpldta_text_normal_bold"><B>Date Created</B></TD>  <TD WIDTH="65%" CLASS="cpldta_text_normal">Thu Feb 18 21:28:07 2016
 </TD>
  </TR>
  <TR>
@@ -43,25 +43,13 @@
   <TH BGCOLOR="#FFFFCC" WIDTH="100%">Notes and Warnings</TH>
  </TR>
  <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'DMA_SM_FSM_FFd2.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
+  <TD WIDTH="100%" CLASS="cpldta_text_normal">Note: This design contains no timing constraints.</TD>
  </TR>
  <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'DMA_SM_FSM_FFd4.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
+  <TD WIDTH="100%" CLASS="cpldta_text_normal">Note: A default set of constraints using a delay of 0.000ns will be used for analysis.</TD>
  </TR>
  <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'DMA_SM_FSM_FFd3.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
- </TR>
- <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'DMA_SM_FSM_FFd1.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
- </TR>
- <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'BR30_Q.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
- </TR>
- <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'BGACK30_Q.CLKF' has multiple original clock nets 'BCLK040_SIG.Q' 'CPU40_60' 'BCLK060_SIG.Q'.</TD>
- </TR>
- <TR>
-  <TD WIDTH="100%" CLASS="cpldta_text_normal">Note: Timing requirement listed for OFFSET IN constraints is adjusted by tGCK. Therefore the requirement listed in the timing report is equal to the value for the requirement entered in the constraint plus tGCK. The value for tGCK can be found in the datasheet.</TD>
+  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'TA40.CLKF' has multiple original clock nets 'BCLK060_SIG.Q' 'CPU40_60' 'BCLK040_SIG.Q'.</TD>
  </TR>
 </TABLE><BR>
 <TABLE WIDTH="80%" border="1" ALIGN="center">
@@ -77,7 +65,7 @@
   <TD WIDTH="35%" CLASS="cpldta_text_normal">71.429 MHz. </TD>
  </TR>
  <TR>
-  <TD WIDTH="100%" colspan="2" CLASS="cpldta_text_normal">Limited by Clock Pulse Width for BCLK040_SIG.Q</TD>
+  <TD WIDTH="100%" colspan="2" CLASS="cpldta_text_normal">Limited by Clock Pulse Width for CLK30</TD>
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Clock to Setup </B><A HREF="cpldta_glossary.htm#tCYC">(tCYC)</A></TD>
@@ -89,11 +77,11 @@
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Setup to Clock at the Pad </B><A HREF="cpldta_glossary.htm#tSU">(tSU)</A></TD>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal">6.500 ns. </TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">7.500 ns. </TD>
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Clock Pad to Output Pad Delay </B><A HREF="cpldta_glossary.htm#tCO">(tCO)</A></TD>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal">37.800 ns. </TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">30.100 ns. </TD>
  </TR>
 </TABLE>
 <HR>
@@ -107,169 +95,75 @@
   <TH BGCOLOR="#FFFFCC" WIDTH="15%" CLASS="cpldta_time_header">Paths Failing</TH>
  </TR>
  <TR>
-  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#TS_PLL_CLK">TS_PLL_CLK</A></TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">5.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">11.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">14</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">14</TD>
- </TR>
- <TR>
-  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#AUTO_TS_2001">AUTO_TS_2001</A></TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">10.0</TD>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1000">TS1000</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
  </TR>
  <TR>
-  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#AUTO_TS_2002">AUTO_TS_2002</A></TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">10.0</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">5.8</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">1</TD>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1001">TS1001</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
  </TR>
  <TR>
-  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#AUTO_TS_2003">AUTO_TS_2003</A></TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">10.0</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">5.8</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">1</TD>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1002">TS1002</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
  </TR>
  <TR>
-  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#AUTO_TS_2004">AUTO_TS_2004</A></TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">10.0</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">5.8</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value">1</TD>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1003">TS1003</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
  </TR>
  <TR>
-  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_2005">AUTO_TS_2005</A></TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">10.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">13.5</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">1</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">1</TD>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1004">TS1004</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_F2F">AUTO_TS_F2F</A></TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">11.4</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">90</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">90</TD>
+ </TR>
+ <TR>
+  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_P2P">AUTO_TS_P2P</A></TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">30.1</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">72</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">72</TD>
+ </TR>
+ <TR>
+  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_P2F">AUTO_TS_P2F</A></TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">13.9</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">60</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">60</TD>
+ </TR>
+ <TR>
+  <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_F2P">AUTO_TS_F2P</A></TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">20.4</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">50</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">50</TD>
  </TR>
 </TABLE>
 </BR>
 </BR>
-<A NAME="TS_PLL_CLK">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: TS_PLL_CLK</h3>
+<A NAME="TS1000">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1000</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PLL_CLK:5.000nS:HIGH:2.500nS</B></CAPTION>
-  <TR CLASS="cpldta_delaytable_header">
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
-  </TR>
-  <TR>
-   <A NAME="_TACK_D0_Q_to_TACK_D0_D"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:TS_PLL_CLK_TACK_D0_Q_to_TACK_D0_D();">TACK_D0.Q to TACK_D0.D</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">5.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-6.000</TD>
-  </TR>
-<SCRIPT language="JavaScript">
-<!--
-function TS_PLL_CLK_TACK_D0_Q_to_TACK_D0_D() {
-   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
-   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
-   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("TACK_D0.Q to TACK_D0.D")
-   aWindow.document.writeln("</H3>")
-   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
-   aWindow.document.writeln("</TR>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK_D0</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tSUI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK_D0.D</TD>")
-   aWindow.document.writeln("</TABLE>")
-   aWindow.document.close()
-}
-//-->
-</SCRIPT>
-  <TR>
-   <A NAME="_TERM_P_D0_Q_to_TACK_D0_D"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:TS_PLL_CLK_TERM_P_D0_Q_to_TACK_D0_D();">TERM_P_D0.Q to TACK_D0.D</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">5.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-6.000</TD>
-  </TR>
-<SCRIPT language="JavaScript">
-<!--
-function TS_PLL_CLK_TERM_P_D0_Q_to_TACK_D0_D() {
-   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
-   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
-   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("TERM_P_D0.Q to TACK_D0.D")
-   aWindow.document.writeln("</H3>")
-   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
-   aWindow.document.writeln("</TR>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TERM_P_D0</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tSUI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK_D0.D</TD>")
-   aWindow.document.writeln("</TABLE>")
-   aWindow.document.close()
-}
-//-->
-</SCRIPT>
-  <TR>
-   <A NAME="_TERM_P_D1_Q_to_TACK_D0_D"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:TS_PLL_CLK_TERM_P_D1_Q_to_TACK_D0_D();">TERM_P_D1.Q to TACK_D0.D</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">5.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-6.000</TD>
-  </TR>
-<SCRIPT language="JavaScript">
-<!--
-function TS_PLL_CLK_TERM_P_D1_Q_to_TACK_D0_D() {
-   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
-   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
-   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("TERM_P_D1.Q to TACK_D0.D")
-   aWindow.document.writeln("</H3>")
-   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
-   aWindow.document.writeln("</TR>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TERM_P_D1</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tSUI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK_D0.D</TD>")
-   aWindow.document.writeln("</TABLE>")
-   aWindow.document.close()
-}
-//-->
-</SCRIPT>
- </TABLE>
- </BR>
- </BR>
-<A NAME="AUTO_TS_2001">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_2001</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: OFFSET OUT:10.000nS:AFTER:PLL_CLK</B></CAPTION>
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_PLL_CLK:0.000 nS</B></CAPTION>
   <TR CLASS="cpldta_delaytable_header">
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
@@ -279,10 +173,62 @@ function TS_PLL_CLK_TERM_P_D1_Q_to_TACK_D0_D() {
  </TABLE>
  </BR>
  </BR>
-<A NAME="AUTO_TS_2002">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_2002</h3>
+<A NAME="TS1001">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1001</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: OFFSET OUT:10.000nS:AFTER:PLL_CLK</B></CAPTION>
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_CLK30:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1002">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1002</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_BCLK060_SIG.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1003">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1003</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_CPU40_60:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1004">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1004</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_BCLK040_SIG.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="AUTO_TS_F2F">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_F2F</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: MAXDELAY:FROM:FFS(*):TO:FFS(*):0.000 nS</B></CAPTION>
   <TR CLASS="cpldta_delaytable_header">
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
@@ -290,19 +236,19 @@ function TS_PLL_CLK_TERM_P_D1_Q_to_TACK_D0_D() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
   <TR>
-   <A NAME="_PLL_CLK_to_CLK_BS"></A>
-   <TD ALIGN="left" CLASS="cpldta_constraint_name" WIDTH="40%"><A HREF="javascript:AUTO_TS_2002_PLL_CLK_to_CLK_BS();">PLL_CLK to CLK_BS</A></TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">10.000</TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">5.800</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">4.200</TD>
+   <A NAME="_DSACK_VALID_0__Q_to_SM_030_P_FSM_FFd2_D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_DSACK_VALID_0__Q_to_SM_030_P_FSM_FFd2_D();">DSACK_VALID<0>.Q to SM_030_P_FSM_FFd2.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-11.400</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_2002_PLL_CLK_to_CLK_BS() {
+function AUTO_TS_F2F_DSACK_VALID_0__Q_to_SM_030_P_FSM_FFd2_D() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("PLL_CLK to CLK_BS")
+   aWindow.document.writeln("DSACK_VALID<0>.Q to SM_030_P_FSM_FFd2.D")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -311,53 +257,32 @@ function AUTO_TS_2002_PLL_CLK_to_CLK_BS() {
    aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
    aWindow.document.writeln("</TR>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK_IBUF/FCLK</TD>")
-   aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK_BS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DSACK_VALID<0></TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK_BS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPTA2 + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.400</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SM_030_P_FSM_FFd2.D</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
 //-->
 </SCRIPT>
- </TABLE>
- </BR>
- </BR>
-<A NAME="AUTO_TS_2003">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_2003</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: OFFSET OUT:10.000nS:AFTER:PLL_CLK</B></CAPTION>
-  <TR CLASS="cpldta_delaytable_header">
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
-  </TR>
   <TR>
-   <A NAME="_PLL_CLK_to_CLK_RAMC"></A>
-   <TD ALIGN="left" CLASS="cpldta_constraint_name" WIDTH="40%"><A HREF="javascript:AUTO_TS_2003_PLL_CLK_to_CLK_RAMC();">PLL_CLK to CLK_RAMC</A></TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">10.000</TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">5.800</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">4.200</TD>
+   <A NAME="_DSACK_VALID_1__Q_to_SM_030_P_FSM_FFd2_D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_DSACK_VALID_1__Q_to_SM_030_P_FSM_FFd2_D();">DSACK_VALID<1>.Q to SM_030_P_FSM_FFd2.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-11.400</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_2003_PLL_CLK_to_CLK_RAMC() {
+function AUTO_TS_F2F_DSACK_VALID_1__Q_to_SM_030_P_FSM_FFd2_D() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("PLL_CLK to CLK_RAMC")
+   aWindow.document.writeln("DSACK_VALID<1>.Q to SM_030_P_FSM_FFd2.D")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -366,53 +291,32 @@ function AUTO_TS_2003_PLL_CLK_to_CLK_RAMC() {
    aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
    aWindow.document.writeln("</TR>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK_IBUF/FCLK</TD>")
-   aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK_RAMC</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DSACK_VALID<1></TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK_RAMC</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPTA2 + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.400</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SM_030_P_FSM_FFd2.D</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
 //-->
 </SCRIPT>
- </TABLE>
- </BR>
- </BR>
-<A NAME="AUTO_TS_2004">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_2004</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: OFFSET OUT:10.000nS:AFTER:PLL_CLK</B></CAPTION>
-  <TR CLASS="cpldta_delaytable_header">
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
-  </TR>
   <TR>
-   <A NAME="_PLL_CLK_to_PCLK"></A>
-   <TD ALIGN="left" CLASS="cpldta_constraint_name" WIDTH="40%"><A HREF="javascript:AUTO_TS_2004_PLL_CLK_to_PCLK();">PLL_CLK to PCLK</A></TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">10.000</TD>
-   <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">5.800</TD>
-  <TD ALIGN="center" CLASS="cpldta_time_value" WIDTH="10%">4.200</TD>
+   <A NAME="_LE_BS_Q_to_SM_030_P_FSM_FFd2_D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_LE_BS_Q_to_SM_030_P_FSM_FFd2_D();">LE_BS.Q to SM_030_P_FSM_FFd2.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">11.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-11.400</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_2004_PLL_CLK_to_PCLK() {
+function AUTO_TS_F2F_LE_BS_Q_to_SM_030_P_FSM_FFd2_D() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("PLL_CLK to PCLK")
+   aWindow.document.writeln("LE_BS.Q to SM_030_P_FSM_FFd2.D")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -421,21 +325,13 @@ function AUTO_TS_2004_PLL_CLK_to_PCLK() {
    aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
    aWindow.document.writeln("</TR>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PLL_CLK_IBUF/FCLK</TD>")
-   aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LE_BS</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">PCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPTA2 + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">10.400</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SM_030_P_FSM_FFd2.D</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
@@ -444,10 +340,10 @@ function AUTO_TS_2004_PLL_CLK_to_PCLK() {
  </TABLE>
  </BR>
  </BR>
-<A NAME="AUTO_TS_2005">
-<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_2005</h3>
+<A NAME="AUTO_TS_P2P">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_P2P</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Description: OFFSET OUT:10.000nS:AFTER:PLL_CLK</B></CAPTION>
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: MAXDELAY:FROM:PADS(*):TO:PADS(*):0.000 nS</B></CAPTION>
   <TR CLASS="cpldta_delaytable_header">
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
@@ -455,19 +351,19 @@ function AUTO_TS_2004_PLL_CLK_to_PCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
   <TR>
-   <A NAME="_PLL_CLK_to_BCLK"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_2005_PLL_CLK_to_BCLK();">PLL_CLK to BCLK</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">13.500</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-3.500</TD>
+   <A NAME="_PLL_CLK_to_TA40"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_PLL_CLK_to_TA40();">PLL_CLK to TA40</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">30.100</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-30.100</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_2005_PLL_CLK_to_BCLK() {
+function AUTO_TS_P2P_PLL_CLK_to_TA40() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("PLL_CLK to BCLK")
+   aWindow.document.writeln("PLL_CLK to TA40")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -488,13 +384,121 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK</TD>")
    aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.900</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">RSTI40</TD>")
+   aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">BCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK/TACK_TRST.UIM</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">BCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TA40</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TA40</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_CLK30_to_AS30"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_CLK30_to_AS30();">CLK30 to AS30</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">26.600</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-26.600</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2P_CLK30_to_AS30() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("CLK30 to AS30")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK30_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZING_FSM_FFd1</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30_SIG/DS30_SIG_TRST.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">AS30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">AS30</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_CLK30_to_DS30"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_CLK30_to_DS30();">CLK30 to DS30</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">26.600</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-26.600</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2P_CLK30_to_DS30() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("CLK30 to DS30")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK30_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZING_FSM_FFd1</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30_SIG/DS30_SIG_TRST.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
@@ -503,7 +507,277 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
  </TABLE>
  </BR>
  </BR>
-  <BR><B>Number of constraints not met:</B>&nbsp;2<BR>
+<A NAME="AUTO_TS_P2F">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_P2F</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: MAXDELAY:FROM:PADS(*):TO:FFS(*):0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+  <TR>
+   <A NAME="_CPU40_60_to_TA40_CLKF"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_CPU40_60_to_TA40_CLKF();">CPU40_60 to TA40.CLKF</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">13.900</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-13.900</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2F_CPU40_60_to_TA40_CLKF() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("CPU40_60 to TA40.CLKF")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CPU40_60</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CPU40_60_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK/TACK_CLKF.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTCK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">6.900</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TA40.CLKF</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_A40_1__to_SM_030_P_FSM_FFd2_D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_A40_1__to_SM_030_P_FSM_FFd2_D();">A40<1> to SM_030_P_FSM_FFd2.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">9.700</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-9.700</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2F_A40_1__to_SM_030_P_FSM_FFd2_D() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("A40<1> to SM_030_P_FSM_FFd2.D")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">A40<1></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">A40_1_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tLOGI + tPTA + tPTA2 + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">6.200</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SM_030_P_FSM_FFd2.D</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_SIZ40_0__to_SM_030_P_FSM_FFd2_D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_SIZ40_0__to_SM_030_P_FSM_FFd2_D();">SIZ40<0> to SM_030_P_FSM_FFd2.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">9.700</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-9.700</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2F_SIZ40_0__to_SM_030_P_FSM_FFd2_D() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("SIZ40<0> to SM_030_P_FSM_FFd2.D")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZ40<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZ40_0_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tLOGI + tPTA + tPTA2 + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">6.200</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SM_030_P_FSM_FFd2.D</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="AUTO_TS_F2P">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: AUTO_TS_F2P</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: MAXDELAY:FROM:FFS(*):TO:PADS(*):0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+  <TR>
+   <A NAME="_RSTI40_Q_to_TA40"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_RSTI40_Q_to_TA40();">RSTI40.Q to TA40</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">20.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-20.400</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_F2P_RSTI40_Q_to_TA40() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("RSTI40.Q to TA40")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">RSTI40</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TACK/TACK_TRST.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TA40</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">TA40</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_SIZING_FSM_FFd1_Q_to_AS30"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_SIZING_FSM_FFd1_Q_to_AS30();">SIZING_FSM_FFd1.Q to AS30</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">20.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-20.400</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_F2P_SIZING_FSM_FFd1_Q_to_AS30() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("SIZING_FSM_FFd1.Q to AS30")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZING_FSM_FFd1</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30_SIG/DS30_SIG_TRST.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">AS30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">AS30</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_SIZING_FSM_FFd1_Q_to_DS30"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_SIZING_FSM_FFd1_Q_to_DS30();">SIZING_FSM_FFd1.Q to DS30</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">20.400</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-20.400</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_F2P_SIZING_FSM_FFd1_Q_to_DS30() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("SIZING_FSM_FFd1.Q to DS30")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SIZING_FSM_FFd1</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30_SIG/DS30_SIG_TRST.UIM</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTTS</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">11.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tEN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DS30</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+ </TABLE>
+ </BR>
+ </BR>
+  <BR><B>Number of constraints not met:</B>&nbsp;4<BR>
 <HR>
 <A NAME="DataSheet"></a>
 <h2 ALIGN="center" CLASS="cpldta_text_section_header">Data Sheet Report</h2>
@@ -514,16 +788,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Clock</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">fEXT (MHz)</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Reason</TH>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK040_SIG.Q</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for BCLK040_SIG.Q</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CPU40_60</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for CPU40_60</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">PLL_CLK</TD>
@@ -540,86 +804,20 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for BCLK060_SIG.Q</TD>
   </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CPU40_60</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for CPU40_60</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK040_SIG.Q</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for BCLK040_SIG.Q</TD>
+  </TR>
  </TABLE>
  <BR>
  <A NAME="SetupHoldTimesForClocks"></a>
  <h3 CLASS="cpldta_text_subsection_header">Setup/Hold Times for Clocks</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Setup/Hold Times for Clock BCLK040_SIG.Q</B></CAPTION>
-  <TR>
-   <TH BGCOLOR="#FFFFCC" WIDTH="60%" CLASS="cpldta_constraint_header">Source Pad</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Setup to clk (edge) </TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Hold to clk (edge) </TH>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BB40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BGACK30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-7.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-7.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCK40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCKE40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
- </TABLE><BR>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Setup/Hold Times for Clock CPU40_60</B></CAPTION>
-  <TR>
-   <TH BGCOLOR="#FFFFCC" WIDTH="60%" CLASS="cpldta_constraint_header">Source Pad</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Setup to clk (edge) </TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Hold to clk (edge) </TH>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BB40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-4.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">8.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BGACK30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-5.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-5.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-4.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">8.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCK40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-4.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">8.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCKE40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-4.600</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">8.100</TD>
-  </TR>
- </TABLE><BR>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Setup/Hold Times for Clock PLL_CLK</B></CAPTION>
   <TR>
@@ -634,17 +832,17 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">TS40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">6.500</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">7.500</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.000</TD>
   </TR>
   <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">TT40<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">6.500</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">7.500</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.000</TD>
   </TR>
   <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">6.500</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">7.500</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.000</TD>
   </TR>
  </TABLE><BR>
@@ -656,18 +854,13 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Hold to clk (edge) </TH>
   </TR>
   <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">A40<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
-  </TR>
-  <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">A40<1></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.500</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
   </TR>
   <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BERR30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">2.100</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
   </TR>
   <TR>
@@ -681,8 +874,13 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
   </TR>
   <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">RW40</TD>
+   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">HALT30</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">RW40</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">2.100</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
   </TR>
   <TR>
@@ -697,7 +895,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">STERM30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">2.100</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
   </TR>
  </TABLE><BR>
@@ -709,36 +907,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Hold to clk (edge) </TH>
   </TR>
   <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BB40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BGACK30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-7.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-7.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">BR40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCK40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">LOCKE40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">-6.300</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">9.800</TD>
-  </TR>
-  <TR>
    <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">RESET30</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
@@ -748,71 +916,10 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
   </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">TT40<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">0.400</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">3.100</TD>
-  </TR>
  </TABLE><BR>
  <BR>
  <A NAME="ClockToPadTiming"></a>
  <h3 CLASS="cpldta_text_subsection_header">Clock to Pad Timing</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Clock CPU40_60 to Pad</B></CAPTION>
-  <TR>
-   <TH BGCOLOR="#FFFFCC" WIDTH="80%" CLASS="cpldta_constraint_header">Destination Pad</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Clock (edge) to Pad </TH>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AS30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">DS30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">RW30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">34.300</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">A_OE</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">25.600</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">BG30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">25.600</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">BG40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">25.600</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">OE_BS</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">25.600</TD>
-  </TR>
- </TABLE><BR>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Clock PLL_CLK to Pad</B></CAPTION>
   <TR>
@@ -820,52 +927,8 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Clock (edge) to Pad </TH>
   </TR>
   <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AS30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">DS30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">RW30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">37.800</TD>
-  </TR>
-  <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">TA40</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">30.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">A_OE</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">29.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">BG30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">29.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">BG40</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">29.100</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">OE_BS</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">29.100</TD>
   </TR>
   <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">IPL40<0></TD>
@@ -880,7 +943,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">21.400</TD>
   </TR>
   <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LE_BS</TD>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">OE_BS</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">21.400</TD>
   </TR>
   <TR>
@@ -939,289 +1002,40 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">18.900</TD>
   </TR>
   <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LE_BS</TD>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">17.900</TD>
   </TR>
   <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
-  </TR>
-  <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">RW30</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">17.900</TD>
   </TR>
   <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<0></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">17.900</TD>
   </TR>
   <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">SIZ30<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">17.900</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LE_BS</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
+  </TR>
+ </TABLE><BR>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Clock CPU40_60 to Pad</B></CAPTION>
+  <TR>
+   <TH BGCOLOR="#FFFFCC" WIDTH="80%" CLASS="cpldta_constraint_header">Destination Pad</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Clock (edge) to Pad </TH>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">TA40</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">17.900</TD>
   </TR>
  </TABLE><BR>
  <BR>
  <A NAME="ClockToSetupTimesForClocks"></a>
  <h3 CLASS="cpldta_text_subsection_header">Clock to Setup Times for Clocks</h3>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Clock to Setup for clock BCLK040_SIG.Q</B></CAPTION>
-  <TR>
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Source</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Destination</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
- </TABLE><BR>
- <TABLE  WIDTH="80%" border="1" ALIGN="center">
-  <CAPTION CLASS="cpldta_text_caption"><B>Clock to Setup for clock CPU40_60</B></CAPTION>
-  <TR>
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Source</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Destination</TH>
-   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
- </TABLE><BR>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Clock to Setup for clock PLL_CLK</B></CAPTION>
   <TR>
@@ -1230,28 +1044,13 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D0.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TIP.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TS40_D0.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TRANSFER_START.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CLK30_SIG.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK040_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK060_SIG.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1261,7 +1060,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">PCLK.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK040_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BCLK060_SIG.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1285,13 +1084,38 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D0.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D1.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D<1>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TERM_P_D<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TIP.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TACK_D0.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TIP.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TIP.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TRANSFER_START.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TRANSFER_START.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1318,7 +1142,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.400</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_P_FSM_FFd2.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.400</TD>
   </TR>
@@ -1336,16 +1160,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_P_FSM_FFd2.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_P_FSM_FFd2.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.400</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AS30.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AS30.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DS30.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DS30.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DSACK_VALID<0>.Q</TD>
@@ -1388,38 +1202,18 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<1>.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
@@ -1444,16 +1238,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
@@ -1469,26 +1253,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd1.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
@@ -1500,11 +1264,6 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.Q</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_N_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AS30.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
@@ -1593,23 +1352,13 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZING_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1>.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_N_FSM_FFd1.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AS30.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_N_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1624,7 +1373,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_N_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1639,7 +1388,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_P_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1664,7 +1413,7 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SM_030_P_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS_SIG.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LE_BS.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -1691,728 +1440,8 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd1.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd2.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BGACK30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd3.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BR30_Q.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<3>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<4>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<0>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<10>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<11>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<1>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<2>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<5>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<6>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<7>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<8>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">COUNTHALT<9>.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.D</TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.Q</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DMA_SM_FSM_FFd4.D</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTI40.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTINT.D</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
  </TABLE><BR>
@@ -2436,43 +1465,28 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">18.700</TD>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RSTO40</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RESET30</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW40</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<1></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
   </TR>
   <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW40</TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<0></TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<1></TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<2></TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<0></TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
-  </TR>
-  <TR>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
-   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
-   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">11.000</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">A40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">A40<0></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">A40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -2512,7 +1526,17 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW40</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<2></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW40</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">DIR_BS</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW40</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RW30</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -2527,6 +1551,16 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<0></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
@@ -2536,6 +1570,26 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">AL<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<1></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">BWL_BS<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
@@ -2546,6 +1600,16 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<0></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SIZ30<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<0></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
@@ -2553,6 +1617,11 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<0></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -2572,10 +1641,20 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<1></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">ICACHE</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TM40<2></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<0></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
@@ -2586,6 +1665,11 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<0></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<0></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
@@ -2593,6 +1677,11 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<1></TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">TT40<1></TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">FC30<2></TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
@@ -2614,10 +1703,10 @@ function AUTO_TS_2005_PLL_CLK_to_BCLK() {
  <BR>
 <HR>
 <BR><SPAN CLASS="cpldta_text_normal_bold"><B>Number of paths analyzed:</B></SPAN> 
-<SPAN CLASS="cpldta_text_normal">18</SPAN>
+<SPAN CLASS="cpldta_text_normal">272</SPAN>
 <BR><SPAN CLASS="cpldta_text_normal_bold"><B>Number of Timing errors:</B></SPAN> 
-<SPAN CLASS="cpldta_text_normal">15</SPAN>
-<BR><SPAN CLASS="cpldta_text_normal_bold"><B>Analysis Completed:</B></SPAN> <SPAN CLASS="cpldta_text_normal">Sat Jan 23 17:37:19 2016
+<SPAN CLASS="cpldta_text_normal">272</SPAN>
+<BR><SPAN CLASS="cpldta_text_normal_bold"><B>Analysis Completed:</B></SPAN> <SPAN CLASS="cpldta_text_normal">Thu Feb 18 21:28:07 2016
 </SPAN>
 <HR>
 </HTML>
