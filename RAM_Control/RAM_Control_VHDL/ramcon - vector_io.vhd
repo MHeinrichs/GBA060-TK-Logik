@@ -206,20 +206,22 @@ begin
 
 
 -- Start of original equations
-   SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else '0'; 
-   SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else '0'; 
+   SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else 
+					'1' when A40(30 downto 25) = "000110" else '0'; 
+   SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else 
+					'1' when A40(30 downto 25) = "000111" else '0'; 
 	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
 
    TA40 		<= TA40_FB when (SELRAM0 = '1' or SELRAM1 = '1') else 'Z'; --tristate on amiga access
 
    TCI40 	<= '1' when (ICACHE ='1' and(														
-								--					A40(30 downto 23) = "00000000" or  
-								--					A40(30 downto 21) = "0000000100" or
+													A40(30 downto 23) = "00000000" or  
+													A40(30 downto 21) = "0000000100" or
 													A40(30 downto 19) = "000000011111" 	
 													))or
-								--A40(30 downto 21) = "0000001001"  or 
-								--A40(30 downto 22) = "000000101"  or 
-								--A40(30 downto 21) = "0000001100"  or
+								A40(30 downto 21) = "0000001001"  or 
+								A40(30 downto 22) = "000000101"  or 
+								A40(30 downto 21) = "0000001100"  or
 								SELRAM0 = '1' or SELRAM1 = '1' 
 								else '0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
@@ -227,7 +229,7 @@ begin
    CLK_RAM <= (not CLK_RAMC);
    CLKEN <=	ENACLK_PRE;
 
-	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
+	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10) & A40(9) & A40(8) &
 	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
 	ARAM_HIGH <= A40(22 downto 11);
 	ARAM_PRECHARGE <= "010000000000";
