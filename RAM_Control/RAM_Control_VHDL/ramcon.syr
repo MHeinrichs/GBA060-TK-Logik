@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.11 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
 
@@ -139,10 +139,10 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 313.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 349.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 349.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 351.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 315.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 351.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 351.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 353.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <REFRESH>.
     Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 133.
@@ -275,16 +275,15 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 460
-#      AND2                        : 178
-#      AND3                        : 12
-#      AND4                        : 1
+# BELS                             : 475
+#      AND2                        : 183
+#      AND3                        : 14
 #      GND                         : 1
-#      INV                         : 142
-#      OR2                         : 105
-#      OR3                         : 9
+#      INV                         : 146
+#      OR2                         : 108
+#      OR3                         : 10
 #      OR4                         : 2
-#      XOR2                        : 10
+#      XOR2                        : 11
 # FlipFlops/Latches                : 46
 #      FDC                         : 30
 #      FDCE                        : 2
@@ -296,12 +295,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.30 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.17 secs
  
 --> 
 
-Total memory usage is 306576 kilobytes
+Total memory usage is 310308 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
