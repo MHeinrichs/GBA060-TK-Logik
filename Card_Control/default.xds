@@ -8,9 +8,11 @@
   <Properties>
     <property name="Synthesize - XST:Optimization Goal" value="Speed"/>
     <property name="Synthesize - XST:Optimization Effort" value="High"/>
+    <property name="Synthesize - XST:FSM Encoding Algorithm" value="Compact"/>
     <property name="Synthesize - XST:Safe Implementation" value="Yes"/>
-    <property name="Synthesize - XST:Case Implementation Style" value="Full"/>
-    <property name="Synthesize - XST:Mux Extraction" value="Yes"/>
+    <property name="Synthesize - XST:Case Implementation Style" value="None"/>
+    <property name="Synthesize - XST:Mux Extraction" value="Force"/>
+    <property name="Fit:Implementation Template" value="Optimize Speed"/>
   </Properties>
 
 </DesignStrategy>

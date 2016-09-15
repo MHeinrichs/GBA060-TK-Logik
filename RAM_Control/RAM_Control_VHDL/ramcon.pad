@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 8-28-2016 11:20PM
+ 8-31-2016  9:53PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -103,7 +103,7 @@ P82|CLK_RAM|O|I/O|OUTPUT|||||||||
 P83|TDO||TDO||||||||||
 P84|GND||GND||||||||||
 P85|RAS|O|I/O|OUTPUT|||||||||
-P86|TIE||I/O||||||||||
+P86|ARAM<12>|O|I/O|OUTPUT|||||||||
 P87|BA0|O|I/O|OUTPUT|||||||||
 P88|VCC||VCCIO||||||||||
 P89|ARAM<11>|O|I/O|OUTPUT|||||||||

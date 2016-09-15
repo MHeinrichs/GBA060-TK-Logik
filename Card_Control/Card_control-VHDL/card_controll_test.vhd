@@ -25,9 +25,10 @@
 -- to guarantee that the testbench will bind correctly to the post-implementation 
 -- simulation model.
 --------------------------------------------------------------------------------
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
- 
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL; 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
@@ -99,6 +100,12 @@ ARCHITECTURE behavior OF card_controll_test IS
 			  );
     END COMPONENT;
     
+	 TYPE BUS_TERM IS (
+				BUS_STERM,
+				BUS_32,
+				BUS_16,
+				BUS_8
+				);
 
    --Inputs
    signal SEL16M : std_logic := '0';
@@ -160,11 +167,16 @@ ARCHITECTURE behavior OF card_controll_test IS
 	signal BG30 : STD_LOGIC;
 	signal BG40 : STD_LOGIC;
 	signal A_OE : STD_LOGIC;
+	signal WATCH_DOG : std_logic_vector(15 downto 0);
+	signal TRANSFER_IN_PROGRES : STD_LOGIC;
+	signal ACTUAL_BUS_TERM: BUS_TERM;
+	signal TIP : STD_LOGIC;
+	
 
    -- Clock period definitions
-   constant PLL_CLK_period : time := 5 ns;
-   constant OSC_CLK_period : time := 25 ns;
-   constant CLK030_period : time := 19 ns;
+   constant PLL_CLK_period : time := 5.0000001 ns;
+   constant OSC_CLK_period : time := PLL_CLK_period*5;
+   constant CLK030_period : time := 19.8945632450678 ns;
    --constant CLK30_period : time := 10 ns;
 	--timescale 1ns / 1ns
  
@@ -257,11 +269,57 @@ BEGIN
 
 	DS_PROC :process
 	begin
+		STERM30 <='1';
 		DSACK30 <= "11";
-		wait until AS30 = '0' and rising_edge(CLK30) and STERM30 /='0';
-		DSACK30 <= "10";
+		wait until AS30 = '0' and rising_edge(CLK30);
+		case ACTUAL_BUS_TERM is
+			when BUS_32 =>
+				STERM30 <='1';
+				DSACK30 <= "00";
+			when BUS_16 =>
+				STERM30 <='1';
+				DSACK30 <= "01";
+			when BUS_8 =>
+				STERM30 <='1';
+				DSACK30 <= "10";
+			when BUS_STERM =>
+				STERM30 <='0';
+				DSACK30 <= "11";
+		end case;
 		wait until AS30 = '1';
+		STERM30 <='1';
+		DSACK30 <= "11";
 	end process;
+	
+	WATCH_DOG_PROCESS :process
+	begin
+		wait UNTIL rising_edge(BCLK);
+		if(TA40='0' or TRANSFER_IN_PROGRES = '0')then
+			WATCH_DOG <= x"0000";
+		else
+			WATCH_DOG <= WATCH_DOG+1;
+		end if;
+		if(WATCH_DOG >x"20")then
+			report "Timeout";
+			WATCH_DOG <= x"0000";
+		end if;
+	end process;
+
+	TRANSFER_PROCESS :process
+	begin
+		wait UNTIL rising_edge(BCLK);
+		if(TA40='0' or RESET30='0')then
+			TIP <= '0';
+		end if;
+		
+		if(TRANSFER_IN_PROGRES ='1' and TIP = '0') then
+			TIP <='1';
+			TS40 <='0';
+		else
+			TS40 <='1';
+		end if;
+	end process;
+
 	
    -- Stimulus process
    stim_proc: process
@@ -273,8 +331,6 @@ BEGIN
 		SEL16M 	<='0';
 		IPL30 	<="111";
 		BERR30	<='1';
-		DSACK30	<="ZZ";
-		STERM30	<='Z';
 		CIOUT40	<='1';
 		CPU40_60 <='1';
 		A40 		<="ZZ";
@@ -282,8 +338,7 @@ BEGIN
 		RW40		<='1';
 		TM40		<="111";
 		TT40		<="11";
-		TS40		<='1';
-		
+		ACTUAL_BUS_TERM <= BUS_16;
      BR30 <='1';
 	  BGACK30 <='1';
 	  BR40 <='0';
@@ -298,56 +353,18 @@ BEGIN
 
       wait UNTIL RSTI40 ='1';
 		wait for PLL_CLK_period*16;
-		
-		TS40 <='0';
 		TT40 <="00";
 		TM40 <= "000";
+		A40 <= "00";
+		SIZ40 <="00"; --line
+		SEL16M <='1';
+
+		
+		ACTUAL_BUS_TERM <= BUS_16;
 		RW40 <= '0';
-		SEL16M <='1';
-		A40 <= "00";
-		SIZ40 <="11"; --line
-		wait for PLL_CLK_period*4;
-		TS40 <='1';
-		
-		wait until AS30 = '0';
-		--STERM30 <= '0';
-      
-		wait until TA40 ='0';
-		TS40 <='1';
-		TT40 <="00";
-		TM40 <= "000";
-		RW40 <= '1';
-		SEL16M <='1';
-		A40 <= "00";
-		SIZ40 <="11"; --line
-		
-		wait until AS30 = '1';		
-		STERM30 <= '1';		
-		
-		wait for PLL_CLK_period*4;
-		TS40 <='0';
-		TT40 <="00";
-		TM40 <= "000";
-		RW40 <= '1';
-		SEL16M <='1';
-		A40 <= "00";
-		SIZ40 <="11"; --line
-		wait for PLL_CLK_period*4;
-		TS40 <='1';
-
-
-		wait until TA40 ='0';
-		TS40 <='1';
-		TT40 <="00";
-		TM40 <= "000";
-		RW40 <= '1';
-		SEL16M <='1';
-		A40 <= "00";
-		SIZ40 <="11"; --line
-		
-
-		wait for PLL_CLK_period*4;
-
+		TRANSFER_IN_PROGRES <='1';
+		wait for PLL_CLK_period*1600000;
+      TRANSFER_IN_PROGRES <='0';
 
 		wait;
    end process;
