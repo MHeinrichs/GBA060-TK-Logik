@@ -84,9 +84,9 @@ architecture ramcon_behav of ramcon is
    signal ARAM_D: STD_LOGIC_VECTOR (12 downto 0);      
    signal ARAM_LOW: STD_LOGIC_VECTOR (12 downto 0);      
    signal ARAM_HIGH: STD_LOGIC_VECTOR (12 downto 0);      
-   signal ARAM_PRECHARGE: STD_LOGIC_VECTOR (12 downto 0);   
-   signal ARAM_OPTCODE: STD_LOGIC_VECTOR (12 downto 0);   
-   signal ARAM_ZERO: STD_LOGIC_VECTOR (12 downto 0);   
+	constant ARAM_PRECHARGE: STD_LOGIC_VECTOR (12 downto 0) := "0010000000000";   
+   constant ARAM_OPTCODE: STD_LOGIC_VECTOR (12 downto 0) := "0000000100010";   
+   constant ARAM_ZERO: STD_LOGIC_VECTOR (12 downto 0) := "0000000000000";   
 	signal ENACLK_PRE : STD_LOGIC;
    
 
@@ -123,7 +123,7 @@ begin
 			OERAM_40 <= '1';
 			OE40_RAM <= '1';
 			TA40_FB <= '1';	
-			ARAM (12 downto 0) <= ARAM_ZERO;
+			ARAM <= ARAM_ZERO;
 			CQ	<= powerup;
 			NQ  <= "000";
 			SELRAM0_D <= '0';
@@ -163,7 +163,7 @@ begin
 			OERAM_40 <= OERAM_40_D;
 			OE40_RAM <= OE40_RAM_D;
 			TA40_FB <= TA40_D;	
-			ARAM (12 downto 0) <= ARAM_D;			 
+			ARAM <= ARAM_D;			 
 			CQ	<= CQ_D;
       end if;
    end process;
@@ -208,9 +208,11 @@ begin
 
 -- Start of original equations
    SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else 
-					'1' when A40(30 downto 25) = "000110" else '0'; 
+					'1' when A40(30 downto 25) = "000110" else 
+					'0'; 
    SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else 
-					'1' when A40(30 downto 25) = "000111" else '0'; 
+					'1' when A40(30 downto 25) = "000111" else 
+					'0'; 
 	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
 
    TA40 		<= TA40_FB when (SELRAM0 = '1' or SELRAM1 = '1') else 'Z'; --tristate on amiga access
@@ -223,8 +225,8 @@ begin
 								A40(30 downto 21) = "0000001001"  or 
 								A40(30 downto 22) = "000000101"  or 
 								A40(30 downto 21) = "0000001100"  or
-								SELRAM0 = '1' or SELRAM1 = '1' 
-								else '0';
+								SELRAM0 = '1' or SELRAM1 = '1' ELSE
+					'0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
   
    CLK_RAM <= (not CLK_RAMC);
@@ -233,9 +235,6 @@ begin
 	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
 	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
 	ARAM_HIGH <= std_logic_vector'(A40(26) & A40(22 downto 11));
-	ARAM_PRECHARGE <= "0010000000000";
-	ARAM_OPTCODE <= "0000000100010";
-	ARAM_ZERO <= "0000000000000";
 
 	UDQ0_SIG <= '0' when (A40 (1 downto 0) = "10" and SIZ40 = "01") or
 								(A40(1) = '1' and SIZ40 = "10") or
@@ -412,10 +411,8 @@ begin
 		    CQ_D <= refresh_start;
 		 elsif (TRANSFER and RW_40 and (not SCLK))='1' then
 		    CQ_D <= read_start_ras;
-			 --CQ_D <= write_line_s3;
 		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
 		    CQ_D <= write_start_ras;
-			 --CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;

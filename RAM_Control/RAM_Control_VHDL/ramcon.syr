@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.11 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: ramcon.prj
 
@@ -43,7 +43,7 @@ Target Device                      : XC9500XL CPLDs
 ---- Source Options
 Top Module Name                    : ramcon
 Automatic FSM Extraction           : YES
-FSM Encoding Algorithm             : Auto
+FSM Encoding Algorithm             : Gray
 Safe Implementation                : Yes
 CASE Implementation Style          : Parallel
 Mux Extraction                     : Yes
@@ -56,8 +56,8 @@ XOR Preserve                       : YES
 Equivalent register Removal        : YES
 
 ---- General Options
-Optimization Goal                  : Area
-Optimization Effort                : 1
+Optimization Goal                  : Speed
+Optimization Effort                : 2
 Keep Hierarchy                     : Yes
 Netlist Hierarchy                  : As_Optimized
 RTL Output                         : Yes
@@ -72,13 +72,14 @@ wysiwyg                            : NO
 
 =========================================================================
 
+Setting FSM Encoding Algorithm to : Gray
+
 
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" in Library work.
-Entity <ramcon> compiled.
-Entity <ramcon> (Architecture <ramcon_behav>) compiled.
+Architecture ramcon_behav of Entity ramcon is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -90,8 +91,6 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 110: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <ARAM_ZERO>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
 
@@ -122,7 +121,7 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     | Reset State        | powerup                                        |
     | Power Up State     | powerup                                        |
     | Recovery State     | powerup                                        |
-    | Encoding           | automatic                                      |
+    | Encoding           | gray                                           |
     | Implementation     | automatic                                      |
     -----------------------------------------------------------------------
     Found 1-bit register for signal <UDQ0>.
@@ -140,10 +139,10 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <OE40_RAM>.
     Found 13-bit register for signal <ARAM>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 318.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 354.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 354.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 356.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 317.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 353.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 353.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 355.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <REFRESH>.
     Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 134.
@@ -184,7 +183,6 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Analyzing FSM <FSM_0> for best encoding.
 Optimizing FSM <CQ/FSM> on signal <CQ[1:5]> with gray encoding.
 -----------------------------------
  State                 | Encoding
@@ -265,7 +263,7 @@ Final Results
 RTL Top Level Output File Name     : ramcon.ngr
 Top Level Output File Name         : ramcon
 Output Format                      : NGC
-Optimization Goal                  : Area
+Optimization Goal                  : Speed
 Keep Hierarchy                     : Yes
 Target Technology                  : XC9500XL CPLDs
 Macro Preserve                     : YES
@@ -277,14 +275,18 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 473
-#      AND2                        : 183
-#      AND3                        : 13
+# BELS                             : 787
+#      AND2                        : 254
+#      AND3                        : 56
+#      AND4                        : 7
+#      AND5                        : 2
+#      AND6                        : 1
 #      GND                         : 1
-#      INV                         : 146
-#      OR2                         : 107
-#      OR3                         : 10
+#      INV                         : 295
+#      OR2                         : 140
+#      OR3                         : 17
 #      OR4                         : 2
+#      OR5                         : 1
 #      XOR2                        : 11
 # FlipFlops/Latches                : 47
 #      FDC                         : 31
@@ -297,14 +299,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.15 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.65 secs
  
 --> 
 
-Total memory usage is 310320 kilobytes
+Total memory usage is 293704 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
+Number of warnings :    7 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
