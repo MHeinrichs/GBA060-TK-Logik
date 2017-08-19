@@ -81,12 +81,11 @@ architecture ramcon_behav of ramcon is
 	signal CQ_D :  sdram_state_machine_type;
 	signal SELRAM0_D : STD_LOGIC;
 	signal SELRAM1_D : STD_LOGIC;
-   signal ARAM_D: STD_LOGIC_VECTOR (12 downto 0);      
-   signal ARAM_LOW: STD_LOGIC_VECTOR (12 downto 0);      
-   signal ARAM_HIGH: STD_LOGIC_VECTOR (12 downto 0);      
-	constant ARAM_PRECHARGE: STD_LOGIC_VECTOR (12 downto 0) := "0010000000000";   
-   constant ARAM_OPTCODE: STD_LOGIC_VECTOR (12 downto 0) := "0000000100010";   
-   constant ARAM_ZERO: STD_LOGIC_VECTOR (12 downto 0) := "0000000000000";   
+   signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
+   signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
+   signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
+   signal ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0);   
+   signal ARAM_OPTCODE: STD_LOGIC_VECTOR (11 downto 0);   
 	signal ENACLK_PRE : STD_LOGIC;
    
 
@@ -123,7 +122,7 @@ begin
 			OERAM_40 <= '1';
 			OE40_RAM <= '1';
 			TA40_FB <= '1';	
-			ARAM <= ARAM_ZERO;
+			ARAM (11 downto 0) <= "000000000000";
 			CQ	<= powerup;
 			NQ  <= "000";
 			SELRAM0_D <= '0';
@@ -163,7 +162,7 @@ begin
 			OERAM_40 <= OERAM_40_D;
 			OE40_RAM <= OE40_RAM_D;
 			TA40_FB <= TA40_D;	
-			ARAM <= ARAM_D;			 
+			ARAM (11 downto 0) <= ARAM_D;			 
 			CQ	<= CQ_D;
       end if;
    end process;
@@ -208,11 +207,9 @@ begin
 
 -- Start of original equations
    SELRAM0 	<= '1' when A40(30 downto 25) = "000100" else 
-					'1' when A40(30 downto 25) = "000110" else 
-					'0'; 
+					'1' when A40(30 downto 25) = "000110" else '0'; 
    SELRAM1 	<= '1' when A40(30 downto 25) = "000101" else 
-					'1' when A40(30 downto 25) = "000111" else 
-					'0'; 
+					'1' when A40(30 downto 25) = "000111" else '0'; 
 	SEL16M 	<= '0' when (SELRAM0 = '1' or SELRAM1 = '1')  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
 
    TA40 		<= TA40_FB when (SELRAM0 = '1' or SELRAM1 = '1') else 'Z'; --tristate on amiga access
@@ -225,17 +222,18 @@ begin
 								A40(30 downto 21) = "0000001001"  or 
 								A40(30 downto 22) = "000000101"  or 
 								A40(30 downto 21) = "0000001100"  or
-								SELRAM0 = '1' or SELRAM1 = '1' ELSE
-					'0';
+								SELRAM0 = '1' or SELRAM1 = '1' 
+								else '0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
   
    CLK_RAM <= (not CLK_RAMC);
    CLKEN <=	ENACLK_PRE;
 
-	ARAM_LOW <= std_logic_vector'('0' & '0' & '0' & '0' & A40(10) & A40(9) & A40(8) &
+	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10) & A40(9) & A40(8) &
 	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
-	ARAM_HIGH <= std_logic_vector'(A40(26) & A40(22 downto 11));
-
+	ARAM_HIGH <= A40(22 downto 11);
+	ARAM_PRECHARGE <= "010000000000";
+	ARAM_OPTCODE <= "000000100010";
 	UDQ0_SIG <= '0' when (A40 (1 downto 0) = "10" and SIZ40 = "01") or
 								(A40(1) = '1' and SIZ40 = "10") or
 								SIZ40 = "00" or
@@ -277,7 +275,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 --if (INIT)='1' then
 		    CQ_D <= init_precharge;
 		 --else
@@ -313,7 +311,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "001") then
 		    CQ_D <= init_refresh;
 		 else
@@ -333,7 +331,7 @@ begin
 		 CAS_D <= '0';
 		 RAS_D <= '0';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= init_wait;
       when init_wait =>
 		 OERAM_40_D <= '1';
@@ -349,7 +347,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 if (	NQ >= "110" and
 		      RQ >= "00000100") then
 		    CQ_D <= init_opcode;
@@ -390,7 +388,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 	    CQ_D <= start_state;
       when start_state =>
 		 OERAM_40_D <= '1';
@@ -406,13 +404,15 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 if (REFRESH='1') then
 		    CQ_D <= refresh_start;
 		 elsif (TRANSFER and RW_40 and (not SCLK))='1' then
 		    CQ_D <= read_start_ras;
+			 --CQ_D <= write_line_s3;
 		 elsif (TRANSFER and (not RW_40) and SCLK)='1' then
 		    CQ_D <= write_start_ras;
+			 --CQ_D <= write_line_s3;
 		 else
 		    CQ_D <= start_state;
 		 end if;
@@ -430,7 +430,7 @@ begin
 		 CAS_D <= '0';
 		 RAS_D <= '0';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= refresh_wait;
       when refresh_wait =>
 		 OERAM_40_D <= '1';
@@ -446,7 +446,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 if (NQ >= "110") then
 		    CQ_D <= start_state;
 		 else
@@ -482,7 +482,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_start_cas;
       when read_start_cas =>
 		 OERAM_40_D <= '0';
@@ -514,7 +514,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_data_wait;
       when read_data_wait =>
 		 OERAM_40_D <= '0';
@@ -529,7 +529,7 @@ begin
 		 TA40_D <= '0';
 		 CAS_D <= '1';
 		 RAS_D <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 ENACLK_PRE <= '0';
 		 if (SIZ40 ="11") then
 		    CQ_D <= read_line_s0;
@@ -550,7 +550,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s1;
       when read_line_s1 =>
 		 OERAM_40_D <= '0';
@@ -566,7 +566,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s2;
       when read_line_s2 =>
 		 OERAM_40_D <= '0';
@@ -582,7 +582,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s3;
       when read_line_s3 =>
 		 OERAM_40_D <= '0';
@@ -598,7 +598,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s4;
       when read_line_s4 =>
 		 OERAM_40_D <= '0';
@@ -614,7 +614,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= read_line_s5;
       when read_line_s5 =>
 		 OERAM_40_D <= '0';
@@ -630,7 +630,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= precharge;
       when write_start_ras =>
 		 OERAM_40_D <= '1';
@@ -662,7 +662,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_tra_ack;
       when write_tra_ack =>
 		 OERAM_40_D <= '1';
@@ -678,7 +678,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_start_cas;
       when write_start_cas =>
 		 OERAM_40_D <= '1';
@@ -711,7 +711,7 @@ begin
 		 TA40_D <= '0';
 		 CAS_D <= '1';
 		 RAS_D <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 if (SIZ40 ="11") then
 			 ENACLK_PRE <= '0';
 		    CQ_D <= write_line_s0;
@@ -733,7 +733,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s1;
       when write_line_s1 =>
 		 OERAM_40_D <= '1';
@@ -749,7 +749,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s2;
       when write_line_s2 =>
 		 OERAM_40_D <= '1';
@@ -765,7 +765,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s3;
       when write_line_s3 =>
 		 OERAM_40_D <= '1';
@@ -781,7 +781,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '0';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= write_line_s4;
       when write_line_s4 =>
 		 OERAM_40_D <= '1';
@@ -797,7 +797,7 @@ begin
 		 CAS_D <= '1';
 		 RAS_D <= '1';
 		 ENACLK_PRE <= '1';
-		 ARAM_D <= ARAM_ZERO;
+		 ARAM_D <= "000000000000";
 		 CQ_D <= precharge;
       when precharge =>
 		 OERAM_40_D <= '1';
