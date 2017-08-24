@@ -60,8 +60,8 @@ ARCHITECTURE behavior OF card_controll_test IS
          TT40 : IN  std_logic_vector(1 downto 0);
          TS40 : IN  std_logic;
          PLL_S : OUT  std_logic_vector(1 downto 0);
-         CLK30 : INOUT  std_logic;
-         PCLK : OUT  std_logic;
+         CLK30 : IN  std_logic;
+         PCLK : inOUT  std_logic;
          BCLK : OUT  std_logic;
          SCLK : INOUT  std_logic;
          CLK_BS : OUT  std_logic;
@@ -271,7 +271,7 @@ BEGIN
 	begin
 		STERM30 <='1';
 		DSACK30 <= "11";
-		wait until AS30 = '0' and rising_edge(CLK30);
+		wait until AS30 = '0';
 		case ACTUAL_BUS_TERM is
 			when BUS_32 =>
 				STERM30 <='1';
@@ -355,15 +355,15 @@ BEGIN
 		wait for PLL_CLK_period*16;
 		TT40 <="00";
 		TM40 <= "000";
-		A40 <= "00";
+		A40 <= "10";
 		SIZ40 <="00"; --line
 		SEL16M <='1';
 
 		
-		ACTUAL_BUS_TERM <= BUS_16;
-		RW40 <= '0';
+		ACTUAL_BUS_TERM <= BUS_8;
+		RW40 <= '1';
 		TRANSFER_IN_PROGRES <='1';
-		wait for PLL_CLK_period*1600000;
+		wait for PLL_CLK_period*100;
       TRANSFER_IN_PROGRES <='0';
 
 		wait;

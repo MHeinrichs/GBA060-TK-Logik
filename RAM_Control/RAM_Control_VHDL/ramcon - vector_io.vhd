@@ -84,9 +84,10 @@ architecture ramcon_behav of ramcon is
    signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
-   signal ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0);   
-   signal ARAM_OPTCODE: STD_LOGIC_VECTOR (11 downto 0);   
+   constant ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0) := "010000000000";
+   constant ARAM_OPTCODE: STD_LOGIC_VECTOR (11 downto 0) := "000000100010"; 
 	signal ENACLK_PRE : STD_LOGIC;
+	signal RAM_READY : STD_LOGIC;
    
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
@@ -117,8 +118,8 @@ begin
 			WE <= '1';
 			CAS <= '1';
 			RAS <= '1';
-			BA0 <= '1';
-			BA1 <= '1';
+			BA0 <= '0';
+			BA1 <= '0';
 			OERAM_40 <= '1';
 			OE40_RAM <= '1';
 			TA40_FB <= '1';	
@@ -128,6 +129,7 @@ begin
 			SELRAM0_D <= '0';
 			SELRAM1_D <= '0';
 			REFRESH <='0';
+			RAM_READY <='0';
       elsif rising_edge(CLK_RAMC) then
 			if(CLRREFC ='1')then
 				REFRESH <= '0';
@@ -145,6 +147,19 @@ begin
 				NQ  <= "000";
 			end if;
 
+			if(CQ=start_state)then
+				RAM_READY <='1';
+			end if;
+			
+			if(RAM_READY='1')then
+				BA0 <= A40(23);
+				BA1 <= A40(24);
+			else
+				BA0 <= '0';
+				BA1 <= '0';
+			end if;
+
+
 			SELRAM0_D <= SELRAM0;
 			SELRAM1_D <= SELRAM1;
 		
@@ -157,8 +172,6 @@ begin
 			WE <= WE_D;
 			CAS <= CAS_D;
 			RAS <= RAS_D;
-			BA0 <= A40(23);
-			BA1 <= A40(24);
 			OERAM_40 <= OERAM_40_D;
 			OE40_RAM <= OE40_RAM_D;
 			TA40_FB <= TA40_D;	
@@ -232,8 +245,7 @@ begin
 	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10) & A40(9) & A40(8) &
 	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
 	ARAM_HIGH <= A40(22 downto 11);
-	ARAM_PRECHARGE <= "010000000000";
-	ARAM_OPTCODE <= "000000100010";
+
 	UDQ0_SIG <= '0' when (A40 (1 downto 0) = "10" and SIZ40 = "01") or
 								(A40(1) = '1' and SIZ40 = "10") or
 								SIZ40 = "00" or

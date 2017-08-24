@@ -3,9 +3,9 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "ramcon";
       var device = "XC95144XL";
-      signals = new Array("ARAM0_SPECSIG","ARAM10_SPECSIG","ARAM11_SPECSIG","ARAM1_SPECSIG","ARAM2_SPECSIG","ARAM3_SPECSIG","ARAM4_SPECSIG","ARAM5_SPECSIG","ARAM6_SPECSIG","ARAM7_SPECSIG","ARAM8_SPECSIG","ARAM9_SPECSIG","BA0","BA1","CAS","CE_B0","CE_B1","CLKEN","CLK_RAM","CQ_FSM_FFd1","CQ_FSM_FFd2","CQ_FSM_FFd3","CQ_FSM_FFd4","CQ_FSM_FFd5","LDQ0","LDQ1","LE_RAM","NQ0_SPECSIG","NQ1_SPECSIG","NQ2_SPECSIG","OE40_RAM","OERAM_40","RAS","REFRESH","RQ0_SPECSIG","RQ1_SPECSIG","RQ2_SPECSIG","RQ3_SPECSIG","RQ4_SPECSIG","RQ5_SPECSIG","RQ6RQ<6>_RSTF_SPECSIG","RQ6_SPECSIG","RQ7_SPECSIG","SEL16M","SELRAM0_D","SELRAM1_D","TA40","TCI40","TRANSFER","UDQ0","UDQ1","WE");
-      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON");
-      sigTypes = new Array("D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","","","T","T","T","D","D","D","D","","D","D","D","D","D","D","D","T","T","T","T","T","T","","T","T","","D","D","D","","T","D","D","D");
+      signals = new Array("ARAM0_SPECSIG","ARAM10_SPECSIG","ARAM11_SPECSIG","ARAM1_SPECSIG","ARAM2_SPECSIG","ARAM3_SPECSIG","ARAM4_SPECSIG","ARAM5_SPECSIG","ARAM6_SPECSIG","ARAM7_SPECSIG","ARAM8_SPECSIG","ARAM9_SPECSIG","BA0","BA1","CAS","CE_B0","CE_B1","CLKEN","CLK_RAM","CQ_FSM_FFd1","CQ_FSM_FFd2","CQ_FSM_FFd3","CQ_FSM_FFd4","CQ_FSM_FFd5","LDQ0","LDQ1","LE_RAM","NQ0_SPECSIG","NQ1_SPECSIG","NQ2_SPECSIG","OE40_RAM","OERAM_40","RAM_READY","RAS","REFRESH","RQ0_SPECSIG","RQ1_SPECSIG","RQ2_SPECSIG","RQ3_SPECSIG","RQ4_SPECSIG","RQ5_SPECSIG","RQ6RQ<6>_RSTF_SPECSIG","RQ6_SPECSIG","RQ7_SPECSIG","SEL16M","SELRAM0_D","SELRAM1_D","TA40","TCI40","TRANSFER","UDQ0","UDQ1","WE");
+      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON");
+      sigTypes = new Array("D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","","","T","T","T","D","D","D","D","","D","D","D","D","D","D","D","D","T","T","T","T","T","T","","T","T","","D","D","D","","T","D","D","D");
 
       
         specSig["A4027_SPECSIG"]=new Array("A40<27>");
@@ -176,6 +176,8 @@
           
             pterms["FB2_9_1"]=new Array("/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG");
           
+            pterms["FB2_10_1"]=new Array("CQ_FSM_FFd3","/CQ_FSM_FFd4","/CQ_FSM_FFd5","/CQ_FSM_FFd1","/CQ_FSM_FFd2");
+          
             pterms["FB2_11_1"]=new Array("CQ_FSM_FFd3","CQ_FSM_FFd5","/CQ_FSM_FFd1","CQ_FSM_FFd2","A4013_SPECSIG");
           
             pterms["FB2_11_2"]=new Array("CQ_FSM_FFd3","/CQ_FSM_FFd4","CQ_FSM_FFd5","CQ_FSM_FFd1","/CQ_FSM_FFd2","A404_SPECSIG");
@@ -262,11 +264,11 @@
           
             pterms["FB3_18_5"]=new Array("RESET","CQ_FSM_FFd1","/TRANSFER","/A4030_SPECSIG","/A4029_SPECSIG","/A4028_SPECSIG","A4027_SPECSIG","/TT40_1","/TS40");
           
-            pterms["FB4_2_1"]=new Array("A4023_SPECSIG");
+            pterms["FB4_2_1"]=new Array("RAM_READY","A4023_SPECSIG");
           
             pterms["FB4_5_1"]=new Array("A4022_SPECSIG","CQ_FSM_FFd3","CQ_FSM_FFd5","/CQ_FSM_FFd1","CQ_FSM_FFd2");
           
-            pterms["FB4_6_1"]=new Array("A4024_SPECSIG");
+            pterms["FB4_6_1"]=new Array("RAM_READY","A4024_SPECSIG");
           
             pterms["FB4_8_1"]=new Array("A4020_SPECSIG","CQ_FSM_FFd3","CQ_FSM_FFd5","/CQ_FSM_FFd1","CQ_FSM_FFd2");
           
@@ -720,6 +722,18 @@
           
             d2imp["SEL16M"]=new Array("1");
           
+          d2["RAM_READY"]=new Array("VCC");
+          
+            d2imp["RAM_READY"]=new Array("1");
+          
+              gblclk["RAM_READY"]=new Array("CLK_RAMC");
+            
+              gblrst["RAM_READY"]=new Array("RESET");
+            
+          ce["RAM_READY"]=new Array("FB2_10_1");
+          
+            ceimp["RAM_READY"]=new Array("1");
+          prld["RAM_READY"]="GND";
           d2["ARAM2_SPECSIG"]=new Array("FB2_11_1","FB2_11_2","FB2_11_3");
           
             d2imp["ARAM2_SPECSIG"]=new Array("1","1","1");
@@ -808,7 +822,7 @@
           
               gblclk["BA0"]=new Array("CLK_RAMC");
             
-              gblset["BA0"]=new Array("RESET");
+              gblrst["BA0"]=new Array("RESET");
             prld["BA0"]="GND";
           d2["ARAM11_SPECSIG"]=new Array("FB4_5_1");
           
@@ -824,7 +838,7 @@
           
               gblclk["BA1"]=new Array("CLK_RAMC");
             
-              gblset["BA1"]=new Array("RESET");
+              gblrst["BA1"]=new Array("RESET");
             prld["BA1"]="GND";
           d2["ARAM9_SPECSIG"]=new Array("FB4_8_1","FB4_8_2","FB4_8_3");
           
