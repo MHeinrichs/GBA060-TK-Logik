@@ -975,7 +975,7 @@ LAB12:    xsi_set_current_line(356, ng0);
     t4 = *((char **)t3);
     t5 = (t4 + 56U);
     t6 = *((char **)t5);
-    *((unsigned char *)t6) = (unsigned char)3;
+    *((unsigned char *)t6) = (unsigned char)2;
     xsi_driver_first_trans_fast(t2);
     xsi_set_current_line(364, ng0);
     t2 = (t0 + 14936);
@@ -997,7 +997,7 @@ LAB12:    xsi_set_current_line(356, ng0);
     t2 = (t0 + 10608U);
     t3 = *((char **)t2);
     t9 = *((int64 *)t3);
-    t12 = (t9 * 100);
+    t12 = (t9 * 200);
     t2 = (t0 + 13128);
     xsi_process_wait(t2, t12);
 

@@ -355,15 +355,15 @@ BEGIN
 		wait for PLL_CLK_period*16;
 		TT40 <="00";
 		TM40 <= "000";
-		A40 <= "10";
+		A40 <= "00";
 		SIZ40 <="00"; --line
 		SEL16M <='1';
 
 		
-		ACTUAL_BUS_TERM <= BUS_8;
+		ACTUAL_BUS_TERM <= BUS_16;
 		RW40 <= '1';
 		TRANSFER_IN_PROGRES <='1';
-		wait for PLL_CLK_period*100;
+		wait for PLL_CLK_period*200;
       TRANSFER_IN_PROGRES <='0';
 
 		wait;

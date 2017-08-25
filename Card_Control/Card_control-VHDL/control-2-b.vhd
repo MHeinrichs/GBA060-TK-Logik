@@ -124,7 +124,6 @@ architecture Behavioral of control is
 				size_decode,	--001
 				get_byte2,		--010
 				get_byte1,		--100
-				get_byte0,		--100
 				get_low_word,	--011				
 				cycle_end		--101
 				);
@@ -155,7 +154,6 @@ signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	AMISEL : STD_LOGIC:='0';	--AMiga or interrupt select
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	CLK30_D : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_RING : STD_LOGIC_VECTOR (1 downto 0);	--internes Signal f?r die Takttung der Statemachine
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -173,7 +171,6 @@ signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
-signal	LE_BS_SIG_D : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
 signal	TERM : STD_LOGIC:='0'; 	  --Terminierungssignal
 signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TIP_CLK : STD_LOGIC:='0'; --Signal "transfer in progress"
@@ -231,9 +228,6 @@ begin
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			--BCLK040_SIG	<= BCLK060_SIG;
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
-			DSACK_SAMPLED <= DSACK30;
-			STERM_SAMPLED <= STERM30;
-			CLK30_D <= CLK30;
 		end if;
 	end process CLOCKS_P;
 	
@@ -345,7 +339,7 @@ begin
 		end if;
 	end process TIP_SAMPLE;
 	
-	TACK_LATCH: process(TACK_D0,RSTI40_SIG,TA40_SIG)
+	TACK_LATCH: process(TACK060,RSTI40_SIG,TA40_SIG)
 	begin
 		if(TACK_D0='0' or RSTI40_SIG ='0')then
 			TACK <='1';
@@ -373,21 +367,25 @@ begin
 	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK060 when AMISEL = '1' else 'Z';
-	LE_BS		<= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';-- when TIP='1' and TACK = '1' else '0';--'0' when NAMIACC = '1' else LE_BS_D;
+	LE_BS		<= LE_BS_SIG;-- when TIP='1' and TACK = '1' else '0';--'0' when NAMIACC = '1' else LE_BS_D;
 	
-	STATE_030_P: process(RSTI40_SIG,CLK30_D)
+	STATE_030_P: process(RSTI40_SIG,CLK30)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;   					
-			--LE_BS_SIG 	<= '1';
-			--LE_BS_SIG_D <= '1';
+			SIZ30_D	<= "00";				
+			AL_D <="00";		
 			SIZING <= idle;
-		elsif(rising_edge(CLK30_D)) then		
-			SIZING	<= SIZING_D;							
+
+		elsif(rising_edge(CLK30)) then		
+				--sizing statemachine
+			SIZING	<= SIZING_D;
+
+
+								
 			--this is the clocked statemachine transition process
 			case SM_030_P is
 				when S0 =>
-					--LE_BS_SIG<= '1';
 					if(TIP ='1'   
 						or(SIZING_D/=cycle_end and SIZING_D/=idle)
 						) then												
@@ -396,18 +394,47 @@ begin
 						SM_030_P <= S0;
 					end if;
 					
+					case SIZING is
+						when idle =>
+							SIZ30_D(0)	<= BYTE;
+							SIZ30_D(1)	<= WORD;								
+							if(LONG = '0') then
+								AL_D <=	A40;
+							else
+								AL_D <= "00";
+							end if;
+						when size_decode =>
+							SIZ30_D(0)	<= BYTE;
+							SIZ30_D(1)	<= WORD;								
+							if(LONG = '0') then
+								AL_D <=	A40;
+							else
+								AL_D <= "00";
+							end if;
+						when get_byte2 =>
+							SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
+							AL_D		<=	"01";
+						when get_low_word =>
+							SIZ30_D(0)	<= BYTE;
+							SIZ30_D(1)	<= LONG;
+							AL_D	<= "10";
+						when get_byte1 =>
+							SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
+							AL_D		<=	"11";
+						when cycle_end=>
+							SIZ30_D	<= "00";				
+							AL_D <="00";				
+					end case;
 				--when S0_BUS_SIZING =>
 				--	SM_030_P <= S2;
 				when S2 =>
-					--LE_BS_SIG 	<= '0';
-					if(STERM_SAMPLED = '0')then --at the beginning of s2 sterm is sampled!
+					if(STERM30 = '0')then --at the beginning of s2 sterm is sampled!
 						--cool:short termination!
 						SM_030_P <= S0;
 					else
 						SM_030_P <= S4;
 					end if;
 				when S4 => --wait here until DSACK is valid!
-					--LE_BS_SIG 	<= '0';
 					if(SM_030_N=S5)then
 						--if(SIZING_D=cycle_end)then
 							SM_030_P <= S0;
@@ -421,30 +448,26 @@ begin
 		end if;		
 	end process STATE_030_P;
 
-	STATE_030_N: process(RSTI40_SIG,CLK30_D)
+	STATE_030_N: process(RSTI40_SIG,CLK30)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_N <= S1;
 			AS30_SIG <= '1';
 			DS30_SIG <= '1';
-			DSACK_VALID <= "11";
-			LE_BS_SIG 	<= '1';
-			LE_BS_SIG_D <= '1';
-		elsif(falling_edge(CLK30_D)) then
+			DSACK_SAMPLED <= "11";
+			LE_BS_SIG 	<= '0';
+		elsif(falling_edge(CLK30)) then
 			--this is the clocked statemachine transition process
-			--sizing statemachine
-			LE_BS_SIG_D <= LE_BS_SIG;
-
 			case SM_030_N is
 				when S1 =>
 					LE_BS_SIG<= '0';
-					DSACK_VALID <= "11";
 					if(SM_030_P=S2
 						) then												
 						AS30_SIG <= '0';
 						DS30_SIG <= not RW40;
 						SM_030_N <= S3;
 					else
+						DSACK_SAMPLED <= "11";
 						SM_030_N <= S1;
 						AS30_SIG <= '1';
 						DS30_SIG <= '1';
@@ -453,15 +476,11 @@ begin
 					DS30_SIG <= '0';
 					AS30_SIG <= '0';
 					if(SM_030_P=S0)then --STERM!!!!
-						DSACK_VALID <= "00";
+						DSACK_SAMPLED <= "00";
 						SM_030_N <= S1;
 						LE_BS_SIG<= '1';						
-					elsif(BERR30  = '0' or STERM_SAMPLED = '0')then
-						DSACK_VALID <= "00";
-						SM_030_N <= S5;
-						LE_BS_SIG<= '0';
-					elsif(DSACK_SAMPLED /="11")then
-						DSACK_VALID <= DSACK_SAMPLED;
+					elsif(DSACK30 /="11" or BERR30  = '0' or STERM30 = '0')then
+						DSACK_SAMPLED <= DSACK30;
 						SM_030_N <= S5;
 						LE_BS_SIG<= '0';
 					else
@@ -479,15 +498,15 @@ begin
 	end process STATE_030_N;
 	
 	
-	--TERM <= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';
-	TERM <= '1' when	SM_030_N=S1 else '0';
-
+	DSACK_VALID <= DSACK_SAMPLED;
+	--TERM <= LE_BS_SIG;
+	TERM <= '1' when	SM_030_P=S0 else '0';
 
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, A40,
 	 RW40, DSACK_VALID,
-	 TT40, BYTE, WORD, LONG, SM_030_P,TERM,AMISEL)
+	 TT40, BYTE, WORD, LONG, SM_030_P,TERM)
    begin
       if(SIZING =cycle_end) then
 			TA40_SIG	<= '0';
@@ -501,13 +520,6 @@ begin
 		
       case SIZING is
 			when idle =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= WORD;								
-				if(LONG = '0') then
-					AL_D <=	A40;
-				else
-					AL_D <= "00";
-				end if;
 				BWL_BS	<= "111";					
 				if( SM_030_P = S2 ) then
 					SIZING_D <=size_decode;
@@ -515,13 +527,6 @@ begin
 					SIZING_D <=idle;
 				end if;					
 			when size_decode =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= WORD;								
-				if(LONG = '0') then
-					AL_D <=	A40;
-				else
-					AL_D <= "00";
-				end if;
 				--bus code for data latch
 				if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
 						(RW40 ='1' and DSACK_VALID/="11")) then --READ: any port
@@ -546,91 +551,96 @@ begin
 					BWL_BS(2)	<=	'1';
 				end if;
 
-				if( TERM ='1' and DSACK_VALID="10" and 				-- BYTETERM
+				if( TERM ='1' and DSACK_VALID="10" and 							-- byteterm
 						(LONG = '1' or (WORD = '1' and A40(1)='0'))	-- LONG or WORD0
 					) then
 					SIZING_D <= get_byte2;
 				elsif(TERM ='1' and DSACK_VALID="10" and  			-- BYTETERM
 						WORD = '1' and A40(1)='1'		-- WORD2
 					) then
-					SIZING_D <= get_byte0;
-				elsif(TERM ='1' and DSACK_VALID="10" and				-- BYTETERM
-						BYTE = '1'							-- BYTE
-					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= get_byte1;
 				elsif(TERM ='1' and DSACK_VALID="01" and 			-- WORDTERM
 						LONG = '1'							-- LONG
 					) then
 					SIZING_D <= get_low_word;
+				elsif(TERM ='1' and DSACK_VALID="00"					-- LONGTERM
+					) then
+					SIZING_D <= cycle_end;
 				elsif(TERM ='1' and DSACK_VALID="01" 	and			-- WORDTERM
 						(WORD = '1' or BYTE = '1')		-- WORD or BYTE
 					) then
 					SIZING_D <= cycle_end;
-				elsif(TERM ='1' and DSACK_VALID="00"					-- LONGTERM
+				elsif(TERM ='1' and DSACK_VALID="10" and				-- BYTETERM
+						BYTE = '1'							-- BYTE
 					) then
 					SIZING_D <= cycle_end;
 				else
 					SIZING_D <= size_decode;
 				end if;
-			when get_low_word =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= LONG;
-				AL_D	<= "10";
-				if(RW40='0') then
-					BWL_BS(2 downto 0) <= "010";
+			when get_byte2 =>
+				BWL_BS(0)	<= '1';
+				if((RW40='0' or (RW40='1' and DSACK_VALID="10"))) then
+					BWL_BS(1) <= '0';
+					BWL_BS(2) <= '0';
 				else
-					BWL_BS(2 downto 0) <= "101";
+					BWL_BS(1) <= '1';
+					BWL_BS(2) <= '1';
+				end if;
+				
+				if(TERM ='1' and DSACK_VALID="10" and  						-- BYTETERM
+					WORD = '1' and A40(1)='0'						-- WORD0
+					) then
+					SIZING_D <= cycle_end;
+				elsif(TERM ='1' and DSACK_VALID="10" and  						-- BYTETERM
+					LONG = '1'											-- LONG
+					) then
+					SIZING_D <= get_low_word;
+				else
+					SIZING_D <= get_byte2;
+				end if;
+			when get_low_word =>
+				if(RW40='0' or (RW40='1' and DSACK_VALID="10")) then
+					BWL_BS(0) <= '0';
+					BWL_BS(2) <= '0';
+				else
+					BWL_BS(0) <= '1';
+					BWL_BS(2) <= '1';
+				end if;
+				if(AMISEL ='1' and  RW40='1' and DSACK_VALID="01" )then
+					BWL_BS(1) <= '0';
+				else
+					BWL_BS(1) <= '1';
 				end if;
 					
-				if(TERM ='1' -- WORDTERM
+				if(TERM ='1' and    DSACK_VALID="10" 	-- BYTETERM
+					 and LONG = '1'
+					) then
+					SIZING_D <= get_byte1;
+				elsif(TERM ='1' and DSACK_VALID="01"  -- WORDTERM
+					 and LONG = '1'
 					) then
 					SIZING_D <= cycle_end;
 				else
 					SIZING_D <= get_low_word;
 				end if;
-			when get_byte2 =>
-				SIZ30_D	<= "01";
-				AL_D		<=	"01";
-				BWL_BS(2 downto 0) <= "001";
-				
-				if(TERM ='1' and   						-- BYTETERM
-					WORD = '1' 			-- WORD0
-					) then
-					SIZING_D <= cycle_end;
-				elsif(TERM ='1' and 						-- BYTETERM
-					LONG = '1'											-- LONG
-					) then
-					SIZING_D <= get_byte1;
-				else
-					SIZING_D <= get_byte2;
-				end if;
 			when get_byte1 =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= LONG;
-				AL_D	<= "10";
-				BWL_BS(2 downto 0) <= "010";
-					
-				if(TERM = '1' -- BYTETERM
-					 and LONG = '1'
-					) then
-					SIZING_D <= get_byte0;
-				else
-					SIZING_D <= get_byte1;
-				end if;
-			when get_byte0 =>
-				SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
-				AL_D		<=	"11";
-				BWL_BS(2 downto 0) <= "011";
+				BWL_BS(1 downto 0) <= "11";
 				
-				if(	TERM ='1'  -- BYTETERM				
+				if(RW40='0' or (RW40='1' and DSACK_VALID="10"))then
+					BWL_BS(2) <= '0';
+				else
+					BWL_BS(2) <= '1';
+				end if;
+				
+				if(	TERM ='1' and DSACK_VALID="10" and-- BYTETERM				
+						(LONG = '1' or											-- LONG
+						(WORD = '1' and A40(1)='1'))						-- WORD2	
 					 ) then
 					SIZING_D <= cycle_end;
 				else
-					SIZING_D <= get_byte0;
+					SIZING_D <= get_byte1;
 				end if;
 			when cycle_end=>
-				SIZ30_D	<= "00";				
-				AL_D <="00";				
 				BWL_BS <= "111";
 				SIZING_D <=idle;
       end case;

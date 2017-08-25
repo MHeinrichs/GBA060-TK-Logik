@@ -125,10 +125,6 @@
       <obj_property name="ElementShortName">bclk</obj_property>
       <obj_property name="ObjectShortName">bclk</obj_property>
    </wvobject>
-   <wvobject fp_name="/card_controll_test/sclk" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">sclk</obj_property>
-      <obj_property name="ObjectShortName">sclk</obj_property>
-   </wvobject>
    <wvobject fp_name="/card_controll_test/clk_bs" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_bs</obj_property>
       <obj_property name="ObjectShortName">clk_bs</obj_property>
@@ -160,6 +156,10 @@
    <wvobject fp_name="/card_controll_test/fc30" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">fc30[2:0]</obj_property>
       <obj_property name="ObjectShortName">fc30[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/card_controll_test/sclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sclk</obj_property>
+      <obj_property name="ObjectShortName">sclk</obj_property>
    </wvobject>
    <wvobject fp_name="/card_controll_test/clk30" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk30</obj_property>
