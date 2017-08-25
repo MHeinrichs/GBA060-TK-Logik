@@ -120,14 +120,15 @@
 <td align="center" width="10%"><a href="#" onmouseover="this._tip = 'SEL16M'; window.status='Input Signal'; return true;" onmouseout="window.status=''" class="tipBoxCursor">I</a></td>
 </tr>
 <tr>
-<td align="center" width="10%">(unused)</td>
-<td align="center" width="10%">0</td>
-<td align="center" width="30%"> </td>
+<td align="center" width="10%"><a href="Javascript:showEqn('DSACK_SAMPLED0_SPECSIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">DSACK_SAMPLED&lt;0&gt;</a></td>
+<td align="center" width="10%">1</td>
+<td align="center" width="30%"> <a href="Javascript:showPT('FB2_10_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">10_1</a>
+</td>
 <td align="center" width="10%">MC10</td>
-<td align="center" width="10%"> </td>
+<td align="center" width="10%">STD</td>
 <td align="center" width="10%"> </td>
 <td align="center" width="10%">(b)</td>
-<td align="center" width="10%"> </td>
+<td align="center" width="10%">(b)</td>
 </tr>
 <tr>
 <td align="center" width="10%"><a href="Javascript:showEqn('CLK_RAMC')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">CLK_RAMC</a></td>
@@ -152,9 +153,9 @@
 <td align="center" width="10%">O</td>
 </tr>
 <tr>
-<td align="center" width="10%"><a href="Javascript:showEqn('TACK060TACK060_TRST_SPECSIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">TACK060/TACK060_TRST</a></td>
-<td align="center" width="10%">2</td>
-<td align="center" width="30%"> <a href="Javascript:showPT('FB2_13_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">13_1</a> <a href="Javascript:showPT('FB2_13_2')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">13_2</a>
+<td align="center" width="10%"><a href="Javascript:showEqn('CLK30_SIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">CLK30_SIG</a></td>
+<td align="center" width="10%">1</td>
+<td align="center" width="30%"> <a href="Javascript:showPT('FB2_13_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">13_1</a>
 </td>
 <td align="center" width="10%">MC13</td>
 <td align="center" width="10%">STD</td>
@@ -185,7 +186,7 @@
 <td align="center" width="10%">O</td>
 </tr>
 <tr>
-<td align="center" width="10%"><a href="Javascript:showEqn('BCLK060_SIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">BCLK060_SIG</a></td>
+<td align="center" width="10%"><a href="Javascript:showEqn('OE_BS_OBUFQ12_SPECSIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">OE_BS_OBUF$Q12</a></td>
 <td align="center" width="10%">2</td>
 <td align="center" width="30%"> <a href="Javascript:showPT('FB2_16_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">16_1</a> <a href="Javascript:showPT('FB2_16_2')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">16_2</a>
 </td>
@@ -207,9 +208,9 @@
 <td align="center" width="10%">O</td>
 </tr>
 <tr>
-<td align="center" width="10%"><a href="Javascript:showEqn('RSTINT')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">RSTINT</a></td>
-<td align="center" width="10%">3</td>
-<td align="center" width="30%"> <a href="Javascript:showPT('FB2_18_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">18_1</a> <a href="Javascript:showPT('FB2_18_2')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">18_2</a> <a href="Javascript:showPT('FB2_18_3')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">18_3</a>
+<td align="center" width="10%"><a href="Javascript:showEqn('BCLK060_SIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">BCLK060_SIG</a></td>
+<td align="center" width="10%">2</td>
+<td align="center" width="30%"> <a href="Javascript:showPT('FB2_18_1')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">18_1</a> <a href="Javascript:showPT('FB2_18_2')" onmouseover="window.status='show Pterm'; return true;" onmouseout="window.status=''">18_2</a>
 </td>
 <td align="center" width="10%">MC18</td>
 <td align="center" width="10%">STD</td>
@@ -223,11 +224,10 @@
 <li>A40&lt;0&gt;</li>
 <li>A40&lt;1&gt;</li>
 <li><a href="Javascript:showEqn('CLK30_SIG')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">CLK30_SIG</a></li>
-<li>RESET30.PIN</li>
+<li>DSACK30&lt;0&gt;</li>
 <li><a href="Javascript:showEqn('PCLK')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">PCLK</a></li>
 <li><a href="Javascript:showEqn('RSTI40')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">RSTI40</a></li>
 <li>RSTO40</li>
-<li><a href="Javascript:showEqn('SCLK')" onmouseover="window.status='show Equation'; return true;" onmouseout="window.status=''">SCLK</a></li>
 <li>SEL16M</li>
 <li>SIZ40&lt;0&gt;</li>
 <li>SIZ40&lt;1&gt;</li>

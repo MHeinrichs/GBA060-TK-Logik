@@ -163,6 +163,8 @@ signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
+signal	AS30_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
+signal	DS30_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	RSTI40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung
@@ -178,8 +180,10 @@ signal	TERM : STD_LOGIC:='0'; 	  --Terminierungssignal
 signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TIP_CLK : STD_LOGIC:='0'; --Signal "transfer in progress"
 signal	TA40_SIG : STD_LOGIC:='0'; --Signal "transfer acknowledge"
+signal	TACK_ARMED	 : STD_LOGIC:='0'; --Signal "transfer acknowledge" ready to arm
 signal	TACK	 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TACK_D0: STD_LOGIC:='0'; --Signal "transfer acknowledge" delayed
+signal	TACK_D1: STD_LOGIC:='0'; --Signal "transfer acknowledge" delayed
 signal	TACK060: STD_LOGIC:='0'; --Signal "transfer acknowledge"
 signal	TS40_D0 : STD_LOGIC:='0'; --Delayed variant of Transfer start for edge detection
 
@@ -220,12 +224,13 @@ begin
 	BCLK_SIG <= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
 	--BCLK	<= BCLK040_SIG;
 	--BCLK_SIG <= BCLK040_SIG;
+	CLK_BS	<= '1';
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
 		if (rising_edge(PLL_CLK)) then
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
-			CLK_BS	<= not CLK_RAMC_SIG;
+			--CLK_BS	<= not CLK_RAMC_SIG;
 			PCLK	<= not CLK_RAMC_SIG;		
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
@@ -233,11 +238,14 @@ begin
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
 			DSACK_SAMPLED <= DSACK30;
 			STERM_SAMPLED <= STERM30;
-			
+			--just a little delay to my friends!
+			AS30_SIG_D <= AS30_SIG;
+			DS30_SIG_D <= DS30_SIG;
+			LE_BS_SIG_D <= LE_BS_SIG;
 		end if;
 	end process CLOCKS_P;
-	--CLK30_D <= CLK30;
-	CLK30_D <= SCLK_SIG;
+	CLK30_D <= CLK30;
+	--CLK30_D <= SCLK_SIG;
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
@@ -280,7 +288,7 @@ begin
 	--MDIS40			= RSTINT															// MMU-Disable deativiert		(ein Pullup tut es)
 	--				# !RSTINT & DLE_off;											// 040: DLE-Mode deaktiviert	060: keine Bedeutung
 	BGR60	<= '0'; --no DMA!
-	TCI40 <= 'Z';
+	--TCI40 <= 'Z';
 	RW30	<= RW40 when CONTROL40_OE ='1' else 'Z';
 	SIZ30	<= SIZ30_D when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_D when CONTROL40_OE ='1' else "ZZ";
@@ -334,7 +342,7 @@ begin
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
 	
-	TIP_CLK <= '1' when TS40 ='0' and ((TT40(1)='0' and SEL16M ='1')) else '0'; --and TS40_D0 ='0';
+	TIP_CLK <= '1' when TS40 ='0' and (TT40(1)='0' and SEL16M ='1') else '0'; --and TS40_D0 ='0';
 	
 	
 	TIP_SAMPLE: process (SM_030_P,RSTI40_SIG,TA40_SIG,TIP_CLK)
@@ -346,22 +354,36 @@ begin
 		end if;
 	end process TIP_SAMPLE;
 	
-	TACK_LATCH: process(TACK_D0,RSTI40_SIG,TA40_SIG)
+	TACK_GEN: process(RSTI40_SIG,PCLK)
 	begin
-		if(TACK_D0='0' or RSTI40_SIG ='0')then
-			TACK <='1';
-		elsif(falling_edge(TA40_SIG))then
-			TACK<='0';
+		if(RSTI40_SIG ='0' )then
+			TACK    <= '1';
+			TACK_D0 <= '1';
+			TACK_D1 <= '1';
+			TACK_ARMED <= '0';
+		elsif(falling_edge(PCLK))then
+			if(TIP = '1') then
+				TACK_ARMED <='1';
+			elsif(TACK_D1 = '1' and TACK_ARMED = '1') then
+				TACK <= TA40_SIG;
+				TACK_D0 <= TACK;
+				TACK_D1 <= TACK_D0;
+			elsif(TACK060 = '0')then
+				TACK_ARMED <= '0';
+				TACK    <= '1';
+				TACK_D0 <= '1';
+				TACK_D1 <= '1';
+			end if;
 		end if;
-	end process TACK_LATCH;
+	end process TACK_GEN;
+
 
 	TACK_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
 	begin
 		if(RSTI40_SIG='0')then
 			TACK060 <='1';
 		elsif(falling_edge(BCLK_SIG))then
-			TACK_D0 <= TACK;
-			if(TACK = '0' or TT40(1 downto 0)="11")then
+			if((TACK_D1='0' or TT40(1 downto 0)="11") and TACK060 = '1')then
 				TACK060 <= '0';
 			else
 				TACK060 <='1';
@@ -370,9 +392,9 @@ begin
 	end process TACK_SAMPLE;
 
 
-	TEA40		<= BERR30; -- not needed anymore
-	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
-	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
+	TEA40		<= '1'; -- not needed anymore
+	AS30		<= AS30_SIG_D when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
+	DS30		<= DS30_SIG_D when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK060 when AMISEL = '1' else 'Z';
 	LE_BS		<= LE_BS_SIG;
 	
@@ -381,27 +403,20 @@ begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;   					
 			--LE_BS_SIG 	<= '1';
-			LE_BS_SIG_D <= '1';
 			SIZING <= idle;
 		elsif(rising_edge(CLK30_D)) then		
-			LE_BS_SIG_D <= LE_BS_SIG;
 			SIZING	<= SIZING_D;							
 			--this is the clocked statemachine transition process
 			case SM_030_P is
 				when S0 =>
-					--LE_BS_SIG<= '1';
-					if(TIP ='1'   
+					if(TIP ='1'
 						or(SIZING_D/=cycle_end and SIZING_D/=idle)
 						) then												
 						SM_030_P <= S2;
 					else
 						SM_030_P <= S0;
 					end if;
-					
-				--when S0_BUS_SIZING =>
-				--	SM_030_P <= S2;
 				when S2 =>
-					--LE_BS_SIG 	<= '0';
 					if(STERM_SAMPLED = '0')then --at the beginning of s2 sterm is sampled!
 						--cool:short termination!
 						SM_030_P <= S0;
@@ -409,13 +424,8 @@ begin
 						SM_030_P <= S4;
 					end if;
 				when S4 => --wait here until DSACK is valid!
-					--LE_BS_SIG 	<= '0';
 					if(SM_030_N=S5)then
-						--if(SIZING_D=cycle_end)then
-							SM_030_P <= S0;
-						--else
-						--	SM_030_P <= S0_BUS_SIZING;
-						--end if;
+						SM_030_P <= S0;
 					else
 						SM_030_P <= S4;
 					end if;
@@ -431,26 +441,25 @@ begin
 			DS30_SIG <= '1';
 			DSACK_VALID <= "11";
 			LE_BS_SIG 	<= '1';
-			--LE_BS_SIG_D <= '1';
 		elsif(falling_edge(CLK30_D)) then
 			--this is the clocked statemachine transition process
-			--LE_BS_SIG_D <= LE_BS_SIG;
-
 			case SM_030_N is
 				when S1 =>
 					LE_BS_SIG<= '0';
-					DSACK_VALID <= "11";
+					--DSACK_VALID <= "11";
 					if(SM_030_P=S2
 						) then												
+						DSACK_VALID <= "00";
 						AS30_SIG <= '0';
 						DS30_SIG <= not RW40;
 						SM_030_N <= S3;
 					else
-						SM_030_N <= S1;
+						DSACK_VALID <= "11";
 						AS30_SIG <= '1';
 						DS30_SIG <= '1';
+						SM_030_N <= S1;
 					end if;
-				when S3 =>
+				when S3 =>					
 					if(SM_030_P=S0)then --STERM!!!!
 						DS30_SIG <= '1';
 						AS30_SIG <= '1';
@@ -473,6 +482,7 @@ begin
 						--wait here until bus cycle is finished
 						DS30_SIG <= '0';
 						AS30_SIG <= '0';
+						DSACK_VALID <= DSACK_SAMPLED;
 						SM_030_N <= S3;
 						LE_BS_SIG<= '0';
 					end if;
@@ -487,8 +497,11 @@ begin
 	
 	
 	--TERM <= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';
-	TERM <= '1' when	SM_030_N=S1 else '0';
+	TERM <= '1' when	LE_BS_SIG='1' else '0';
 
+	TA40_SIG	<= '0' WHEN SIZING =cycle_end else '1';
+	AS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
+	DS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
 
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
@@ -496,16 +509,6 @@ begin
 	 RW40, DSACK_VALID,
 	 TT40, BYTE, WORD, LONG, SM_030_P,TERM,AMISEL)
    begin
-      if(SIZING =cycle_end) then
-			TA40_SIG	<= '0';
-			AS30_OE	<= '0';
-			DS30_OE	<= '0';
-		else
-			TA40_SIG	<= '1';
-			AS30_OE	<= '1';
-			DS30_OE	<= '1';
-		end if;
-		
       case SIZING is
 			when idle =>
 				SIZ30_D(0)	<= BYTE;
