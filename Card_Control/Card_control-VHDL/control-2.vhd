@@ -233,10 +233,11 @@ begin
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
 			DSACK_SAMPLED <= DSACK30;
 			STERM_SAMPLED <= STERM30;
-			CLK30_D <= CLK30;
+			
 		end if;
 	end process CLOCKS_P;
-	
+	--CLK30_D <= CLK30;
+	CLK30_D <= SCLK_SIG;
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
