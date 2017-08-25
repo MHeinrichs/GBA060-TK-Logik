@@ -373,16 +373,17 @@ begin
 	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK060 when AMISEL = '1' else 'Z';
-	LE_BS		<= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';-- when TIP='1' and TACK = '1' else '0';--'0' when NAMIACC = '1' else LE_BS_D;
+	LE_BS		<= LE_BS_SIG;
 	
 	STATE_030_P: process(RSTI40_SIG,CLK30_D)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;   					
 			--LE_BS_SIG 	<= '1';
-			--LE_BS_SIG_D <= '1';
+			LE_BS_SIG_D <= '1';
 			SIZING <= idle;
 		elsif(rising_edge(CLK30_D)) then		
+			LE_BS_SIG_D <= LE_BS_SIG;
 			SIZING	<= SIZING_D;							
 			--this is the clocked statemachine transition process
 			case SM_030_P is
@@ -429,11 +430,10 @@ begin
 			DS30_SIG <= '1';
 			DSACK_VALID <= "11";
 			LE_BS_SIG 	<= '1';
-			LE_BS_SIG_D <= '1';
+			--LE_BS_SIG_D <= '1';
 		elsif(falling_edge(CLK30_D)) then
 			--this is the clocked statemachine transition process
-			--sizing statemachine
-			LE_BS_SIG_D <= LE_BS_SIG;
+			--LE_BS_SIG_D <= LE_BS_SIG;
 
 			case SM_030_N is
 				when S1 =>
@@ -450,22 +450,28 @@ begin
 						DS30_SIG <= '1';
 					end if;
 				when S3 =>
-					DS30_SIG <= '0';
-					AS30_SIG <= '0';
 					if(SM_030_P=S0)then --STERM!!!!
+						DS30_SIG <= '1';
+						AS30_SIG <= '1';
 						DSACK_VALID <= "00";
 						SM_030_N <= S1;
 						LE_BS_SIG<= '1';						
 					elsif(BERR30  = '0' or STERM_SAMPLED = '0')then
+						DS30_SIG <= '0';
+						AS30_SIG <= '0';
 						DSACK_VALID <= "00";
 						SM_030_N <= S5;
 						LE_BS_SIG<= '0';
 					elsif(DSACK_SAMPLED /="11")then
+						DS30_SIG <= '0';
+						AS30_SIG <= '0';
 						DSACK_VALID <= DSACK_SAMPLED;
 						SM_030_N <= S5;
 						LE_BS_SIG<= '0';
 					else
 						--wait here until bus cycle is finished
+						DS30_SIG <= '0';
+						AS30_SIG <= '0';
 						SM_030_N <= S3;
 						LE_BS_SIG<= '0';
 					end if;
