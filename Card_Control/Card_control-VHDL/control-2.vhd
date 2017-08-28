@@ -145,7 +145,8 @@ signal	DMA_SM: sm_dma;
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
 signal	SM_030_P : sm_68030_P :=S0; 
 signal	SM_030_N : sm_68030_N :=S1; 
-signal	STERM_SAMPLED : STD_LOGIC := '0';	--SATERM sample
+signal	SM_030_P_DELAY : STD_LOGIC := '0'; -- a delay for the sm to avoid bus mess
+signal	STERM_SAMPLED : STD_LOGIC := '0';	--STERM sample
 signal	DSACK_SAMPLED : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACK sample
 signal	DSACK_VALID : STD_LOGIC_VECTOR (1 downto 0):="00";	--Valid DSACK sample
 signal	SIZ30_D : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
@@ -155,7 +156,8 @@ signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	AMISEL : STD_LOGIC:='0';	--AMiga or interrupt select
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	CLK30_D : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	CLK30_SM : STD_LOGIC:='0';	--internes Signal f?r die Statemachine
+signal	CLK30_D : STD_LOGIC:='0';	--clk30 im eine pll-clk verzögert
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_RING : STD_LOGIC_VECTOR (1 downto 0);	--internes Signal f?r die Takttung der Statemachine
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -242,10 +244,9 @@ begin
 			AS30_SIG_D <= AS30_SIG;
 			DS30_SIG_D <= DS30_SIG;
 			LE_BS_SIG_D <= LE_BS_SIG;
+			CLK30_D <= CLK30;
 		end if;
 	end process CLOCKS_P;
-	CLK30_D <= CLK30;
-	--CLK30_D <= SCLK_SIG;
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
@@ -288,7 +289,6 @@ begin
 	--MDIS40			= RSTINT															// MMU-Disable deativiert		(ein Pullup tut es)
 	--				# !RSTINT & DLE_off;											// 040: DLE-Mode deaktiviert	060: keine Bedeutung
 	BGR60	<= '0'; --no DMA!
-	--TCI40 <= 'Z';
 	RW30	<= RW40 when CONTROL40_OE ='1' else 'Z';
 	SIZ30	<= SIZ30_D when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_D when CONTROL40_OE ='1' else "ZZ";
@@ -392,24 +392,35 @@ begin
 	end process TACK_SAMPLE;
 
 
-	TEA40		<= '1'; -- not needed anymore
+	TCI40 <= 'Z';
+	--TEA40		<= BERR30; -- not needed anymore
+	TEA40		<= '1'; 
 	AS30		<= AS30_SIG_D when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG_D when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TACK060 when AMISEL = '1' else 'Z';
 	LE_BS		<= LE_BS_SIG;
+
+	TA40_SIG	<= '0' WHEN SIZING =cycle_end else '1';
+	AS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
+	DS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
+
+	--CLK30_SM <= CLK30_D;
+	CLK30_SM <= CLK30;
 	
-	STATE_030_P: process(RSTI40_SIG,CLK30_D)
+	STATE_030_P: process(RSTI40_SIG,CLK30_SM)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_P <= S0;   					
 			--LE_BS_SIG 	<= '1';
 			SIZING <= idle;
-		elsif(rising_edge(CLK30_D)) then		
+			SM_030_P_DELAY <= '0';
+		elsif(rising_edge(CLK30_SM)) then		
 			SIZING	<= SIZING_D;							
 			--this is the clocked statemachine transition process
 			case SM_030_P is
 				when S0 =>
-					if(TIP ='1'
+					SM_030_P_DELAY <= '0';
+					if((TIP ='1' and 	SM_030_P_DELAY = '0')
 						or(SIZING_D/=cycle_end and SIZING_D/=idle)
 						) then												
 						SM_030_P <= S2;
@@ -417,6 +428,7 @@ begin
 						SM_030_P <= S0;
 					end if;
 				when S2 =>
+					SM_030_P_DELAY <= '1';
 					if(STERM_SAMPLED = '0')then --at the beginning of s2 sterm is sampled!
 						--cool:short termination!
 						SM_030_P <= S0;
@@ -424,6 +436,7 @@ begin
 						SM_030_P <= S4;
 					end if;
 				when S4 => --wait here until DSACK is valid!
+					SM_030_P_DELAY <= '1';
 					if(SM_030_N=S5)then
 						SM_030_P <= S0;
 					else
@@ -433,7 +446,7 @@ begin
 		end if;		
 	end process STATE_030_P;
 
-	STATE_030_N: process(RSTI40_SIG,CLK30_D)
+	STATE_030_N: process(RSTI40_SIG,CLK30_SM)
 	begin
 		if(RSTI40_SIG = '0')then
 			SM_030_N <= S1;
@@ -441,7 +454,7 @@ begin
 			DS30_SIG <= '1';
 			DSACK_VALID <= "11";
 			LE_BS_SIG 	<= '1';
-		elsif(falling_edge(CLK30_D)) then
+		elsif(falling_edge(CLK30_SM)) then
 			--this is the clocked statemachine transition process
 			case SM_030_N is
 				when S1 =>
@@ -466,12 +479,18 @@ begin
 						DSACK_VALID <= "00";
 						SM_030_N <= S1;
 						LE_BS_SIG<= '1';						
-					elsif(BERR30  = '0' or STERM_SAMPLED = '0')then
+					elsif(STERM_SAMPLED = '0')then
 						DS30_SIG <= '0';
 						AS30_SIG <= '0';
 						DSACK_VALID <= "00";
 						SM_030_N <= S5;
 						LE_BS_SIG<= '0';
+--					elsif(BERR30  = '0')then
+--						DS30_SIG <= '0';
+--						AS30_SIG <= '0';
+--						DSACK_VALID <= "00";
+--						SM_030_N <= S5;
+--						LE_BS_SIG<= '0';
 					elsif(DSACK_SAMPLED /="11")then
 						DS30_SIG <= '0';
 						AS30_SIG <= '0';
@@ -498,11 +517,7 @@ begin
 	
 	--TERM <= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';
 	TERM <= '1' when	LE_BS_SIG='1' else '0';
-
-	TA40_SIG	<= '0' WHEN SIZING =cycle_end else '1';
-	AS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
-	DS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
-
+	
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, A40,
