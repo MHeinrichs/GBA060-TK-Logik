@@ -95,10 +95,7 @@ entity control is
 end control;
 
 architecture Behavioral of control is
-
-	constant TACK_DELAY : integer := 0; --every number (up to three) generates a 10ns delay for the TACK Sampling
-   constant TACK_BUFFER : integer := TACK_DELAY+1; --every number (up to two) generates a 10ns delay for the TACK Sampling
-	TYPE sm_cycle_termination IS (
+   TYPE sm_cycle_termination IS (
 				idle,				--01
 				active,			--11
 				start				--00
@@ -116,7 +113,7 @@ architecture Behavioral of control is
 				S5
 				);
 
-
+				
 	--byteorder: D31-D0: byte3,byte2,byte1,byte0
 	--wordorder: D31-D0: high_word,low_word
    TYPE sm_sizing IS (
@@ -143,51 +140,47 @@ architecture Behavioral of control is
 				);
 signal	DMA_SM: sm_dma;
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
-signal	SM_030_P : sm_68030_P :=S0; 
-signal	SM_030_N : sm_68030_N :=S1; 
-signal	SM_030_P_DELAY : STD_LOGIC := '0'; -- a delay for the sm to avoid bus mess
-signal	STERM_SAMPLED : STD_LOGIC := '0';	--STERM sample
-signal	DSACK_SAMPLED : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACK sample
-signal	DSACK_VALID : STD_LOGIC_VECTOR (1 downto 0):="00";	--Valid DSACK sample
+signal	AMIQ : sm_cycle_termination;	--State-Machine Terminierung
+signal	LDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht
+signal	QDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
+signal	QDSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
+signal	QDSACK_D1 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
+signal	QDSACK_D2 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
+signal	QDSACK_D3 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
+signal	QDSACK_D4 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	SIZ30_D : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
 signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
-signal	AMISEL : STD_LOGIC:='0';	--AMiga or interrupt select
+signal	ATERM : STD_LOGIC:='0';	--
+signal	NAMIACC : STD_LOGIC:='0';	--
+signal	AMISEL : STD_LOGIC:='0';	--
+signal	COUNTHALT : STD_LOGIC_VECTOR (11 downto 0):="000000000000";	--Filter-Counter fuer HALT-Leitung
+signal	COUNTRES : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter f?r Resetsteuerung
+signal	STOPRES : STD_LOGIC:='0';	--
+signal	STOPHALT : STD_LOGIC:='0';	--Ausgangsverkettung Filter-Counter
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	CLK30_SM : STD_LOGIC:='0';	--internes Signal f?r die Statemachine
-signal	CLK30_D : STD_LOGIC:='0';	--clk30 im eine pll-clk verzögert
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	CLK30_RING : STD_LOGIC_VECTOR (1 downto 0);	--internes Signal f?r die Takttung der Statemachine
 signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	AS30_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	DS30_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	RSTI40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung
+signal	RST_TERM : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung des Terminierungsprozesses
 signal	BYTE : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von BYTE-Zugriffen
 signal	WORD : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von WORD-Zugriffen
 signal	LONG : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von LONG-Zugriffen
+signal	TERM : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation vom Zyklusende
 signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
-signal	LE_BS_SIG : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
-signal	LE_BS_SIG_D : STD_LOGIC:='0';  --Signal f?r den latch vom Bus
-signal	TERM : STD_LOGIC:='0'; 	  --Terminierungssignal
-signal	TIP : STD_LOGIC:='0'; --Signal "transfer in progress"
-signal	TIP_CLK : STD_LOGIC:='0'; --Signal "transfer in progress"
-signal	TA40_SIG : STD_LOGIC:='0'; --Signal "transfer acknowledge"
-signal	TACK_ARMED	 : STD_LOGIC:='0'; --Signal "transfer acknowledge" ready to arm
-signal	TACK	 : STD_LOGIC:='0'; --Signal "transfer acknowledge"
-signal	TACK_D0: STD_LOGIC:='0'; --Signal "transfer acknowledge" delayed
-signal	TACK_D1: STD_LOGIC:='0'; --Signal "transfer acknowledge" delayed
-signal	TACK060: STD_LOGIC:='0'; --Signal "transfer acknowledge"
-signal	TS40_D0 : STD_LOGIC:='0'; --Delayed variant of Transfer start for edge detection
+signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
+signal	LE_BS_Q : STD_LOGIC:='0';  --LE_BS_SIG auf pos SCLK synchronisiert
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -233,24 +226,17 @@ begin
 		if (rising_edge(PLL_CLK)) then
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
 			--CLK_BS	<= not CLK_RAMC_SIG;
-			PCLK	<= not CLK_RAMC_SIG;		
+			PCLK	<= not CLK_RAMC_SIG;
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			--BCLK040_SIG	<= BCLK060_SIG;
-			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
-			DSACK_SAMPLED <= DSACK30;
-			STERM_SAMPLED <= STERM30;
-			--just a little delay to my friends!
-			AS30_SIG_D <= AS30_SIG;
-			DS30_SIG_D <= DS30_SIG;
-			LE_BS_SIG_D <= LE_BS_SIG;
-			CLK30_D <= CLK30;
+			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;			
 		end if;
 	end process CLOCKS_P;
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
-		if (falling_edge(PLL_CLK)) then			
+		if (falling_edge(PLL_CLK)) then
 			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 		end if;
 	end process CLOCKS_N;
@@ -268,12 +254,11 @@ begin
 			else 
 				RSTI40_SIG	<=	'1';
 				RSTINT		<=RSTI40_SIG;
-
 			end if;
 		end if;
 	end process RESET_40I;
 
-	RSTI40 <= RSTI40_SIG;	
+	RSTI40 <= RSTI40_SIG;
 
 	--CPU Konfiguration
 	IPL40		<= "111"	when RSTINT ='0' else IPL30;	
@@ -293,7 +278,6 @@ begin
 	SIZ30	<= SIZ30_D when CONTROL40_OE ='1' else "ZZ";
 	AL 	<= AL_D when CONTROL40_OE ='1' else "ZZ";
 	A30_LE	<= '0'; -- Adress-Latch zum Mainboard transparent geschal.
-
 	ICACHE	<= '1' when TT40(1) = '0' AND (TM40 ="010" or TM40 = "110") else '0'; -- !TT1 -> normal/move16 TM2..0 -> user code access   // !TT1 -> normal/move16 TM2..0 -> supervisor code access
 
 --	1  0	/DSACK						SIZ1 SIZ0  Size030	FC2 FC1 FC0  Space
@@ -315,7 +299,7 @@ begin
 	BYTE <= '1' when SIZ40 = "01" else '0';
 	WORD <= '1' when SIZ40 = "10" else '0';
 	LONG <= '1' when SIZ40 = "11" or SIZ40 ="00" else '0';
-	
+	TERM <= '1' when ATERM = '1' else '0';
 
 	FC30(0)	<= '1' when TT40(1)='0' AND (TM40(1)='0' or TM40(1 downto 0)="11") else	-- user data
 					'1' when TT40(1 downto 0 )="10" AND TM40(0)='1' else						-- alt logical func
@@ -341,189 +325,143 @@ begin
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
-	
-	TIP_CLK <= '1' when TS40 ='0' and (TT40(1)='0' and SEL16M ='1') else '0'; --and TS40_D0 ='0';
-	
-	
-	TIP_SAMPLE: process (SM_030_P,RSTI40_SIG,TA40_SIG,TIP_CLK)
-	begin 
-		if(SM_030_P = S2 or RSTI40_SIG = '0') then
-			TIP	<= '0';
-		elsif(rising_edge(TIP_CLK)) then
-			TIP 	<= '1';
-		end if;
-	end process TIP_SAMPLE;
-	
-	TACK_GEN: process(RSTI40_SIG,PCLK)
-	begin
-		if(RSTI40_SIG ='0' )then
-			TACK    <= '1';
-			TACK_D0 <= '1';
-			TACK_D1 <= '1';
-			TACK_ARMED <= '0';
-		elsif(falling_edge(PCLK))then
-			if(TIP = '1') then
-				TACK_ARMED <='1';
-			elsif(TACK_D1 = '1' and TACK_ARMED = '1') then
-				TACK <= TA40_SIG;
-				TACK_D0 <= TACK;
-				TACK_D1 <= TACK_D0;
-			elsif(TACK060 = '0')then
-				TACK_ARMED <= '0';
-				TACK    <= '1';
-				TACK_D0 <= '1';
-				TACK_D1 <= '1';
-			end if;
-		end if;
-	end process TACK_GEN;
+
+	TEA40		<= '1'; -- not needed anymore
+	AS30		<= AS30_SIG when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
+	DS30		<= DS30_SIG when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
+	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 
 
-	TACK_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
+	
+	--sampling DSACK
+	QDSACK_SYNC: process (NAMIACC,SCLK_SIG)
 	begin
-		if(RSTI40_SIG='0')then
-			TACK060 <='1';
-		elsif(falling_edge(BCLK_SIG))then
-			if((TACK_D1='0' or TT40(1 downto 0)="11") and TACK060 = '1')then
-				TACK060 <= '0';
+		if(NAMIACC = '1')then
+			QDSACK_D0	<="11";
+			QDSACK_D1	<="11";
+			QDSACK_D2	<="11";
+			QDSACK_D3	<="11";
+			QDSACK_D4	<="11";
+			--QDSACK		<="00";
+			LE_BS_Q <= '0';
+		elsif(rising_edge(SCLK_SIG)) then
+			LE_BS_Q <= LE_BS_SIG;
+			--sample DSACK
+			if(STERM30='0') then
+				QDSACK_D0	<= "00";
+				QDSACK_D1	<= "00";
 			else
-				TACK060 <='1';
+				QDSACK_D0 <= DSACK30;
+				QDSACK_D1 <= QDSACK_D0;
+			end if;
+			QDSACK_D2 <= QDSACK_D1;
+			QDSACK_D3 <= QDSACK_D2;
+			QDSACK_D4 <= QDSACK_D3;
+		end if;
+	end process QDSACK_SYNC;
+	QDSACK	<= "00"; 
+	
+	LDSACK_SYNC: process (NAMIACC,SCLK_SIG)
+	begin
+		if(NAMIACC = '1')then
+			LDSACK	<="11";
+		elsif(falling_edge(SCLK_SIG)) then
+			--LDSACKx is sampled at idle and hold until active ends!
+			if((QDSACK(0) = '0' and (DSACK30(0)='0' or STERM30='0')) or
+				(LDSACK(0) = '0' and (AMIQ = active or AMIQ = start))	--hold to sync with CAQ
+				) then
+				LDSACK(0)	<= '0';
+			else
+				LDSACK(0)	<= '1';
+			end if;
+			
+			if((QDSACK(1) ='0' and (DSACK30(1)='0' or STERM30='0')) or
+				(LDSACK(1) ='0' and (AMIQ = active or AMIQ = start))	--hold to sync with CAQ
+				) then
+				LDSACK(1)	<= '0';
+			else
+				LDSACK(1)	<= '1';
 			end if;
 		end if;
-	end process TACK_SAMPLE;
-
-
-	TCI40 <= 'Z';
-	--TEA40		<= BERR30; -- not needed anymore
-	TEA40		<= '1'; 
-	AS30		<= AS30_SIG_D when AS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
-	DS30		<= DS30_SIG_D when DS30_OE ='1' and CONTROL40_OE ='1' else 'Z';
-	TA40 		<= TACK060 when AMISEL = '1' else 'Z';
-	LE_BS		<= LE_BS_SIG;
-
-	TA40_SIG	<= '0' WHEN SIZING =cycle_end else '1';
-	AS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
-	DS30_OE	<= '0' WHEN SIZING =cycle_end else '1';
-
-	--CLK30_SM <= CLK30_D;
-	CLK30_SM <= CLK30;
+	end process LDSACK_SYNC;
 	
-	STATE_030_P: process(RSTI40_SIG,CLK30_SM)
+	LE_BS <= LE_BS_Q;
+	
+	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
+	TERMINATION_SM: process (RST_TERM,SCLK_SIG)
 	begin
-		if(RSTI40_SIG = '0')then
-			SM_030_P <= S0;   					
-			--LE_BS_SIG 	<= '1';
-			SIZING <= idle;
-			SM_030_P_DELAY <= '0';
-		elsif(rising_edge(CLK30_SM)) then		
-			SIZING	<= SIZING_D;							
-			--this is the clocked statemachine transition process
-			case SM_030_P is
-				when S0 =>
-					SM_030_P_DELAY <= '0';
-					if((TIP ='1' and 	SM_030_P_DELAY = '0')
-						or(SIZING_D/=cycle_end and SIZING_D/=idle)
-						) then												
-						SM_030_P <= S2;
-					else
-						SM_030_P <= S0;
-					end if;
-				when S2 =>
-					SM_030_P_DELAY <= '1';
-					if(STERM_SAMPLED = '0')then --at the beginning of s2 sterm is sampled!
-						--cool:short termination!
-						SM_030_P <= S0;
-					else
-						SM_030_P <= S4;
-					end if;
-				when S4 => --wait here until DSACK is valid!
-					SM_030_P_DELAY <= '1';
-					if(SM_030_N=S5)then
-						SM_030_P <= S0;
-					else
-						SM_030_P <= S4;
-					end if;
-			end case;
-		end if;		
-	end process STATE_030_P;
-
-	STATE_030_N: process(RSTI40_SIG,CLK30_SM)
-	begin
-		if(RSTI40_SIG = '0')then
-			SM_030_N <= S1;
+		if(RST_TERM ='1') then
 			AS30_SIG <= '1';
 			DS30_SIG <= '1';
-			DSACK_VALID <= "11";
-			LE_BS_SIG 	<= '1';
-		elsif(falling_edge(CLK30_SM)) then
-			--this is the clocked statemachine transition process
-			case SM_030_N is
-				when S1 =>
-					LE_BS_SIG<= '0';
-					--DSACK_VALID <= "11";
-					if(SM_030_P=S2
-						) then												
-						DSACK_VALID <= "00";
-						AS30_SIG <= '0';
-						DS30_SIG <= not RW40;
-						SM_030_N <= S3;
-					else
-						DSACK_VALID <= "11";
-						AS30_SIG <= '1';
-						DS30_SIG <= '1';
-						SM_030_N <= S1;
-					end if;
-				when S3 =>					
-					if(SM_030_P=S0)then --STERM!!!!
-						DS30_SIG <= '1';
-						AS30_SIG <= '1';
-						DSACK_VALID <= "00";
-						SM_030_N <= S1;
-						LE_BS_SIG<= '1';						
-					elsif(STERM_SAMPLED = '0')then
-						DS30_SIG <= '0';
-						AS30_SIG <= '0';
-						DSACK_VALID <= "00";
-						SM_030_N <= S5;
-						LE_BS_SIG<= '0';
---					elsif(BERR30  = '0')then
---						DS30_SIG <= '0';
---						AS30_SIG <= '0';
---						DSACK_VALID <= "00";
---						SM_030_N <= S5;
---						LE_BS_SIG<= '0';
-					elsif(DSACK_SAMPLED /="11")then
-						DS30_SIG <= '0';
-						AS30_SIG <= '0';
-						DSACK_VALID <= DSACK_SAMPLED;
-						SM_030_N <= S5;
-						LE_BS_SIG<= '0';
-					else
-						--wait here until bus cycle is finished
-						DS30_SIG <= '0';
-						AS30_SIG <= '0';
-						DSACK_VALID <= DSACK_SAMPLED;
-						SM_030_N <= S3;
-						LE_BS_SIG<= '0';
-					end if;
-				when S5 =>
-					LE_BS_SIG<= '1';
-					SM_030_N <= S1;
-					AS30_SIG <= '1';
-					DS30_SIG <= '1';
+			ATERM <= '0';
+			LE_BS_SIG <= '0';
+			AMIQ <= start;
+		elsif(rising_edge(SCLK_SIG)) then
+			case AMIQ is
+			when start =>
+				AS30_SIG <= '0';
+				DS30_SIG <= not RW40;
+				ATERM <= '0';
+				LE_BS_SIG <= '0';
+				AMIQ <= idle;
+			when idle =>
+				--if(LDSACK="11")then					
+					AS30_SIG <= '0';
+					DS30_SIG <= '0';
+				--else
+				--	AS30_SIG <= '1';
+				--	DS30_SIG <= '1';
+				--end if;				
+				ATERM <= '0';
+				if(LDSACK /="11")then
+					LE_BS_SIG <= '1';
+					AMIQ <=active;
+				else
+					LE_BS_SIG <= '0';
+					AMIQ <=idle;
+				end if;				
+			when active =>
+				AS30_SIG <= '1';
+				DS30_SIG <= '1';
+				ATERM <= '1';
+				LE_BS_SIG <= '0';
+				AMIQ <=start;
 			end case;
 		end if;		
-	end process STATE_030_N;
+	end process TERMINATION_SM;
+		
 	
+	--sizing statemachine
+	--this is the clocked statemachine transition process
+   process (SCLK_SIG, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+      	SIZING <= idle;
+      elsif (rising_edge(SCLK_SIG)) then
+			SIZING <= SIZING_D;
+      end if;
+   end process;
 	
-	--TERM <= '1' when LE_BS_SIG='1' and LE_BS_SIG_D = '0' ELSE '0';
-	TERM <= '1' when	LE_BS_SIG='1' else '0';
-	
+	NAMIACC <= '1' when (SIZING = idle or SIZING = cycle_end) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
-   SIZING_SM: process (SIZING, A40,
-	 RW40, DSACK_VALID,
-	 TT40, BYTE, WORD, LONG, SM_030_P,TERM,AMISEL)
+   SIZING_SM: process (SIZING, TS40, SEL16M, A40,
+	 AMISEL, RW40, LDSACK,
+	 TT40, BYTE, WORD, LONG, TERM)
    begin
+		if(SIZING =cycle_end) then
+			TA40_SIG	<= '0';
+			AS30_OE		<= '0';
+			DS30_OE		<= '0';
+		else
+			if(TT40(1 downto 0)="11") then
+				TA40_SIG	<= '0';
+			else
+				TA40_SIG	<= '1';
+			end if;
+			AS30_OE		<= '1';
+			DS30_OE		<= '1';
+		end if;
+	
       case SIZING is
 			when idle =>
 				SIZ30_D(0)	<= BYTE;
@@ -534,7 +472,7 @@ begin
 					AL_D <= "00";
 				end if;
 				BWL_BS	<= "111";					
-				if( SM_030_P = S2 ) then
+				if( TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
 					SIZING_D <=size_decode;
 				else
 					SIZING_D <=idle;
@@ -549,7 +487,7 @@ begin
 				end if;
 				--bus code for data latch
 				if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
-						(RW40 ='1' and DSACK_VALID/="11")) then --READ: any port
+						(RW40 ='1' and LDSACK/="11")) then --READ: any port
 					BWL_BS(0)	<=	'0';
 				else 
 					BWL_BS(0)	<=	'1';
@@ -558,40 +496,40 @@ begin
 				if(	(RW40 ='0' and ( LONG = '1' OR			-- WRITE: LONG
 						(WORD = '1' and A40(1)='0')	or			-- WRITE: WORD A1=0
 						(BYTE = '1' and A40(1)='0')))or 			-- WRITE: BYTE A1=0
-						(RW40 ='1' AND (DSACK_VALID="01" or DSACK_VALID="10"))) then --READ: word/byte port
+						(RW40 ='1' AND (LDSACK="01" or LDSACK="10"))) then --READ: word/byte port
 					BWL_BS(1)	<=	'0';
 				else 
 					BWL_BS(1)	<=	'1';
 				end if;
 
 				if(	(RW40 ='0') or 	-- WRITE: any access
-						(RW40 ='1' AND DSACK_VALID="10")) then --READ: byte port
+						(RW40 ='1' AND LDSACK="10")) then --READ: byte port
 					BWL_BS(2)	<=	'0';
 				else 
 					BWL_BS(2)	<=	'1';
 				end if;
 
-				if( TERM ='1' and DSACK_VALID="10" and 				-- BYTETERM
+				if( TERM ='1' and LDSACK="10" and 				-- BYTETERM
 						(LONG = '1' or (WORD = '1' and A40(1)='0'))	-- LONG or WORD0
 					) then
 					SIZING_D <= get_byte2;
-				elsif(TERM ='1' and DSACK_VALID="10" and  			-- BYTETERM
+				elsif(TERM ='1' and LDSACK="10" and  			-- BYTETERM
 						WORD = '1' and A40(1)='1'		-- WORD2
 					) then
 					SIZING_D <= get_byte0;
-				elsif(TERM ='1' and DSACK_VALID="10" and				-- BYTETERM
+				elsif(TERM ='1' and LDSACK="10" and				-- BYTETERM
 						BYTE = '1'							-- BYTE
 					) then
 					SIZING_D <= cycle_end;
-				elsif(TERM ='1' and DSACK_VALID="01" and 			-- WORDTERM
+				elsif(TERM ='1' and LDSACK="01" and 			-- WORDTERM
 						LONG = '1'							-- LONG
 					) then
 					SIZING_D <= get_low_word;
-				elsif(TERM ='1' and DSACK_VALID="01" 	and			-- WORDTERM
+				elsif(TERM ='1' and LDSACK="01" 	and			-- WORDTERM
 						(WORD = '1' or BYTE = '1')		-- WORD or BYTE
 					) then
 					SIZING_D <= cycle_end;
-				elsif(TERM ='1' and DSACK_VALID="00"					-- LONGTERM
+				elsif(TERM ='1' and LDSACK="00"					-- LONGTERM
 					) then
 					SIZING_D <= cycle_end;
 				else
