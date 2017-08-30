@@ -2,9 +2,9 @@ Command line:
    card_controll_test_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  61466
+     -socket  61903
 
-Wed Aug 30 21:28:09 2017
+Wed Aug 30 22:53:57 2017
 
 
- Elaboration Time: 0.15625 sec
+ Elaboration Time: 0.140625 sec

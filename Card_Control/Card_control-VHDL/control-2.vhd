@@ -105,7 +105,8 @@ architecture Behavioral of control is
    TYPE sm_68030_N IS (
 				S1,
 				S3,
-				S5
+				S5,
+				S5_wait
 				);
 
 				
@@ -137,12 +138,6 @@ signal	DMA_SM: sm_dma;
 signal	RSTINT : STD_LOGIC:='0';	--Reset um 1 BCLK verzoegert
 signal	SM030_N : sm_68030_N;	--State-Machine negatioive CPU-Flanke (Positive SCLK)
 signal	LDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht
-signal	QDSACK : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D1 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D2 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D3 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
-signal	QDSACK_D4 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx gelatcht & verzoegert
 signal	SIZ30_D : STD_LOGIC_VECTOR (1 downto 0):="11";	--SIZ30-Signal
 signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	SIZING : sm_sizing;	--State-Machine Sizing
@@ -323,69 +318,15 @@ begin
 	AS30		<= AS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
-
-
 	
-	--sampling DSACK
-	QDSACK_SYNC: process (NAMIACC,SCLK_SIG)
+	LDSACK_SYNC: process (RSTI40_SIG,SCLK_SIG)
 	begin
-		if(NAMIACC = '1')then
-			QDSACK_D0	<="11";
-			QDSACK_D1	<="11";
-			QDSACK_D2	<="11";
-			QDSACK_D3	<="11";
-			QDSACK_D4	<="11";
-			--QDSACK		<="00";
-		elsif(rising_edge(SCLK_SIG)) then
-			--sample DSACK
-			if(STERM30='0') then
-				QDSACK_D0	<= "00";
-				QDSACK_D1 <= QDSACK_D0;
-				QDSACK_D2 <= QDSACK_D1;
-				QDSACK_D3 <= QDSACK_D2;
-				QDSACK_D4 <= QDSACK_D3;
-			elsif(DSACK30/="11")then
-				QDSACK_D0 <= DSACK30;
-				QDSACK_D1 <= QDSACK_D0;
-				QDSACK_D2 <= QDSACK_D1;
-				QDSACK_D3 <= QDSACK_D2;
-				QDSACK_D4 <= QDSACK_D3;
-			else
-				QDSACK_D0	<="11";
-				QDSACK_D1	<="11";
-				QDSACK_D2	<="11";
-				QDSACK_D3	<="11";
-				QDSACK_D4	<="11";
-			end if;
-		end if;
-	end process QDSACK_SYNC;
-	QDSACK	<= QDSACK_D0; 
-	
-	LDSACK_SYNC: process (NAMIACC,SCLK_SIG)
-	begin
-		if(NAMIACC = '1')then
-			--LDSACK	<="11";
+		if(RSTI40_SIG = '0')then
+			LE_BS	<='0';
 		elsif(falling_edge(SCLK_SIG)) then
-			--LDSACKx is sampled at idle and hold until active ends!
---			if((QDSACK(0) = '0' and (DSACK30(0)='0' or STERM30='0')) or
---				(LDSACK(0) = '0' and (SM030_N = S5 ))	--hold to sync with CAQ
---				) then
---				LDSACK(0)	<= '0';
---			else
---				LDSACK(0)	<= '1';
---			end if;
---			
---			if((QDSACK(1) ='0' and (DSACK30(1)='0' or STERM30='0')) or
---				(LDSACK(1) ='0' and (SM030_N = S5 ))	--hold to sync with CAQ
---				) then
---				LDSACK(1)	<= '0';
---			else
---				LDSACK(1)	<= '1';
---			end if;
 			LE_BS <= LE_BS_SIG;
 		end if;
 	end process LDSACK_SYNC;
-	
 	
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	TERMINATION_SM: process (RST_TERM,SCLK_SIG)
@@ -405,7 +346,6 @@ begin
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
 				SM030_N <= S3;
-				LDSACK <="11";
 			when S3 =>
 				AS30_SIG <= '0';
 				DS30_SIG <= '0';
@@ -428,6 +368,12 @@ begin
 				DS30_SIG <= '1';
 				ATERM <= '1';
 				LE_BS_SIG <= '1';
+				SM030_N <=S5_wait;
+			when S5_wait =>
+				AS30_SIG <= '1';
+				DS30_SIG <= '1';
+				ATERM <= '0';
+				LE_BS_SIG <= '0';
 				SM030_N <=S1;
 			end case;
 		end if;		
