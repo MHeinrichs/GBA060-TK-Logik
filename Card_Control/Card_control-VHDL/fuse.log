@@ -14,8 +14,7 @@ Compiling package std_logic_unsigned
 Compiling architecture behavioral of entity control [control_default]
 Compiling architecture behavior of entity card_controll_test
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
 Compiled 7 VHDL Units
 Built simulation executable C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test_isim_beh.exe
-Fuse Memory Usage: 34748 KB
+Fuse Memory Usage: 34400 KB
 Fuse CPU Usage: 530 ms

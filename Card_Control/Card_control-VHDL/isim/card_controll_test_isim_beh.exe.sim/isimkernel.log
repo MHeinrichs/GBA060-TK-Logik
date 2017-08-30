@@ -2,27 +2,9 @@ Command line:
    card_controll_test_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  55526
+     -socket  61466
 
-Thu Aug 24 16:25:22 2017
+Wed Aug 30 21:28:09 2017
 
 
- Elaboration Time: 0.203125 sec
-
- Current Memory Usage: 1495.66 Meg
-
- Total Signals          : 153
- Total Nets             : 135
- Total Signal Drivers   : 95
- Total Blocks           : 5
- Total Primitive Blocks : 4
- Total Processes        : 52
- Total Traceable Variables  : 15
- Total Scalar Nets and Variables : 518
-
- Total Simulation Time: 0.234375 sec
-
- Current Memory Usage: 866.476 Meg
-
-Thu Aug 24 16:27:50 2017
-
+ Elaboration Time: 0.15625 sec
