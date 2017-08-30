@@ -156,6 +156,9 @@ signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
+signal	TA40_LATCH : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
+signal	TA40_L_RST : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
+signal	TA40_L_CLK : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	CYCLE30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
@@ -169,7 +172,7 @@ signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
-
+signal	CLK30_D : STD_LOGIC:='0';
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -205,20 +208,18 @@ begin
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
 	BCLK_SIG <= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
-	--BCLK	<= BCLK040_SIG;
-	--BCLK_SIG <= BCLK040_SIG;
+
 	CLK_BS	<= '1';
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
 		if (rising_edge(PLL_CLK)) then
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
-			--CLK_BS	<= not CLK_RAMC_SIG;
 			PCLK	<= not CLK_RAMC_SIG;
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
-			--BCLK040_SIG	<= BCLK060_SIG;
-			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;			
+			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;		
+			CLK30_D		<= CLK30;
 		end if;
 	end process CLOCKS_P;
 	--clocks neg edge
@@ -231,8 +232,7 @@ begin
 
 	--Erzeugung der Resets
 	RESET30	<=	'0' when RSTO40 ='0' else 'Z'; 
-	--RESET30	<=	'Z'; 
-
+	
 	RESET_40I: process (SCLK_SIG)
 	begin
 		if(rising_edge(SCLK_SIG)) then
@@ -319,14 +319,32 @@ begin
 	DS30		<= DS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 	
-	LDSACK_SYNC: process (RSTI40_SIG,SCLK_SIG)
-	begin
-		if(RSTI40_SIG = '0')then
-			LE_BS	<='0';
-		elsif(falling_edge(SCLK_SIG)) then
-			LE_BS <= LE_BS_SIG;
-		end if;
-	end process LDSACK_SYNC;
+--	TA40_L_RST <= TA40_SIG;
+--	TA40_L_CLK <= not CYCLE30_OE;--'1' when SIZING = cycle_end else '0';
+--	TACK_GEN: process(TA40_L_RST,TA40_L_CLK)
+--	begin
+--		if(TA40_L_RST ='0' )then
+--			TA40_LATCH    <= '1';
+--		elsif(rising_edge(TA40_L_CLK))then
+--			TA40_LATCH    <= '0';
+--		end if;
+--	end process TACK_GEN;
+--
+--
+--	TACK_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
+--	begin
+--		if(RSTI40_SIG='0')then
+--			TA40_SIG <='1';
+--		elsif(rising_edge(BCLK_SIG))then
+--			if(TA40_LATCH='0' or TT40(1 downto 0)="11")then
+--				TA40_SIG <= '0';
+--			else
+--				TA40_SIG <='1';
+--			end if;
+--		end if;
+--	end process TACK_SAMPLE;
+
+	LE_BS <= LE_BS_SIG;
 	
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	TERMINATION_SM: process (RST_TERM,SCLK_SIG)
@@ -351,7 +369,6 @@ begin
 				DS30_SIG <= '0';
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
-				--if(QDSACK_D0 /="11")then
 				if(STERM30 ='0' )then
 					LDSACK <="00";
 				else

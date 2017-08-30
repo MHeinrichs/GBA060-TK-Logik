@@ -176,7 +176,7 @@ ARCHITECTURE behavior OF card_controll_test IS
    -- Clock period definitions
    constant PLL_CLK_period : time := 5.0000001 ns;
    constant OSC_CLK_period : time := PLL_CLK_period*5;
-   constant CLK030_period : time := 19.8945632450678 ns;
+   constant CLK030_period : time := 19.097896 ns;
    --constant CLK30_period : time := 10 ns;
 	--timescale 1ns / 1ns
  
