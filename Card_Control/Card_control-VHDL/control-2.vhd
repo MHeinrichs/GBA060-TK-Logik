@@ -172,7 +172,13 @@ signal	BR30_Q : STD_LOGIC:='0';  --BR30 auf BCLK synchonisiert
 signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
-signal	CLK30_D : STD_LOGIC:='0';
+signal	CLK30_SM : STD_LOGIC:='0';
+signal 	START_SEND : STD_LOGIC;
+signal 	START_ACK : STD_LOGIC;
+signal 	END_SEND : STD_LOGIC;
+signal 	END_ACK : STD_LOGIC;
+
+
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -219,7 +225,6 @@ begin
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;		
-			CLK30_D		<= CLK30;
 		end if;
 	end process CLOCKS_P;
 	--clocks neg edge
@@ -344,10 +349,36 @@ begin
 --		end if;
 --	end process TACK_SAMPLE;
 
+	START_STOP_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
+	begin
+		if(RSTI40_SIG='0')then
+			START_SEND <='0';
+			END_ACK <= '0';
+		elsif(rising_edge(SCLK_SIG))then
+			--toggle signal for new transfer
+			if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
+				START_SEND <= not START_SEND;
+			end if;
+			
+			--detect toggle for end transfer
+			if(END_ACK /= END_SEND or TT40(1 downto 0)="11")then
+				TA40_SIG <= '0';
+				END_ACK <= END_SEND;
+			else
+				TA40_SIG <='1';
+			end if;
+		end if;
+	end process START_STOP_SAMPLE;
+
+
+
 	LE_BS <= LE_BS_SIG;
 	
+	CLK30_SM		<= SCLK_SIG;
+
+	
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
-	TERMINATION_SM: process (RST_TERM,SCLK_SIG)
+	TERMINATION_SM: process (RST_TERM,CLK30_SM)
 	begin
 		if(RST_TERM ='1') then
 			AS30_SIG <= '1';
@@ -356,7 +387,7 @@ begin
 			LE_BS_SIG <= '0';
 			SM030_N <= S1;	
 			LDSACK <="11";			
-		elsif(rising_edge(SCLK_SIG)) then
+		elsif(rising_edge(CLK30_SM)) then
 			case SM030_N is
 			when S1 =>
 				AS30_SIG <= '0';
@@ -399,18 +430,29 @@ begin
 	
 	--sizing statemachine
 	--this is the clocked statemachine transition process
-   process (SCLK_SIG, RSTI40_SIG) begin
+   process (CLK30_SM, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
-      	TA40_SIG	<= '1';
+      	--TA40_SIG	<= '1';
 			CYCLE30_OE		<= '0';
-      elsif (rising_edge(SCLK_SIG)) then
+			START_ACK <= '0';
+			END_SEND <= '0';
+      elsif (rising_edge(CLK30_SM)) then
 			SIZING <= SIZING_D;
-			if(SIZING = cycle_end or TT40(1 downto 0)="11") then
-				TA40_SIG	<= '0';
-			else
-				TA40_SIG	<= '1';
+--			if(SIZING = cycle_end or TT40(1 downto 0)="11") then
+--				TA40_SIG	<= '0';
+--			else
+--				TA40_SIG	<= '1';
+--			end if;
+
+			if(SIZING_D = cycle_end ) then
+				END_SEND	<= not END_SEND;
 			end if;
+
+			if(SIZING = size_decode ) then
+				START_ACK <= START_SEND;
+			end if;
+
 			if(SIZING = cycle_end) then
 				CYCLE30_OE		<= '0';
 			else
@@ -439,7 +481,7 @@ begin
 					AL_D <= "00";
 				end if;
 				BWL_BS	<= "111";					
-				if( TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
+				if( START_ACK /= START_SEND) then
 					SIZING_D <=size_decode;
 				else
 					SIZING_D <=idle;

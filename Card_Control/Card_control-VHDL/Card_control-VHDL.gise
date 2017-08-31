@@ -35,6 +35,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="control.ngc"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="control.ngd"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="control.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="control.pad"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PNX" xil_pn:name="control.pnx"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="control.prj"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="control.rpt"/>
@@ -45,9 +46,11 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VM6" xil_pn:name="control.vm6"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="control.xml"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="control.xst"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="control_build.xml"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="control_envsettings.html"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="control_html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="control_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="control_pad.csv"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="control_summary.html"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="control_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="control_xst.xrpt"/>
@@ -57,11 +60,10 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1504131363" xil_pn:in_ck="4884561763083303664" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-921144347515955975" xil_pn:start_ts="1504131348">
+    <transform xil_pn:end_ts="1504131433" xil_pn:in_ck="4884561763083303664" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="6862325759487178281" xil_pn:start_ts="1504131418">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="control.lso"/>
       <outfile xil_pn:name="control.ngc"/>
@@ -79,33 +81,36 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1504131370" xil_pn:in_ck="-618112270376107210" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="3931465504876573792" xil_pn:start_ts="1504131363">
+    <transform xil_pn:end_ts="1504131441" xil_pn:in_ck="-618112270376107210" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="1893441463969615248" xil_pn:start_ts="1504131433">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="control.bld"/>
       <outfile xil_pn:name="control.ngd"/>
       <outfile xil_pn:name="control_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1504131383" xil_pn:in_ck="156937794698422024" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="8134911554066258863" xil_pn:start_ts="1504131370">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1504131457" xil_pn:in_ck="156937794698422024" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="6046712412699006911" xil_pn:start_ts="1504131441">
+      <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="control.gyd"/>
+      <outfile xil_pn:name="control.mfd"/>
+      <outfile xil_pn:name="control.nga"/>
+      <outfile xil_pn:name="control.pad"/>
+      <outfile xil_pn:name="control.pnx"/>
       <outfile xil_pn:name="control.rpt"/>
       <outfile xil_pn:name="control.tim"/>
       <outfile xil_pn:name="control.tspec"/>
+      <outfile xil_pn:name="control.vm6"/>
       <outfile xil_pn:name="control.xml"/>
+      <outfile xil_pn:name="control_build.xml"/>
       <outfile xil_pn:name="control_html"/>
+      <outfile xil_pn:name="control_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1504130456" xil_pn:in_ck="156937794698430888" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1504130454">
+    <transform xil_pn:end_ts="1504131458" xil_pn:in_ck="156937794698430888" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1504131457">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="control.jed"/>
     </transform>
     <transform xil_pn:end_ts="1504129636" xil_pn:in_ck="156937794698430888" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1504129634">
@@ -113,7 +118,6 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>
