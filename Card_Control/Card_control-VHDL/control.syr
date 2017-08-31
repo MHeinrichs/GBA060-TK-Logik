@@ -91,7 +91,7 @@ Analyzing hierarchy for entity <control> in library <work> (architecture <behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <control> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" line 468: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" line 470: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <START_ACK>, <START_SEND>
 Entity <control> analyzed. Unit <control> generated.
 
@@ -110,7 +110,6 @@ WARNING:Xst:647 - Input <LOCK40> is never used. This port will be preserved and 
 WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <BERR30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <TCI40> is never assigned.
-WARNING:Xst:647 - Input <CLK30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <BG30> is never assigned.
 WARNING:Xst:1306 - Output <BG40> is never assigned.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -172,14 +171,15 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 234.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 236.
+    Found 1-bit register for signal <CLK30_D>.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 227.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 228.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <CYCLE30_OE>.
     Found 1-bit register for signal <DS30_SIG>.
     Found 1-bit register for signal <END_ACK>.
-    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 364.
+    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 366.
     Found 1-bit register for signal <END_SEND>.
     Found 2-bit register for signal <LDSACK>.
     Found 1-bit register for signal <RSTI40_SIG>.
@@ -189,7 +189,7 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found 1-bit register for signal <TA40_SIG>.
     Summary:
 	inferred   2 Finite State Machine(s).
-	inferred  14 D-type flip-flop(s).
+	inferred  15 D-type flip-flop(s).
 	inferred   3 Xor(s).
 	inferred   5 Tristate(s).
 Unit <control> synthesized.
@@ -199,8 +199,8 @@ Unit <control> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 17
- 1-bit register                                        : 16
+# Registers                                            : 18
+ 1-bit register                                        : 17
  2-bit register                                        : 1
 # Tristates                                            : 5
  1-bit tristate buffer                                 : 5
@@ -240,8 +240,8 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 2
-# Registers                                            : 14
- Flip-Flops                                            : 14
+# Registers                                            : 15
+ Flip-Flops                                            : 15
 
 =========================================================================
 
@@ -257,6 +257,7 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : CLK30_SIG
   implementation constraint: INIT=r	 : BCLK040_SIG
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
+  implementation constraint: INIT=r	 : CLK30_D
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
@@ -300,26 +301,26 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 277
+# BELS                             : 278
 #      AND2                        : 74
 #      AND3                        : 21
 #      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 113
+#      INV                         : 114
 #      OR2                         : 50
 #      OR3                         : 5
 #      OR4                         : 1
 #      OR5                         : 1
 #      VCC                         : 1
 #      XOR2                        : 9
-# FlipFlops/Latches                : 22
-#      FD                          : 6
+# FlipFlops/Latches                : 23
+#      FD                          : 7
 #      FDC                         : 7
 #      FDCE                        : 5
 #      FDP                         : 2
 #      FDPE                        : 2
-# IO Buffers                       : 57
-#      IBUF                        : 21
+# IO Buffers                       : 58
+#      IBUF                        : 22
 #      IOBUFE                      : 1
 #      OBUF                        : 31
 #      OBUFE                       : 4
@@ -327,13 +328,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 12.43 secs
+Total CPU time to Xst completion: 12.30 secs
  
 --> 
 
-Total memory usage is 290044 kilobytes
+Total memory usage is 290012 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   27 (   0 filtered)
+Number of warnings :   26 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

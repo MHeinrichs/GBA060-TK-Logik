@@ -173,6 +173,7 @@ signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
 signal	CLK30_SM : STD_LOGIC:='0';
+signal	CLK30_D : STD_LOGIC:='0';
 signal 	START_SEND : STD_LOGIC;
 signal 	START_ACK : STD_LOGIC;
 signal 	END_SEND : STD_LOGIC;
@@ -225,6 +226,7 @@ begin
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;		
+			CLK30_D <= not CLK30;
 		end if;
 	end process CLOCKS_P;
 	--clocks neg edge
@@ -374,7 +376,7 @@ begin
 
 	LE_BS <= LE_BS_SIG;
 	
-	CLK30_SM		<= SCLK_SIG;
+	CLK30_SM		<= CLK30_D;
 
 	
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
