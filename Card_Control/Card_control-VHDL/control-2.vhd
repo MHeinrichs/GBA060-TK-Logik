@@ -118,8 +118,7 @@ architecture Behavioral of control is
 				get_byte2,		--010
 				get_byte1,		--100
 				get_byte0,		--100
-				get_low_word,	--011				
-				cycle_end		--101
+				get_low_word	--011				
 				);
 	TYPE sm_dma IS (
 				STATE0,
@@ -418,7 +417,7 @@ begin
       elsif (rising_edge(CLK30_SM)) then
 			SIZING <= SIZING_D;
 			
-			if(SIZING_D = cycle_end ) then
+			if(SIZING_D = idle and SIZING /=idle ) then
 				END_SEND	<= not END_SEND;
 			end if;
 
@@ -429,7 +428,7 @@ begin
    end process;
 
 
-	NAMIACC <= '1' when (SIZING = idle or SIZING = cycle_end) else '0';
+	NAMIACC <= '1' when (SIZING = idle) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, START_ACK, START_SEND,  
@@ -498,7 +497,7 @@ begin
 				elsif(TERM ='1' and LDSACK="10" and				-- BYTETERM
 						BYTE = '1'										-- BYTE
 					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				elsif(TERM ='1' and LDSACK="01" and 			-- WORDTERM
 						LONG = '1'										-- LONG
 					) then
@@ -506,10 +505,10 @@ begin
 				elsif(TERM ='1' and LDSACK="01" 	and			-- WORDTERM
 						(WORD = '1' or BYTE = '1')					-- WORD or BYTE
 					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				elsif(TERM ='1' and LDSACK="00"					-- LONGTERM
 					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				else
 					SIZING_D <= size_decode;
 				end if;
@@ -528,7 +527,7 @@ begin
 				--target for next bussizing-cycle
 				if(TERM ='1' 											-- WORDTERM
 					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				else
 					SIZING_D <= get_low_word;
 				end if;
@@ -544,7 +543,7 @@ begin
 				if(TERM ='1' and   									-- BYTETERM
 					WORD = '1' 											-- WORD0
 					) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				elsif(TERM ='1' and 									-- BYTETERM
 					LONG = '1'											-- LONG
 					) then
@@ -578,15 +577,10 @@ begin
 				--target for next bussizing-cycle
 				if(	TERM ='1'  										-- BYTETERM				
 					 ) then
-					SIZING_D <= cycle_end;
+					SIZING_D <= idle;
 				else
 					SIZING_D <= get_byte0;
 				end if;
-			when cycle_end=>
-				SIZ30_D	<= "00";				
-				AL_D <="00";				
-				BWL_BS <= "111";
-				SIZING_D <=idle;
       end case;
    end process SIZING_SM;
 
