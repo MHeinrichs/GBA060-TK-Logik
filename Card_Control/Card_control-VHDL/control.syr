@@ -91,8 +91,6 @@ Analyzing hierarchy for entity <control> in library <work> (architecture <behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <control> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/control-2.vhd" line 470: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <START_ACK>, <START_SEND>
 Entity <control> analyzed. Unit <control> generated.
 
 
@@ -171,25 +169,28 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 236.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 241.
     Found 1-bit register for signal <CLK30_D>.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 228.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 231.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <CYCLE30_OE>.
+    Found 1-bit register for signal <DATA_OE>.
     Found 1-bit register for signal <DS30_SIG>.
+    Found 2-bit register for signal <DSACK_D>.
     Found 1-bit register for signal <END_ACK>.
-    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 366.
+    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 335.
     Found 1-bit register for signal <END_SEND>.
     Found 2-bit register for signal <LDSACK>.
     Found 1-bit register for signal <RSTI40_SIG>.
     Found 1-bit register for signal <RSTINT>.
     Found 1-bit register for signal <START_ACK>.
     Found 1-bit register for signal <START_SEND>.
+    Found 1-bit register for signal <STERM_D>.
     Found 1-bit register for signal <TA40_SIG>.
     Summary:
 	inferred   2 Finite State Machine(s).
-	inferred  15 D-type flip-flop(s).
+	inferred  17 D-type flip-flop(s).
 	inferred   3 Xor(s).
 	inferred   5 Tristate(s).
 Unit <control> synthesized.
@@ -199,9 +200,9 @@ Unit <control> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 18
- 1-bit register                                        : 17
- 2-bit register                                        : 1
+# Registers                                            : 21
+ 1-bit register                                        : 19
+ 2-bit register                                        : 2
 # Tristates                                            : 5
  1-bit tristate buffer                                 : 5
 # Xors                                                 : 3
@@ -240,8 +241,8 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 2
-# Registers                                            : 15
- Flip-Flops                                            : 15
+# Registers                                            : 17
+ Flip-Flops                                            : 17
 
 =========================================================================
 
@@ -255,20 +256,22 @@ Optimizing unit <control> ...
   implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : ATERM
   implementation constraint: INIT=r	 : CLK30_SIG
+  implementation constraint: INIT=r	 : DSACK_D_1
   implementation constraint: INIT=r	 : BCLK040_SIG
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd2
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : CLK30_D
   implementation constraint: INIT=r	 : AS30_SIG
-  implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : RSTI40_SIG
+  implementation constraint: INIT=r	 : DSACK_D_0
   implementation constraint: INIT=r	 : LDSACK_0
   implementation constraint: INIT=r	 : SM030_N_FSM_FFd1
   implementation constraint: INIT=r	 : SM030_N_FSM_FFd2
   implementation constraint: INIT=r	 : CYCLE30_OE
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd1
+  implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : BCLK060_SIG
 
 =========================================================================
@@ -301,23 +304,23 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 278
-#      AND2                        : 74
+# BELS                             : 282
+#      AND2                        : 75
 #      AND3                        : 21
 #      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 114
-#      OR2                         : 50
+#      INV                         : 116
+#      OR2                         : 51
 #      OR3                         : 5
 #      OR4                         : 1
 #      OR5                         : 1
 #      VCC                         : 1
 #      XOR2                        : 9
-# FlipFlops/Latches                : 23
-#      FD                          : 7
+# FlipFlops/Latches                : 27
+#      FD                          : 10
 #      FDC                         : 7
 #      FDCE                        : 5
-#      FDP                         : 2
+#      FDP                         : 3
 #      FDPE                        : 2
 # IO Buffers                       : 58
 #      IBUF                        : 22
@@ -328,13 +331,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 12.30 secs
+Total CPU time to Xst completion: 12.31 secs
  
 --> 
 
-Total memory usage is 290012 kilobytes
+Total memory usage is 290040 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   26 (   0 filtered)
+Number of warnings :   25 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

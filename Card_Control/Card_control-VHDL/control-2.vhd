@@ -178,6 +178,9 @@ signal 	START_SEND : STD_LOGIC;
 signal 	START_ACK : STD_LOGIC;
 signal 	END_SEND : STD_LOGIC;
 signal 	END_ACK : STD_LOGIC;
+signal	DSACK_D : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
+signal 	STERM_D : STD_LOGIC;
+signal 	DATA_OE : STD_LOGIC;
 
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
@@ -225,18 +228,20 @@ begin
 			PCLK	<= not CLK_RAMC_SIG;
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
 			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
-			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;		
-			CLK30_D <= not CLK30;
+			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
+			CLK30_D <= CLK30;		
+			DSACK_D <= DSACK30;
+			STERM_D <= STERM30;
 		end if;
 	end process CLOCKS_P;
 	--clocks neg edge
 	CLOCKS_N: process (PLL_CLK)
 	begin
-		if (falling_edge(PLL_CLK)) then
+		if (falling_edge(PLL_CLK)) then			
 			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
 		end if;
 	end process CLOCKS_N;
-
+	
 	--Erzeugung der Resets
 	RESET30	<=	'0' when RSTO40 ='0' else 'Z'; 
 	
@@ -310,12 +315,44 @@ begin
 					'1' when TT40(1 downto 0)="11" else '0';										-- avec / breakpoints
 
 	
-	OE_BS		<= AMISEL when CONTROL40_OE ='1' else '0';
+
+	START_STOP_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
+	begin
+		if(RSTI40_SIG='0')then
+			START_SEND <='0';
+			END_ACK <= '0';
+			TA40_SIG <='1';
+			DATA_OE <='0';
+		elsif(rising_edge(SCLK_SIG))then
+			--toggle signal for new transfer
+			if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
+				START_SEND <= not START_SEND;
+				DATA_OE <='1'; --enable on cycle start
+			elsif(TA40_SIG = '0') then
+				DATA_OE <='0'; --disable one clock after cycle termination
+			end if;
+			--detect toggle for end transfer
+			if(END_ACK /= END_SEND or (TS40 ='0' and TT40(1 downto 0)="11"))then
+				TA40_SIG <= '0';
+				END_ACK <= END_SEND;
+			else
+				TA40_SIG <='1';
+			end if;
+			
+		elsif(rising_edge(SCLK_SIG))then
+		end if;
+	end process START_STOP_SAMPLE;
+
+	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
+	
+	LE_BS <= LE_BS_SIG;	
+	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
-
-
+	
+	CLK30_SM		<= not CLK30_D;
+	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
-														or TT40(1)='1') 						-- alt func AVEC/BRKPT
+								or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '0';
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 														or TT40(1)='1') 						-- alt func AVEC/BRKPT
@@ -324,62 +361,7 @@ begin
 	TEA40		<= '1'; -- not needed anymore
 	AS30		<= AS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
 	DS30		<= DS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
-	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 	
---	TA40_L_RST <= TA40_SIG;
---	TA40_L_CLK <= not CYCLE30_OE;--'1' when SIZING = cycle_end else '0';
---	TACK_GEN: process(TA40_L_RST,TA40_L_CLK)
---	begin
---		if(TA40_L_RST ='0' )then
---			TA40_LATCH    <= '1';
---		elsif(rising_edge(TA40_L_CLK))then
---			TA40_LATCH    <= '0';
---		end if;
---	end process TACK_GEN;
---
---
---	TACK_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
---	begin
---		if(RSTI40_SIG='0')then
---			TA40_SIG <='1';
---		elsif(rising_edge(BCLK_SIG))then
---			if(TA40_LATCH='0' or TT40(1 downto 0)="11")then
---				TA40_SIG <= '0';
---			else
---				TA40_SIG <='1';
---			end if;
---		end if;
---	end process TACK_SAMPLE;
-
-	START_STOP_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
-	begin
-		if(RSTI40_SIG='0')then
-			START_SEND <='0';
-			END_ACK <= '0';
-		elsif(rising_edge(SCLK_SIG))then
-			--toggle signal for new transfer
-			if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
-				START_SEND <= not START_SEND;
-			end if;
-			
-			--detect toggle for end transfer
-			if(END_ACK /= END_SEND or TT40(1 downto 0)="11")then
-				TA40_SIG <= '0';
-				END_ACK <= END_SEND;
-			else
-				TA40_SIG <='1';
-			end if;
-		end if;
-	end process START_STOP_SAMPLE;
-
-
-
-	LE_BS <= LE_BS_SIG;
-	
-	CLK30_SM		<= CLK30_D;
-
-	
-	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	TERMINATION_SM: process (RST_TERM,CLK30_SM)
 	begin
 		if(RST_TERM ='1') then
@@ -402,13 +384,13 @@ begin
 				DS30_SIG <= '0';
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
-				if(STERM30 ='0' )then
+				if(STERM_D ='0' )then
 					LDSACK <="00";
 				else
-					LDSACK <=DSACK30;
+					LDSACK <=DSACK_D;
 				end if;
 
-				if(DSACK30 /="11" or STERM30 ='0')then
+				if(DSACK_D /="11" or STERM_D ='0')then
 					SM030_N <=S5;
 				else
 					SM030_N <=S3;
@@ -467,9 +449,9 @@ begin
 	NAMIACC <= '1' when (SIZING = idle or SIZING = cycle_end) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
-   SIZING_SM: process (SIZING, TS40, SEL16M, A40,
-	 AMISEL, RW40, LDSACK,
-	 TT40, BYTE, WORD, LONG, TERM)
+   SIZING_SM: process (SIZING, START_ACK, START_SEND,  
+	 RW40, LDSACK, A40,
+	 BYTE, WORD, LONG, TERM)
    begin
 		
 	
