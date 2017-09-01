@@ -145,10 +145,6 @@ signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	ATERM : STD_LOGIC:='0';	--
 signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
-signal	COUNTHALT : STD_LOGIC_VECTOR (11 downto 0):="000000000000";	--Filter-Counter fuer HALT-Leitung
-signal	COUNTRES : STD_LOGIC_VECTOR (10 downto 0):="00000000000";	--Counter f?r Resetsteuerung
-signal	STOPRES : STD_LOGIC:='0';	--
-signal	STOPHALT : STD_LOGIC:='0';	--Ausgangsverkettung Filter-Counter
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -156,12 +152,8 @@ signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	TA40_LATCH : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	TA40_L_RST : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	TA40_L_CLK : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
-signal	CYCLE30_OE : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	RSTI40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung
 signal	RST_TERM : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung des Terminierungsprozesses
 signal	BYTE : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von BYTE-Zugriffen
@@ -345,22 +337,26 @@ begin
 
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 	
-	LE_BS <= LE_BS_SIG;	
+	LE_BS 	<= LE_BS_SIG;	
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
-	CLK30_SM		<= not CLK30_D;
+	CLK30_SM	<= SCLK_SIG;--not CLK30_D;
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
-								or TT40(1)='1') 						-- alt func AVEC/BRKPT
+															or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '0';
 	TBI40		<= '0' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
-														or TT40(1)='1') 						-- alt func AVEC/BRKPT
+															or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '1';
 
 	TEA40		<= '1'; -- not needed anymore
-	AS30		<= AS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
-	DS30		<= DS30_SIG when CYCLE30_OE ='1' and CONTROL40_OE ='1' else 'Z';
+	AS30		<= AS30_SIG when 	--CYCLE30_OE ='1' and 
+										CONTROL40_OE ='1' 
+								else 'Z';
+	DS30		<= DS30_SIG when 	--CYCLE30_OE ='1' and 
+										CONTROL40_OE ='1' 
+								else 'Z';
 	
 	TERMINATION_SM: process (RST_TERM,CLK30_SM)
 	begin
@@ -417,30 +413,17 @@ begin
    process (CLK30_SM, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
       	SIZING <= idle;
-      	--TA40_SIG	<= '1';
-			CYCLE30_OE		<= '0';
 			START_ACK <= '0';
 			END_SEND <= '0';
       elsif (rising_edge(CLK30_SM)) then
 			SIZING <= SIZING_D;
---			if(SIZING = cycle_end or TT40(1 downto 0)="11") then
---				TA40_SIG	<= '0';
---			else
---				TA40_SIG	<= '1';
---			end if;
-
+			
 			if(SIZING_D = cycle_end ) then
 				END_SEND	<= not END_SEND;
 			end if;
 
-			if(SIZING = size_decode ) then
+			if(SIZING_D = size_decode ) then
 				START_ACK <= START_SEND;
-			end if;
-
-			if(SIZING = cycle_end) then
-				CYCLE30_OE		<= '0';
-			else
-				CYCLE30_OE		<= '1';
 			end if;
       end if;
    end process;
@@ -453,8 +436,6 @@ begin
 	 RW40, LDSACK, A40,
 	 BYTE, WORD, LONG, TERM)
    begin
-		
-	
       case SIZING is
 			when idle =>
 				SIZ30_D(0)	<= BYTE;
@@ -471,6 +452,7 @@ begin
 					SIZING_D <=idle;
 				end if;					
 			when size_decode =>
+				--size and address decode
 				SIZ30_D(0)	<= BYTE;
 				SIZ30_D(1)	<= WORD;								
 				if(LONG = '0') then
@@ -478,48 +460,51 @@ begin
 				else
 					AL_D <= "00";
 				end if;
+				
 				--bus code for data latch
-				if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or -- WRITE: everything except byte acces on odd address
-						(RW40 ='1' and LDSACK/="11")) then --READ: any port
+				if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or 	-- WRITE: everything except byte acces on odd address
+						(RW40 ='1' and LDSACK/="11")) then 						-- READ: any port
 					BWL_BS(0)	<=	'0';
 				else 
 					BWL_BS(0)	<=	'1';
 				end if;
 					
-				if(	(RW40 ='0' and ( LONG = '1' OR			-- WRITE: LONG
-						(WORD = '1' and A40(1)='0')	or			-- WRITE: WORD A1=0
-						(BYTE = '1' and A40(1)='0')))or 			-- WRITE: BYTE A1=0
-						(RW40 ='1' AND (LDSACK="01" or LDSACK="10"))) then --READ: word/byte port
+				if(	(RW40 ='0' and ( LONG = '1' OR							-- WRITE: LONG
+						(WORD = '1' and A40(1)='0')	or							-- WRITE: WORD A1=0
+						(BYTE = '1' and A40(1)='0')))or 							-- WRITE: BYTE A1=0
+						(RW40 ='1' AND (LDSACK="01" or LDSACK="10"))) then -- READ: word/byte port
 					BWL_BS(1)	<=	'0';
 				else 
 					BWL_BS(1)	<=	'1';
 				end if;
 
-				if(	(RW40 ='0') or 	-- WRITE: any access
-						(RW40 ='1' AND LDSACK="10")) then --READ: byte port
+				if(	(RW40 ='0') or 												-- WRITE: any access
+						(RW40 ='1' AND LDSACK="10")) then 						-- READ: byte port
 					BWL_BS(2)	<=	'0';
 				else 
 					BWL_BS(2)	<=	'1';
 				end if;
 
+				--target for next bussizing-cycle
 				if( TERM ='1' and LDSACK="10" and 				-- BYTETERM
-						(LONG = '1' or (WORD = '1' and A40(1)='0'))	-- LONG or WORD0
+						(LONG = '1' or 								-- LONG
+						(WORD = '1' and A40(1)='0'))				-- WORD0
 					) then
 					SIZING_D <= get_byte2;
 				elsif(TERM ='1' and LDSACK="10" and  			-- BYTETERM
-						WORD = '1' and A40(1)='1'		-- WORD2
+						WORD = '1' and A40(1)='1'					-- WORD2
 					) then
 					SIZING_D <= get_byte0;
 				elsif(TERM ='1' and LDSACK="10" and				-- BYTETERM
-						BYTE = '1'							-- BYTE
+						BYTE = '1'										-- BYTE
 					) then
 					SIZING_D <= cycle_end;
 				elsif(TERM ='1' and LDSACK="01" and 			-- WORDTERM
-						LONG = '1'							-- LONG
+						LONG = '1'										-- LONG
 					) then
 					SIZING_D <= get_low_word;
 				elsif(TERM ='1' and LDSACK="01" 	and			-- WORDTERM
-						(WORD = '1' or BYTE = '1')		-- WORD or BYTE
+						(WORD = '1' or BYTE = '1')					-- WORD or BYTE
 					) then
 					SIZING_D <= cycle_end;
 				elsif(TERM ='1' and LDSACK="00"					-- LONGTERM
@@ -529,31 +514,38 @@ begin
 					SIZING_D <= size_decode;
 				end if;
 			when get_low_word =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= LONG;
-				AL_D	<= "10";
+				--size and address decode
+				SIZ30_D	<= "10";
+				AL_D		<= "10";
+
+				--bus code for data latch
 				if(RW40='0') then
 					BWL_BS(2 downto 0) <= "010";
 				else
 					BWL_BS(2 downto 0) <= "101";
 				end if;
 					
-				if(TERM ='1' -- WORDTERM
+				--target for next bussizing-cycle
+				if(TERM ='1' 											-- WORDTERM
 					) then
 					SIZING_D <= cycle_end;
 				else
 					SIZING_D <= get_low_word;
 				end if;
 			when get_byte2 =>
+				--size and address decode
 				SIZ30_D	<= "01";
 				AL_D		<=	"01";
+
+				--bus code for data latch
 				BWL_BS(2 downto 0) <= "001";
 				
-				if(TERM ='1' and   						-- BYTETERM
-					WORD = '1' 			-- WORD0
+				--target for next bussizing-cycle
+				if(TERM ='1' and   									-- BYTETERM
+					WORD = '1' 											-- WORD0
 					) then
 					SIZING_D <= cycle_end;
-				elsif(TERM ='1' and 						-- BYTETERM
+				elsif(TERM ='1' and 									-- BYTETERM
 					LONG = '1'											-- LONG
 					) then
 					SIZING_D <= get_byte1;
@@ -561,12 +553,15 @@ begin
 					SIZING_D <= get_byte2;
 				end if;
 			when get_byte1 =>
-				SIZ30_D(0)	<= BYTE;
-				SIZ30_D(1)	<= LONG;
+				--size and address decode
+				SIZ30_D	<= "01";
 				AL_D	<= "10";
+
+				--bus code for data latch
 				BWL_BS(2 downto 0) <= "010";
 					
-				if(TERM = '1' -- BYTETERM
+				--target for next bussizing-cycle
+				if(TERM = '1' 											-- BYTETERM
 					 and LONG = '1'
 					) then
 					SIZING_D <= get_byte0;
@@ -574,11 +569,14 @@ begin
 					SIZING_D <= get_byte1;
 				end if;
 			when get_byte0 =>
-				SIZ30_D	<= "01";		--SIZ(0) was BYTE or WORD or LONG  which is allways true...
+				SIZ30_D	<= "01";
 				AL_D		<=	"11";
+
+				--bus code for data latch
 				BWL_BS(2 downto 0) <= "011";
 				
-				if(	TERM ='1'  -- BYTETERM				
+				--target for next bussizing-cycle
+				if(	TERM ='1'  										-- BYTETERM				
 					 ) then
 					SIZING_D <= cycle_end;
 				else
