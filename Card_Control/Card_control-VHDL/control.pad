@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 9- 1-2017 11:53PM
+ 9- 2-2017  0:02AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -51,7 +51,7 @@ P30|FC30<0>|O|I/O|OUTPUT|||||||||
 P31|GND||GND||||||||||
 P32|TIE||I/O||||||||||
 P33|FC30<2>|O|I/O|OUTPUT|||||||||
-P34|TIE||I/O||||||||||
+P34|CLK30|I|I/O|INPUT|||||||||
 P35|DSACK30<1>|I|I/O|INPUT|||||||||
 P36|DSACK30<0>|I|I/O|INPUT|||||||||
 P37|TIE||I/O||||||||||

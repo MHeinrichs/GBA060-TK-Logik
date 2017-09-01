@@ -166,6 +166,7 @@ signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
 signal	CLK30_SM : STD_LOGIC:='0';
 signal	CLK30_D : STD_LOGIC:='0';
 signal 	START_SEND : STD_LOGIC;
+signal 	START_SEND_SAMPLED : STD_LOGIC;
 signal 	START_ACK : STD_LOGIC;
 signal 	END_SEND : STD_LOGIC;
 signal 	END_ACK : STD_LOGIC;
@@ -340,7 +341,7 @@ begin
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
-	CLK30_SM	<= SCLK_SIG;--not CLK30_D;
+	CLK30_SM	<= not CLK30_D;
 	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 															or TT40(1)='1') 						-- alt func AVEC/BRKPT
@@ -407,6 +408,16 @@ begin
 	end process TERMINATION_SM;
 		
 	
+		--sizing statemachine
+	--this is the clocked statemachine transition process
+   process (CLK30_SM, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+			START_SEND_SAMPLED <= '0';
+      elsif (falling_edge(CLK30_SM)) then
+			START_SEND_SAMPLED <= START_SEND;
+      end if;
+   end process;
+
 	--sizing statemachine
 	--this is the clocked statemachine transition process
    process (CLK30_SM, RSTI40_SIG) begin
@@ -431,7 +442,7 @@ begin
 	NAMIACC <= '1' when (SIZING = idle) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
-   SIZING_SM: process (SIZING, START_ACK, START_SEND,  
+   SIZING_SM: process (SIZING, START_ACK, START_SEND_SAMPLED,  
 	 RW40, LDSACK, A40,
 	 BYTE, WORD, LONG, TERM)
    begin
@@ -445,7 +456,7 @@ begin
 					AL_D <= "00";
 				end if;
 				BWL_BS	<= "111";					
-				if( START_ACK /= START_SEND) then
+				if( START_ACK /= START_SEND_SAMPLED) then
 					SIZING_D <=size_decode;
 				else
 					SIZING_D <=idle;
