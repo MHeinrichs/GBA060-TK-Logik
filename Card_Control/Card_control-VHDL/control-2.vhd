@@ -12,7 +12,7 @@
 --
 -- Dependencies: 
 --
--- Revision: 0.1
+-- Revision: 0.2
 -- Revision 0.01 - File Created
 -- Additional Comments: 
 -- Testet frequencies: 100Mhz & 80Mhz
@@ -358,7 +358,7 @@ begin
 										CONTROL40_OE ='1' 
 								else 'Z';
 	
-	TERMINATION_SM: process (RST_TERM,CLK30_SM)
+	MC68030_SM: process (RST_TERM,CLK30_SM)
 	begin
 		if(RST_TERM ='1') then
 			AS30_SIG <= '1';
@@ -396,7 +396,7 @@ begin
 				DS30_SIG <= '1';
 				ATERM <= '1';
 				LE_BS_SIG <= '1';
-				SM030_N <=S5_wait;
+				SM030_N <=S5_wait; --I need an extra wait for bus clean up :(
 			when S5_wait =>
 				AS30_SIG <= '1';
 				DS30_SIG <= '1';
@@ -405,7 +405,7 @@ begin
 				SM030_N <=S1;
 			end case;
 		end if;		
-	end process TERMINATION_SM;
+	end process MC68030_SM;
 		
 	
 		--sizing statemachine
