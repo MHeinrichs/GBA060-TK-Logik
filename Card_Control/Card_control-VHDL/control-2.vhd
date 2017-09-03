@@ -142,6 +142,7 @@ signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	ATERM : STD_LOGIC:='0';	--
+signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
@@ -153,6 +154,7 @@ signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	RSTI40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung
+signal	RST_TERM : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung des Terminierungsprozesses
 signal	BYTE : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von BYTE-Zugriffen
 signal	WORD : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von WORD-Zugriffen
 signal	LONG : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von LONG-Zugriffen
@@ -340,6 +342,7 @@ begin
 	DIR_BS	<=	RW40;
 	
 	CLK30_SM	<= CLK30_D;
+	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 															or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '0';
@@ -354,57 +357,25 @@ begin
 	DS30		<= DS30_SIG when 	--CYCLE30_OE ='1' and 
 										CONTROL40_OE ='1' 
 								else 'Z';
-	
-	--We need to sample the start one half-clock before S1 to satisfy the setup-times of A[1:0] and SIZ30
-   START_SAMLPE_030:process (CLK30_SM, RSTI40_SIG) begin
-      if RSTI40_SIG='0' then
-			START_SEND_SAMPLED <= '0';
-      elsif (rising_edge(CLK30_SM)) then
-			START_SEND_SAMPLED <= START_SEND;
-      end if;
-   end process START_SAMLPE_030;
-
-	--on a 68030 the interesting parts only happen on the negative cpu-clocks
-	MC68030_SM: process (RSTI40_SIG,CLK30_SM)
+								
+	--on a 68030 the interesting parts only happen on the falling cpu-clocks
+	MC68030_SM: process (RST_TERM,CLK30_SM)
 	begin
-		if(RSTI40_SIG='0') then
+		if(RST_TERM ='1') then
 			AS30_SIG <= '1';
 			DS30_SIG <= '1';
 			ATERM <= '0';
 			LE_BS_SIG <= '0';
 			SM030_N <= S1;	
 			LDSACK <="11";			
-      	SIZING <= idle;
-			START_ACK <= '0';
-			END_SEND <= '0';
 		elsif(falling_edge(CLK30_SM)) then
-			--transition of the SIZING-SM
-			SIZING <= SIZING_D;
-			
-			--SYNCRONIZATION with 060-bus
-			if(SIZING_D = idle and SIZING /=idle ) then 
-				END_SEND	<= not END_SEND; -- toggle END_SEND to indicate end of cycle
-			end if;
-
-			if(SIZING_D = size_decode ) then
-				START_ACK <= START_SEND; --update internal value after sync with start of cycle
-			end if;
-		
-			---030-Statemachine treansition
 			case SM030_N is
 			when S1 =>
-				if(SIZING = idle)then
-					AS30_SIG <= '1';
-					DS30_SIG <= '1';
-					SM030_N <= S1;	
-					LDSACK <="11";
-				else
-					AS30_SIG <= '0';
-					DS30_SIG <= not RW40;
-					SM030_N <= S3;
-				end if;
+				AS30_SIG <= '0';
+				DS30_SIG <= not RW40;
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
+				SM030_N <= S3;
 			when S3 =>
 				AS30_SIG <= '0';
 				DS30_SIG <= '0';
@@ -437,6 +408,37 @@ begin
 		end if;		
 	end process MC68030_SM;
 		
+	
+	--We need to sample the start one half-clock before S1 to satisfy the setup-times of A[1:0] and SIZ30
+   process (CLK30_SM, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+			START_SEND_SAMPLED <= '0';
+      elsif (rising_edge(CLK30_SM)) then
+			START_SEND_SAMPLED <= START_SEND;
+      end if;
+   end process;
+
+	--this is the clocked statemachine transition process
+   process (CLK30_SM, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+      	SIZING <= idle;
+			START_ACK <= '0';
+			END_SEND <= '0';
+      elsif (falling_edge(CLK30_SM)) then
+			SIZING <= SIZING_D;
+			
+			if(SIZING_D = idle and SIZING /=idle ) then
+				END_SEND	<= not END_SEND; -- toggle END_SEND to indicate end of cycle
+			end if;
+
+			if(SIZING_D = size_decode ) then
+				START_ACK <= START_SEND; --update internal value after sync with start of cycle
+			end if;
+      end if;
+   end process;
+
+
+	NAMIACC <= '1' when (SIZING = idle) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, START_ACK, START_SEND_SAMPLED,  
