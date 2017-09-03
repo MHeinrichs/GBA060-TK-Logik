@@ -393,7 +393,7 @@ begin
 			---030-Statemachine treansition
 			case SM030_N is
 			when S1 =>
-				if(SIZING = idle)then
+				if(SIZING = idle or SIZING_D = idle)then
 					AS30_SIG <= '1';
 					DS30_SIG <= '1';
 					SM030_N <= S1;	

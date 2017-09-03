@@ -140,8 +140,8 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found finite state machine <FSM_1> for signal <SM030_N>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
-    | Transitions        | 7                                              |
-    | Inputs             | 3                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 4                                              |
     | Outputs            | 4                                              |
     | Clock              | CLK30_SM                  (falling_edge)       |
     | Reset              | RSTI40_SIG                (negative)           |
@@ -293,13 +293,13 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 274
-#      AND2                        : 82
-#      AND3                        : 15
+# BELS                             : 287
+#      AND2                        : 83
+#      AND3                        : 17
 #      AND4                        : 2
 #      GND                         : 1
-#      INV                         : 112
-#      OR2                         : 51
+#      INV                         : 119
+#      OR2                         : 54
 #      OR3                         : 4
 #      OR4                         : 1
 #      VCC                         : 1
@@ -317,12 +317,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.79 secs
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 12.77 secs
  
 --> 
 
-Total memory usage is 289992 kilobytes
+Total memory usage is 290076 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)
