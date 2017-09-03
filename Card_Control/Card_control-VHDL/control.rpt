@@ -1,7 +1,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: control                             Date:  9- 3-2017, 11:43PM
+Design Name: control                             Date:  9- 3-2017, 11:54PM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -9,22 +9,22 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-56 /144 ( 39%) 192 /720  ( 27%) 88 /432 ( 20%)   28 /144 ( 19%) 58 /81  ( 72%)
+56 /144 ( 39%) 160 /720  ( 22%) 107/432 ( 25%)   28 /144 ( 19%) 58 /81  ( 72%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1          13/18       18/54       83/90      10/11
+FB1          11/18       16/54       52/90      10/11
 FB2           8/18       19/54       16/90      10/10*
-FB3           3/18        5/54        9/90       5/10
-FB4           4/18        3/54        2/90       8/10
-FB5           9/18       18/54       54/90       8/10
-FB6          15/18       17/54       22/90       6/10
+FB3           4/18       16/54       17/90       5/10
+FB4           5/18       15/54       13/90       8/10
+FB5           8/18       15/54       31/90       8/10
+FB6          13/18       15/54       22/90       6/10
 FB7           2/18        0/54        0/90       6/10
-FB8           2/18        8/54        6/90       5/10
+FB8           5/18       11/54        9/90       5/10
              -----       -----       -----      -----    
-             56/144      88/432     192/720     58/81 
+             56/144     107/432     160/720     58/81 
 
 * - Resource is exhausted
 
@@ -129,10 +129,10 @@ MDIS40              0     0     FB4_2   87   I/O     O       STD  FAST
 IPL40<0>            1     2     FB4_5   89   I/O     O       STD  FAST 
 IPL40<2>            1     2     FB4_6   90   I/O     O       STD  FAST 
 CDIS40              0     0     FB4_8   91   I/O     O       STD  FAST 
-AS30                11    12    FB5_8   39   I/O     O       STD  FAST RESET
+AS30                4     7     FB5_8   39   I/O     O       STD  FAST RESET
 RW30                1     1     FB5_12  42   I/O     O       STD  FAST 
 SIZ30<1>            2     5     FB5_14  43   I/O     O       STD  FAST 
-DS30                12    13    FB5_15  46   I/O     O       STD  FAST RESET
+DS30                5     8     FB5_15  46   I/O     O       STD  FAST RESET
 SIZ30<0>            3     5     FB5_17  49   I/O     O       STD  FAST 
 BGR60               0     0     FB6_6   77   I/O     O       STD  FAST 
 TBI40               2     3     FB6_9   79   I/O     O       STD  FAST 
@@ -149,26 +149,26 @@ TEA40               0     0     FB8_17  73   I/O     O       STD  FAST
 
 Signal              Total Total Loc     Pwr  Reg Init
 Name                Pts   Inps          Mode State
-LDSACK<1>           12    14    FB1_1   STD  RESET
-SM030_N_FSM_FFd2    4     7     FB1_4   STD  RESET
-SIZING_FSM_FFd2     8     10    FB1_7   STD  RESET
-SIZING_FSM_FFd3     9     11    FB1_11  STD  RESET
-SM030_N_FSM_FFd1    11    12    FB1_12  STD  RESET
-LDSACK<0>           11    14    FB1_15  STD  RESET
-END_SEND            8     10    FB1_16  STD  RESET
-START_ACK           8     11    FB5_2   STD  RESET
-START_SEND_SAMPLED  3     3     FB5_11  STD  RESET
-END_ACK             3     3     FB5_13  STD  RESET
-SIZING_FSM_FFd1     11    12    FB5_18  STD  RESET
-STERM_D             1     1     FB6_4   STD  RESET
-DSACK_D<1>          1     1     FB6_5   STD  RESET
-DSACK_D<0>          1     1     FB6_7   STD  RESET
-CLK30_SIG           1     1     FB6_8   STD  RESET
-CLK30_D             1     1     FB6_10  STD  RESET
-TBI40_OBUF__$INT    2     3     FB6_11  STD  
-BCLK060_SIG         2     2     FB6_13  STD  RESET
-START_SEND          3     5     FB6_16  STD  RESET
-RSTINT              3     4     FB6_18  STD  RESET
+SIZING_FSM_FFd3     9     11    FB1_1   STD  RESET
+SIZING_FSM_FFd2     8     10    FB1_14  STD  RESET
+END_SEND            8     10    FB1_15  STD  RESET
+START_SEND_SAMPLED  3     3     FB1_16  STD  RESET
+SM030_N_FSM_FFd1    4     7     FB1_17  STD  RESET
+START_ACK           8     11    FB3_18  STD  RESET
+SIZING_FSM_FFd1     11    12    FB4_17  STD  RESET
+SM030_N_FSM_FFd2    4     7     FB5_13  STD  RESET
+LDSACK<1>           6     10    FB5_16  STD  RESET
+LDSACK<0>           6     10    FB5_18  STD  RESET
+CLK30_SIG           1     1     FB6_7   STD  RESET
+CLK30_D             1     1     FB6_8   STD  RESET
+TBI40_OBUF__$INT    2     3     FB6_10  STD  
+BCLK060_SIG         2     2     FB6_11  STD  RESET
+START_SEND          3     5     FB6_13  STD  RESET
+RSTINT              3     4     FB6_16  STD  RESET
+END_ACK             3     3     FB6_18  STD  RESET
+STERM_D             1     1     FB8_1   STD  RESET
+DSACK_D<1>          1     1     FB8_2   STD  RESET
+DSACK_D<0>          1     1     FB8_3   STD  RESET
 
 ** 22 Inputs **
 
@@ -213,52 +213,50 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               18/36
-Number of signals used by logic mapping into function block:  18
+Number of function block inputs used/remaining:               16/38
+Number of signals used by logic mapping into function block:  16
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-LDSACK<1>            12       7<-   0   0     FB1_1         (b)     (b)
-BWL_BS<2>             4       1<- /\2   0     FB1_2   11    I/O     O
-BWL_BS<0>             5       1<- /\1   0     FB1_3   12    I/O     O
-SM030_N_FSM_FFd2      4       0   /\1   0     FB1_4         (b)     (b)
+SIZING_FSM_FFd3       9       4<-   0   0     FB1_1         (b)     (b)
+BWL_BS<2>             4       0     0   1     FB1_2   11    I/O     O
+BWL_BS<0>             5       0     0   0     FB1_3   12    I/O     O
+(unused)              0       0     0   5     FB1_4         (b)     
 BWL_BS<1>             7       2<-   0   0     FB1_5   13    I/O     O
 CLK_BS                0       0   /\2   3     FB1_6   14    I/O     O
-SIZING_FSM_FFd2       8       3<-   0   0     FB1_7         (b)     (b)
-DIR_BS                1       0   /\3   1     FB1_8   15    I/O     O
+(unused)              0       0     0   5     FB1_7         (b)     
+DIR_BS                1       0     0   4     FB1_8   15    I/O     O
 LE_BS                 3       0     0   2     FB1_9   16    I/O     O
-(unused)              0       0   \/5   0     FB1_10        (b)     (b)
-SIZING_FSM_FFd3       9       5<- \/1   0     FB1_11  17    I/O     (b)
-SM030_N_FSM_FFd1     11       6<-   0   0     FB1_12  18    I/O     I
-(unused)              0       0   /\5   0     FB1_13        (b)     (b)
-(unused)              0       0   \/5   0     FB1_14  19    I/O     I
-LDSACK<0>            11       6<-   0   0     FB1_15  20    I/O     I
-END_SEND              8       4<- /\1   0     FB1_16        (b)     (b)
-(unused)              0       0   /\4   1     FB1_17  22    GCK/I/O GCK
-(unused)              0       0   \/5   0     FB1_18        (b)     (b)
+(unused)              0       0     0   5     FB1_10        (b)     
+(unused)              0       0     0   5     FB1_11  17    I/O     
+(unused)              0       0     0   5     FB1_12  18    I/O     I
+(unused)              0       0   \/4   1     FB1_13        (b)     (b)
+SIZING_FSM_FFd2       8       4<- \/1   0     FB1_14  19    I/O     I
+END_SEND              8       3<-   0   0     FB1_15  20    I/O     I
+START_SEND_SAMPLED    3       0   /\2   0     FB1_16        (b)     (b)
+SM030_N_FSM_FFd1      4       0     0   1     FB1_17  22    GCK/I/O GCK
+(unused)              0       0   \/4   1     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: A40<0>             7: LDSACK<0>         13: SIZING_FSM_FFd1 
-  2: A40<1>             8: LDSACK<1>         14: SIZING_FSM_FFd2 
-  3: CLK30_D            9: LE_BS             15: SIZING_FSM_FFd3 
-  4: RW40              10: RSTI40            16: SM030_N_FSM_FFd1 
-  5: DSACK_D<0>        11: SIZ40<0>          17: SM030_N_FSM_FFd2 
-  6: DSACK_D<1>        12: SIZ40<1>          18: STERM_D 
+  1: A40<0>             7: LE_BS             12: SIZING_FSM_FFd2 
+  2: A40<1>             8: RSTI40            13: SIZING_FSM_FFd3 
+  3: CLK30_D            9: SIZ40<0>          14: SM030_N_FSM_FFd1 
+  4: RW40              10: SIZ40<1>          15: SM030_N_FSM_FFd2 
+  5: LDSACK<0>         11: SIZING_FSM_FFd1   16: START_SEND 
+  6: LDSACK<1>        
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-LDSACK<1>            ..X..XXXXXXXXXXXXX...................... 14
-BWL_BS<2>            ...X..XX....XXX......................... 6
-BWL_BS<0>            X..X..XX..XXXXX......................... 9
-SM030_N_FSM_FFd2     ..X.XX...X.....XXX...................... 7
-BWL_BS<1>            .X.X..XX..XXXXX......................... 9
+SIZING_FSM_FFd3      .XX.XXXXXXXXX........................... 11
+BWL_BS<2>            ...XXX....XXX........................... 6
+BWL_BS<0>            X..XXX..XXXXX........................... 9
+BWL_BS<1>            .X.XXX..XXXXX........................... 9
 CLK_BS               ........................................ 0
-SIZING_FSM_FFd2      ..X...XXXXXXXXX......................... 10
 DIR_BS               ...X.................................... 1
-LE_BS                ..X......X.....XX....................... 4
-SIZING_FSM_FFd3      .XX...XXXXXXXXX......................... 11
-SM030_N_FSM_FFd1     ..X...XXXXXXXXXXX....................... 12
-LDSACK<0>            ..X.X.XXXXXXXXXXXX...................... 14
-END_SEND             ..X...XXXXXXXXX......................... 10
+LE_BS                ..X....X.....XX......................... 4
+SIZING_FSM_FFd2      ..X.XXXXXXXXX........................... 10
+END_SEND             ..X.XXXXXXXXX........................... 10
+START_SEND_SAMPLED   ..X....X.......X........................ 3
+SM030_N_FSM_FFd1     ..X....X..XXXXX......................... 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
@@ -307,8 +305,8 @@ OE_BS                ...X.X.XX.....X..XX..................... 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               5/49
-Number of signals used by logic mapping into function block:  5
+Number of function block inputs used/remaining:               16/38
+Number of signals used by logic mapping into function block:  16
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB3_1         (b)     
@@ -327,23 +325,28 @@ FC30<0>               2       0     0   3     FB3_12  30    I/O     O
 (unused)              0       0     0   5     FB3_14  32    I/O     
 FC30<2>               4       0     0   1     FB3_15  33    I/O     O
 (unused)              0       0     0   5     FB3_16        (b)     
-(unused)              0       0     0   5     FB3_17  34    I/O     I
-(unused)              0       0     0   5     FB3_18        (b)     
+(unused)              0       0   \/3   2     FB3_17  34    I/O     I
+START_ACK             8       3<-   0   0     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: TM40<0>            3: TM40<2>            5: TT40<1> 
-  2: TM40<1>            4: TT40<0>          
+  1: CLK30_D            7: SIZING_FSM_FFd2     12: TM40<0> 
+  2: LDSACK<0>          8: SIZING_FSM_FFd3     13: TM40<1> 
+  3: LDSACK<1>          9: START_ACK           14: TM40<2> 
+  4: LE_BS             10: START_SEND          15: TT40<0> 
+  5: RSTI40            11: START_SEND_SAMPLED  16: TT40<1> 
+  6: SIZING_FSM_FFd1  
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-FC30<1>              XX.XX................................... 4
-FC30<0>              XX.XX................................... 4
-FC30<2>              XXXXX................................... 5
+FC30<1>              ...........XX.XX........................ 4
+FC30<0>              ...........XX.XX........................ 4
+FC30<2>              ...........XXXXX........................ 5
+START_ACK            XXXXXXXXXXX............................. 11
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               3/51
-Number of signals used by logic mapping into function block:  3
+Number of function block inputs used/remaining:               15/39
+Number of signals used by logic mapping into function block:  15
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_1         (b)     
@@ -361,115 +364,115 @@ CDIS40                0       0     0   5     FB4_8   91    I/O     O
 (unused)              0       0     0   5     FB4_13        (b)     
 (unused)              0       0     0   5     FB4_14  95    I/O     
 (unused)              0       0     0   5     FB4_15  96    I/O     I
-(unused)              0       0     0   5     FB4_16        (b)     
-(unused)              0       0     0   5     FB4_17  97    I/O     I
-(unused)              0       0     0   5     FB4_18        (b)     
+(unused)              0       0   \/1   4     FB4_16        (b)     (b)
+SIZING_FSM_FFd1      11       6<-   0   0     FB4_17  97    I/O     I
+(unused)              0       0   /\5   0     FB4_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: IPL30<0>           2: IPL30<2>           3: RSTINT 
+  1: CLK30_D            6: LE_BS             11: SIZING_FSM_FFd1 
+  2: IPL30<0>           7: RSTI40            12: SIZING_FSM_FFd2 
+  3: IPL30<2>           8: RSTINT            13: SIZING_FSM_FFd3 
+  4: LDSACK<0>          9: SIZ40<0>          14: START_ACK 
+  5: LDSACK<1>         10: SIZ40<1>          15: START_SEND_SAMPLED 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 MDIS40               ........................................ 0
-IPL40<0>             X.X..................................... 2
-IPL40<2>             .XX..................................... 2
+IPL40<0>             .X.....X................................ 2
+IPL40<2>             ..X....X................................ 2
 CDIS40               ........................................ 0
+SIZING_FSM_FFd1      X..XXXX.XXXXXXX......................... 12
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB5  ***********************************
-Number of function block inputs used/remaining:               18/36
-Number of signals used by logic mapping into function block:  18
+Number of function block inputs used/remaining:               15/39
+Number of signals used by logic mapping into function block:  15
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0   /\5   0     FB5_1         (b)     (b)
-START_ACK             8       3<-   0   0     FB5_2   35    I/O     I
-(unused)              0       0   /\3   2     FB5_3         (b)     (b)
+(unused)              0       0     0   5     FB5_1         (b)     
+(unused)              0       0     0   5     FB5_2   35    I/O     I
+(unused)              0       0     0   5     FB5_3         (b)     
 (unused)              0       0     0   5     FB5_4         (b)     
 (unused)              0       0     0   5     FB5_5   36    I/O     I
 (unused)              0       0     0   5     FB5_6   37    I/O     
-(unused)              0       0   \/3   2     FB5_7         (b)     (b)
-AS30                 11       6<-   0   0     FB5_8   39    I/O     O
-(unused)              0       0   /\3   2     FB5_9   40    I/O     I
+(unused)              0       0     0   5     FB5_7         (b)     
+AS30                  4       0     0   1     FB5_8   39    I/O     O
+(unused)              0       0     0   5     FB5_9   40    I/O     I
 (unused)              0       0     0   5     FB5_10        (b)     
-START_SEND_SAMPLED    3       0     0   2     FB5_11  41    I/O     (b)
+(unused)              0       0     0   5     FB5_11  41    I/O     
 RW30                  1       0     0   4     FB5_12  42    I/O     O
-END_ACK               3       0     0   2     FB5_13        (b)     (b)
-SIZ30<1>              2       0   \/3   0     FB5_14  43    I/O     O
-DS30                 12       7<-   0   0     FB5_15  46    I/O     O
-(unused)              0       0   /\4   1     FB5_16        (b)     (b)
+SM030_N_FSM_FFd2      4       0     0   1     FB5_13        (b)     (b)
+SIZ30<1>              2       0   \/1   2     FB5_14  43    I/O     O
+DS30                  5       1<- \/1   0     FB5_15  46    I/O     O
+LDSACK<1>             6       1<-   0   0     FB5_16        (b)     (b)
 SIZ30<0>              3       0   \/1   1     FB5_17  49    I/O     O
-SIZING_FSM_FFd1      11       6<-   0   0     FB5_18        (b)     (b)
+LDSACK<0>             6       1<-   0   0     FB5_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: CLK30_D            7: RSTI40            13: SIZING_FSM_FFd3 
-  2: RW40               8: SCLK              14: SM030_N_FSM_FFd1 
-  3: END_SEND           9: SIZ40<0>          15: SM030_N_FSM_FFd2 
-  4: LDSACK<0>         10: SIZ40<1>          16: START_ACK 
-  5: LDSACK<1>         11: SIZING_FSM_FFd1   17: START_SEND 
-  6: LE_BS             12: SIZING_FSM_FFd2   18: START_SEND_SAMPLED 
+  1: CLK30_D            6: LDSACK<1>         11: SIZING_FSM_FFd2 
+  2: RW40               7: RSTI40            12: SIZING_FSM_FFd3 
+  3: DSACK_D<0>         8: SIZ40<0>          13: SM030_N_FSM_FFd1 
+  4: DSACK_D<1>         9: SIZ40<1>          14: SM030_N_FSM_FFd2 
+  5: LDSACK<0>         10: SIZING_FSM_FFd1   15: STERM_D 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-START_ACK            X..XXXX...XXX..XXX...................... 11
-AS30                 X..XXXX.XXXXXXX......................... 12
-START_SEND_SAMPLED   X.....X.........X....................... 3
+AS30                 X.....X..XXXXX.......................... 7
 RW30                 .X...................................... 1
-END_ACK              ..X...XX................................ 3
-SIZ30<1>             ........XXXXX........................... 5
-DS30                 XX.XXXX.XXXXXXX......................... 13
-SIZ30<0>             ........XXXXX........................... 5
-SIZING_FSM_FFd1      X..XXXX.XXXXX..X.X...................... 12
+SM030_N_FSM_FFd2     X.XX..X.....XXX......................... 7
+SIZ30<1>             .......XXXXX............................ 5
+DS30                 XX....X..XXXXX.......................... 8
+LDSACK<1>            X..X.XX..XXXXXX......................... 10
+SIZ30<0>             .......XXXXX............................ 5
+LDSACK<0>            X.X.X.X..XXXXXX......................... 10
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB6  ***********************************
-Number of function block inputs used/remaining:               17/37
-Number of signals used by logic mapping into function block:  17
+Number of function block inputs used/remaining:               15/39
+Number of signals used by logic mapping into function block:  15
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB6_1         (b)     
 (unused)              0       0     0   5     FB6_2   74    I/O     
 (unused)              0       0     0   5     FB6_3         (b)     
-STERM_D               1       0     0   4     FB6_4         (b)     (b)
-DSACK_D<1>            1       0     0   4     FB6_5   76    I/O     (b)
+(unused)              0       0     0   5     FB6_4         (b)     
+(unused)              0       0     0   5     FB6_5   76    I/O     
 BGR60                 0       0     0   5     FB6_6   77    I/O     O
-DSACK_D<0>            1       0     0   4     FB6_7         (b)     (b)
-CLK30_SIG             1       0     0   4     FB6_8   78    I/O     (b)
+CLK30_SIG             1       0     0   4     FB6_7         (b)     (b)
+CLK30_D               1       0     0   4     FB6_8   78    I/O     (b)
 TBI40                 2       0     0   3     FB6_9   79    I/O     O
-CLK30_D               1       0     0   4     FB6_10        (b)     (b)
-TBI40_OBUF__$INT      2       0     0   3     FB6_11  80    I/O     (b)
+TBI40_OBUF__$INT      2       0     0   3     FB6_10        (b)     (b)
+BCLK060_SIG           2       0     0   3     FB6_11  80    I/O     (b)
 PCLK                  0       0     0   5     FB6_12  81    I/O     O
-BCLK060_SIG           2       0     0   3     FB6_13        (b)     (b)
+START_SEND            3       0     0   2     FB6_13        (b)     (b)
 BCLK                  2       0     0   3     FB6_14  82    I/O     O
 IPL40<1>              1       0     0   4     FB6_15  85    I/O     O
-START_SEND            3       0     0   2     FB6_16        (b)     (b)
+RSTINT                3       0     0   2     FB6_16        (b)     (b)
 RSTI40                2       0     0   3     FB6_17  86    I/O     O
-RSTINT                3       0     0   2     FB6_18        (b)     (b)
+END_ACK               3       0     0   2     FB6_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: BCLK060_SIG        7: IPL30<1>          13: SCLK 
-  2: CLK30              8: RESET30.PIN       14: SEL16M 
-  3: CLK30_SIG          9: PCLK              15: STERM30 
-  4: CPU40_60          10: RSTI40            16: TS40 
-  5: DSACK30<0>        11: RSTINT            17: TT40<1> 
-  6: DSACK30<1>        12: RSTO40           
+  1: BCLK060_SIG        6: IPL30<1>          11: RSTO40 
+  2: CLK30              7: RESET30.PIN       12: SCLK 
+  3: CLK30_SIG          8: PCLK              13: SEL16M 
+  4: CPU40_60           9: RSTI40            14: TS40 
+  5: END_SEND          10: RSTINT            15: TT40<1> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-STERM_D              ..............X......................... 1
-DSACK_D<1>           .....X.................................. 1
 BGR60                ........................................ 0
-DSACK_D<0>           ....X................................... 1
-CLK30_SIG            ........X............................... 1
-TBI40                .........X...X..X....................... 3
+CLK30_SIG            .......X................................ 1
 CLK30_D              .X...................................... 1
-TBI40_OBUF__$INT     .........X...X..X....................... 3
+TBI40                ........X...X.X......................... 3
+TBI40_OBUF__$INT     ........X...X.X......................... 3
+BCLK060_SIG          ..X....X................................ 2
 PCLK                 ........................................ 0
-BCLK060_SIG          ..X.....X............................... 2
-BCLK                 X..X........X........................... 3
-IPL40<1>             ......X...X............................. 2
-START_SEND           .........X..XX.XX....................... 5
-RSTI40               .......X...XX........................... 3
-RSTINT               .......X.X.XX........................... 4
+START_SEND           ........X..XXXX......................... 5
+BCLK                 X..X.......X............................ 3
+IPL40<1>             .....X...X.............................. 2
+RSTINT               ......X.X.XX............................ 4
+RSTI40               ......X...XX............................ 3
+END_ACK              ....X...X..X............................ 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB7  ***********************************
@@ -505,13 +508,13 @@ PLL_S<0>             ........................................ 0
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB8  ***********************************
-Number of function block inputs used/remaining:               8/46
-Number of signals used by logic mapping into function block:  8
+Number of function block inputs used/remaining:               11/43
+Number of signals used by logic mapping into function block:  11
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB8_1         (b)     
-(unused)              0       0     0   5     FB8_2   63    I/O     
-(unused)              0       0     0   5     FB8_3         (b)     
+STERM_D               1       0     0   4     FB8_1         (b)     (b)
+DSACK_D<1>            1       0     0   4     FB8_2   63    I/O     (b)
+DSACK_D<0>            1       0     0   4     FB8_3         (b)     (b)
 (unused)              0       0     0   5     FB8_4         (b)     
 (unused)              0       0     0   5     FB8_5   64    I/O     I
 (unused)              0       0     0   5     FB8_6   65    I/O     
@@ -529,13 +532,17 @@ TEA40                 0       0     0   5     FB8_17  73    I/O     O
 (unused)              0       0     0   5     FB8_18        (b)     
 
 Signals Used by Logic in Function Block
-  1: END_ACK            4: SCLK               7: TT40<0> 
-  2: END_SEND           5: TBI40_OBUF__$INT   8: TT40<1> 
-  3: RSTI40             6: TS40             
+  1: DSACK30<0>         5: RSTI40             9: TS40 
+  2: DSACK30<1>         6: SCLK              10: TT40<0> 
+  3: END_ACK            7: STERM30           11: TT40<1> 
+  4: END_SEND           8: TBI40_OBUF__$INT 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-TA40                 XXXXXXXX................................ 8
+STERM_D              ......X................................. 1
+DSACK_D<1>           .X...................................... 1
+DSACK_D<0>           X....................................... 1
+TA40                 ..XXXX.XXXX............................. 8
 TEA40                ........................................ 0
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
@@ -561,22 +568,8 @@ AL(1) <= ((SIZING_FSM_FFd2 AND SIZING_FSM_FFd1)
 
 FDCPE_AS30: FDCPE port map (AS30,AS30_D,NOT CLK30_D,'0',NOT RSTI40);
 AS30_D <= ((SM030_N_FSM_FFd2)
-	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT LDSACK(1))
-	OR (LE_BS AND NOT SIZING_FSM_FFd1 AND NOT SM030_N_FSM_FFd1 AND 
-	SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0))
 	OR (NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1));
+	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1));
 
 
 BCLK <= ((SCLK AND CPU40_60)
@@ -591,12 +584,12 @@ BCLK060_SIG_D <= CLK30_SIG;
 BGR60 <= '0';
 
 
-BWL_BS(0) <= ((A40(0) AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
-	NOT RW40 AND NOT SIZ40(1) AND SIZ40(0))
-	OR (SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
+BWL_BS(0) <= ((SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1)
 	OR (NOT SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3)
 	OR (SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND RW40)
-	OR (NOT SIZING_FSM_FFd3 AND LDSACK(0) AND LDSACK(1) AND RW40));
+	OR (NOT SIZING_FSM_FFd3 AND LDSACK(0) AND LDSACK(1) AND RW40)
+	OR (A40(0) AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
+	NOT RW40 AND NOT SIZ40(1) AND SIZ40(0)));
 
 
 BWL_BS(1) <= ((NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND LDSACK(0) AND 
@@ -613,10 +606,10 @@ BWL_BS(1) <= ((NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND LDSACK(0) AND
 	SIZ40(0)));
 
 
-BWL_BS(2) <= ((SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
-	NOT SIZING_FSM_FFd3 AND RW40)
-	OR (NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
+BWL_BS(2) <= ((NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
 	NOT SIZING_FSM_FFd3)
+	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
+	NOT SIZING_FSM_FFd3 AND RW40)
 	OR (SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND LDSACK(0) AND 
 	RW40)
 	OR (SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND NOT LDSACK(1) AND 
@@ -639,23 +632,9 @@ DIR_BS <= RW40;
 
 FDCPE_DS30: FDCPE port map (DS30,DS30_D,NOT CLK30_D,'0',NOT RSTI40);
 DS30_D <= ((SM030_N_FSM_FFd2)
-	OR (NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (LE_BS AND NOT SIZING_FSM_FFd1 AND NOT SM030_N_FSM_FFd1 AND 
-	SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT LDSACK(1))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (NOT SM030_N_FSM_FFd1 AND NOT RW40)
 	OR (NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd1));
+	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1)
+	OR (NOT SM030_N_FSM_FFd1 AND NOT RW40));
 
 FDCPE_DSACK_D0: FDCPE port map (DSACK_D(0),DSACK30(0),PLL_CLK,'0','0');
 
@@ -664,27 +643,17 @@ FDCPE_DSACK_D1: FDCPE port map (DSACK_D(1),DSACK30(1),PLL_CLK,'0','0');
 FDCPE_END_ACK: FDCPE port map (END_ACK,END_SEND,SCLK,NOT RSTI40,'0');
 
 FTCPE_END_SEND: FTCPE port map (END_SEND,END_SEND_T,NOT CLK30_D,NOT RSTI40,'0');
-END_SEND_T <= ((LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3)
+END_SEND_T <= ((LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
+	NOT LDSACK(0) AND NOT LDSACK(1))
+	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3)
 	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
 	SIZ40(1) AND NOT SIZ40(0))
 	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	NOT LDSACK(0) AND NOT LDSACK(1))
-	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
 	NOT LDSACK(0) AND NOT SIZ40(1) AND SIZ40(0))
 	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0)));
-
-
-
-
-
-
-
-
-
-
+	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0))
+	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
+	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0)));
 
 
 
@@ -726,43 +695,20 @@ IPL40(1) <= NOT ((RSTINT AND NOT IPL30(1)));
 IPL40(2) <= NOT ((RSTINT AND NOT IPL30(2)));
 
 FDCPE_LDSACK0: FDCPE port map (LDSACK(0),LDSACK_D(0),NOT CLK30_D,'0',NOT RSTI40);
-LDSACK_D(0) <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2)
-	OR (SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND STERM_D AND 
-	DSACK_D(0))
-	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2)
-	OR (LE_BS AND NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd2 AND NOT LDSACK(1))
-	OR (LE_BS AND NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd2 AND NOT SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd1 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND SIZ40(1) AND NOT SIZ40(0))
+LDSACK_D(0) <= ((NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
+	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2)
 	OR (NOT SM030_N_FSM_FFd1 AND LDSACK(0))
 	OR (SM030_N_FSM_FFd2 AND LDSACK(0))
-	OR (NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2));
+	OR (SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND STERM_D AND 
+	DSACK_D(0)));
 
 FDCPE_LDSACK1: FDCPE port map (LDSACK(1),LDSACK_D(1),NOT CLK30_D,'0',NOT RSTI40);
-LDSACK_D(1) <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
-	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND LDSACK(0) AND NOT LDSACK(1) AND 
-	SIZ40(1) AND SIZ40(0))
-	OR (NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
-	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND LDSACK(0) AND NOT LDSACK(1) AND 
-	NOT SIZ40(1) AND NOT SIZ40(0))
-	OR (NOT LE_BS AND SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1))
-	OR (NOT LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT LDSACK(1))
-	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
-	SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND NOT LDSACK(1))
-	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT LDSACK(1) AND NOT SIZ40(1))
-	OR (SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1 AND NOT LDSACK(1) AND SIZ40(0))
-	OR (SM030_N_FSM_FFd2 AND NOT LDSACK(1))
-	OR (SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND NOT STERM_D)
-	OR (SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND NOT DSACK_D(1)));
+LDSACK_D(1) <= ((NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
+	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2)
+	OR (NOT SM030_N_FSM_FFd1 AND LDSACK(1))
+	OR (SM030_N_FSM_FFd2 AND LDSACK(1))
+	OR (SM030_N_FSM_FFd1 AND NOT SM030_N_FSM_FFd2 AND STERM_D AND 
+	DSACK_D(1)));
 
 FDCPE_LE_BS: FDCPE port map (LE_BS,LE_BS_D,NOT CLK30_D,NOT RSTI40,'0');
 LE_BS_D <= (SM030_N_FSM_FFd1 AND SM030_N_FSM_FFd2);
@@ -817,7 +763,9 @@ SIZ30(1) <= ((SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND
 	NOT SIZ40(0)));
 
 FTCPE_SIZING_FSM_FFd1: FTCPE port map (SIZING_FSM_FFd1,SIZING_FSM_FFd1_T,NOT CLK30_D,NOT RSTI40,'0');
-SIZING_FSM_FFd1_T <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
+SIZING_FSM_FFd1_T <= ((NOT START_ACK AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
+	NOT SIZING_FSM_FFd3 AND START_SEND_SAMPLED)
+	OR (NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 	SIZING_FSM_FFd3)
 	OR (LE_BS AND SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 	NOT SIZING_FSM_FFd3)
@@ -827,8 +775,6 @@ SIZING_FSM_FFd1_T <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND
 	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0))
 	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (NOT START_ACK AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
-	NOT SIZING_FSM_FFd3 AND START_SEND_SAMPLED)
 	OR (START_ACK AND NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
 	NOT SIZING_FSM_FFd3 AND NOT START_SEND_SAMPLED)
 	OR (LE_BS AND SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
@@ -843,11 +789,11 @@ SIZING_FSM_FFd2_T <= ((LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3)
 	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
 	LDSACK(0) AND NOT LDSACK(1) AND SIZ40(1) AND SIZ40(0))
 	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
+	LDSACK(0) AND NOT LDSACK(1) AND NOT SIZ40(1) AND NOT SIZ40(0))
+	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
 	NOT LDSACK(0) AND LDSACK(1) AND SIZ40(1))
 	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	NOT LDSACK(0) AND LDSACK(1) AND NOT SIZ40(0))
-	OR (LE_BS AND SIZING_FSM_FFd1 AND NOT SIZING_FSM_FFd3 AND 
-	LDSACK(0) AND NOT LDSACK(1) AND NOT SIZ40(1) AND NOT SIZ40(0)));
+	NOT LDSACK(0) AND LDSACK(1) AND NOT SIZ40(0)));
 
 FTCPE_SIZING_FSM_FFd3: FTCPE port map (SIZING_FSM_FFd3,SIZING_FSM_FFd3_T,NOT CLK30_D,NOT RSTI40,'0');
 SIZING_FSM_FFd3_T <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3)
@@ -858,30 +804,16 @@ SIZING_FSM_FFd3_T <= ((NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3)
 	OR (LE_BS AND NOT SIZING_FSM_FFd1 AND SIZING_FSM_FFd3 AND 
 	SIZ40(1) AND NOT SIZ40(0))
 	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
-	NOT LDSACK(0) AND LDSACK(1) AND SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 	NOT LDSACK(0) AND LDSACK(1) AND NOT A40(1) AND NOT SIZ40(0))
+	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
+	NOT LDSACK(0) AND LDSACK(1) AND SIZ40(1) AND SIZ40(0))
 	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd1 AND 
 	NOT LDSACK(0) AND LDSACK(1) AND NOT SIZ40(1) AND NOT SIZ40(0)));
 
 FDCPE_SM030_N_FSM_FFd1: FDCPE port map (SM030_N_FSM_FFd1,SM030_N_FSM_FFd1_D,NOT CLK30_D,NOT RSTI40,'0');
 SM030_N_FSM_FFd1_D <= ((SM030_N_FSM_FFd2)
-	OR (LE_BS AND SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT LDSACK(1))
-	OR (LE_BS AND NOT SIZING_FSM_FFd1 AND NOT SM030_N_FSM_FFd1 AND 
-	SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(0) AND NOT SIZ40(1) AND SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND SIZ40(1) AND NOT SIZ40(0))
-	OR (LE_BS AND NOT SIZING_FSM_FFd2 AND NOT SM030_N_FSM_FFd1 AND 
-	NOT LDSACK(1) AND NOT SIZ40(1) AND SIZ40(0))
 	OR (NOT SIZING_FSM_FFd2 AND NOT SIZING_FSM_FFd1 AND 
-	NOT SM030_N_FSM_FFd1)
-	OR (NOT SIZING_FSM_FFd2 AND SIZING_FSM_FFd3 AND 
-	NOT SM030_N_FSM_FFd1));
+	NOT SIZING_FSM_FFd3 AND NOT SM030_N_FSM_FFd1));
 
 FDCPE_SM030_N_FSM_FFd2: FDCPE port map (SM030_N_FSM_FFd2,SM030_N_FSM_FFd2_D,NOT CLK30_D,NOT RSTI40,'0');
 SM030_N_FSM_FFd2_D <= ((NOT SM030_N_FSM_FFd1)

@@ -1,0 +1,301 @@
+                           Performance Summary Report
+                           --------------------------
+
+Design:     control
+Device:     XC95144XL-10-TQ100
+Speed File: Version 3.0
+Program:    Timing Report Generator:  version P.68d
+Date:       Sun Sep 03 23:48:37 2017
+
+Performance Summary:
+
+Pad to Pad (tPD)                          :         18.7ns (2 macrocell levels)
+Pad 'TT40<1>' to Pad 'TA40'                                       
+
+Clock net 'PLL_CLK' path delays:
+
+Clock Pad to Output Pad (tCO)             :         30.1ns (4 macrocell levels)
+Clock Pad 'PLL_CLK' to Output Pad 'TA40'                                  (GCK)
+
+Clock to Setup (tCYC)                     :         10.0ns (1 macrocell levels)
+Clock to Q, net 'PCLK.Q' to DFF Setup(D) at 'SCLK.D'                      (GCK)
+Target FF drives output net 'SCLK'
+
+Setup to Clock at the Pad (tSU)           :          6.5ns (0 macrocell levels)
+Data signal 'CLK30' to DFF D input Pin at 'CLK30_D.D'
+Clock pad 'PLL_CLK'                                                       (GCK)
+
+                          Minimum Clock Period: 10.0ns
+                     Maximum Internal Clock Speed: 100.0Mhz
+                            (Limited by Cycle Time)
+
+Clock net 'CLK30_D.Q' path delays:
+
+Clock to Setup (tCYC)                     :         11.0ns (1 macrocell levels)
+Clock to Q, net 'LDSACK<0>.Q' to TFF Setup(D) at 'END_SEND.D'     (Pterm Clock)
+Target FF drives output net 'END_SEND'
+
+Setup to Clock at the Pad (tSU)           :          1.4ns (0 macrocell levels)
+Data signal 'SIZ40<0>' to TFF D input Pin at 'END_SEND.D'
+Clock pad 'CLK30_D.Q'                                             (Pterm Clock)
+
+                          Minimum Clock Period: 14.0ns
+                     Maximum Internal Clock Speed: 71.4Mhz
+                         (Limited by Clock Pulse Width)
+
+Clock net 'SCLK.Q' path delays:
+
+Clock to Setup (tCYC)                     :         10.0ns (1 macrocell levels)
+Clock to Q, net 'END_ACK.Q' to DFF Setup(D) at 'TA40.D'           (Pterm Clock)
+Target FF drives output net 'TA40'
+
+Setup to Clock at the Pad (tSU)           :          1.4ns (0 macrocell levels)
+Data signal 'TT40<1>' to DFF D input Pin at 'TA40.D'
+Clock pad 'SCLK.Q'                                                (Pterm Clock)
+
+                          Minimum Clock Period: 14.0ns
+                     Maximum Internal Clock Speed: 71.4Mhz
+                         (Limited by Clock Pulse Width)
+
+--------------------------------------------------------------------------------
+                            Pad to Pad (tPD) (nsec)
+
+\ From        A     A     C     I     I     I     R     R     S     S     S
+ \            4     4     P     P     P     P     S     W     E     I     I
+  \           0     0     U     L     L     L     T     4     L     Z     Z
+   \          <     <     4     3     3     3     O     0     1     4     4
+    \         0     1     0     0     0     0     4           6     0     0
+     \        >     >     _     <     <     <     0           M     <     <
+      \                   6     0     1     2                       0     1
+       \                  0     >     >     >                       >     >
+        \                                                                  
+  To     \------------------------------------------------------------------
+
+AL<0>      10.0                                                  10.0  10.0
+AL<1>            10.0                                            10.0  10.0
+BCLK                   10.0                                                
+BWL_BS<0>  11.0                                      11.0        11.0  11.0
+BWL_BS<1>        10.0                                11.0        10.0  10.0
+BWL_BS<2>                                            11.0                  
+DIR_BS                                               10.0                  
+FC30<0>                                                                    
+FC30<1>                                                                    
+FC30<2>                                                                    
+ICACHE                                                                     
+IPL40<0>                     10.0                                          
+IPL40<1>                           10.0                                    
+IPL40<2>                                 10.0                              
+RESET30                                        11.0                        
+RW30                                                 10.0                  
+SIZ30<0>                                                         10.0  10.0
+SIZ30<1>                                                         10.0  10.0
+TA40                                                       18.7            
+TBI40                                                      10.0            
+
+--------------------------------------------------------------------------------
+                            Pad to Pad (tPD) (nsec)
+
+\ From        T     T     T     T     T
+ \            M     M     M     T     T
+  \           4     4     4     4     4
+   \          0     0     0     0     0
+    \         <     <     <     <     <
+     \        0     1     2     0     1
+      \       >     >     >     >     >
+       \                               
+        \                              
+  To     \------------------------------
+
+AL<0>                                  
+AL<1>                                  
+BCLK                                   
+BWL_BS<0>                              
+BWL_BS<1>                              
+BWL_BS<2>                              
+DIR_BS                                 
+FC30<0>    10.0  10.0        10.0  10.0
+FC30<1>    10.0  10.0        10.0  10.0
+FC30<2>    10.0  10.0  10.0  10.0  10.0
+ICACHE     10.0  10.0              10.0
+IPL40<0>                               
+IPL40<1>                               
+IPL40<2>                               
+RESET30                                
+RW30                                   
+SIZ30<0>                               
+SIZ30<1>                               
+TA40                               18.7
+TBI40                              10.0
+
+--------------------------------------------------------------------------------
+                      Clock Pad to Output Pad (tCO) (nsec)
+
+\ From        P
+ \            L
+  \           L
+   \          _
+    \         C
+     \        L
+      \       K
+       \       
+        \      
+  To     \------
+
+AL<0>      21.4
+AL<1>      21.4
+AS30       13.7
+BCLK       13.5
+BWL_BS<0>  22.4
+BWL_BS<1>  22.4
+BWL_BS<2>  22.4
+CLK_RAMC    5.8
+DS30       13.7
+IPL40<0>   21.4
+IPL40<1>   21.4
+IPL40<2>   21.4
+LE_BS      13.7
+OE_BS      13.7
+PCLK        5.8
+RSTI40     13.7
+SCLK        5.8
+SIZ30<0>   21.4
+SIZ30<1>   21.4
+TA40       30.1
+TBI40      21.4
+
+--------------------------------------------------------------------------------
+                   Setup to Clock at Pad (tSU or tSUF) (nsec)
+
+\ From         P
+ \             L
+  \            L
+   \           _
+    \          C
+     \         L
+      \        K
+       \        
+        \       
+         \      
+  To      \------
+
+CLK30        6.5
+DSACK30<0>   6.5
+DSACK30<1>   6.5
+STERM30      6.5
+
+--------------------------------------------------------------------------------
+                          Clock to Setup (tCYC) (nsec)
+                                (Clock: PLL_CLK)
+
+\ From            C     P
+ \                L     C
+  \               K     L
+   \              3     K
+    \             0     .
+     \            _     Q
+      \           S      
+       \          I      
+        \         G      
+         \        .      
+          \       Q      
+           \             
+            \            
+  To         \------------
+
+BCLK060_SIG.D  10.0  10.0
+CLK30_SIG.D          10.0
+CLK_RAMC.D           10.0
+SCLK.D         10.0  10.0
+
+--------------------------------------------------------------------------------
+                          Clock to Setup (tCYC) (nsec)
+                               (Clock: CLK30_D.Q)
+
+\ From                   L     L     L     S     S     S     S     S     S     S
+ \                       D     D     E     I     I     I     M     M     T     T
+  \                      S     S     _     Z     Z     Z     0     0     A     A
+   \                     A     A     B     I     I     I     3     3     R     R
+    \                    C     C     S     N     N     N     0     0     T     T
+     \                   K     K     .     G     G     G     _     _     _     _
+      \                  <     <     Q     _     _     _     N     N     A     S
+       \                 0     1           F     F     F     _     _     C     E
+        \                >     >           S     S     S     F     F     K     N
+         \               .     .           M     M     M     S     S     .     D
+          \              Q     Q           _     _     _     M     M     Q     _
+           \                               F     F     F     _     _           S
+            \                              F     F     F     F     F           A
+             \                             d     d     d     F     F           M
+              \                            1     2     3     d     d           P
+               \                           .     .     .     1     2           L
+                \                          Q     Q     Q     .     .           E
+                 \                                           Q     Q           D
+                  \                                                            .
+                   \                                                           Q
+  To                \------------------------------------------------------------
+
+AS30.D                                                    10.0                  
+DS30.D                                                    10.0  10.0            
+END_SEND.D            11.0  11.0  11.0  11.0  11.0  11.0                        
+LDSACK<0>.CE                                              10.0  10.0            
+LDSACK<1>.CE                                              10.0  10.0            
+LE_BS.D                                                   10.0  10.0            
+SIZING_FSM_FFd1.D     11.0  11.0  11.0  11.0  11.0  11.0              11.0  11.0
+SIZING_FSM_FFd2.D     11.0  11.0  11.0  11.0  11.0  11.0                        
+SIZING_FSM_FFd3.D     10.0  10.0  11.0  11.0  11.0  11.0                        
+SM030_N_FSM_FFd1.D                                        10.0  10.0            
+SM030_N_FSM_FFd2.D                                        10.0  10.0            
+START_ACK.D           11.0  11.0  10.0  11.0  11.0  11.0              11.0  11.0
+
+--------------------------------------------------------------------------------
+                          Clock to Setup (tCYC) (nsec)
+                             (Clock: BCLK040_SIG.Q)
+
+\ From        E     O     R     T
+ \            N     E     S     A
+  \           D     _     T     4
+   \          _     B     I     0
+    \         A     S     4     .
+     \        C     .     0     Q
+      \       K     Q     .      
+       \      .           Q      
+        \     Q                  
+  To     \------------------------
+
+OE_BS.D          10.0        10.0
+RSTINT.D               10.0      
+TA40.D     10.0                  
+
+Path Type Definition: 
+
+Pad to Pad (tPD) -                        Reports pad to pad paths that start 
+                                          at input pads and end at output pads. 
+                                          Paths are not traced through 
+                                          registers. 
+
+Clock Pad to Output Pad (tCO) -           Reports paths that start at input 
+                                          pads trace through clock inputs of 
+                                          registers and end at output pads. 
+                                          Paths are not traced through PRE/CLR 
+                                          inputs of registers. 
+
+Setup to Clock at Pad (tSU or tSUF) -     Reports external setup time of data 
+                                          to clock at pad. Data path starts at 
+                                          an input pad and ends at register 
+                                          (Fast Input Register for tSUF) D/T 
+                                          input. Clock path starts at input pad 
+                                          and ends at the register clock input. 
+                                          Paths are not traced through 
+                                          registers. Pin-to-pin setup 
+                                          requirement is not reported or 
+                                          guaranteed for product-term clocks 
+                                          derived from macrocell feedback 
+                                          signals. 
+
+Clock to Setup (tCYC) -                   Register to register cycle time. 
+                                          Include source register tCO and 
+                                          destination register tSU. Note that 
+                                          when the computed Maximum Clock Speed 
+                                          is limited by tCYC it is computed 
+                                          assuming that all registers are 
+                                          rising-edge sensitive. 
+
