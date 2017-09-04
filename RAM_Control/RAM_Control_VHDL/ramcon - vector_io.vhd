@@ -57,21 +57,12 @@ architecture ramcon_behav of ramcon is
 				read_commit_cas,			--001011
 				read_data_wait,			--001001
 				read_line_s0,				--001000
-				read_line_s1,				--011000
-				read_line_s2,				--011001
-				read_line_s3,				--011011
-				read_line_s4,				--011010
-				read_line_s5,				--011110
 				write_start_ras,			--011100
 				write_commit_ras,			--010100
 				write_tra_ack,				--010101
 				write_start_cas,			--010111
 				write_commit_cas,			--010110
 				write_line_s0,				--010010
-				write_line_s1,				--010011
-				write_line_s2,				--010001
-				write_line_s3,				--010000
-				write_line_s4,				--110000
 				precharge			--110011
 				);
 	signal TA40_FB: std_logic;
@@ -208,12 +199,16 @@ begin
 				BYTE_ENCODE(3)<='1';
 			end if;
 
-			if(SIZ40 = "11" and CQ = read_start_ras)then
-				burst <="11";
-			elsif(SIZ40 = "11" and CQ = write_start_ras)then
-				burst <="10"; --one less because we end one cycle earlier
-			elsif(ENACLK_PRE ='0')then
-				burst <=burst-1; --decrement
+			if(SIZ40 = "11") then
+				if(CQ = read_start_ras)then
+					burst <="11";
+				elsif(CQ = write_start_ras)then
+					burst <="11"; --one less because we end one cycle earlier
+				elsif((CQ = read_data_wait or CQ = write_commit_cas))then
+					burst <=burst-1; --decrement
+				end if;
+			else
+				burst <="00"; --no burst
 			end if;
 			
 
@@ -412,7 +407,7 @@ begin
 		 CE_B_D <= not SELRAM_D;
 		 TA40_D <= '0';
 		 ENACLK_PRE <= '0';
-		 if (SIZ40 ="11") then
+		 if (burst /="00") then
 		    CQ_D <= read_line_s0;
 		 else
 		    CQ_D <= precharge;
@@ -422,40 +417,7 @@ begin
 		 BYTE_D <= BYTE_ENCODE;
 		 CE_B_D <= not SELRAM_D;
 		 TA40_D <= '0';
-		 CQ_D <= read_line_s1;
-      when read_line_s1 =>
-		 OERAM_40_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 ENACLK_PRE <= '0';
-		 CQ_D <= read_line_s2;
-      when read_line_s2 =>
-		 OERAM_40_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 CQ_D <= read_line_s3;
-      when read_line_s3 =>
-		 OERAM_40_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 ENACLK_PRE <= '0';
-		 CQ_D <= read_line_s4;
-      when read_line_s4 =>
-		 OERAM_40_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 CQ_D <= read_line_s5;
-      when read_line_s5 =>
-		 OERAM_40_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 ENACLK_PRE <= '0';
-		 CQ_D <= precharge;
+		 CQ_D <= read_data_wait;
       when write_start_ras =>
 		 CE_B_D <= not SELRAM_D;
 		 RAS_D <= '0';
@@ -483,7 +445,7 @@ begin
 		 OE40_RAM_D <= '0';
 		 CE_B_D <= not SELRAM_D;
 		 TA40_D <= '0';
-		 if (SIZ40 ="11") then
+		 if (burst/="00") then
 			 ENACLK_PRE <= '0';
 		    CQ_D <= write_line_s0;
 		 else
@@ -495,31 +457,11 @@ begin
 		 BYTE_D <= BYTE_ENCODE;
 		 CE_B_D <= not SELRAM_D;
 		 TA40_D <= '0';
-		 CQ_D <= write_line_s1;
-      when write_line_s1 =>
-		 OE40_RAM_D <= '0';
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 ENACLK_PRE <= '0';
-		 CQ_D <= write_line_s2;
-      when write_line_s2 =>
-		 OE40_RAM_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 CQ_D <= write_line_s3;
-      when write_line_s3 =>
-		 OE40_RAM_D <= '0';
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 ENACLK_PRE <= '0';
-		 CQ_D <= write_line_s4;
-      when write_line_s4 =>
-		 OE40_RAM_D <= '0';
-		 BYTE_D <= BYTE_ENCODE;
-		 CE_B_D <= not SELRAM_D;
-		 TA40_D <= '0';
-		 CQ_D <= precharge;
+		 if (burst/="00") then
+			CQ_D <= write_commit_cas;
+		 else
+		    CQ_D <= precharge;
+		 end if;
       when precharge =>
 		 CE_B_D <= "00";
 		 WE_D <= '0';
