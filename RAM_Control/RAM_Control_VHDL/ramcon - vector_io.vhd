@@ -37,30 +37,34 @@ end ramcon;
 
 architecture ramcon_behav of ramcon is
 	TYPE sdram_state_machine_type IS (
-				powerup, 					--000000
-				init_precharge,			--000001 
-				init_precharge_commit,  --000011
-				init_refresh,				--000010
-				init_wait,					--000110
-				init_opcode,				--000111
-				end_cycle,					--000101
-				start_state,				--000100
-				refresh_start,				--001100
-				refresh_wait,				--001101
-				read_start_ras,			--001111
-				read_commit_ras,			--001110
-				read_start_cas,			--001010
-				read_commit_cas,			--001011
-				read_data_wait,			--001001
-				read_line_s0,				--001000
-				write_start_ras,			--011100
-				write_commit_ras,			--010100
-				write_tra_ack,				--010101
-				write_start_cas,			--010111
-				write_commit_cas,			--010110
-				write_line_s0,				--010010
-				precharge			--110011
+				powerup,
+				init_precharge,
+				init_precharge_commit,
+				init_opcode,	
+				init_refresh,	
+				init_wait,		
+				start_state,	
+				refresh_start,	
+				refresh_wait,	
+				read_start_ras,
+				read_commit_ras,
+				read_start_cas,
+				read_commit_cas,	
+				read_data_wait,	
+				read_line_burst,		
+				write_start_ras,	
+				write_commit_ras,	
+				write_tra_ack,		
+				write_start_cas,	
+				write_commit_cas,
+				write_line_burst,	
+				precharge,
+				end_cycle
 				);
+				
+   constant refresh_cycles : integer := 4;
+				
+				
    signal RAS_D: std_logic; 
 	signal CAS_D: std_logic;
 	signal TA40_D: std_logic;
@@ -90,7 +94,6 @@ architecture ramcon_behav of ramcon is
 	signal BURST :  STD_LOGIC_VECTOR (1 downto 0);
 	signal BYTE_ENCODE :  STD_LOGIC_VECTOR (3 downto 0);
 	signal BYTE_D :  STD_LOGIC_VECTOR (3 downto 0);
-   
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -284,13 +287,12 @@ begin
    CLK_RAM <= (not CLK_RAMC);
    CLKEN <=	ENACLK_PRE;
 
-	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10) & A40(9) & A40(8) &
-	       A40(7) & A40(6) & A40(5) & A40(4) & A40(3) & A40(2));
+	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10 downto 2));
 	ARAM_HIGH <= A40(22 downto 11);
 
 
 -- SM transistion process
-   process (CQ, RQ, REFRESH, TRANSFER, SCLK, SELRAM_D, NQ, RW_40, BYTE_ENCODE, ARAM_LOW, ARAM_HIGH, BURST)
+   process (CQ, REFRESH, TRANSFER, SCLK, SELRAM_D, NQ, RW_40, BYTE_ENCODE, ARAM_LOW, ARAM_HIGH, BURST)
    begin
 		--default values
 		OERAM_40_D <= '1';
@@ -316,27 +318,9 @@ begin
       when init_precharge_commit =>
 			CE_B_D <= "00";
 			if (NQ >= "001") then
-				CQ_D <= init_refresh;
+				CQ_D <= init_opcode;
 			else
 				CQ_D <= init_precharge_commit;
-			end if;
-      when init_refresh =>
-			CE_B_D <= "00";
-			CAS_D <= '0';
-			RAS_D <= '0';
-			CQ_D <= init_wait;
-      when init_wait =>
-			CE_B_D <= "00";
-			if (	NQ >= "110" and
-		      RQ >= "00000100") 
-			then
-				CQ_D <= init_opcode;
-			elsif ( NQ >= "110" and
-				RQ <= "00000100")
-		   then
-				CQ_D <= init_refresh;
-			else
-				CQ_D <= init_wait;
 			end if;
       when init_opcode =>
 			CE_B_D <= "00";
@@ -344,9 +328,18 @@ begin
 			CAS_D <= '0';
 			RAS_D <= '0';
 			ARAM_D <= ARAM_OPTCODE;
-			CQ_D <= end_cycle;
-      when end_cycle =>
-			CQ_D <= start_state;
+			CQ_D <= init_refresh;
+      when init_refresh =>
+			CE_B_D <= "00";
+			CAS_D <= '0';
+			RAS_D <= '0';
+			CQ_D <= init_wait;
+      when init_wait =>
+			if (	NQ >= refresh_cycles ) then
+				CQ_D <= refresh_start; -- end with a normal refresh
+			else
+				CQ_D <= init_wait;
+			end if;
       when start_state =>
 			if (REFRESH='1') then
 				CQ_D <= refresh_start;
@@ -363,7 +356,7 @@ begin
 			RAS_D <= '0';
 			CQ_D <= refresh_wait;
       when refresh_wait =>
-			if (NQ >= "110") then
+			if (NQ >= refresh_cycles) then
 				CQ_D <= start_state;
 			else
 				CQ_D <= refresh_wait;
@@ -396,11 +389,11 @@ begin
 			TA40_D <= '0';
 			ENACLK_PRE <= '0';
 			if (burst /="00") then
-				CQ_D <= read_line_s0;
+				CQ_D <= read_line_burst;
 			else
 				CQ_D <= precharge;
 			end if;
-      when read_line_s0 =>
+      when read_line_burst =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
 			CE_B_D <= not SELRAM_D;
@@ -435,11 +428,11 @@ begin
 			TA40_D <= '0';
 			ENACLK_PRE <= '0';
 			if (burst/="00") then
-				CQ_D <= write_line_s0;
+				CQ_D <= write_line_burst;
 			else
 				CQ_D <= precharge;
 			end if;
-      when write_line_s0 =>
+      when write_line_burst =>
 			OE40_RAM_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
 			CE_B_D <= not SELRAM_D;
@@ -455,6 +448,8 @@ begin
 			RAS_D <= '0';
 			ARAM_D <= ARAM_PRECHARGE;
 			CQ_D <= end_cycle;
+      when end_cycle =>
+			CQ_D <= start_state;
 		end case;
    end process;
 end ramcon_behav;

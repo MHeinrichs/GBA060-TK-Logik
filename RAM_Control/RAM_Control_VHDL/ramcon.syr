@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: ramcon.prj
 
@@ -113,8 +113,8 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
     | States             | 23                                             |
-    | Transitions        | 36                                             |
-    | Inputs             | 9                                              |
+    | Transitions        | 34                                             |
+    | Inputs             | 7                                              |
     | Outputs            | 30                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
@@ -139,16 +139,14 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 2-bit register for signal <BURST>.
-    Found 2-bit subtractor for signal <BURST$addsub0000> created at line 209.
+    Found 2-bit subtractor for signal <BURST$addsub0000> created at line 212.
     Found 4-bit register for signal <BYTE_ENCODE>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 318.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 330.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 330.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 333.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 320.
+    Found 4-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 338.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <RAM_READY>.
     Found 1-bit register for signal <REFRESH>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 135.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 138.
     Found 8-bit up counter for signal <RQ>.
     Found 2-bit register for signal <SELRAM_D>.
     Found 1-bit register for signal <TA40_FB>.
@@ -158,7 +156,7 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
 	inferred   2 Counter(s).
 	inferred  28 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
-	inferred   5 Comparator(s).
+	inferred   3 Comparator(s).
 	inferred   1 Tristate(s).
 Unit <ramcon> synthesized.
 
@@ -175,10 +173,10 @@ Macro Statistics
 # Registers                                            : 33
  1-bit register                                        : 29
  2-bit register                                        : 4
-# Comparators                                          : 5
- 3-bit comparator greatequal                           : 2
- 8-bit comparator greatequal                           : 2
- 8-bit comparator lessequal                            : 1
+# Comparators                                          : 3
+ 3-bit comparator greatequal                           : 1
+ 4-bit comparator greatequal                           : 1
+ 8-bit comparator greatequal                           : 1
 # Tristates                                            : 1
  1-bit tristate buffer                                 : 1
 
@@ -195,26 +193,26 @@ Optimizing FSM <CQ/FSM> on signal <CQ[1:5]> with gray encoding.
  powerup               | 00000
  init_precharge        | 00001
  init_precharge_commit | 00011
- init_refresh          | 00010
- init_wait             | 00110
- init_opcode           | 00111
- end_cycle             | 00101
- start_state           | 00100
- refresh_start         | 01100
- refresh_wait          | 01110
- read_start_ras        | 01101
- read_commit_ras       | 01010
- read_start_cas        | 01011
- read_commit_cas       | 01001
- read_data_wait        | 01000
- read_line_s0          | 11000
- write_start_ras       | 01111
- write_commit_ras      | 11011
- write_tra_ack         | 11010
- write_start_cas       | 11110
- write_commit_cas      | 11111
- write_line_s0         | 11101
- precharge             | 11001
+ init_opcode           | 00010
+ init_refresh          | 00110
+ init_wait             | 00111
+ start_state           | 01101
+ refresh_start         | 00101
+ refresh_wait          | 01111
+ read_start_ras        | 00100
+ read_commit_ras       | 01110
+ read_start_cas        | 01010
+ read_commit_cas       | 01011
+ read_data_wait        | 01001
+ read_line_burst       | 01000
+ write_start_ras       | 01100
+ write_commit_ras      | 11001
+ write_tra_ack         | 11011
+ write_start_cas       | 11010
+ write_commit_cas      | 11110
+ write_line_burst      | 11111
+ precharge             | 11000
+ end_cycle             | 11101
 -----------------------------------
 
 =========================================================================
@@ -237,9 +235,9 @@ Macro Statistics
 =========================================================================
 
 Optimizing unit <ramcon> ...
+  implementation constraint: INIT=r	 : CQ_FSM_FFd2
   implementation constraint: INIT=r	 : CQ_FSM_FFd1
   implementation constraint: INIT=r	 : CQ_FSM_FFd3
-  implementation constraint: INIT=r	 : CQ_FSM_FFd2
   implementation constraint: INIT=r	 : CQ_FSM_FFd5
   implementation constraint: INIT=r	 : CQ_FSM_FFd4
 
@@ -273,19 +271,17 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 748
-#      AND2                        : 254
-#      AND3                        : 41
-#      AND4                        : 12
-#      AND5                        : 4
-#      AND6                        : 1
+# BELS                             : 671
+#      AND2                        : 228
+#      AND3                        : 31
+#      AND4                        : 8
+#      AND5                        : 2
 #      GND                         : 1
-#      INV                         : 275
-#      OR2                         : 129
-#      OR3                         : 15
-#      OR4                         : 2
+#      INV                         : 253
+#      OR2                         : 133
+#      OR3                         : 4
 #      VCC                         : 1
-#      XOR2                        : 13
+#      XOR2                        : 10
 # FlipFlops/Latches                : 53
 #      FDC                         : 32
 #      FDCE                        : 5
@@ -298,11 +294,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.97 secs
+Total CPU time to Xst completion: 8.01 secs
  
 --> 
 
-Total memory usage is 290100 kilobytes
+Total memory usage is 290072 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    7 (   0 filtered)
