@@ -56,15 +56,13 @@ ARCHITECTURE behavior OF RamConTest IS
          UDQ1 : OUT  std_logic;
          LDQ0 : OUT  std_logic;
          LDQ1 : OUT  std_logic;
-         CE_B0 : OUT  std_logic;
-         CE_B1 : OUT  std_logic;
+         CE : OUT  std_logic_vector(1 downto 0);
          WE : OUT  std_logic;
          CAS : OUT  std_logic;
          RAS : OUT  std_logic;
          CLK_RAM : OUT  std_logic;
          CLKEN : OUT  std_logic;
-         BA0 : OUT  std_logic;
-         BA1 : OUT  std_logic;
+         BA : OUT  std_logic_vector(1 downto 0);
          LE_RAM : OUT  std_logic;
          OERAM_40 : OUT  std_logic;
          OE40_RAM : OUT  std_logic;
@@ -102,15 +100,13 @@ ARCHITECTURE behavior OF RamConTest IS
    signal UDQ1 : std_logic;
    signal LDQ0 : std_logic;
    signal LDQ1 : std_logic;
-   signal CE_B0 : std_logic;
-   signal CE_B1 : std_logic;
+   signal CE : std_logic_vector(1 downto 0);
    signal WE : std_logic;
    signal CAS : std_logic;
    signal RAS : std_logic;
    signal CLK_RAM : std_logic;
    signal CLKEN : std_logic;
-   signal BA0 : std_logic;
-   signal BA1 : std_logic;
+   signal BA : std_logic_vector(1 downto 0);
    signal LE_RAM : std_logic;
    signal OERAM_40 : std_logic;
    signal OE40_RAM : std_logic;
@@ -145,15 +141,13 @@ BEGIN
           UDQ1 => UDQ1,
           LDQ0 => LDQ0,
           LDQ1 => LDQ1,
-          CE_B0 => CE_B0,
-          CE_B1 => CE_B1,
+          CE=> CE,
           WE => WE,
           CAS => CAS,
           RAS => RAS,
           CLK_RAM => CLK_RAM,
           CLKEN => CLKEN,
-          BA0 => BA0,
-          BA1 => BA1,
+          BA => BA,
           LE_RAM => LE_RAM,
           OERAM_40 => OERAM_40,
           OE40_RAM => OE40_RAM,

@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: ramcon.prj
 
@@ -92,8 +92,6 @@ Analyzing hierarchy for entity <ramcon> in library <work> (architecture <ramcon_
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ramcon> in library <work> (Architecture <ramcon_behav>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd" line 302: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <BURST>
 Entity <ramcon> analyzed. Unit <ramcon> generated.
 
 
@@ -111,14 +109,13 @@ WARNING:Xst:647 - Input <INIT> is never used. This port will be preserved and le
 WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1780 - Signal <RQ_ACLR_ctrl> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst - You have specified state <powerup> as a recovery-only state for the safe implementation of FSM <CQ>. Due to a limitation in this version of the software, the logic required to implement this recovery-only state might not be properly generated. Please refer to the Xilinx Answers Database for more details.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
     | States             | 23                                             |
     | Transitions        | 36                                             |
     | Inputs             | 9                                              |
-    | Outputs            | 29                                             |
+    | Outputs            | 30                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
     | Reset type         | asynchronous                                   |
@@ -132,28 +129,26 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <UDQ1>.
     Found 1-bit register for signal <LDQ0>.
     Found 1-bit register for signal <LDQ1>.
-    Found 1-bit register for signal <CE_B0>.
-    Found 1-bit register for signal <CE_B1>.
     Found 1-bit register for signal <WE>.
     Found 1-bit register for signal <CAS>.
     Found 1-bit register for signal <RAS>.
-    Found 1-bit register for signal <BA0>.
-    Found 1-bit register for signal <BA1>.
     Found 1-bit register for signal <OERAM_40>.
     Found 1-bit register for signal <OE40_RAM>.
+    Found 2-bit register for signal <CE>.
+    Found 2-bit register for signal <BA>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 2-bit register for signal <BURST>.
-    Found 2-bit subtractor for signal <BURST$addsub0000> created at line 208.
+    Found 2-bit subtractor for signal <BURST$addsub0000> created at line 209.
     Found 4-bit register for signal <BYTE_ENCODE>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 329.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 341.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 341.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 343.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 318.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 330.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 330.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 333.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <RAM_READY>.
     Found 1-bit register for signal <REFRESH>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 130.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 135.
     Found 8-bit up counter for signal <RQ>.
     Found 2-bit register for signal <SELRAM_D>.
     Found 1-bit register for signal <TA40_FB>.
@@ -161,7 +156,7 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  32 D-type flip-flop(s).
+	inferred  28 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   5 Comparator(s).
 	inferred   1 Tristate(s).
@@ -177,9 +172,9 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 35
- 1-bit register                                        : 33
- 2-bit register                                        : 2
+# Registers                                            : 33
+ 1-bit register                                        : 29
+ 2-bit register                                        : 4
 # Comparators                                          : 5
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
@@ -232,8 +227,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 32
- Flip-Flops                                            : 32
+# Registers                                            : 28
+ Flip-Flops                                            : 28
 
 =========================================================================
 
@@ -278,15 +273,15 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 754
-#      AND2                        : 259
-#      AND3                        : 40
-#      AND4                        : 11
+# BELS                             : 748
+#      AND2                        : 254
+#      AND3                        : 41
+#      AND4                        : 12
 #      AND5                        : 4
 #      AND6                        : 1
 #      GND                         : 1
 #      INV                         : 275
-#      OR2                         : 132
+#      OR2                         : 129
 #      OR3                         : 15
 #      OR4                         : 2
 #      VCC                         : 1
@@ -303,13 +298,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.26 secs
+Total CPU time to Xst completion: 7.97 secs
  
 --> 
 
-Total memory usage is 290056 kilobytes
+Total memory usage is 290100 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    9 (   0 filtered)
+Number of warnings :    7 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

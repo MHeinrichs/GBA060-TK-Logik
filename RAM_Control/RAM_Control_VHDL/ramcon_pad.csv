@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 9- 4-2017 10:48PM
+ 9- 4-2017 11:15PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -95,8 +95,8 @@ P74,UDQ1,O,I/O,OUTPUT,,,,,,,,,
 P75,GND,,GND,,,,,,,,,,
 P76,LDQ0,O,I/O,OUTPUT,,,,,,,,,
 P77,UDQ0,O,I/O,OUTPUT,,,,,,,,,
-P78,CE_B0,O,I/O,OUTPUT,,,,,,,,,
-P79,CE_B1,O,I/O,OUTPUT,,,,,,,,,
+P78,CE<0>,O,I/O,OUTPUT,,,,,,,,,
+P79,CE<1>,O,I/O,OUTPUT,,,,,,,,,
 P80,WE,O,I/O,OUTPUT,,,,,,,,,
 P81,CAS,O,I/O,OUTPUT,,,,,,,,,
 P82,CLK_RAM,O,I/O,OUTPUT,,,,,,,,,
@@ -104,10 +104,10 @@ P83,TDO,,TDO,,,,,,,,,,
 P84,GND,,GND,,,,,,,,,,
 P85,RAS,O,I/O,OUTPUT,,,,,,,,,
 P86,TIE,,I/O,,,,,,,,,,
-P87,BA0,O,I/O,OUTPUT,,,,,,,,,
+P87,BA<0>,O,I/O,OUTPUT,,,,,,,,,
 P88,VCC,,VCCIO,,,,,,,,,,
 P89,ARAM<11>,O,I/O,OUTPUT,,,,,,,,,
-P90,BA1,O,I/O,OUTPUT,,,,,,,,,
+P90,BA<1>,O,I/O,OUTPUT,,,,,,,,,
 P91,ARAM<9>,O,I/O,OUTPUT,,,,,,,,,
 P92,ARAM<10>,O,I/O,OUTPUT,,,,,,,,,
 P93,ARAM<8>,O,I/O,OUTPUT,,,,,,,,,

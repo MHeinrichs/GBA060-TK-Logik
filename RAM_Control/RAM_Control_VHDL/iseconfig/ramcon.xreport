@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-09-04T21:39:29</DateModified>
+  <DateModified>2017-09-04T23:01:46</DateModified>
   <ModuleName>ramcon</ModuleName>
-  <SummaryTimeStamp>2017-08-21T21:31:23</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-09-04T22:58:31</SummaryTimeStamp>
   <SavedFilePath>C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/iseconfig/ramcon.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL\</ImplementationReportsDirectory>
   <DateInitialized>2015-10-15T22:02:57</DateInitialized>
