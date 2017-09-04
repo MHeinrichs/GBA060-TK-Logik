@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: ramcon.prj
 
@@ -141,23 +141,26 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 304.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 318.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 318.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 320.
+    Found 2-bit register for signal <BURST>.
+    Found 2-bit subtractor for signal <BURST$addsub0000> created at line 216.
+    Found 4-bit register for signal <BYTE_ENCODE>.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 334.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 346.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 346.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 348.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <RAM_READY>.
     Found 1-bit register for signal <REFRESH>.
-    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 135.
+    Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 139.
     Found 8-bit up counter for signal <RQ>.
-    Found 1-bit register for signal <SELRAM0_D>.
-    Found 1-bit register for signal <SELRAM1_D>.
+    Found 2-bit register for signal <SELRAM_D>.
     Found 1-bit register for signal <TA40_FB>.
     Found 1-bit register for signal <TRANSFER>.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  30 D-type flip-flop(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
 	inferred   5 Comparator(s).
 	inferred   1 Tristate(s).
 Unit <ramcon> synthesized.
@@ -167,11 +170,14 @@ Unit <ramcon> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
+# Adders/Subtractors                                   : 1
+ 2-bit subtractor                                      : 1
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 31
- 1-bit register                                        : 31
+# Registers                                            : 35
+ 1-bit register                                        : 33
+ 2-bit register                                        : 2
 # Comparators                                          : 5
  3-bit comparator greatequal                           : 2
  8-bit comparator greatequal                           : 2
@@ -228,24 +234,28 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 1
+# Adders/Subtractors                                   : 1
+ 2-bit subtractor                                      : 1
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 30
- Flip-Flops                                            : 30
+# Registers                                            : 32
+ Flip-Flops                                            : 32
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:2677 - Node <BURST_1> of sequential type is unconnected in block <ramcon>.
+WARNING:Xst:2677 - Node <BURST_0> of sequential type is unconnected in block <ramcon>.
 
 Optimizing unit <ramcon> ...
-  implementation constraint: INIT=r	 : CQ_FSM_FFd1
   implementation constraint: INIT=r	 : CQ_FSM_FFd2
-  implementation constraint: INIT=r	 : CQ_FSM_FFd4
-  implementation constraint: INIT=r	 : CQ_FSM_FFd3
   implementation constraint: INIT=r	 : CQ_FSM_FFd5
+  implementation constraint: INIT=r	 : CQ_FSM_FFd3
+  implementation constraint: INIT=r	 : CQ_FSM_FFd4
+  implementation constraint: INIT=r	 : CQ_FSM_FFd1
 
 =========================================================================
 *                           Partition Report                            *
@@ -277,24 +287,24 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 803
-#      AND2                        : 260
-#      AND3                        : 58
+# BELS                             : 786
+#      AND2                        : 244
+#      AND3                        : 63
 #      AND4                        : 5
-#      AND5                        : 3
+#      AND5                        : 4
 #      AND6                        : 1
 #      GND                         : 1
-#      INV                         : 301
-#      OR2                         : 142
-#      OR3                         : 17
-#      OR4                         : 2
+#      INV                         : 302
+#      OR2                         : 134
+#      OR3                         : 13
+#      OR4                         : 6
 #      OR5                         : 1
 #      VCC                         : 1
 #      XOR2                        : 11
-# FlipFlops/Latches                : 47
+# FlipFlops/Latches                : 51
 #      FDC                         : 32
 #      FDCE                        : 3
-#      FDP                         : 12
+#      FDP                         : 16
 # IO Buffers                       : 72
 #      IBUF                        : 41
 #      OBUF                        : 30
@@ -303,13 +313,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.31 secs
+Total CPU time to Xst completion: 7.90 secs
  
 --> 
 
-Total memory usage is 290072 kilobytes
+Total memory usage is 290032 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
+Number of warnings :   10 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
