@@ -169,6 +169,7 @@ signal 	START_SEND : STD_LOGIC;
 signal 	START_SEND_SAMPLED : STD_LOGIC;
 signal 	START_ACK : STD_LOGIC;
 signal 	END_SEND : STD_LOGIC;
+signal 	END_SEND_SAMPLED : STD_LOGIC;
 signal 	END_ACK : STD_LOGIC;
 signal	DSACK_D : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
 signal 	STERM_D : STD_LOGIC;
@@ -306,7 +307,14 @@ begin
 					'1' when TT40(1 downto 0 )="10" AND TM40(2)='1' else						-- alt logical func
 					'1' when TT40(1 downto 0)="11" else '0';										-- avec / breakpoints
 
-	
+	END_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
+	begin
+		if(RSTI40_SIG='0')then
+			END_SEND_SAMPLED <='0';
+		elsif(falling_edge(SCLK_SIG))then	
+			END_SEND_SAMPLED <=END_SEND;
+		end if;
+	end process END_SAMPLE;
 
 	START_STOP_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
 	begin
@@ -324,14 +332,12 @@ begin
 				DATA_OE <='0'; --disable one clock after cycle termination
 			end if;
 			--detect toggle for end transfer
-			if(END_ACK /= END_SEND or (TS40 ='0' and TT40(1 downto 0)="11"))then
+			if(END_ACK /= END_SEND_SAMPLED or (TS40 ='0' and TT40(1 downto 0)="11"))then
 				TA40_SIG <= '0';
 				END_ACK <= END_SEND;
 			else
 				TA40_SIG <='1';
 			end if;
-			
-		elsif(rising_edge(SCLK_SIG))then
 		end if;
 	end process START_STOP_SAMPLE;
 

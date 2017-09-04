@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Reading design: control.prj
 
@@ -160,17 +160,18 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK040_SIG>.
     Found 1-bit register for signal <BCLK060_SIG>.
-    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 233.
+    Found 1-bit xor2 for signal <BCLK060_SIG$xor0000> created at line 234.
     Found 1-bit register for signal <CLK30_D>.
     Found 1-bit register for signal <CLK30_SIG>.
-    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 223.
+    Found 1-bit xor2 for signal <CLK30_SIG$xor0000> created at line 224.
     Found 1-bit register for signal <CLK_RAMC_SIG>.
     Found 1-bit register for signal <DATA_OE>.
     Found 1-bit register for signal <DS30_SIG>.
     Found 2-bit register for signal <DSACK_D>.
     Found 1-bit register for signal <END_ACK>.
-    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 327.
+    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 335.
     Found 1-bit register for signal <END_SEND>.
+    Found 1-bit register for signal <END_SEND_SAMPLED>.
     Found 2-bit register for signal <LDSACK>.
     Found 1-bit register for signal <RSTI40_SIG>.
     Found 1-bit register for signal <RSTINT>.
@@ -181,7 +182,7 @@ WARNING:Xst:646 - Signal <BCLK_SIG> is assigned but never used. This unconnected
     Found 1-bit register for signal <TA40_SIG>.
     Summary:
 	inferred   2 Finite State Machine(s).
-	inferred  17 D-type flip-flop(s).
+	inferred  18 D-type flip-flop(s).
 	inferred   3 Xor(s).
 	inferred   3 Tristate(s).
 Unit <control> synthesized.
@@ -191,8 +192,8 @@ Unit <control> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 21
- 1-bit register                                        : 19
+# Registers                                            : 22
+ 1-bit register                                        : 20
  2-bit register                                        : 2
 # Tristates                                            : 3
  1-bit tristate buffer                                 : 3
@@ -231,8 +232,8 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 2
-# Registers                                            : 17
- Flip-Flops                                            : 17
+# Registers                                            : 18
+ Flip-Flops                                            : 18
 
 =========================================================================
 
@@ -243,22 +244,22 @@ INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to t
 
 Optimizing unit <control> ...
   implementation constraint: INIT=r	 : SIZING_FSM_FFd3
-  implementation constraint: INIT=r	 : ATERM
-  implementation constraint: INIT=r	 : SM030_N_FSM_FFd1
-  implementation constraint: INIT=r	 : LDSACK_0
   implementation constraint: INIT=r	 : LDSACK_1
+  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : LDSACK_0
   implementation constraint: INIT=r	 : CLK30_SIG
   implementation constraint: INIT=r	 : DSACK_D_1
   implementation constraint: INIT=r	 : BCLK040_SIG
+  implementation constraint: INIT=r	 : SM030_N_FSM_FFd1
   implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : CLK30_D
+  implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : RSTI40_SIG
   implementation constraint: INIT=r	 : DSACK_D_0
-  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=r	 : ATERM
   implementation constraint: INIT=r	 : AS30_SIG
-  implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : SM030_N_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
   implementation constraint: INIT=r	 : BCLK060_SIG
@@ -293,19 +294,19 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 262
+# BELS                             : 263
 #      AND2                        : 80
 #      AND3                        : 14
 #      AND4                        : 2
 #      GND                         : 1
-#      INV                         : 109
+#      INV                         : 110
 #      OR2                         : 46
 #      OR3                         : 4
 #      VCC                         : 1
 #      XOR2                        : 5
-# FlipFlops/Latches                : 27
+# FlipFlops/Latches                : 28
 #      FD                          : 10
-#      FDC                         : 7
+#      FDC                         : 8
 #      FDCE                        : 5
 #      FDP                         : 3
 #      FDPE                        : 2
@@ -318,11 +319,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 12.75 secs
+Total CPU time to Xst completion: 12.67 secs
  
 --> 
 
-Total memory usage is 290060 kilobytes
+Total memory usage is 290044 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)

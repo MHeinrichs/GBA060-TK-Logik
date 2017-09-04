@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Reading design: ramcon.prj
 
@@ -141,10 +141,10 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <OE40_RAM>.
     Found 12-bit register for signal <ARAM<11:0>>.
     Found 1-bit tristate buffer for signal <TA40>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 327.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 363.
-    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 363.
-    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 365.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 304.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 318.
+    Found 8-bit comparator greatequal for signal <CQ$cmp_ge0002> created at line 318.
+    Found 8-bit comparator lessequal for signal <CQ$cmp_le0000> created at line 320.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <RAM_READY>.
     Found 1-bit register for signal <REFRESH>.
@@ -303,11 +303,11 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.67 secs
+Total CPU time to Xst completion: 8.31 secs
  
 --> 
 
-Total memory usage is 293728 kilobytes
+Total memory usage is 290072 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
