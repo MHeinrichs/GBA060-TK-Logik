@@ -81,8 +81,8 @@ architecture ramcon_behav of ramcon is
 	signal RQ :  STD_LOGIC_VECTOR (7 downto 0);
 	signal CQ :  sdram_state_machine_type;
 	signal CQ_D :  sdram_state_machine_type;
-	signal SELRAM :  STD_LOGIC_VECTOR (1 downto 0);
-	signal SELRAM_D :  STD_LOGIC_VECTOR (1 downto 0);
+	signal SELRAM :  STD_LOGIC;
+	signal CE_B_DECODE :  STD_LOGIC_VECTOR (1 downto 0);
 	signal CE_B_D :  STD_LOGIC_VECTOR (1 downto 0);
    signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
    signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
@@ -129,7 +129,7 @@ begin
 			ARAM (11 downto 0) <= "000000000000";
 			CQ	<= powerup;
 			NQ  <= "000";
-			SELRAM_D <= "00";
+			CE_B_DECODE <= "00";
 			REFRESH <='0';
 			RAM_READY <='0';
 			BYTE_ENCODE <="1111";
@@ -216,7 +216,8 @@ begin
 			end if;
 			
 
-			SELRAM_D <= SELRAM;		
+			CE_B_DECODE(0) <= not A40(25);		
+			CE_B_DECODE(1) <= A40(25);		
 			UDQ0 <= BYTE_D(0);
 			UDQ1 <= BYTE_D(1);
 			LDQ0 <= BYTE_D(2);
@@ -247,7 +248,7 @@ begin
       end if;
    end process;
 
-   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and (SELRAM/="00") else '0';
+   TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and SELRAM='1' else '0';
 	TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
 										CQ = write_start_ras or 
 										RESET ='0' else '0';
@@ -264,13 +265,10 @@ begin
 
 
 -- Signal section
-   SELRAM(0)<= '1' when A40(30 downto 25) = "000100" else 
-					'1' when A40(30 downto 25) = "000110" else '0'; 
-   SELRAM(1)<= '1' when A40(30 downto 25) = "000101" else 
-					'1' when A40(30 downto 25) = "000111" else '0'; 
-	SEL16M 	<= '0' when (SELRAM/="00")  else '1';--'1' when A40(30 downto 25) = "000000" else '0';
+   SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
+	SEL16M 	<= not SELRAM;
 
-   TA40 		<= TA40_FB when (SELRAM/="00") else 'Z'; --tristate on amiga access
+   TA40 		<= TA40_FB when (SELRAM='1') else 'Z'; --tristate on amiga access
 
    TCI40 	<= '1' when (ICACHE ='1' and(														
 													A40(30 downto 23) = "00000000" or  
@@ -280,7 +278,7 @@ begin
 								A40(30 downto 21) = "0000001001"  or 
 								A40(30 downto 22) = "000000101"  or 
 								A40(30 downto 21) = "0000001100"  or
-								SELRAM/="00"
+								SELRAM='1'
 								else '0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
   
@@ -292,7 +290,7 @@ begin
 
 
 -- SM transistion process
-   process (CQ, REFRESH, TRANSFER, SCLK, SELRAM_D, NQ, RW_40, BYTE_ENCODE, ARAM_LOW, ARAM_HIGH, BURST)
+   process (CQ, REFRESH, TRANSFER, SCLK, CE_B_DECODE, NQ, RW_40, BYTE_ENCODE, ARAM_LOW, ARAM_HIGH, BURST)
    begin
 		--default values
 		OERAM_40_D <= '1';
@@ -362,30 +360,30 @@ begin
 				CQ_D <= refresh_wait;
 			end if;
       when read_start_ras =>
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			RAS_D <= '0';
 			ARAM_D <= ARAM_HIGH;
 			CQ_D <= read_commit_ras;
 	   when read_commit_ras =>
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			CQ_D <= read_start_cas;
       when read_start_cas =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			CAS_D <= '0';
 			ARAM_D <= ARAM_LOW;
 			CQ_D <= read_commit_cas;
       when read_commit_cas =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			CQ_D <= read_data_wait;
       when read_data_wait =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			ENACLK_PRE <= '0';
 			if (burst /="00") then
@@ -396,27 +394,27 @@ begin
       when read_line_burst =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			CQ_D <= read_data_wait;
       when write_start_ras =>
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			RAS_D <= '0';
 			ARAM_D <= ARAM_HIGH;
 			CQ_D <= write_commit_ras;
       when write_commit_ras =>
 			OE40_RAM_D <= '0';
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			CQ_D <= write_tra_ack;
       when write_tra_ack =>
 			OE40_RAM_D <= '0';
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			CQ_D <= write_start_cas;
       when write_start_cas =>
 			OE40_RAM_D <= '0';		 
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			WE_D <= '0';
 			TA40_D <= '0';
 			CAS_D <= '0';
@@ -424,7 +422,7 @@ begin
 			CQ_D <= write_commit_cas;
       when write_commit_cas =>
 			OE40_RAM_D <= '0';
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			ENACLK_PRE <= '0';
 			if (burst/="00") then
@@ -435,7 +433,7 @@ begin
       when write_line_burst =>
 			OE40_RAM_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
-			CE_B_D <= not SELRAM_D;
+			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			if (burst/="00") then
 				CQ_D <= write_commit_cas;
