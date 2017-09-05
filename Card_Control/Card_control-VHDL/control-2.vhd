@@ -105,8 +105,7 @@ architecture Behavioral of control is
    TYPE sm_68030_N IS (
 				S1,
 				S3,
-				S5,
-				S5_wait
+				S5
 				);
 
 				
@@ -142,19 +141,16 @@ signal	AL_D : STD_LOGIC_VECTOR (1 downto 0):="11";		--Lower Address-Signal
 signal	SIZING : sm_sizing;	--State-Machine Sizing
 signal	SIZING_D : sm_sizing;	--State-Machine Sizing
 signal	ATERM : STD_LOGIC:='0';	--
-signal	NAMIACC : STD_LOGIC:='0';	--
 signal	AMISEL : STD_LOGIC:='0';	--
 signal	CLK_RAMC_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
-signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	BCLK_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	RSTI40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung
-signal	RST_TERM : STD_LOGIC:='0';	--internes Signal f?r die Resetgenerierung des Terminierungsprozesses
 signal	BYTE : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von BYTE-Zugriffen
 signal	WORD : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von WORD-Zugriffen
 signal	LONG : STD_LOGIC:='0'; --hilfssignal f?r die Identifikation von LONG-Zugriffen
@@ -209,8 +205,7 @@ begin
 	--clocks
 	CLK_RAMC	<= CLK_RAMC_SIG;
 	SCLK	<=	SCLK_SIG;
-	BCLK	<= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
-	BCLK_SIG <= BCLK040_SIG when CPU40_60 = '1' ELSE BCLK060_SIG;
+	BCLK	<= BCLK_SIG;
 
 	CLK_BS	<= '1';
 	--clocks pos edge
@@ -220,27 +215,25 @@ begin
 			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
 			PCLK	<= not CLK_RAMC_SIG;
 			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
-			BCLK040_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
+			if(CPU40_60 = '1')then
+				BCLK_SIG <= CLK30_SIG xor CLK_RAMC_SIG;						
+			else
+				BCLK_SIG <= BCLK_SIG_D;
+			end if;
+			BCLK_SIG_D	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
 			CLK30_D <= CLK30;		
-			DSACK_D <= DSACK30;
-			STERM_D <= STERM30;
 		end if;
 	end process CLOCKS_P;
-	--clocks neg edge
-	CLOCKS_N: process (PLL_CLK)
-	begin
-		if (falling_edge(PLL_CLK)) then			
-			BCLK060_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;	
-		end if;
-	end process CLOCKS_N;
-	
+	DSACK_D <= DSACK30;
+	STERM_D <= STERM30;
+
 	--Erzeugung der Resets
 	RESET30	<=	'0' when RSTO40 ='0' else 'Z'; 
 	
-	RESET_40I: process (SCLK_SIG)
+	RESET_40I: process (BCLK_SIG)
 	begin
-		if(rising_edge(SCLK_SIG)) then
+		if(rising_edge(BCLK_SIG)) then
 			if(RSTO40 = '1' and (RESET30 = '0' )) then
 				RSTI40_SIG	<=	'0';
 				RSTINT	<='0';
@@ -307,23 +300,23 @@ begin
 					'1' when TT40(1 downto 0 )="10" AND TM40(2)='1' else						-- alt logical func
 					'1' when TT40(1 downto 0)="11" else '0';										-- avec / breakpoints
 
-	END_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
+	END_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
 	begin
 		if(RSTI40_SIG='0')then
 			END_SEND_SAMPLED <='0';
-		elsif(falling_edge(SCLK_SIG))then	
+		elsif(falling_edge(BCLK_SIG))then	
 			END_SEND_SAMPLED <=END_SEND;
 		end if;
 	end process END_SAMPLE;
 
-	START_STOP_SAMPLE: process(RSTI40_SIG,SCLK_SIG)
+	START_STOP_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
 	begin
 		if(RSTI40_SIG='0')then
 			START_SEND <='0';
 			END_ACK <= '0';
 			TA40_SIG <='1';
 			DATA_OE <='0';
-		elsif(rising_edge(SCLK_SIG))then
+		elsif(rising_edge(BCLK_SIG))then
 			--toggle signal for new transfer
 			if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
 				START_SEND <= not START_SEND;
@@ -332,7 +325,11 @@ begin
 				DATA_OE <='0'; --disable one clock after cycle termination
 			end if;
 			--detect toggle for end transfer
-			if(END_ACK /= END_SEND_SAMPLED or (TS40 ='0' and TT40(1 downto 0)="11"))then
+			if(END_ACK /= END_SEND_SAMPLED --normal 68030-cycle termination
+				or (TS40 ='0' and TT40(1 downto 0)="11") --Avec termination
+				--or (SIZING = idle and SIZING_D = idle and DATA_OE ='1')
+				)
+			then
 				TA40_SIG <= '0';
 				END_ACK <= END_SEND;
 			else
@@ -348,7 +345,7 @@ begin
 	DIR_BS	<=	RW40;
 	
 	CLK30_SM	<= CLK30_D;
-	RST_TERM	<= '1' when RSTI40_SIG='0' or NAMIACC='1' else '0';
+
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 															or TT40(1)='1') 						-- alt func AVEC/BRKPT
 						 else '0';
@@ -365,9 +362,9 @@ begin
 								else 'Z';
 								
 	--on a 68030 the interesting parts only happen on the falling cpu-clocks
-	MC68030_SM: process (RST_TERM,CLK30_SM)
+	MC68030_SM: process (RSTI40_SIG,CLK30_SM)
 	begin
-		if(RST_TERM ='1') then
+		if(RSTI40_SIG ='0') then
 			AS30_SIG <= '1';
 			DS30_SIG <= '1';
 			ATERM <= '0';
@@ -375,42 +372,45 @@ begin
 			SM030_N <= S1;	
 			LDSACK <="11";			
 		elsif(falling_edge(CLK30_SM)) then
-			case SM030_N is
-			when S1 =>
-				AS30_SIG <= '0';
-				DS30_SIG <= not RW40;
+			if(SIZING_D = idle) then  
+				AS30_SIG <= '1';
+				DS30_SIG <= '1';
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
-				SM030_N <= S3;
-			when S3 =>
-				AS30_SIG <= '0';
-				DS30_SIG <= '0';
-				ATERM <= '0';
-				LE_BS_SIG <= '0';
-				if(STERM_D ='0' )then
-					LDSACK <="00";
-				else
-					LDSACK <=DSACK_D;
-				end if;
+				SM030_N <= S1;	
+				LDSACK <="11";			
+			else
+				case SM030_N is
+				when S1 =>
+					AS30_SIG <= '0';
+					DS30_SIG <= not RW40;
+					ATERM <= '0';
+					LE_BS_SIG <= '0';
+					SM030_N <= S3;
+				when S3 =>
+					AS30_SIG <= '0';
+					DS30_SIG <= '0';
+					ATERM <= '0';
+					LE_BS_SIG <= '0';
+					if(STERM_D ='0' )then
+						LDSACK <="00";
+					else
+						LDSACK <=DSACK_D;
+					end if;
 
-				if(DSACK_D /="11" or STERM_D ='0')then
-					SM030_N <=S5;
-				else
-					SM030_N <=S3;
-				end if;				
-			when S5 =>
-				AS30_SIG <= '1';
-				DS30_SIG <= '1';
-				ATERM <= '1';
-				LE_BS_SIG <= '1';
-				SM030_N <=S5_wait; --I need an extra wait for bus clean up :(
-			when S5_wait =>
-				AS30_SIG <= '1';
-				DS30_SIG <= '1';
-				ATERM <= '0';
-				LE_BS_SIG <= '0';
-				SM030_N <=S1;
-			end case;
+					if(DSACK_D /="11" or STERM_D ='0')then
+						SM030_N <=S5;
+					else
+						SM030_N <=S3;
+					end if;				
+				when S5 =>
+					AS30_SIG <= '1';
+					DS30_SIG <= '1';
+					ATERM <= '1';
+					LE_BS_SIG <= '1';
+					SM030_N <=S1; 
+				end case;
+			end if;
 		end if;		
 	end process MC68030_SM;
 		
@@ -437,14 +437,12 @@ begin
 				END_SEND	<= not END_SEND; -- toggle END_SEND to indicate end of cycle
 			end if;
 
-			if(SIZING_D = size_decode ) then
+			if(SIZING = size_decode ) then
 				START_ACK <= START_SEND; --update internal value after sync with start of cycle
 			end if;
       end if;
    end process;
 
-
-	NAMIACC <= '1' when (SIZING = idle) else '0';
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, START_ACK, START_SEND_SAMPLED,  
