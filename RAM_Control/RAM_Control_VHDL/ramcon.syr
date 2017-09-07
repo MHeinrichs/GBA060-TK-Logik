@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: ramcon.prj
 
@@ -106,7 +106,6 @@ Synthesizing Unit <ramcon>.
 WARNING:Xst:647 - Input <WE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <INIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <ARAM<12>> is never assigned.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst - You have specified state <powerup> as a recovery-only state for the safe implementation of FSM <CQ>. Due to a limitation in this version of the software, the logic required to implement this recovery-only state might not be properly generated. Please refer to the Xilinx Answers Database for more details.
@@ -136,7 +135,7 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 1-bit register for signal <OE40_RAM>.
     Found 2-bit register for signal <CE>.
     Found 2-bit register for signal <BA>.
-    Found 12-bit register for signal <ARAM<11:0>>.
+    Found 13-bit register for signal <ARAM>.
     Found 1-bit tristate buffer for signal <TA40>.
     Found 2-bit register for signal <BURST>.
     Found 2-bit subtractor for signal <BURST$addsub0000> created at line 212.
@@ -154,7 +153,7 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  30 D-type flip-flop(s).
+	inferred  18 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
 	inferred   1 Tristate(s).
@@ -170,8 +169,9 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 34
- 1-bit register                                        : 31
+# Registers                                            : 23
+ 1-bit register                                        : 19
+ 13-bit register                                       : 1
  2-bit register                                        : 3
 # Comparators                                          : 3
  3-bit comparator greatequal                           : 1
@@ -225,8 +225,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 30
- Flip-Flops                                            : 30
+# Registers                                            : 18
+ Flip-Flops                                            : 18
 
 =========================================================================
 
@@ -271,36 +271,36 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 654
-#      AND2                        : 228
-#      AND3                        : 28
+# BELS                             : 660
+#      AND2                        : 230
+#      AND3                        : 29
 #      AND4                        : 9
 #      AND5                        : 1
 #      GND                         : 1
-#      INV                         : 241
+#      INV                         : 244
 #      OR2                         : 129
 #      OR3                         : 6
 #      VCC                         : 1
 #      XOR2                        : 10
-# FlipFlops/Latches                : 53
-#      FDC                         : 32
+# FlipFlops/Latches                : 54
+#      FDC                         : 33
 #      FDCE                        : 5
 #      FDP                         : 16
-# IO Buffers                       : 72
+# IO Buffers                       : 73
 #      IBUF                        : 41
-#      OBUF                        : 30
+#      OBUF                        : 31
 #      OBUFE                       : 1
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.77 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.78 secs
  
 --> 
 
-Total memory usage is 290028 kilobytes
+Total memory usage is 290032 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    7 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

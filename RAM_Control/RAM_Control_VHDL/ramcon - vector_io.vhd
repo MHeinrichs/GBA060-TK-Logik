@@ -84,11 +84,11 @@ architecture ramcon_behav of ramcon is
 	signal SELRAM :  STD_LOGIC;
 	signal CE_B_DECODE :  STD_LOGIC_VECTOR (1 downto 0);
 	signal CE_B_D :  STD_LOGIC_VECTOR (1 downto 0);
-   signal ARAM_D: STD_LOGIC_VECTOR (11 downto 0);      
-   signal ARAM_LOW: STD_LOGIC_VECTOR (11 downto 0);      
-   signal ARAM_HIGH: STD_LOGIC_VECTOR (11 downto 0);      
-   constant ARAM_PRECHARGE: STD_LOGIC_VECTOR (11 downto 0) := "010000000000";
-   constant ARAM_OPTCODE: STD_LOGIC_VECTOR (11 downto 0) := "000000100010"; 
+   signal ARAM_D: STD_LOGIC_VECTOR (12 downto 0);      
+   signal ARAM_LOW: STD_LOGIC_VECTOR (12 downto 0);      
+   signal ARAM_HIGH: STD_LOGIC_VECTOR (12 downto 0);      
+   constant ARAM_PRECHARGE: STD_LOGIC_VECTOR (12 downto 0) := "0010000000000";
+   constant ARAM_OPTCODE: STD_LOGIC_VECTOR (12 downto 0) := "0000000100010"; 
 	signal ENACLK_PRE : STD_LOGIC;
 	signal RAM_READY : STD_LOGIC;
 	signal BURST :  STD_LOGIC_VECTOR (1 downto 0);
@@ -126,7 +126,7 @@ begin
 			OERAM_40 <= '1';
 			OE40_RAM <= '1';
 			TA40_FB <= '1';	
-			ARAM (11 downto 0) <= "000000000000";
+			ARAM (12 downto 0) <= "0000000000000";
 			CQ	<= powerup;
 			NQ  <= "000";
 			CE_B_DECODE <= "00";
@@ -229,7 +229,7 @@ begin
 			OERAM_40 <= OERAM_40_D;
 			OE40_RAM <= OE40_RAM_D;
 			TA40_FB <= TA40_D;	
-			ARAM (11 downto 0) <= ARAM_D;			 
+			ARAM (12 downto 0) <= ARAM_D;			 
 			CQ	<= CQ_D;
       end if;
    end process;
@@ -285,8 +285,8 @@ begin
    CLK_RAM <= (not CLK_RAMC);
    CLKEN <=	ENACLK_PRE;
 
-	ARAM_LOW <= std_logic_vector'('0' & '0' & A40(26) & A40(10 downto 2));
-	ARAM_HIGH <= A40(22 downto 11);
+	ARAM_LOW <= std_logic_vector'('0' &'0' & '0' & A40(26) & A40(10 downto 2));
+	ARAM_HIGH <= A40(26) &A40(22 downto 11);
 
 
 -- SM transistion process
@@ -302,7 +302,7 @@ begin
 		CAS_D <= '1';
 		RAS_D <= '1';
 		ENACLK_PRE <= '1';
-		ARAM_D <= "000000000000";
+		ARAM_D <= "0000000000000";
 
       case CQ is
       when powerup =>

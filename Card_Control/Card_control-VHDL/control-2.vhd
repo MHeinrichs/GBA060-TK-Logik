@@ -147,6 +147,8 @@ signal	SCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	CLK30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG_D : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	BCLK_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	BCLK040_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
+signal	BCLK060_SIG : STD_LOGIC:='0';	--internes Signal f?r die Taktaufbereitung
 signal	TA40_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	AS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
 signal	DS30_SIG : STD_LOGIC:='0';	--internes Signal f?r die Tristatesteuerung
@@ -171,7 +173,7 @@ signal 	END_ACK : STD_LOGIC;
 signal	DSACK_D : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
 signal 	STERM_D : STD_LOGIC;
 signal 	DATA_OE : STD_LOGIC;
-
+signal	PLL_CLOCKDIV : STD_LOGIC_VECTOR (1 downto 0):="00";
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -196,33 +198,37 @@ begin
 --	1	Z	x3,33		1	1	1	0	1Z	
 --	Z	0	x4			1	0	0	1	Z0
 --	Z	Z	x2,5		1	0	1	0	ZZ
-	PLL_S	<=	"0Z"; --100MHz
+	PLL_S	<=	"0Z"; --100MHz/50Mhz
 	--PLL_S	<=	"Z0"; --80MHz
 	--PLL_S	<=	"1Z"; --66MHz
 	--PLL_S	<=	"10"; --60MHz
-	--PLL_S	<=	"ZZ"; --50MHz
 	--PLL_S	<=	"00"; --40MHz
 	
 	--clocks
 	CLK_RAMC	<= CLK_RAMC_SIG;
 	SCLK	<=	SCLK_SIG;
 	BCLK	<= BCLK_SIG;
-
 	CLK_BS	<= '1';
+
 	--clocks pos edge
 	CLOCKS_P: process (PLL_CLK)
 	begin
-		if (rising_edge(PLL_CLK)) then
-			CLK_RAMC_SIG	<= not CLK_RAMC_SIG;
-			PCLK	<= not CLK_RAMC_SIG;
-			SCLK_SIG	<= CLK30_SIG xor CLK_RAMC_SIG;
+		if (rising_edge(PLL_CLK)) then --200MHz
+			PLL_CLOCKDIV <= PLL_CLOCKDIV + 1;
+			CLK_RAMC_SIG	<= PLL_CLOCKDIV(0); --100MHz
+			BCLK_SIG_D	<= PLL_CLOCKDIV(1);	--50MHz
+			SCLK_SIG	<= BCLK_SIG_D; --50MHz 5ns delayed
+
+			PCLK	<= PLL_CLOCKDIV(0); --100 MHz
+			--PCLK	<= BCLK_SIG_D; --50 MHz
+			--CLK30_SIG	<= not BCLK_SIG_D; --50MHz 15ns delayed (not needed!)
 			if(CPU40_60 = '1')then
-				BCLK_SIG <= CLK30_SIG xor CLK_RAMC_SIG;						
+				BCLK_SIG <= BCLK_SIG_D; --50MHz 5ns delayed
 			else
-				BCLK_SIG <= BCLK_SIG_D;
+				BCLK_SIG <= not PLL_CLOCKDIV(1); --50Mhz 10Ns delayed
 			end if;
-			BCLK_SIG_D	<= CLK30_SIG xor CLK_RAMC_SIG;	
-			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
+
+			
 			CLK30_D0 <= CLK30;		
 			CLK30_D1 <= CLK30_D0;		
 		end if;
