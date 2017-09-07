@@ -160,7 +160,8 @@ signal	BGACK30_Q : STD_LOGIC:='0';  --BGACK30 auf BCLK synchonisiert
 signal	CONTROL40_OE : STD_LOGIC:='0';  --Signal f?r die Tristate-Bedingung der 040-Control
 signal	LE_BS_SIG : STD_LOGIC:='0';  --LE_BS auf neg SCLK ermittelt
 signal	CLK30_SM : STD_LOGIC:='0';
-signal	CLK30_D : STD_LOGIC:='0';
+signal	CLK30_D0 : STD_LOGIC:='0';
+signal	CLK30_D1 : STD_LOGIC:='0';
 signal 	START_SEND : STD_LOGIC;
 signal 	START_SEND_SAMPLED : STD_LOGIC;
 signal 	START_ACK : STD_LOGIC;
@@ -222,7 +223,8 @@ begin
 			end if;
 			BCLK_SIG_D	<= CLK30_SIG xor CLK_RAMC_SIG;	
 			CLK30_SIG	<= CLK30_SIG xor not CLK_RAMC_SIG;	
-			CLK30_D <= CLK30;		
+			CLK30_D0 <= CLK30;		
+			CLK30_D1 <= CLK30_D0;		
 		end if;
 	end process CLOCKS_P;
 	DSACK_D <= DSACK30;
@@ -300,44 +302,40 @@ begin
 					'1' when TT40(1 downto 0 )="10" AND TM40(2)='1' else						-- alt logical func
 					'1' when TT40(1 downto 0)="11" else '0';										-- avec / breakpoints
 
-	END_SAMPLE: process(BCLK_SIG)
+	END_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
 	begin
-		if(falling_edge(BCLK_SIG))then	
-			if(RSTI40_SIG='0')then
-				END_SEND_SAMPLED <='0';
-			else
-				END_SEND_SAMPLED <=END_SEND;
-			end if;
+		if(RSTI40_SIG='0')then
+			END_SEND_SAMPLED <='0';
+		elsif(falling_edge(BCLK_SIG))then	
+			END_SEND_SAMPLED <=END_SEND;
 		end if;
 	end process END_SAMPLE;
 
-	START_STOP_SAMPLE: process(BCLK_SIG)
+	START_STOP_SAMPLE: process(RSTI40_SIG,BCLK_SIG)
 	begin
-		if(rising_edge(BCLK_SIG))then
-			if(RSTI40_SIG='0')then
-				START_SEND <='0';
-				END_ACK <= '0';
-				TA40_SIG <='1';
-				DATA_OE <='0';
+		if(RSTI40_SIG='0')then
+			START_SEND <='0';
+			END_ACK <= '0';
+			TA40_SIG <='1';
+			DATA_OE <='0';
+		elsif(rising_edge(BCLK_SIG))then
+			--toggle signal for new transfer
+			if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
+				START_SEND <= not START_SEND;
+				DATA_OE <='1'; --enable on cycle start
+			elsif(TA40_SIG = '0') then
+				DATA_OE <='0'; --disable one clock after cycle termination
+			end if;
+			--detect toggle for end transfer
+			if(END_ACK /= END_SEND_SAMPLED --normal 68030-cycle termination
+				or (TS40 ='0' and TT40(1 downto 0)="11") --Avec termination
+				--or (SIZING = idle and SIZING_D = idle and DATA_OE ='1')
+				)
+			then
+				TA40_SIG <= '0';
+				END_ACK <= END_SEND;
 			else
-				--toggle signal for new transfer
-				if(TS40 ='0' and TT40(1)='0' and SEL16M ='1') then
-					START_SEND <= not START_SEND;
-					DATA_OE <='1'; --enable on cycle start
-				elsif(TA40_SIG = '0') then
-					DATA_OE <='0'; --disable one clock after cycle termination
-				end if;
-				--detect toggle for end transfer
-				if(END_ACK /= END_SEND_SAMPLED --normal 68030-cycle termination
-					or (TS40 ='0' and TT40(1 downto 0)="11") --Avec termination
-					--or (SIZING = idle and SIZING_D = idle and DATA_OE ='1')
-					)
-				then
-					TA40_SIG <= '0';
-					END_ACK <= END_SEND;
-				else
-					TA40_SIG <='1';
-				end if;
+				TA40_SIG <='1';
 			end if;
 		end if;
 	end process START_STOP_SAMPLE;
@@ -348,7 +346,7 @@ begin
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
-	CLK30_SM	<= CLK30_D;
+	CLK30_SM	<= CLK30_D1;
 
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 															or TT40(1)='1') 						-- alt func AVEC/BRKPT
@@ -366,10 +364,17 @@ begin
 								else 'Z';
 								
 	--on a 68030 the interesting parts only happen on the falling cpu-clocks
-	MC68030_SM: process (CLK30_SM)
+	MC68030_SM: process (RSTI40_SIG,CLK30_SM)
 	begin
-		if(falling_edge(CLK30_SM)) then
-			if(SIZING_D = idle or RSTI40_SIG ='0') then  
+		if(RSTI40_SIG ='0') then
+			AS30_SIG <= '1';
+			DS30_SIG <= '1';
+			ATERM <= '0';
+			LE_BS_SIG <= '0';
+			SM030_N <= S1;	
+			LDSACK <="11";			
+		elsif(falling_edge(CLK30_SM)) then
+			if(SIZING_D = idle) then  
 				AS30_SIG <= '1';
 				DS30_SIG <= '1';
 				ATERM <= '0';
@@ -413,33 +418,29 @@ begin
 		
 	
 	--We need to sample the start one half-clock before S1 to satisfy the setup-times of A[1:0] and SIZ30
-   process (CLK30_SM) begin
-		if (rising_edge(CLK30_SM)) then
-			if RSTI40_SIG='0' then
-				START_SEND_SAMPLED <= '0';
-			else
-				START_SEND_SAMPLED <= START_SEND;
-			end if;
+   process (CLK30_SM, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+			START_SEND_SAMPLED <= '0';
+      elsif (rising_edge(CLK30_SM)) then
+			START_SEND_SAMPLED <= START_SEND;
       end if;
    end process;
 
 	--this is the clocked statemachine transition process
-   process (CLK30_SM) begin
-      if (falling_edge(CLK30_SM)) then
-			if RSTI40_SIG='0' then
-				SIZING <= idle;
-				START_ACK <= '0';
-				END_SEND <= '0';
-			else
-				SIZING <= SIZING_D;
-				
-				if(SIZING_D = idle and SIZING /=idle ) then
-					END_SEND	<= not END_SEND; -- toggle END_SEND to indicate end of cycle
-				end if;
+   process (CLK30_SM, RSTI40_SIG) begin
+      if RSTI40_SIG='0' then
+      	SIZING <= idle;
+			START_ACK <= '0';
+			END_SEND <= '0';
+      elsif (falling_edge(CLK30_SM)) then
+			SIZING <= SIZING_D;
+			
+			if(SIZING_D = idle and SIZING /=idle ) then
+				END_SEND	<= not END_SEND; -- toggle END_SEND to indicate end of cycle
+			end if;
 
-				if(SIZING = size_decode ) then
-					START_ACK <= START_SEND; --update internal value after sync with start of cycle
-				end if;
+			if(SIZING = size_decode ) then
+				START_ACK <= START_SEND; --update internal value after sync with start of cycle
 			end if;
       end if;
    end process;
