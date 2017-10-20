@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Thu Sep 07 22:15:15 2017">
+<application name="pn" timeStamp="Fri Oct 20 23:51:42 2017">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="00BD607A5290427E8959AA19D7786BA5" type="project"/>
 <property name="ProjectIteration" value="0" type="project"/>
@@ -13,19 +13,20 @@ This means code written to parse this file will need to be revisited each subseq
 <section name="Project Statistics" visible="true">
 <property name="PROP_Enable_Message_Filtering" value="false" type="design"/>
 <property name="PROP_FitterReportFormat" value="HTML" type="process"/>
-<property name="PROP_LastAppliedGoal" value="Speeeeeed" type="design"/>
-<property name="PROP_LastAppliedStrategy" value="Xilinx Default (unlocked);C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/default.xds" type="design"/>
+<property name="PROP_LastAppliedGoal" value="Balanced" type="design"/>
+<property name="PROP_LastAppliedStrategy" value="gba;C:/Xilinx/14.6/ISE_DS/ISE/data/gba.xds" type="design"/>
 <property name="PROP_ManualCompileOrderImp" value="false" type="design"/>
 <property name="PROP_PropSpecInProjFile" value="Store all values" type="design"/>
 <property name="PROP_SelectedInstanceHierarchicalPath" value="/card_controll_test" type="process"/>
 <property name="PROP_Simulator" value="ISim (VHDL/Verilog)" type="design"/>
+<property name="PROP_SynthCaseImplStyle" value="Full-Parallel" type="process"/>
 <property name="PROP_SynthExtractMux" value="Force" type="process"/>
-<property name="PROP_SynthFsmEncode" value="Compact" type="process"/>
+<property name="PROP_SynthFsmEncode" value="One-Hot" type="process"/>
 <property name="PROP_SynthOptEffort" value="High" type="process"/>
 <property name="PROP_SynthTopFile" value="changed" type="process"/>
 <property name="PROP_Top_Level_Module_Type" value="HDL" type="design"/>
 <property name="PROP_UseSmartGuide" value="false" type="design"/>
-<property name="PROP_UserBrowsedStrategyFiles" value="C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/default.xds" type="process"/>
+<property name="PROP_UserBrowsedStrategyFiles" value="C:/Xilinx/14.6/ISE_DS/ISE/data/gba.xds" type="process"/>
 <property name="PROP_UserConstraintEditorPreference" value="Text Editor" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2016-02-18T21:27:03" type="design"/>
 <property name="PROP_intWbtProjectID" value="00BD607A5290427E8959AA19D7786BA5" type="design"/>

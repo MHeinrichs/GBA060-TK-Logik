@@ -20,40 +20,13 @@
 <msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">TCI40_OBUF</arg>&apos; is missing an input and will be deleted.
 </msg>
 
-<msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">BG40_OBUF</arg>&apos; is missing an input and will be deleted.
-</msg>
-
-<msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">BG30_OBUF</arg>&apos; is missing an input and will be deleted.
-</msg>
-
-<msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">A_OE_OBUF</arg>&apos; is missing an input and will be deleted.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BB40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BERR30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BGACK30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BR30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">BR40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CIOUT40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">HALT30</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">LOCK40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">LOCKE40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">OSC_CLK</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.

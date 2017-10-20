@@ -17,8 +17,9 @@ run
 -bus_delimiter <>
 -case Maintain
 -verilog2001 YES
--fsm_extract YES -fsm_encoding Compact
+-fsm_extract YES -fsm_encoding One-Hot
 -safe_implementation Yes
+-vlgcase Full-Parallel
 -mux_extract Force
 -resource_sharing YES
 -iobuf YES
