@@ -174,7 +174,7 @@ signal	DSACK_D : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
 signal 	STERM_D : STD_LOGIC;
 signal 	DATA_OE : STD_LOGIC;
 signal	PLL_CLOCKDIV : STD_LOGIC_VECTOR (1 downto 0):="00";
-
+signal	LE_BS_SIG_D : STD_LOGIC;
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -231,10 +231,9 @@ begin
 			
 			CLK30_D0 <= CLK30;		
 			CLK30_D1 <= CLK30_D0;		
+			LE_BS_SIG_D <= LE_BS_SIG;
 		end if;
 	end process CLOCKS_P;
-	DSACK_D <= DSACK30;
-	STERM_D <= STERM30;
 
 	--Erzeugung der Resets
 	RESET30	<=	'0' when RSTO40 ='0' else 'Z'; 
@@ -348,7 +347,8 @@ begin
 
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 	
-	LE_BS 	<= LE_BS_SIG;	
+	LE_BS 	<= LE_BS_SIG_D;	
+	--LE_BS 	<= LE_BS_SIG;	
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
@@ -378,15 +378,14 @@ begin
 			ATERM <= '0';
 			LE_BS_SIG <= '0';
 			SM030_N <= S1;	
-			LDSACK <="11";			
+		
 		elsif(falling_edge(CLK30_SM)) then
-			if(SIZING_D = idle) then  
+			if(SIZING_D = idle) then 
 				AS30_SIG <= '1';
 				DS30_SIG <= '1';
 				ATERM <= '0';
 				LE_BS_SIG <= '0';
 				SM030_N <= S1;	
-				LDSACK <="11";			
 			else
 				case SM030_N is
 				when S1 =>
@@ -400,13 +399,7 @@ begin
 					DS30_SIG <= '0';
 					ATERM <= '0';
 					LE_BS_SIG <= '0';
-					if(STERM_D ='0' )then
-						LDSACK <="00";
-					else
-						LDSACK <=DSACK_D;
-					end if;
-
-					if(DSACK_D /="11" or STERM_D ='0')then
+					if((DSACK30 /="11" or STERM30 ='0') and HALT30 = '1') then
 						SM030_N <=S5;
 					else
 						SM030_N <=S3;
@@ -423,32 +416,18 @@ begin
 	end process MC68030_SM;
 		
 	
---	MC68030_BUSSIZE_SAMLPE: process (RSTI40_SIG,CLK30_SM)
---	begin
---		if(RSTI40_SIG ='0') then
---			LDSACK <="11";			
---		elsif(rising_edge(CLK30_SM)) then
---			if(SIZING = idle) then  
---				LDSACK <="11";			
---			else
---				if(STERM30 = '0' )then
---					LDSACK <="00";
---				elsif (DSACK30 /="11")then
---					LDSACK <= DSACK30;
---				end if;
---			end if;
---		end if;
---	end process MC68030_BUSSIZE_SAMLPE;
-		
-	
 	--We need to sample the start one half-clock before S1 to satisfy the setup-times of A[1:0] and SIZ30
    process (CLK30_SM, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
 			START_SEND_SAMPLED <= '0';
-      elsif (rising_edge(CLK30_SM)) then
+--			DSACK_D <= "11";
+--			STERM_D <= '1';	
+		elsif (rising_edge(CLK30_SM)) then
 			START_SEND_SAMPLED <= START_SEND;
       end if;
    end process;
+			DSACK_D <= DSACK30;
+			STERM_D <= STERM30;
 
 	--this is the clocked statemachine transition process
    process (CLK30_SM, RSTI40_SIG) begin
@@ -471,9 +450,11 @@ begin
 
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
-   SIZING_SM: process (CLK30_SM)
+   SIZING_SM: process (SIZING, START_ACK, START_SEND_SAMPLED,  
+	 RW40, STERM_D,DSACK_D, A40,
+	 BYTE, WORD, LONG, TERM)
    begin
-		if(rising_edge(CLK30_SM)) then
+
 			case SIZING is
 				when idle =>
 					SIZ30_D(0)	<= BYTE;
@@ -483,7 +464,13 @@ begin
 					else
 						AL_D <= "00";
 					end if;
-					BWL_BS	<= "111";					
+					BWL_BS	<= "111";	
+
+					if( START_ACK /= START_SEND_SAMPLED) then
+						SIZING_D <=size_decode;
+					else
+						SIZING_D <=idle;
+					end if;					
 				when size_decode =>
 					--size and address decode
 					SIZ30_D(0)	<= BYTE;
@@ -495,7 +482,7 @@ begin
 					end if;
 					--bus code for data latch
 					if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or 	-- WRITE: everything except byte acces on odd address
-							(RW40 ='1' and LDSACK/="11")) then 						-- READ: any port
+							(RW40 ='1' and (DSACK_D/="11" or STERM_D='0'))) then 						-- READ: any port
 						BWL_BS(0)	<=	'0';
 					else 
 						BWL_BS(0)	<=	'1';
@@ -504,20 +491,50 @@ begin
 					if(	(RW40 ='0' and ( LONG = '1' OR							-- WRITE: LONG
 							(WORD = '1' and A40(1)='0')	or							-- WRITE: WORD A1=0
 							(BYTE = '1' and A40(1)='0')))or 							-- WRITE: BYTE A1=0
-							(RW40 ='1' AND (LDSACK="01" or LDSACK="10"))) then -- READ: word/byte port
+							(RW40 ='1' AND STERM_D = '1' AND (DSACK_D="01" or DSACK_D="10"))) then -- READ: word/byte port
 						BWL_BS(1)	<=	'0';
 					else 
 						BWL_BS(1)	<=	'1';
 					end if;
 
 					if(	(RW40 ='0') or 												-- WRITE: any access
-							(RW40 ='1' AND LDSACK="10")) then 						-- READ: byte port
+							(RW40 ='1' AND STERM_D = '1' AND DSACK_D="10")) then 						-- READ: byte port
 						BWL_BS(2)	<=	'0';
 					else 
 						BWL_BS(2)	<=	'1';
 					end if;
-
-					
+					--target for next bussizing-cycle
+					if(TERM ='1') then -- cycle completed, see how wide the bus was!
+--						if	(STERM_D='0' or DSACK_D="00" ) then						-- LONGTERM: access = finished!
+--							SIZING_D <= idle;
+--						elsif( DSACK_D="01" 	and						-- WORDTERM
+--							(WORD = '1' or BYTE = '1')				-- WORD or BYTE access = finished!
+--							) then
+--							SIZING_D <= idle;					
+--						elsif(DSACK_D="10" and							-- BYTETERM
+--							BYTE = '1'									-- BYTE access = finished!
+--							) then
+--							SIZING_D <= idle;
+--						els
+						if(DSACK_D="01" and 							-- WORDTERM
+							LONG = '1'									-- LONG access = get lower word
+							) then
+							SIZING_D <= get_low_word;
+						elsif( DSACK_D="10" and 						-- BYTETERM
+							(LONG = '1' or 							-- LONG
+							(WORD = '1' and A40(1)='0'))			-- WORD 0
+						) then
+							SIZING_D <= get_byte2;
+						elsif(DSACK_D="10" and  						-- BYTETERM
+							WORD = '1' and A40(1)='1'				-- WORD2
+							) then
+							SIZING_D <= get_byte0;
+						else
+							SIZING_D <= idle; -- this can happen on bus errors!
+						end if;
+					else
+						SIZING_D <= size_decode; -- wait another round!
+					end if;
 				when get_low_word =>
 					--size and address decode
 					SIZ30_D	<= "10";
@@ -529,85 +546,21 @@ begin
 					else
 						BWL_BS(2 downto 0) <= "101";
 					end if;
-
+					--target for next bussizing-cycle
+					if(TERM ='1' 											-- must be WORDTERM!
+						) then
+						SIZING_D <= idle;
+					else
+						SIZING_D <= get_low_word;
+					end if;
 				when get_byte2 =>
 					--size and address decode
 					SIZ30_D	<= "01";
 					AL_D		<=	"01";
 				
 					--bus code for data latch
+					
 					BWL_BS(2 downto 0) <= "001";
-				when get_byte1 =>
-					--size and address decode
-					SIZ30_D	<= "01";
-					AL_D	<= "10";
-					
-					--bus code for data latch
-					BWL_BS(2 downto 0) <= "010";
-				when get_byte0 =>
-					SIZ30_D	<= "01";
-					AL_D		<=	"11";
-					
-					--bus code for data latch
-					BWL_BS(2 downto 0) <= "011";
-			end case;
-		end if;
-   end process SIZING_SM;
-
-
-   SIZING_SM2: process (SIZING, START_ACK, START_SEND_SAMPLED,  
-	 RW40, LDSACK, A40,
-	 BYTE, WORD, LONG, TERM)
-   begin
-
-			case SIZING is
-				when idle =>
-					if( START_ACK /= START_SEND_SAMPLED) then
-						SIZING_D <=size_decode;
-					else
-						SIZING_D <=idle;
-					end if;					
-				when size_decode =>
-					--target for next bussizing-cycle
-					if( TERM ='1' and LDSACK="10" and 				-- BYTETERM
-							(LONG = '1' or 								-- LONG
-							(WORD = '1' and A40(1)='0'))				-- WORD0
-						) then
-						SIZING_D <= get_byte2;
-					elsif(TERM ='1' and LDSACK="10" and  			-- BYTETERM
-							WORD = '1' and A40(1)='1'					-- WORD2
-						) then
-						SIZING_D <= get_byte0;
-					elsif(TERM ='1' and LDSACK="10" and				-- BYTETERM
-							BYTE = '1'										-- BYTE
-						) then
-						SIZING_D <= idle;
-					elsif(TERM ='1' and LDSACK="01" and 			-- WORDTERM
-							LONG = '1'										-- LONG
-						) then
-						SIZING_D <= get_low_word;
-					elsif(TERM ='1' and LDSACK="01" 	and			-- WORDTERM
-							(WORD = '1' or BYTE = '1')					-- WORD or BYTE
-						) then
-						SIZING_D <= idle;
-					elsif(TERM ='1' and LDSACK="00"					-- LONGTERM
-						) then
-						SIZING_D <= idle;
-					else
-						SIZING_D <= size_decode;
-					end if;
-				when get_low_word =>
-						
-					--target for next bussizing-cycle
-					if(TERM ='1' 											-- WORDTERM
-						) then
-						SIZING_D <= idle;
-					else
-						SIZING_D <= get_low_word;
-					end if;
-				when get_byte2 =>
-
-					
 					--target for next bussizing-cycle
 					if(TERM ='1' and   									-- BYTETERM
 						WORD = '1' 											-- WORD0
@@ -621,8 +574,13 @@ begin
 						SIZING_D <= get_byte2;
 					end if;
 				when get_byte1 =>
-
-						
+					--size and address decode
+					SIZ30_D	<= "01";
+					AL_D	<= "10";
+					
+					--bus code for data latch
+					BWL_BS(2 downto 0) <= "010";
+					
 					--target for next bussizing-cycle
 					if(TERM = '1' 											-- BYTETERM
 						 and LONG = '1'
@@ -632,7 +590,11 @@ begin
 						SIZING_D <= get_byte1;
 					end if;
 				when get_byte0 =>
-
+					SIZ30_D	<= "01";
+					AL_D		<=	"11";
+					
+					--bus code for data latch
+					BWL_BS(2 downto 0) <= "011";				
 					
 					--target for next bussizing-cycle
 					if(	TERM ='1'  										-- BYTETERM				
@@ -642,7 +604,7 @@ begin
 						SIZING_D <= get_byte0;
 					end if;
 			end case;
-   end process SIZING_SM2;
+   end process SIZING_SM;
 
 	
 	DMA_ARBIT: process (BCLK_SIG,RSTI40_SIG)
