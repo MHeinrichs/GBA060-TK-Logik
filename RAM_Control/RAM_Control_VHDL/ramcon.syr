@@ -100,21 +100,39 @@ Entity <ramcon> analyzed. Unit <ramcon> generated.
 =========================================================================
 
 Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <TRANSFER> in unit <ramcon> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <ramcon>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/RAM_Control/RAM_Control_VHDL/ramcon - vector_io.vhd".
 WARNING:Xst:647 - Input <WE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <INIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <TT40_1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <TS40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <TA40_FB> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst - You have specified state <powerup> as a recovery-only state for the safe implementation of FSM <CQ>. Due to a limitation in this version of the software, the logic required to implement this recovery-only state might not be properly generated. Please refer to the Xilinx Answers Database for more details.
+INFO:Xst:1799 - State read_commit_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_start_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_start_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_commit_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_data_wait is never reached in FSM <CQ>.
+INFO:Xst:1799 - State read_line_burst is never reached in FSM <CQ>.
+INFO:Xst:1799 - State precharge is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_commit_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_start_ras is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_tra_ack is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_start_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_commit_cas is never reached in FSM <CQ>.
+INFO:Xst:1799 - State write_line_burst is never reached in FSM <CQ>.
+INFO:Xst:1799 - State end_cycle is never reached in FSM <CQ>.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
-    | States             | 23                                             |
-    | Transitions        | 34                                             |
-    | Inputs             | 7                                              |
-    | Outputs            | 30                                             |
+    | States             | 9                                              |
+    | Transitions        | 13                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 9                                              |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
     | Reset type         | asynchronous                                   |
@@ -141,19 +159,17 @@ WARNING:Xst - You have specified state <powerup> as a recovery-only state for th
     Found 2-bit subtractor for signal <BURST$addsub0000> created at line 212.
     Found 4-bit register for signal <BYTE_ENCODE>.
     Found 2-bit register for signal <CE_B_DECODE>.
-    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 318.
-    Found 4-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 336.
+    Found 3-bit comparator greatequal for signal <CQ$cmp_ge0000> created at line 320.
+    Found 4-bit comparator greatequal for signal <CQ$cmp_ge0001> created at line 338.
     Found 3-bit up counter for signal <NQ>.
     Found 1-bit register for signal <RAM_READY>.
     Found 1-bit register for signal <REFRESH>.
     Found 8-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 138.
     Found 8-bit up counter for signal <RQ>.
-    Found 1-bit register for signal <TA40_FB>.
-    Found 1-bit register for signal <TRANSFER>.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  18 D-type flip-flop(s).
+	inferred  17 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
 	inferred   1 Tristate(s).
@@ -169,8 +185,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 23
- 1-bit register                                        : 19
+# Registers                                            : 21
+ 1-bit register                                        : 17
  13-bit register                                       : 1
  2-bit register                                        : 3
 # Comparators                                          : 3
@@ -186,34 +202,44 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Optimizing FSM <CQ/FSM> on signal <CQ[1:5]> with gray encoding.
+Optimizing FSM <CQ/FSM> on signal <CQ[1:4]> with gray encoding.
 -----------------------------------
  State                 | Encoding
 -----------------------------------
- powerup               | 00000
- init_precharge        | 00001
- init_precharge_commit | 00011
- init_opcode           | 00010
- init_refresh          | 00110
- init_wait             | 00111
- start_state           | 01101
- refresh_start         | 00101
- refresh_wait          | 01111
- read_start_ras        | 00100
- read_commit_ras       | 01110
- read_start_cas        | 01010
- read_commit_cas       | 01011
- read_data_wait        | 01001
- read_line_burst       | 01000
- write_start_ras       | 01100
- write_commit_ras      | 11001
- write_tra_ack         | 11011
- write_start_cas       | 11010
- write_commit_cas      | 11110
- write_line_burst      | 11111
- precharge             | 11000
- end_cycle             | 11101
+ powerup               | 0000
+ init_precharge        | 0001
+ init_precharge_commit | 0011
+ init_opcode           | 0010
+ init_refresh          | 0110
+ init_wait             | 0111
+ start_state           | 0100
+ refresh_start         | 0101
+ refresh_wait          | 1100
+ read_start_ras        | unreached
+ read_commit_ras       | unreached
+ read_start_cas        | unreached
+ read_commit_cas       | unreached
+ read_data_wait        | unreached
+ read_line_burst       | unreached
+ write_start_ras       | unreached
+ write_commit_ras      | unreached
+ write_tra_ack         | unreached
+ write_start_cas       | unreached
+ write_commit_cas      | unreached
+ write_line_burst      | unreached
+ precharge             | unreached
+ end_cycle             | unreached
 -----------------------------------
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <3>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <7>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <8>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <9>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <12>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -225,21 +251,35 @@ Macro Statistics
 # Counters                                             : 2
  3-bit up counter                                      : 1
  8-bit up counter                                      : 1
-# Registers                                            : 18
- Flip-Flops                                            : 18
+# Registers                                            : 11
+ Flip-Flops                                            : 11
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1710 - FF/Latch <ARAM_12> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_11> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_9> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_8> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_7> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_6> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_4> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_3> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_2> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ARAM_0> (without init value) has a constant value of 0 in block <ramcon>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <BURST_1> of sequential type is unconnected in block <ramcon>.
+WARNING:Xst:2677 - Node <BURST_0> of sequential type is unconnected in block <ramcon>.
+INFO:Xst:2261 - The FF/Latch <ARAM_5> in Unit <ramcon> is equivalent to the following FF/Latch, which will be removed : <ARAM_1> 
+INFO:Xst:2261 - The FF/Latch <CE_1> in Unit <ramcon> is equivalent to the following FF/Latch, which will be removed : <CE_0> 
 
 Optimizing unit <ramcon> ...
-  implementation constraint: INIT=r	 : CQ_FSM_FFd2
-  implementation constraint: INIT=r	 : CQ_FSM_FFd1
-  implementation constraint: INIT=r	 : CQ_FSM_FFd3
-  implementation constraint: INIT=r	 : CQ_FSM_FFd5
   implementation constraint: INIT=r	 : CQ_FSM_FFd4
+  implementation constraint: INIT=r	 : CQ_FSM_FFd1
+  implementation constraint: INIT=r	 : CQ_FSM_FFd2
+  implementation constraint: INIT=r	 : CQ_FSM_FFd3
+INFO:Xst:2261 - The FF/Latch <OERAM_40> in Unit <ramcon> is equivalent to the following 5 FFs/Latches, which will be removed : <OE40_RAM> <LDQ1> <LDQ0> <UDQ1> <UDQ0> 
 
 =========================================================================
 *                           Partition Report                            *
@@ -271,36 +311,35 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 660
-#      AND2                        : 230
-#      AND3                        : 29
-#      AND4                        : 9
+# BELS                             : 181
+#      AND2                        : 43
+#      AND3                        : 14
+#      AND4                        : 7
 #      AND5                        : 1
 #      GND                         : 1
-#      INV                         : 244
-#      OR2                         : 129
-#      OR3                         : 6
+#      INV                         : 73
+#      OR2                         : 32
 #      VCC                         : 1
-#      XOR2                        : 10
-# FlipFlops/Latches                : 54
-#      FDC                         : 33
-#      FDCE                        : 5
-#      FDP                         : 16
-# IO Buffers                       : 73
-#      IBUF                        : 41
+#      XOR2                        : 9
+# FlipFlops/Latches                : 26
+#      FDC                         : 19
+#      FDCE                        : 2
+#      FDP                         : 5
+# IO Buffers                       : 48
+#      IBUF                        : 16
 #      OBUF                        : 31
 #      OBUFE                       : 1
 =========================================================================
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.78 secs
+Total CPU time to Xst completion: 7.50 secs
  
 --> 
 
-Total memory usage is 290032 kilobytes
+Total memory usage is 293664 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :   31 (   0 filtered)
+Number of infos    :   18 (   0 filtered)
 

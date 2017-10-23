@@ -170,8 +170,13 @@ signal 	START_ACK : STD_LOGIC;
 signal 	END_SEND : STD_LOGIC;
 signal 	END_SEND_SAMPLED : STD_LOGIC;
 signal 	END_ACK : STD_LOGIC;
-signal	DSACK_D : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
-signal 	STERM_D : STD_LOGIC;
+signal	DSACK_D0 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
+signal 	STERM_D0 : STD_LOGIC;
+signal	DSACK_D1 : STD_LOGIC_VECTOR (1 downto 0):="00";	--DSACKx synced
+signal 	STERM_D1 : STD_LOGIC;
+signal	DSACK_DECODE : STD_LOGIC_VECTOR (1 downto 0):="00";	--signal alias for the statemachine
+signal 	STERM_DECODE : STD_LOGIC;
+
 signal 	DATA_OE : STD_LOGIC;
 signal	PLL_CLOCKDIV : STD_LOGIC_VECTOR (1 downto 0):="00";
 signal	LE_BS_SIG_D : STD_LOGIC;
@@ -347,8 +352,8 @@ begin
 
 	TA40 		<= TA40_SIG when AMISEL = '1' else 'Z';
 	
-	LE_BS 	<= LE_BS_SIG_D;	
-	--LE_BS 	<= LE_BS_SIG;	
+	--LE_BS 	<= LE_BS_SIG_D;	
+	LE_BS 	<= LE_BS_SIG;	
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
@@ -399,7 +404,7 @@ begin
 					DS30_SIG <= '0';
 					ATERM <= '0';
 					LE_BS_SIG <= '0';
-					if((DSACK30 /="11" or STERM30 ='0') and HALT30 = '1') then
+					if((DSACK30 /="11" or STERM30 ='0' or BERR30 ='0') and HALT30 = '1') then
 						SM030_N <=S5;
 					else
 						SM030_N <=S3;
@@ -420,14 +425,27 @@ begin
    process (CLK30_SM, RSTI40_SIG) begin
       if RSTI40_SIG='0' then
 			START_SEND_SAMPLED <= '0';
---			DSACK_D <= "11";
---			STERM_D <= '1';	
+			DSACK_D0 <= "11";
+			STERM_D0 <= '1';	
+			DSACK_D1 <= "11";
+			STERM_D1 <= '1';	
 		elsif (rising_edge(CLK30_SM)) then
 			START_SEND_SAMPLED <= START_SEND;
+			if(SIZING_D = idle) then
+				DSACK_D0 <= "11";
+				STERM_D0 <= '1';	
+				DSACK_D1 <= "11";
+				STERM_D1 <= '1';	
+			elsif(DSACK30/="11" or STERM30='0')then
+				DSACK_D0 <= DSACK30;
+				STERM_D0 <= STERM30;
+				DSACK_D1 <= DSACK_D0;
+				STERM_D1 <= STERM_D0;	
+			end if;
       end if;
    end process;
-			DSACK_D <= DSACK30;
-			STERM_D <= STERM30;
+	DSACK_DECODE <= DSACK_D0;
+	STERM_DECODE <= STERM_D0;
 
 	--this is the clocked statemachine transition process
    process (CLK30_SM, RSTI40_SIG) begin
@@ -451,7 +469,7 @@ begin
 	--somehow a lot of signals need to be "latched" in a unclocked process
 	--this idea comes from the abel-conversion
    SIZING_SM: process (SIZING, START_ACK, START_SEND_SAMPLED,  
-	 RW40, STERM_D,DSACK_D, A40,
+	 RW40, STERM_DECODE,DSACK_DECODE, A40,
 	 BYTE, WORD, LONG, TERM)
    begin
 
@@ -482,7 +500,7 @@ begin
 					end if;
 					--bus code for data latch
 					if(	(RW40 ='0' and not(BYTE = '1' and A40(0)='1')) or 	-- WRITE: everything except byte acces on odd address
-							(RW40 ='1' and (DSACK_D/="11" or STERM_D='0'))) then 						-- READ: any port
+							(RW40 ='1' and (DSACK_DECODE/="11" or STERM_DECODE='0'))) then 						-- READ: any port
 						BWL_BS(0)	<=	'0';
 					else 
 						BWL_BS(0)	<=	'1';
@@ -491,41 +509,40 @@ begin
 					if(	(RW40 ='0' and ( LONG = '1' OR							-- WRITE: LONG
 							(WORD = '1' and A40(1)='0')	or							-- WRITE: WORD A1=0
 							(BYTE = '1' and A40(1)='0')))or 							-- WRITE: BYTE A1=0
-							(RW40 ='1' AND STERM_D = '1' AND (DSACK_D="01" or DSACK_D="10"))) then -- READ: word/byte port
+							(RW40 ='1' AND STERM_DECODE = '1' AND (DSACK_DECODE="01" or DSACK_DECODE="10"))) then -- READ: word/byte port
 						BWL_BS(1)	<=	'0';
 					else 
 						BWL_BS(1)	<=	'1';
 					end if;
 
 					if(	(RW40 ='0') or 												-- WRITE: any access
-							(RW40 ='1' AND STERM_D = '1' AND DSACK_D="10")) then 						-- READ: byte port
+							(RW40 ='1' AND STERM_DECODE = '1' AND DSACK_DECODE="10")) then 						-- READ: byte port
 						BWL_BS(2)	<=	'0';
 					else 
 						BWL_BS(2)	<=	'1';
 					end if;
 					--target for next bussizing-cycle
 					if(TERM ='1') then -- cycle completed, see how wide the bus was!
---						if	(STERM_D='0' or DSACK_D="00" ) then						-- LONGTERM: access = finished!
---							SIZING_D <= idle;
---						elsif( DSACK_D="01" 	and						-- WORDTERM
---							(WORD = '1' or BYTE = '1')				-- WORD or BYTE access = finished!
---							) then
---							SIZING_D <= idle;					
---						elsif(DSACK_D="10" and							-- BYTETERM
---							BYTE = '1'									-- BYTE access = finished!
---							) then
---							SIZING_D <= idle;
---						els
-						if(DSACK_D="01" and 							-- WORDTERM
+						if	(STERM_DECODE='0' or DSACK_DECODE="00" ) then						-- LONGTERM: access = finished!
+							SIZING_D <= idle;
+						elsif( DSACK_DECODE="01" 	and						-- WORDTERM
+							(WORD = '1' or BYTE = '1')				-- WORD or BYTE access = finished!
+							) then
+							SIZING_D <= idle;					
+						elsif(DSACK_DECODE="10" and							-- BYTETERM
+							BYTE = '1'									-- BYTE access = finished!
+							) then
+							SIZING_D <= idle;
+						elsif(DSACK_DECODE="01" and 							-- WORDTERM
 							LONG = '1'									-- LONG access = get lower word
 							) then
 							SIZING_D <= get_low_word;
-						elsif( DSACK_D="10" and 						-- BYTETERM
+						elsif( DSACK_DECODE="10" and 						-- BYTETERM
 							(LONG = '1' or 							-- LONG
 							(WORD = '1' and A40(1)='0'))			-- WORD 0
 						) then
 							SIZING_D <= get_byte2;
-						elsif(DSACK_D="10" and  						-- BYTETERM
+						elsif(DSACK_DECODE="10" and  						-- BYTETERM
 							WORD = '1' and A40(1)='1'				-- WORD2
 							) then
 							SIZING_D <= get_byte0;

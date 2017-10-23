@@ -265,7 +265,8 @@ begin
 
 
 -- Signal section
-   SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
+   --SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
+	SELRAM	<= '0'; 
 	SEL16M 	<= not SELRAM;
 
    TA40 		<= TA40_FB when (SELRAM='1') else 'Z'; --tristate on amiga access
@@ -278,6 +279,7 @@ begin
 								A40(30 downto 21) = "0000001001"  or 
 								A40(30 downto 22) = "000000101"  or 
 								A40(30 downto 21) = "0000001100"  or
+								A40(30 downto 24) = "0000111"  or
 								SELRAM='1'
 								else '0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543

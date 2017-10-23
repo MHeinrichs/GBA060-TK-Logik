@@ -60,7 +60,7 @@ ARCHITECTURE behavior OF card_controll_test IS
          TT40 : IN  std_logic_vector(1 downto 0);
          TS40 : IN  std_logic;
          PLL_S : OUT  std_logic_vector(1 downto 0);
-         CLK30 : IN  std_logic;
+         CLK30 : INOUT  std_logic;
          PCLK : inOUT  std_logic;
          BCLK : OUT  std_logic;
          SCLK : INOUT  std_logic;
