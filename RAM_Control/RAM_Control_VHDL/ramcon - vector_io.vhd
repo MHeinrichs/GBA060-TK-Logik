@@ -345,12 +345,12 @@ begin
 				CQ_D <= refresh_start;
 			elsif (TRANSFER 
 						and RW_40 
-					--	and (not SCLK)
+						and (not SCLK)
 					)='1' then
 				CQ_D <= read_start_ras;
 			elsif (TRANSFER 
 						and (not RW_40) 
-					--	and SCLK
+						and (not SCLK)
 					)='1' then
 				CQ_D <= write_start_ras;
 			else
@@ -412,13 +412,14 @@ begin
 			ARAM_D <= ARAM_HIGH;
 			CQ_D <= write_commit_ras;
       when write_commit_ras =>
-			OE40_RAM_D <= '0';
+			--OE40_RAM_D <= '0';
 			CE_B_D <= CE_B_DECODE;
-			CQ_D <= write_tra_ack;
+			--CQ_D <= write_tra_ack;
+			CQ_D <= write_start_cas;
       when write_tra_ack =>
 			OE40_RAM_D <= '0';
 			CE_B_D <= CE_B_DECODE;
-			TA40_D <= '0';
+			--TA40_D <= '0';
 			CQ_D <= write_start_cas;
       when write_start_cas =>
 			OE40_RAM_D <= '0';		 

@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: ramcon                              Date: 11- 1-2017,  1:22AM
+Design Name: ramcon                              Date: 11- 1-2017,  1:41AM
 Device Used: XC95144XL-10-TQ100
 Fitting Status: Successful
 
@@ -11,22 +11,22 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-60 /144 ( 42%) 213 /720  ( 30%) 133/432 ( 31%)   54 /144 ( 37%) 72 /81  ( 89%)
+60 /144 ( 42%) 230 /720  ( 32%) 124/432 ( 29%)   54 /144 ( 37%) 73 /81  ( 90%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           5/18       17/54       28/90       9/11
-FB2           8/18       18/54       17/90       9/10
+FB1           6/18       18/54       36/90       9/11
+FB2           8/18       18/54       22/90      10/10*
 FB3           6/18       17/54       18/90       9/10
-FB4          10/18       22/54       19/90      10/10*
-FB5           6/18       17/54       22/90      10/10*
-FB6          16/18       19/54       72/90      10/10*
-FB7           1/18        5/54        3/90       7/10
-FB8           8/18       18/54       34/90       8/10
+FB4          10/18       22/54       25/90      10/10*
+FB5           9/18       14/54       27/90      10/10*
+FB6          14/18       18/54       71/90      10/10*
+FB7           0/18        0/54        0/90       7/10
+FB8           7/18       17/54       31/90       8/10
              -----       -----       -----      -----    
-             60/144     133/432     213/720     72/81 
+             60/144     124/432     230/720     73/81 
 
 * - Resource is exhausted
 
@@ -40,14 +40,14 @@ Signal 'RESET' mapped onto global set/reset net GSR.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :   38          38    |  I/O              :    66      73
+Input         :   39          39    |  I/O              :    66      73
 Output        :   32          32    |  GCK/IO           :     2       3
-Bidirectional :    0           0    |  GTS/IO           :     3       4
+Bidirectional :    0           0    |  GTS/IO           :     4       4
 GCK           :    1           1    |  GSR/IO           :     1       1
 GTS           :    0           0    |
 GSR           :    1           1    |
                  ----        ----
-        Total     72          72
+        Total     73          73
 
 ** Power Data **
 
@@ -80,8 +80,6 @@ WARNING:Cpld:1007 - Removing unused input(s) 'INIT'.  The input(s) are unused
    after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'OE_FLASH'.  The input(s) are
    unused after optimization. Please verify functionality via simulation.
-WARNING:Cpld:1007 - Removing unused input(s) 'SCLK'.  The input(s) are unused
-   after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'TBI40'.  The input(s) are unused
    after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'WE_FLASH'.  The input(s) are
@@ -93,34 +91,34 @@ WARNING:Cpld:1007 - Removing unused input(s) 'WE_FLASH'.  The input(s) are
 Signal              Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
 Name                Pts   Inps          No.  Type    Use     Mode Rate State
 SEL16M              1     4     FB2_9   4    GTS/I/O O       STD  FAST 
-ARAM<2>             2     7     FB2_11  6    I/O     O       STD  FAST RESET
-ARAM<5>             3     7     FB2_12  7    I/O     O       STD  FAST RESET
-ARAM<3>             2     7     FB2_14  8    I/O     O       STD  FAST RESET
-ARAM<4>             2     7     FB2_15  9    I/O     O       STD  FAST RESET
-CLKEN               3     5     FB2_17  10   I/O     O       STD  FAST 
+ARAM<2>             3     7     FB2_11  6    I/O     O       STD  FAST RESET
+ARAM<5>             4     7     FB2_12  7    I/O     O       STD  FAST RESET
+ARAM<3>             3     7     FB2_14  8    I/O     O       STD  FAST RESET
+ARAM<4>             3     7     FB2_15  9    I/O     O       STD  FAST RESET
+CLKEN               4     5     FB2_17  10   I/O     O       STD  FAST 
 TCI40               8     13    FB3_2   23   GCK/I/O O       STD  FAST 
 BA<0>               1     2     FB4_2   87   I/O     O       STD  FAST RESET
 ARAM<11>            1     5     FB4_5   89   I/O     O       STD  FAST RESET
 BA<1>               1     2     FB4_6   90   I/O     O       STD  FAST RESET
-ARAM<9>             2     7     FB4_8   91   I/O     O       STD  FAST RESET
+ARAM<9>             3     7     FB4_8   91   I/O     O       STD  FAST RESET
 ARAM<10>            3     6     FB4_9   92   I/O     O       STD  FAST RESET
-ARAM<8>             2     7     FB4_11  93   I/O     O       STD  FAST RESET
-ARAM<0>             2     7     FB4_12  94   I/O     O       STD  FAST RESET
-ARAM<7>             2     7     FB4_14  95   I/O     O       STD  FAST RESET
-ARAM<1>             3     7     FB4_15  96   I/O     O       STD  FAST RESET
-ARAM<6>             2     7     FB4_17  97   I/O     O       STD  FAST RESET
+ARAM<8>             3     7     FB4_11  93   I/O     O       STD  FAST RESET
+ARAM<0>             3     7     FB4_12  94   I/O     O       STD  FAST RESET
+ARAM<7>             3     7     FB4_14  95   I/O     O       STD  FAST RESET
+ARAM<1>             4     7     FB4_15  96   I/O     O       STD  FAST RESET
+ARAM<6>             3     7     FB4_17  97   I/O     O       STD  FAST RESET
 UDQ1                5     6     FB6_2   74   I/O     O       STD  FAST RESET
 LDQ0                5     6     FB6_5   76   I/O     O       STD  FAST RESET
 UDQ0                5     6     FB6_6   77   I/O     O       STD  FAST RESET
-CE<0>               6     6     FB6_8   78   I/O     O       STD  FAST RESET
-CE<1>               6     6     FB6_9   79   I/O     O       STD  FAST RESET
-WE                  5     5     FB6_11  80   I/O     O       STD  FAST RESET
-CAS                 5     5     FB6_12  81   I/O     O       STD  FAST RESET
+CE<0>               7     6     FB6_8   78   I/O     O       STD  FAST RESET
+CE<1>               7     6     FB6_9   79   I/O     O       STD  FAST RESET
+WE                  6     5     FB6_11  80   I/O     O       STD  FAST RESET
+CAS                 6     5     FB6_12  81   I/O     O       STD  FAST RESET
 CLK_RAM             1     1     FB6_14  82   I/O     O       STD  FAST 
-RAS                 4     5     FB6_15  85   I/O     O       STD  FAST RESET
+RAS                 5     5     FB6_15  85   I/O     O       STD  FAST RESET
 ARAM<12>            1     5     FB6_17  86   I/O     O       STD  FAST RESET
-LE_RAM              3     5     FB8_6   65   I/O     O       STD  FAST 
-OERAM_40            3     5     FB8_8   66   I/O     O       STD  FAST RESET
+LE_RAM              4     5     FB8_6   65   I/O     O       STD  FAST 
+OERAM_40            3     4     FB8_8   66   I/O     O       STD  FAST RESET
 OE40_RAM            3     5     FB8_9   67   I/O     O       STD  FAST RESET
 TA40                6     9     FB8_11  68   I/O     O       STD  FAST RESET
 LDQ1                5     6     FB8_17  73   I/O     O       STD  FAST RESET
@@ -129,11 +127,12 @@ LDQ1                5     6     FB8_17  73   I/O     O       STD  FAST RESET
 
 Signal              Total Total Loc     Pwr  Reg Init
 Name                Pts   Inps          Mode State
-CQ_FSM_FFd5         13    12    FB1_1   STD  RESET
-BYTE_ENCODE<3>      3     5     FB1_14  STD  RESET
-BYTE_ENCODE<1>      3     5     FB1_15  STD  RESET
-BYTE_ENCODE<0>      3     5     FB1_16  STD  RESET
-NQ<2>               6     8     FB1_17  STD  RESET
+CQ_FSM_FFd4         8     8     FB1_1   STD  RESET
+CQ_FSM_FFd1         4     7     FB1_13  STD  RESET
+BURST<1>            5     10    FB1_14  STD  RESET
+BURST<0>            5     9     FB1_15  STD  RESET
+REFRESH             7     13    FB1_17  STD  RESET
+CQ_FSM_FFd3         7     7     FB1_18  STD  RESET
 RAM_READY           1     5     FB2_16  STD  RESET
 RQ<6>/RQ<6>_RSTF    3     6     FB2_18  STD  
 CE_B_DECODE<1>      1     1     FB3_14  STD  RESET
@@ -141,24 +140,23 @@ CE_B_DECODE<0>      1     1     FB3_15  STD  RESET
 RQ<0>               2     2     FB3_16  STD  RESET
 RQ<2>               3     4     FB3_17  STD  RESET
 RQ<1>               3     3     FB3_18  STD  RESET
-RQ<7>               3     9     FB5_13  STD  RESET
-RQ<6>               3     8     FB5_14  STD  RESET
-RQ<5>               3     7     FB5_15  STD  RESET
-RQ<4>               3     6     FB5_16  STD  RESET
-RQ<3>               3     5     FB5_17  STD  RESET
-REFRESH             7     13    FB5_18  STD  RESET
-NQ<0>               2     6     FB6_4   STD  RESET
-CQ_FSM_FFd1         4     7     FB6_7   STD  RESET
-BURST<1>            5     10    FB6_10  STD  RESET
-BURST<0>            5     9     FB6_13  STD  RESET
-CQ_FSM_FFd3         6     7     FB6_16  STD  RESET
-CQ_FSM_FFd4         7     8     FB6_18  STD  RESET
-BYTE_ENCODE<2>      3     5     FB7_18  STD  RESET
-NQ<1>               4     7     FB8_15  STD  RESET
-CQ_FSM_FFd2         4     8     FB8_16  STD  RESET
+RQ<7>               3     9     FB5_10  STD  RESET
+RQ<6>               3     8     FB5_11  STD  RESET
+RQ<5>               3     7     FB5_12  STD  RESET
+RQ<4>               3     6     FB5_13  STD  RESET
+RQ<3>               3     5     FB5_14  STD  RESET
+BYTE_ENCODE<3>      3     5     FB5_15  STD  RESET
+BYTE_ENCODE<2>      3     5     FB5_16  STD  RESET
+BYTE_ENCODE<1>      3     5     FB5_17  STD  RESET
+BYTE_ENCODE<0>      3     5     FB5_18  STD  RESET
+CQ_FSM_FFd5         11    11    FB6_1   STD  RESET
+NQ<0>               2     6     FB6_10  STD  RESET
+NQ<1>               4     7     FB6_13  STD  RESET
+NQ<2>               6     8     FB6_16  STD  RESET
+CQ_FSM_FFd2         4     9     FB8_16  STD  RESET
 TRANSFER            6     12    FB8_18  STD  RESET
 
-** 40 Inputs **
+** 41 Inputs **
 
 Signal              Loc     Pin  Pin     Pin     
 Name                        No.  Type    Use     
@@ -173,6 +171,7 @@ A40<25>             FB1_15  20   I/O     I
 CLK_RAMC            FB1_17  22   GCK/I/O GCK/I
 RESET               FB2_2   99   GSR/I/O GSR/I
 TT40_1              FB2_5   1    GTS/I/O I
+SCLK                FB2_6   2    GTS/I/O I
 ICACHE              FB2_8   3    GTS/I/O I
 A40<24>             FB3_5   24   I/O     I
 A40<23>             FB3_6   25   I/O     I
@@ -201,6 +200,9 @@ A40<1>              FB7_11  56   I/O     I
 A40<0>              FB7_12  58   I/O     I
 TS40                FB8_12  70   I/O     I
 SIZ40<1>            FB8_14  71   I/O     I
+
+Signal              Loc     Pin  Pin     Pin     
+Name                        No.  Type    Use     
 SIZ40<0>            FB8_15  72   I/O     I
 
 Legend:
@@ -219,12 +221,12 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               17/37
-Number of signals used by logic mapping into function block:  17
+Number of function block inputs used/remaining:               18/36
+Number of signals used by logic mapping into function block:  18
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-CQ_FSM_FFd5          13       8<-   0   0     FB1_1         (b)     (b)
-(unused)              0       0   /\3   2     FB1_2   11    I/O     I
+CQ_FSM_FFd4           8       5<- /\2   0     FB1_1         (b)     (b)
+(unused)              0       0   /\5   0     FB1_2   11    I/O     I
 (unused)              0       0     0   5     FB1_3   12    I/O     I
 (unused)              0       0     0   5     FB1_4         (b)     
 (unused)              0       0     0   5     FB1_5   13    I/O     
@@ -235,28 +237,29 @@ CQ_FSM_FFd5          13       8<-   0   0     FB1_1         (b)     (b)
 (unused)              0       0     0   5     FB1_10        (b)     
 (unused)              0       0     0   5     FB1_11  17    I/O     I
 (unused)              0       0     0   5     FB1_12  18    I/O     I
-(unused)              0       0     0   5     FB1_13        (b)     
-BYTE_ENCODE<3>        3       0     0   2     FB1_14  19    I/O     I
-BYTE_ENCODE<1>        3       0     0   2     FB1_15  20    I/O     I
-BYTE_ENCODE<0>        3       0   \/1   1     FB1_16        (b)     (b)
-NQ<2>                 6       1<-   0   0     FB1_17  22    GCK/I/O GCK/I
-(unused)              0       0   \/5   0     FB1_18        (b)     (b)
+CQ_FSM_FFd1           4       0     0   1     FB1_13        (b)     (b)
+BURST<1>              5       0     0   0     FB1_14  19    I/O     I
+BURST<0>              5       0     0   0     FB1_15  20    I/O     I
+(unused)              0       0   \/2   3     FB1_16        (b)     (b)
+REFRESH               7       2<-   0   0     FB1_17  22    GCK/I/O GCK/I
+CQ_FSM_FFd3           7       2<-   0   0     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: A40<0>             7: CQ_FSM_FFd3       13: REFRESH 
-  2: A40<1>             8: CQ_FSM_FFd4       14: RW_40 
-  3: BURST<0>           9: CQ_FSM_FFd5       15: SIZ40<0> 
-  4: BURST<1>          10: NQ<0>             16: SIZ40<1> 
-  5: CQ_FSM_FFd1       11: NQ<1>             17: TRANSFER 
-  6: CQ_FSM_FFd2       12: NQ<2>            
+  1: BURST<0>           7: CQ_FSM_FFd5       13: RQ<4> 
+  2: BURST<1>           8: NQ<2>             14: RQ<5> 
+  3: CQ_FSM_FFd1        9: REFRESH           15: RQ<6> 
+  4: CQ_FSM_FFd2       10: RESET             16: RQ<7> 
+  5: CQ_FSM_FFd3       11: RQ<2>             17: SIZ40<0> 
+  6: CQ_FSM_FFd4       12: RQ<3>             18: SIZ40<1> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-CQ_FSM_FFd5          ..XXXXXXXXXXX...X....................... 12
-BYTE_ENCODE<3>       XX...........XXX........................ 5
-BYTE_ENCODE<1>       XX...........XXX........................ 5
-BYTE_ENCODE<0>       XX...........XXX........................ 5
-NQ<2>                ....XXXXXXXX............................ 8
+CQ_FSM_FFd4          XXXXXXXX................................ 8
+CQ_FSM_FFd1          XXXXXXX................................. 7
+BURST<1>             XXXXXXX..X......XX...................... 10
+BURST<0>             X.XXXXX..X......XX...................... 9
+REFRESH              ..XXXXX.XXXXXXXX........................ 13
+CQ_FSM_FFd3          XXXXXXX................................. 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
@@ -269,18 +272,18 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_3         (b)     
 (unused)              0       0     0   5     FB2_4         (b)     
 (unused)              0       0     0   5     FB2_5   1     GTS/I/O I
-(unused)              0       0     0   5     FB2_6   2     GTS/I/O 
+(unused)              0       0     0   5     FB2_6   2     GTS/I/O I
 (unused)              0       0     0   5     FB2_7         (b)     
 (unused)              0       0     0   5     FB2_8   3     GTS/I/O I
 SEL16M                1       0     0   4     FB2_9   4     GTS/I/O O
 (unused)              0       0     0   5     FB2_10        (b)     
-ARAM<2>               2       0     0   3     FB2_11  6     I/O     O
-ARAM<5>               3       0     0   2     FB2_12  7     I/O     O
+ARAM<2>               3       0     0   2     FB2_11  6     I/O     O
+ARAM<5>               4       0     0   1     FB2_12  7     I/O     O
 (unused)              0       0     0   5     FB2_13        (b)     
-ARAM<3>               2       0     0   3     FB2_14  8     I/O     O
-ARAM<4>               2       0     0   3     FB2_15  9     I/O     O
+ARAM<3>               3       0     0   2     FB2_14  8     I/O     O
+ARAM<4>               3       0     0   2     FB2_15  9     I/O     O
 RAM_READY             1       0     0   4     FB2_16        (b)     (b)
-CLKEN                 3       0     0   2     FB2_17  10    I/O     O
+CLKEN                 4       0     0   1     FB2_17  10    I/O     O
 RQ<6>/RQ<6>_RSTF      3       0     0   2     FB2_18        (b)     (b)
 
 Signals Used by Logic in Function Block
@@ -357,16 +360,16 @@ BA<0>                 1       0     0   4     FB4_2   87    I/O     O
 ARAM<11>              1       0     0   4     FB4_5   89    I/O     O
 BA<1>                 1       0     0   4     FB4_6   90    I/O     O
 (unused)              0       0     0   5     FB4_7         (b)     
-ARAM<9>               2       0     0   3     FB4_8   91    I/O     O
+ARAM<9>               3       0     0   2     FB4_8   91    I/O     O
 ARAM<10>              3       0     0   2     FB4_9   92    I/O     O
 (unused)              0       0     0   5     FB4_10        (b)     
-ARAM<8>               2       0     0   3     FB4_11  93    I/O     O
-ARAM<0>               2       0     0   3     FB4_12  94    I/O     O
+ARAM<8>               3       0     0   2     FB4_11  93    I/O     O
+ARAM<0>               3       0     0   2     FB4_12  94    I/O     O
 (unused)              0       0     0   5     FB4_13        (b)     
-ARAM<7>               2       0     0   3     FB4_14  95    I/O     O
-ARAM<1>               3       0     0   2     FB4_15  96    I/O     O
+ARAM<7>               3       0     0   2     FB4_14  95    I/O     O
+ARAM<1>               4       0     0   1     FB4_15  96    I/O     O
 (unused)              0       0     0   5     FB4_16        (b)     
-ARAM<6>               2       0     0   3     FB4_17  97    I/O     O
+ARAM<6>               3       0     0   2     FB4_17  97    I/O     O
 (unused)              0       0     0   5     FB4_18        (b)     
 
 Signals Used by Logic in Function Block
@@ -394,11 +397,11 @@ ARAM<6>              ...X..........X.XXXXX................... 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB5  ***********************************
-Number of function block inputs used/remaining:               17/37
-Number of signals used by logic mapping into function block:  17
+Number of function block inputs used/remaining:               14/40
+Number of signals used by logic mapping into function block:  14
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0   /\1   4     FB5_1         (b)     (b)
+(unused)              0       0     0   5     FB5_1         (b)     
 (unused)              0       0     0   5     FB5_2   35    I/O     I
 (unused)              0       0     0   5     FB5_3         (b)     
 (unused)              0       0     0   5     FB5_4         (b)     
@@ -407,90 +410,89 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB5_7         (b)     
 (unused)              0       0     0   5     FB5_8   39    I/O     I
 (unused)              0       0     0   5     FB5_9   40    I/O     I
-(unused)              0       0     0   5     FB5_10        (b)     
-(unused)              0       0     0   5     FB5_11  41    I/O     I
-(unused)              0       0     0   5     FB5_12  42    I/O     I
-RQ<7>                 3       0     0   2     FB5_13        (b)     (b)
-RQ<6>                 3       0     0   2     FB5_14  43    I/O     I
-RQ<5>                 3       0     0   2     FB5_15  46    I/O     I
-RQ<4>                 3       0     0   2     FB5_16        (b)     (b)
-RQ<3>                 3       0   \/1   1     FB5_17  49    I/O     I
-REFRESH               7       2<-   0   0     FB5_18        (b)     (b)
+RQ<7>                 3       0     0   2     FB5_10        (b)     (b)
+RQ<6>                 3       0     0   2     FB5_11  41    I/O     I
+RQ<5>                 3       0     0   2     FB5_12  42    I/O     I
+RQ<4>                 3       0     0   2     FB5_13        (b)     (b)
+RQ<3>                 3       0     0   2     FB5_14  43    I/O     I
+BYTE_ENCODE<3>        3       0     0   2     FB5_15  46    I/O     I
+BYTE_ENCODE<2>        3       0     0   2     FB5_16        (b)     (b)
+BYTE_ENCODE<1>        3       0     0   2     FB5_17  49    I/O     I
+BYTE_ENCODE<0>        3       0     0   2     FB5_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: C4MHZ              7: REFRESH           13: RQ<4> 
-  2: CQ_FSM_FFd1        8: RESET             14: RQ<5> 
-  3: CQ_FSM_FFd2        9: RQ<0>             15: RQ<6> 
-  4: CQ_FSM_FFd3       10: RQ<1>             16: RQ<6>/RQ<6>_RSTF 
-  5: CQ_FSM_FFd4       11: RQ<2>             17: RQ<7> 
-  6: CQ_FSM_FFd5       12: RQ<3>            
+  1: A40<0>             6: RQ<2>             11: RQ<6>/RQ<6>_RSTF 
+  2: A40<1>             7: RQ<3>             12: RW_40 
+  3: C4MHZ              8: RQ<4>             13: SIZ40<0> 
+  4: RQ<0>              9: RQ<5>             14: SIZ40<1> 
+  5: RQ<1>             10: RQ<6>            
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-RQ<7>                X.......XXXXXXXX........................ 9
-RQ<6>                X.......XXXXXX.X........................ 8
-RQ<5>                X.......XXXXX..X........................ 7
-RQ<4>                X.......XXXX...X........................ 6
-RQ<3>                X.......XXX....X........................ 5
-REFRESH              .XXXXXXX..XXXXX.X....................... 13
+RQ<7>                ..XXXXXXXXX............................. 9
+RQ<6>                ..XXXXXXX.X............................. 8
+RQ<5>                ..XXXXXX..X............................. 7
+RQ<4>                ..XXXXX...X............................. 6
+RQ<3>                ..XXXX....X............................. 5
+BYTE_ENCODE<3>       XX.........XXX.......................... 5
+BYTE_ENCODE<2>       XX.........XXX.......................... 5
+BYTE_ENCODE<1>       XX.........XXX.......................... 5
+BYTE_ENCODE<0>       XX.........XXX.......................... 5
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB6  ***********************************
-Number of function block inputs used/remaining:               19/35
-Number of signals used by logic mapping into function block:  19
+Number of function block inputs used/remaining:               18/36
+Number of signals used by logic mapping into function block:  18
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB6_1         (b)     
-UDQ1                  5       0     0   0     FB6_2   74    I/O     O
-(unused)              0       0     0   5     FB6_3         (b)     
-NQ<0>                 2       0     0   3     FB6_4         (b)     (b)
+CQ_FSM_FFd5          11       6<-   0   0     FB6_1         (b)     (b)
+UDQ1                  5       1<- /\1   0     FB6_2   74    I/O     O
+(unused)              0       0   /\1   4     FB6_3         (b)     (b)
+(unused)              0       0     0   5     FB6_4         (b)     
 LDQ0                  5       0     0   0     FB6_5   76    I/O     O
 UDQ0                  5       0     0   0     FB6_6   77    I/O     O
-CQ_FSM_FFd1           4       0   \/1   0     FB6_7         (b)     (b)
-CE<0>                 6       1<-   0   0     FB6_8   78    I/O     O
-CE<1>                 6       1<-   0   0     FB6_9   79    I/O     O
-BURST<1>              5       1<- /\1   0     FB6_10        (b)     (b)
-WE                    5       1<- /\1   0     FB6_11  80    I/O     O
-CAS                   5       1<- /\1   0     FB6_12  81    I/O     O
-BURST<0>              5       1<- /\1   0     FB6_13        (b)     (b)
+(unused)              0       0   \/2   3     FB6_7         (b)     (b)
+CE<0>                 7       2<-   0   0     FB6_8   78    I/O     O
+CE<1>                 7       2<-   0   0     FB6_9   79    I/O     O
+NQ<0>                 2       0   /\2   1     FB6_10        (b)     (b)
+WE                    6       1<-   0   0     FB6_11  80    I/O     O
+CAS                   6       2<- /\1   0     FB6_12  81    I/O     O
+NQ<1>                 4       1<- /\2   0     FB6_13        (b)     (b)
 CLK_RAM               1       0   /\1   3     FB6_14  82    I/O     O
-RAS                   4       0   \/1   0     FB6_15  85    I/O     O
-CQ_FSM_FFd3           6       1<-   0   0     FB6_16        (b)     (b)
-ARAM<12>              1       0   \/2   2     FB6_17  86    I/O     O
-CQ_FSM_FFd4           7       2<-   0   0     FB6_18        (b)     (b)
+RAS                   5       0     0   0     FB6_15  85    I/O     O
+NQ<2>                 6       1<-   0   0     FB6_16        (b)     (b)
+ARAM<12>              1       0   /\1   3     FB6_17  86    I/O     O
+(unused)              0       0   \/5   0     FB6_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: A40<26>            8: CE_B_DECODE<1>    14: CQ_FSM_FFd5 
-  2: BURST<0>           9: CLK_RAMC          15: NQ<0> 
-  3: BURST<1>          10: CQ_FSM_FFd1       16: NQ<2> 
-  4: BYTE_ENCODE<0>    11: CQ_FSM_FFd2       17: RESET 
-  5: BYTE_ENCODE<1>    12: CQ_FSM_FFd3       18: SIZ40<0> 
-  6: BYTE_ENCODE<2>    13: CQ_FSM_FFd4       19: SIZ40<1> 
-  7: CE_B_DECODE<0>   
+  1: A40<26>            7: CLK_RAMC          13: NQ<0> 
+  2: BYTE_ENCODE<0>     8: CQ_FSM_FFd1       14: NQ<1> 
+  3: BYTE_ENCODE<1>     9: CQ_FSM_FFd2       15: NQ<2> 
+  4: BYTE_ENCODE<2>    10: CQ_FSM_FFd3       16: REFRESH 
+  5: CE_B_DECODE<0>    11: CQ_FSM_FFd4       17: SCLK 
+  6: CE_B_DECODE<1>    12: CQ_FSM_FFd5       18: TRANSFER 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-UDQ1                 ....X....XXXXX.......................... 6
-NQ<0>                .........XXXXXX......................... 6
-LDQ0                 .....X...XXXXX.......................... 6
-UDQ0                 ...X.....XXXXX.......................... 6
-CQ_FSM_FFd1          .XX......XXXXX.......................... 7
-CE<0>                ......X..XXXXX.......................... 6
-CE<1>                .......X.XXXXX.......................... 6
-BURST<1>             .XX......XXXXX..XXX..................... 10
-WE                   .........XXXXX.......................... 5
-CAS                  .........XXXXX.......................... 5
-BURST<0>             .X.......XXXXX..XXX..................... 9
-CLK_RAM              ........X............................... 1
-RAS                  .........XXXXX.......................... 5
-CQ_FSM_FFd3          .XX......XXXXX.......................... 7
-ARAM<12>             X........X.XXX.......................... 5
-CQ_FSM_FFd4          .XX......XXXXX.X........................ 8
+CQ_FSM_FFd5          .......XXXXXXXXXXX...................... 11
+UDQ1                 ..X....XXXXX............................ 6
+LDQ0                 ...X...XXXXX............................ 6
+UDQ0                 .X.....XXXXX............................ 6
+CE<0>                ....X..XXXXX............................ 6
+CE<1>                .....X.XXXXX............................ 6
+NQ<0>                .......XXXXXX........................... 6
+WE                   .......XXXXX............................ 5
+CAS                  .......XXXXX............................ 5
+NQ<1>                .......XXXXXXX.......................... 7
+CLK_RAM              ......X................................. 1
+RAS                  .......XXXXX............................ 5
+NQ<2>                .......XXXXXXXX......................... 8
+ARAM<12>             X......X.XXX............................ 5
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB7  ***********************************
-Number of function block inputs used/remaining:               5/49
-Number of signals used by logic mapping into function block:  5
+Number of function block inputs used/remaining:               0/54
+Number of signals used by logic mapping into function block:  0
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB7_1         (b)     
@@ -510,20 +512,10 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB7_15  60    I/O     
 (unused)              0       0     0   5     FB7_16        (b)     
 (unused)              0       0     0   5     FB7_17  61    I/O     
-BYTE_ENCODE<2>        3       0     0   2     FB7_18        (b)     (b)
-
-Signals Used by Logic in Function Block
-  1: A40<0>             3: RW_40              5: SIZ40<1> 
-  2: A40<1>             4: SIZ40<0>         
-
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-BYTE_ENCODE<2>       XXXXX................................... 5
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
+(unused)              0       0     0   5     FB7_18        (b)     
 *********************************** FB8  ***********************************
-Number of function block inputs used/remaining:               18/36
-Number of signals used by logic mapping into function block:  18
+Number of function block inputs used/remaining:               17/37
+Number of signals used by logic mapping into function block:  17
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0   /\1   4     FB8_1         (b)     (b)
@@ -531,7 +523,7 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB8_3         (b)     
 (unused)              0       0     0   5     FB8_4         (b)     
 (unused)              0       0     0   5     FB8_5   64    I/O     
-LE_RAM                3       0     0   2     FB8_6   65    I/O     O
+LE_RAM                4       0     0   1     FB8_6   65    I/O     O
 (unused)              0       0     0   5     FB8_7         (b)     
 OERAM_40              3       0     0   2     FB8_8   66    I/O     O
 OE40_RAM              3       0     0   2     FB8_9   67    I/O     O
@@ -540,29 +532,28 @@ TA40                  6       1<-   0   0     FB8_11  68    I/O     O
 (unused)              0       0     0   5     FB8_12  70    I/O     I
 (unused)              0       0     0   5     FB8_13        (b)     
 (unused)              0       0     0   5     FB8_14  71    I/O     I
-NQ<1>                 4       0     0   1     FB8_15  72    I/O     I
+(unused)              0       0     0   5     FB8_15  72    I/O     I
 CQ_FSM_FFd2           4       0     0   1     FB8_16        (b)     (b)
 LDQ1                  5       0     0   0     FB8_17  73    I/O     O
 TRANSFER              6       1<-   0   0     FB8_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: A40<27>            7: CQ_FSM_FFd2       13: REFRESH 
-  2: A40<28>            8: CQ_FSM_FFd3       14: RESET 
-  3: A40<29>            9: CQ_FSM_FFd4       15: RW_40 
-  4: A40<30>           10: CQ_FSM_FFd5       16: TRANSFER 
-  5: BYTE_ENCODE<3>    11: NQ<0>             17: TS40 
-  6: CQ_FSM_FFd1       12: NQ<1>             18: TT40_1 
+  1: A40<27>            7: CQ_FSM_FFd2       13: RW_40 
+  2: A40<28>            8: CQ_FSM_FFd3       14: SCLK 
+  3: A40<29>            9: CQ_FSM_FFd4       15: TRANSFER 
+  4: A40<30>           10: CQ_FSM_FFd5       16: TS40 
+  5: BYTE_ENCODE<3>    11: REFRESH           17: TT40_1 
+  6: CQ_FSM_FFd1       12: RESET            
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 LE_RAM               .....XXXXX.............................. 5
-OERAM_40             .....XXXXX.............................. 5
+OERAM_40             .....XXXX............................... 4
 OE40_RAM             .....XXXXX.............................. 5
 TA40                 XXXX.XXXXX.............................. 9
-NQ<1>                .....XXXXXXX............................ 7
-CQ_FSM_FFd2          .....XXXXX..X.XX........................ 8
+CQ_FSM_FFd2          .....XXXXXX.XXX......................... 9
 LDQ1                 ....XXXXXX.............................. 6
-TRANSFER             XXXX.X.XXX...X.XXX...................... 12
+TRANSFER             XXXX.X.XXX.X..XXX....................... 12
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
@@ -570,83 +561,103 @@ TRANSFER             XXXX.X.XXX...X.XXX...................... 12
 ********** Mapped Logic **********
 
 FDCPE_ARAM0: FDCPE port map (ARAM(0),ARAM_D(0),CLK_RAMC,NOT RESET,'0');
-ARAM_D(0) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(2))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(11)));
+ARAM_D(0) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(11))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(2))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(2)));
 
 FDCPE_ARAM1: FDCPE port map (ARAM(1),ARAM_D(1),CLK_RAMC,NOT RESET,'0');
-ARAM_D(1) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+ARAM_D(1) <= ((A40(3) AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND 
+	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(12))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(3))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(12)));
+	OR (A40(3) AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND 
+	CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND CQ_FSM_FFd2));
 
 FDCPE_ARAM2: FDCPE port map (ARAM(2),ARAM_D(2),CLK_RAMC,NOT RESET,'0');
-ARAM_D(2) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(4))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(13)));
+ARAM_D(2) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(13))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(4))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(4)));
 
 FDCPE_ARAM3: FDCPE port map (ARAM(3),ARAM_D(3),CLK_RAMC,NOT RESET,'0');
-ARAM_D(3) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(5))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(14)));
+ARAM_D(3) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(14))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(5))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(5)));
 
 FDCPE_ARAM4: FDCPE port map (ARAM(4),ARAM_D(4),CLK_RAMC,NOT RESET,'0');
-ARAM_D(4) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(6))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(15)));
+ARAM_D(4) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(15))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(6))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(6)));
 
 FDCPE_ARAM5: FDCPE port map (ARAM(5),ARAM_D(5),CLK_RAMC,NOT RESET,'0');
-ARAM_D(5) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+ARAM_D(5) <= ((A40(7) AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND 
+	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(16))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(7))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(16)));
+	OR (A40(7) AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND 
+	CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND CQ_FSM_FFd2));
 
 FDCPE_ARAM6: FDCPE port map (ARAM(6),ARAM_D(6),CLK_RAMC,NOT RESET,'0');
-ARAM_D(6) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(8))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(17)));
+ARAM_D(6) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(17))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(8))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(8)));
 
 FDCPE_ARAM7: FDCPE port map (ARAM(7),ARAM_D(7),CLK_RAMC,NOT RESET,'0');
-ARAM_D(7) <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(9))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND A40(18)));
+ARAM_D(7) <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND A40(18))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(9))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(9)));
 
 FDCPE_ARAM8: FDCPE port map (ARAM(8),ARAM_D(8),CLK_RAMC,NOT RESET,'0');
-ARAM_D(8) <= ((A40(19) AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+ARAM_D(8) <= ((A40(19) AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND 
 	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(10)));
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(10))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(10)));
 
 FDCPE_ARAM9: FDCPE port map (ARAM(9),ARAM_D(9),CLK_RAMC,NOT RESET,'0');
-ARAM_D(9) <= ((A40(20) AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+ARAM_D(9) <= ((A40(20) AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND 
 	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2 AND A40(26)));
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(26))
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND A40(26)));
 
 FDCPE_ARAM10: FDCPE port map (ARAM(10),ARAM_D(10),CLK_RAMC,NOT RESET,'0');
-ARAM_D(10) <= ((A40(21) AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+ARAM_D(10) <= ((A40(21) AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND 
 	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd1 AND CQ_FSM_FFd2));
 
 FDCPE_ARAM11: FDCPE port map (ARAM(11),ARAM_D(11),CLK_RAMC,NOT RESET,'0');
-ARAM_D(11) <= (A40(22) AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+ARAM_D(11) <= (A40(22) AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND 
 	NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1);
 
 FDCPE_ARAM12: FDCPE port map (ARAM(12),ARAM_D(12),CLK_RAMC,NOT RESET,'0');
-ARAM_D(12) <= (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+ARAM_D(12) <= (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND A40(26));
 
 FDCPE_BA0: FDCPE port map (BA(0),BA_D(0),CLK_RAMC,NOT RESET,'0');
@@ -658,21 +669,21 @@ BA_D(1) <= (RAM_READY AND A40(24));
 FTCPE_BURST0: FTCPE port map (BURST(0),BURST_T(0),CLK_RAMC,'0','0');
 BURST_T(0) <= ((RESET AND BURST(0) AND NOT SIZ40(0))
 	OR (RESET AND BURST(0) AND NOT SIZ40(1))
-	OR (RESET AND CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND SIZ40(0) AND SIZ40(1))
-	OR (RESET AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (RESET AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT BURST(0) AND SIZ40(0) AND SIZ40(1))
-	OR (RESET AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (RESET AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND SIZ40(0) AND SIZ40(1))
+	OR (RESET AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND SIZ40(0) AND SIZ40(1)));
 
 FTCPE_BURST1: FTCPE port map (BURST(1),BURST_T(1),CLK_RAMC,'0','0');
 BURST_T(1) <= ((RESET AND BURST(1) AND NOT SIZ40(0))
 	OR (RESET AND BURST(1) AND NOT SIZ40(1))
-	OR (RESET AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (RESET AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT BURST(1) AND SIZ40(0) AND SIZ40(1))
-	OR (RESET AND CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (RESET AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND NOT BURST(0) AND SIZ40(0) AND SIZ40(1))
-	OR (RESET AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (RESET AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND NOT BURST(0) AND SIZ40(0) AND SIZ40(1)));
 
 FDCPE_BYTE_ENCODE0: FDCPE port map (BYTE_ENCODE(0),BYTE_ENCODE_D(0),CLK_RAMC,'0',NOT RESET);
@@ -696,36 +707,44 @@ BYTE_ENCODE_D(3) <= ((NOT RW_40 AND SIZ40(0) AND NOT SIZ40(1) AND A40(1))
 	OR (NOT RW_40 AND NOT SIZ40(0) AND SIZ40(1) AND A40(1)));
 
 FDCPE_CAS: FDCPE port map (CAS,CAS_D,CLK_RAMC,'0',NOT RESET);
-CAS_D <= ((NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd2)
+CAS_D <= ((NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1)
 	OR (CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
 	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1));
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd2));
 
 FDCPE_CE0: FDCPE port map (CE(0),CE_D(0),CLK_RAMC,'0',NOT RESET);
-CE_D(0) <= ((NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+CE_D(0) <= ((NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	CE_B_DECODE(0))
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND CE_B_DECODE(0))
-	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND CE_B_DECODE(0))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND 
 	CE_B_DECODE(0)));
 
 FDCPE_CE1: FDCPE port map (CE(1),CE_D(1),CLK_RAMC,'0',NOT RESET);
-CE_D(1) <= ((NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+CE_D(1) <= ((NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	CE_B_DECODE(1))
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd2 AND CE_B_DECODE(1))
-	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND CE_B_DECODE(1))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND 
 	CE_B_DECODE(1)));
 
 FDCPE_CE_B_DECODE0: FDCPE port map (CE_B_DECODE(0),NOT A40(25),CLK_RAMC,NOT RESET,'0');
@@ -734,76 +753,90 @@ FDCPE_CE_B_DECODE1: FDCPE port map (CE_B_DECODE(1),A40(25),CLK_RAMC,NOT RESET,'0
 
 
 CLKEN <= NOT (((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)));
 
 
 CLK_RAM <= NOT CLK_RAMC;
 
 FDCPE_CQ_FSM_FFd1: FDCPE port map (CQ_FSM_FFd1,CQ_FSM_FFd1_D,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd1_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+CQ_FSM_FFd1_D <= ((NOT CQ_FSM_FFd3 AND CQ_FSM_FFd1 AND CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2 AND NOT BURST(0) AND NOT BURST(1)));
 
 FTCPE_CQ_FSM_FFd2: FTCPE port map (CQ_FSM_FFd2,CQ_FSM_FFd2_T,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd2_T <= ((NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND 
+CQ_FSM_FFd2_T <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2)
-	OR (REFRESH AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND 
+	OR (REFRESH AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND 
 	CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND RW_40 AND TRANSFER));
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND RW_40 AND TRANSFER AND NOT SCLK));
 
 FDCPE_CQ_FSM_FFd3: FDCPE port map (CQ_FSM_FFd3,CQ_FSM_FFd3_D,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd3_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd1 AND 
-	NOT BURST(0) AND NOT BURST(1))
-	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5)
-	OR (CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1));
+CQ_FSM_FFd3_D <= ((NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1 AND CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2 AND BURST(1))
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	NOT CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2 AND BURST(0)));
 
-FTCPE_CQ_FSM_FFd4: FTCPE port map (CQ_FSM_FFd4,CQ_FSM_FFd4_T,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd4_T <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd1 AND 
-	NOT BURST(0) AND NOT BURST(1))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND 
+FDCPE_CQ_FSM_FFd4: FDCPE port map (CQ_FSM_FFd4,CQ_FSM_FFd4_D,CLK_RAMC,NOT RESET,'0');
+CQ_FSM_FFd4_D <= ((CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND NOT NQ(2))
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
+	NOT CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	NOT CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND 
+	BURST(0))
+	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd2 AND 
+	BURST(1)));
+
+FDCPE_CQ_FSM_FFd5: FDCPE port map (CQ_FSM_FFd5,CQ_FSM_FFd5_D,CLK_RAMC,NOT RESET,'0');
+CQ_FSM_FFd5_D <= ((CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
+	NOT CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2)
 	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND NQ(2))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND CQ_FSM_FFd2));
+	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (REFRESH AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
+	NOT TRANSFER)
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND SCLK)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
+	CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2 AND NOT NQ(0) AND 
+	NOT NQ(1) AND NOT NQ(2)));
 
-FDCPE_CQ_FSM_FFd5: FDCPE port map (CQ_FSM_FFd5,CQ_FSM_FFd5_D,CLK_RAMC,NOT RESET,'0');
-CQ_FSM_FFd5_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT REFRESH AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND TRANSFER)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND NQ(0))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND NQ(1))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd2 AND NQ(2))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND NOT BURST(0) AND NOT BURST(1))
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND CQ_FSM_FFd1)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd2));
+
+
+
 
 
 
@@ -821,42 +854,42 @@ CQ_FSM_FFd5_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND
 
 FDCPE_LDQ0: FDCPE port map (LDQ0,LDQ0_D,CLK_RAMC,'0',NOT RESET);
 LDQ0_D <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	NOT BYTE_ENCODE(2))
 	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND 
 	NOT BYTE_ENCODE(2))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND NOT BYTE_ENCODE(2))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2 AND NOT BYTE_ENCODE(2)));
 
 FDCPE_LDQ1: FDCPE port map (LDQ1,LDQ1_D,CLK_RAMC,'0',NOT RESET);
 LDQ1_D <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	NOT BYTE_ENCODE(3))
 	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND 
 	NOT BYTE_ENCODE(3))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND NOT BYTE_ENCODE(3))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2 AND NOT BYTE_ENCODE(3)));
 
 
 LE_RAM <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2));
 
 FDCPE_NQ0: FDCPE port map (NQ(0),NQ_D(0),CLK_RAMC,NOT RESET,'0');
-NQ_D(0) <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+NQ_D(0) <= ((CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT NQ(0))
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2 AND NOT NQ(0)));
 
 FDCPE_NQ1: FDCPE port map (NQ(1),NQ_D(1),CLK_RAMC,NOT RESET,'0');
-NQ_D(1) <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+NQ_D(1) <= ((CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NQ(0) AND NOT NQ(1))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT NQ(0) AND NQ(1))
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2 AND NQ(0) AND NOT NQ(1))
@@ -864,11 +897,11 @@ NQ_D(1) <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND
 	NOT CQ_FSM_FFd2 AND NOT NQ(0) AND NQ(1)));
 
 FDCPE_NQ2: FDCPE port map (NQ(2),NQ_D(2),CLK_RAMC,NOT RESET,'0');
-NQ_D(2) <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+NQ_D(2) <= ((CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NQ(0) AND NQ(1) AND NOT NQ(2))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT NQ(0) AND NQ(2))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT NQ(1) AND NQ(2))
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2 AND NOT NQ(0) AND NQ(2))
@@ -879,37 +912,36 @@ NQ_D(2) <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND
 
 FDCPE_OE40_RAM: FDCPE port map (OE40_RAM,OE40_RAM_D,CLK_RAMC,'0',NOT RESET);
 OE40_RAM_D <= ((NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2));
 
 FDCPE_OERAM_40: FDCPE port map (OERAM_40,OERAM_40_D,CLK_RAMC,'0',NOT RESET);
 OERAM_40_D <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1));
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2));
 
 FDCPE_RAM_READY: FDCPE port map (RAM_READY,'1',CLK_RAMC,NOT RESET,'0',RAM_READY_CE);
-RAM_READY_CE <= (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+RAM_READY_CE <= (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2);
 
 FDCPE_RAS: FDCPE port map (RAS,RAS_D,CLK_RAMC,'0',NOT RESET);
 RAS_D <= ((CQ_FSM_FFd4 AND CQ_FSM_FFd2)
-	OR (CQ_FSM_FFd5 AND CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1));
 
 FDCPE_REFRESH: FDCPE port map (REFRESH,REFRESH_D,CLK_RAMC,NOT RESET,'0');
 REFRESH_D <= ((NOT RESET)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
 	OR (NOT REFRESH AND NOT RQ(5) AND NOT RQ(6) AND NOT RQ(7))
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
 	OR (NOT REFRESH AND NOT RQ(3) AND NOT RQ(6) AND NOT RQ(7))
 	OR (NOT REFRESH AND NOT RQ(2) AND NOT RQ(6) AND NOT RQ(7))
 	OR (NOT REFRESH AND NOT RQ(4) AND NOT RQ(6) AND NOT RQ(7))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2));
 
 FTCPE_RQ0: FTCPE port map (RQ(0),'1',C4MHZ,RQ(6)/RQ(6)_RSTF,'0');
@@ -933,9 +965,9 @@ RQ_T(6) <= (RQ(0) AND RQ(3) AND RQ(1) AND RQ(2) AND RQ(4) AND RQ(5));
 
 
 RQ(6)/RQ(6)_RSTF <= ((NOT RESET)
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd1 AND 
 	NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2));
 
 FTCPE_RQ7: FTCPE port map (RQ(7),RQ_T(7),C4MHZ,RQ(6)/RQ(6)_RSTF,'0');
@@ -946,12 +978,12 @@ RQ_T(7) <= (RQ(0) AND RQ(3) AND RQ(1) AND RQ(2) AND RQ(4) AND RQ(5) AND
 SEL16M <= NOT ((NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29)));
 
 FDCPE_TA40: FDCPE port map (TA40_I,TA40,CLK_RAMC,'0',NOT RESET);
-TA40 <= ((NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+TA40 <= ((NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1 AND 
 	CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1)
 	OR (NOT CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND NOT CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd1 AND 
+	OR (CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2));
 TA40 <= TA40_I when TA40_OE = '1' else 'Z';
 TA40_OE <= (NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29));
@@ -978,44 +1010,44 @@ FTCPE_TRANSFER: FTCPE port map (TRANSFER,TRANSFER_T,NOT CLK_RAMC,'0','0');
 TRANSFER_T <= ((RESET AND CQ_FSM_FFd1 AND NOT TRANSFER AND NOT TT40_1 AND NOT TS40 AND 
 	NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29))
 	OR (NOT RESET AND TRANSFER)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd1 AND TRANSFER)
-	OR (RESET AND CQ_FSM_FFd4 AND NOT TRANSFER AND NOT TT40_1 AND NOT TS40 AND 
-	NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29))
 	OR (RESET AND NOT CQ_FSM_FFd3 AND NOT TRANSFER AND NOT TT40_1 AND NOT TS40 AND 
+	NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29))
+	OR (RESET AND CQ_FSM_FFd4 AND NOT TRANSFER AND NOT TT40_1 AND NOT TS40 AND 
 	NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29))
 	OR (RESET AND CQ_FSM_FFd5 AND NOT TRANSFER AND NOT TT40_1 AND NOT TS40 AND 
 	NOT A40(28) AND A40(27) AND NOT A40(30) AND NOT A40(29)));
 
 FDCPE_UDQ0: FDCPE port map (UDQ0,UDQ0_D,CLK_RAMC,'0',NOT RESET);
 UDQ0_D <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	NOT BYTE_ENCODE(0))
 	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND 
 	NOT BYTE_ENCODE(0))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND NOT BYTE_ENCODE(0))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2 AND NOT BYTE_ENCODE(0)));
 
 FDCPE_UDQ1: FDCPE port map (UDQ1,UDQ1_D,CLK_RAMC,'0',NOT RESET);
-UDQ1_D <= ((CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
-	OR (NOT CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1)
+UDQ1_D <= ((CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1 AND 
+	NOT BYTE_ENCODE(1))
+	OR (CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
 	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd1 AND CQ_FSM_FFd2 AND 
 	NOT BYTE_ENCODE(1))
-	OR (CQ_FSM_FFd4 AND CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
-	CQ_FSM_FFd1 AND NOT BYTE_ENCODE(1))
-	OR (CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	CQ_FSM_FFd2 AND NOT BYTE_ENCODE(1)));
 
 FDCPE_WE: FDCPE port map (WE,WE_D,CLK_RAMC,'0',NOT RESET);
-WE_D <= ((CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND 
+WE_D <= ((NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd2)
 	OR (CQ_FSM_FFd1 AND NOT CQ_FSM_FFd2)
+	OR (CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd1)
 	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd5 AND CQ_FSM_FFd1)
-	OR (NOT CQ_FSM_FFd4 AND NOT CQ_FSM_FFd3 AND CQ_FSM_FFd5 AND 
+	OR (NOT CQ_FSM_FFd3 AND CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
+	CQ_FSM_FFd1)
+	OR (NOT CQ_FSM_FFd3 AND NOT CQ_FSM_FFd4 AND CQ_FSM_FFd5 AND 
 	NOT CQ_FSM_FFd2));
 
 Register Legend:
@@ -1064,7 +1096,7 @@ Device : XC95144XL-10-TQ100
 Pin Signal                         Pin Signal                        
 No. Name                           No. Name                          
   1 TT40_1                           51 VCC                           
-  2 KPR                              52 A40<5>                        
+  2 SCLK                             52 A40<5>                        
   3 ICACHE                           53 A40<4>                        
   4 SEL16M                           54 A40<3>                        
   5 VCC                              55 A40<2>                        

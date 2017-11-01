@@ -32,9 +32,6 @@
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">OE_FLASH</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">SCLK</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">TBI40</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 

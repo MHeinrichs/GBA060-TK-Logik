@@ -106,16 +106,16 @@ Synthesizing Unit <ramcon>.
 WARNING:Xst:647 - Input <WE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <D30> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <INIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <SCLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <TBI40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <OE_FLASH> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst - You have specified state <powerup> as a recovery-only state for the safe implementation of FSM <CQ>. Due to a limitation in this version of the software, the logic required to implement this recovery-only state might not be properly generated. Please refer to the Xilinx Answers Database for more details.
+INFO:Xst:1799 - State write_tra_ack is never reached in FSM <CQ>.
     Found finite state machine <FSM_0> for signal <CQ>.
     -----------------------------------------------------------------------
-    | States             | 23                                             |
+    | States             | 22                                             |
     | Transitions        | 32                                             |
-    | Inputs             | 6                                              |
-    | Outputs            | 30                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 22                                             |
     | Clock              | CLK_RAMC                  (rising_edge)        |
     | Reset              | RESET                     (negative)           |
     | Reset type         | asynchronous                                   |
@@ -208,12 +208,12 @@ Optimizing FSM <CQ/FSM> on signal <CQ[1:5]> with gray encoding.
  read_line_burst       | 01000
  write_start_ras       | 01100
  write_commit_ras      | 11001
- write_tra_ack         | 11011
- write_start_cas       | 11010
- write_commit_cas      | 11110
- write_line_burst      | 11111
+ write_tra_ack         | unreached
+ write_start_cas       | 11011
+ write_commit_cas      | 11010
+ write_line_burst      | 11110
  precharge             | 11000
- end_cycle             | 11101
+ end_cycle             | 11111
 -----------------------------------
 
 =========================================================================
@@ -272,36 +272,36 @@ Design Statistics
 # IOs                              : 81
 
 Cell Usage :
-# BELS                             : 660
-#      AND2                        : 229
-#      AND3                        : 30
-#      AND4                        : 9
+# BELS                             : 679
+#      AND2                        : 188
+#      AND3                        : 65
+#      AND4                        : 10
 #      AND5                        : 1
 #      GND                         : 1
-#      INV                         : 244
-#      OR2                         : 131
-#      OR3                         : 4
+#      INV                         : 261
+#      OR2                         : 136
+#      OR3                         : 6
 #      VCC                         : 1
 #      XOR2                        : 10
 # FlipFlops/Latches                : 54
 #      FDC                         : 33
 #      FDCE                        : 5
 #      FDP                         : 16
-# IO Buffers                       : 72
-#      IBUF                        : 40
+# IO Buffers                       : 73
+#      IBUF                        : 41
 #      OBUF                        : 31
 #      OBUFE                       : 1
 =========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.70 secs
+Total CPU time to Xst completion: 7.69 secs
  
 --> 
 
-Total memory usage is 293652 kilobytes
+Total memory usage is 293684 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    7 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 
