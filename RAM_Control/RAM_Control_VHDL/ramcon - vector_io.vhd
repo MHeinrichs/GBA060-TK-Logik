@@ -54,7 +54,6 @@ architecture ramcon_behav of ramcon is
 				read_line_burst,		
 				write_start_ras,	
 				write_commit_ras,	
-				write_tra_ack,		
 				write_start_cas,	
 				write_commit_cas,
 				write_line_burst,	
@@ -205,10 +204,12 @@ begin
 				BYTE_ENCODE(3)<='1';
 			end if;
 
-			if(SIZ40 = "11") then --line acces: we need bursting!
-				if(CQ = read_start_ras or CQ = write_start_ras)then
+			if(SIZ40 = "11") then --line access: we need bursting!
+				if(CQ = read_start_ras )then
 					burst <="11"; --Init: burst of 4
-				elsif((CQ = read_data_wait or CQ = write_commit_cas))then
+				elsif(CQ = write_start_ras)then
+					burst <="10"; --Init: burst of 3 on write
+				elsif((CQ = read_data_wait or CQ = write_line_burst))then
 					burst <=burst-1; --decrement
 				end if;
 			else
@@ -379,6 +380,7 @@ begin
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
 			CE_B_D <= CE_B_DECODE;
+			TA40_D <= RW_40; --write commits earlier
 			CAS_D <= '0';
 			ARAM_D <= ARAM_LOW;
 			CQ_D <= read_commit_cas;
@@ -412,20 +414,13 @@ begin
 			ARAM_D <= ARAM_HIGH;
 			CQ_D <= write_commit_ras;
       when write_commit_ras =>
-			--OE40_RAM_D <= '0';
 			CE_B_D <= CE_B_DECODE;
-			--CQ_D <= write_tra_ack;
-			CQ_D <= write_start_cas;
-      when write_tra_ack =>
-			OE40_RAM_D <= '0';
-			CE_B_D <= CE_B_DECODE;
-			--TA40_D <= '0';
 			CQ_D <= write_start_cas;
       when write_start_cas =>
-			OE40_RAM_D <= '0';		 
+			OE40_RAM_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
 			CE_B_D <= CE_B_DECODE;
-			WE_D <= '0';
+			WE_D <= RW_40;
 			TA40_D <= '0';
 			CAS_D <= '0';
 			ARAM_D <= ARAM_LOW;
@@ -433,6 +428,7 @@ begin
       when write_commit_cas =>
 			OE40_RAM_D <= '0';
 			CE_B_D <= CE_B_DECODE;
+			BYTE_D <= BYTE_ENCODE;
 			TA40_D <= '0';
 			ENACLK_PRE <= '0';
 			if (burst/="00") then
