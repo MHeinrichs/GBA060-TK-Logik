@@ -46,14 +46,12 @@ architecture ramcon_behav of ramcon is
 				start_state,	
 				refresh_start,	
 				refresh_wait,	
-				read_start_ras,
-				read_commit_ras,
+				start_ras,
+				commit_ras,
 				read_start_cas,
 				read_commit_cas,	
 				read_data_wait,	
 				read_line_burst,		
-				write_start_ras,	
-				write_commit_ras,	
 				write_start_cas,	
 				write_commit_cas,
 				write_line_burst,	
@@ -205,9 +203,9 @@ begin
 			end if;
 
 			if(SIZ40 = "11") then --line access: we need bursting!
-				if(CQ = read_start_ras )then
+				if(CQ = start_ras and RW_40 = '1')then
 					burst <="11"; --Init: burst of 4
-				elsif(CQ = write_start_ras)then
+				elsif(CQ = start_ras and RW_40 = '0')then
 					burst <="10"; --Init: burst of 3 on write
 				elsif((CQ = read_data_wait or CQ = write_line_burst))then
 					burst <=burst-1; --decrement
@@ -250,8 +248,7 @@ begin
    end process;
 
    TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and SELRAM='1' else '0';
-	TRANSFER_ACLR <= '1' when 	CQ = read_start_ras or
-										CQ = write_start_ras or 
+	TRANSFER_ACLR <= '1' when 	CQ = start_ras or
 										RESET ='0' else '0';
 
    process (CLK_RAMC) begin
@@ -345,15 +342,9 @@ begin
 			if (REFRESH='1') then
 				CQ_D <= refresh_start;
 			elsif (TRANSFER 
-						and RW_40 
 						and (not SCLK)
 					)='1' then
-				CQ_D <= read_start_ras;
-			elsif (TRANSFER 
-						and (not RW_40) 
-						and (not SCLK)
-					)='1' then
-				CQ_D <= write_start_ras;
+				CQ_D <= start_ras;
 			else
 				CQ_D <= start_state;
 			end if;
@@ -368,19 +359,22 @@ begin
 			else
 				CQ_D <= refresh_wait;
 			end if;
-      when read_start_ras =>
+      when start_ras =>
 			CE_B_D <= CE_B_DECODE;
 			RAS_D <= '0';
 			ARAM_D <= ARAM_HIGH;
-			CQ_D <= read_commit_ras;
-	   when read_commit_ras =>
+			CQ_D <= commit_ras;
+	   when commit_ras =>
 			CE_B_D <= CE_B_DECODE;
-			CQ_D <= read_start_cas;
+			if(RW_40='1')then
+				CQ_D <= read_start_cas;
+			else
+				CQ_D <= write_start_cas;
+			end if;
       when read_start_cas =>
 			OERAM_40_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
 			CE_B_D <= CE_B_DECODE;
-			TA40_D <= RW_40; --write commits earlier
 			CAS_D <= '0';
 			ARAM_D <= ARAM_LOW;
 			CQ_D <= read_commit_cas;
@@ -408,14 +402,6 @@ begin
 			CE_B_D <= CE_B_DECODE;
 			TA40_D <= '0';
 			CQ_D <= read_data_wait;
-      when write_start_ras =>
-			CE_B_D <= CE_B_DECODE;
-			RAS_D <= '0';
-			ARAM_D <= ARAM_HIGH;
-			CQ_D <= write_commit_ras;
-      when write_commit_ras =>
-			CE_B_D <= CE_B_DECODE;
-			CQ_D <= write_start_cas;
       when write_start_cas =>
 			OE40_RAM_D <= '0';
 			BYTE_D <= BYTE_ENCODE;
