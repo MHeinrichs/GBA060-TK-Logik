@@ -17,6 +17,10 @@
       <obj_property name="ElementShortName">sel16m</obj_property>
       <obj_property name="ObjectShortName">sel16m</obj_property>
    </wvobject>
+   <wvobject fp_name="/card_controll_test/pll_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pll_clk</obj_property>
+      <obj_property name="ObjectShortName">pll_clk</obj_property>
+   </wvobject>
    <wvobject fp_name="/card_controll_test/osc_clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">osc_clk</obj_property>
       <obj_property name="ObjectShortName">osc_clk</obj_property>
@@ -105,25 +109,13 @@
       <obj_property name="ElementShortName">reset30</obj_property>
       <obj_property name="ObjectShortName">reset30</obj_property>
    </wvobject>
-   <wvobject fp_name="/card_controll_test/le_bs" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">le_bs</obj_property>
-      <obj_property name="ObjectShortName">le_bs</obj_property>
-   </wvobject>
    <wvobject fp_name="/card_controll_test/pll_s" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">pll_s[1:0]</obj_property>
       <obj_property name="ObjectShortName">pll_s[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/card_controll_test/pll_clk" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">pll_clk</obj_property>
-      <obj_property name="ObjectShortName">pll_clk</obj_property>
-   </wvobject>
    <wvobject fp_name="/card_controll_test/pclk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">pclk</obj_property>
       <obj_property name="ObjectShortName">pclk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/card_controll_test/clk_ramc" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">clk_ramc</obj_property>
-      <obj_property name="ObjectShortName">clk_ramc</obj_property>
    </wvobject>
    <wvobject fp_name="/card_controll_test/bclk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">bclk</obj_property>
@@ -141,9 +133,9 @@
       <obj_property name="ElementShortName">clk_bs</obj_property>
       <obj_property name="ObjectShortName">clk_bs</obj_property>
    </wvobject>
-   <wvobject fp_name="/card_controll_test/al" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">al[1:0]</obj_property>
-      <obj_property name="ObjectShortName">al[1:0]</obj_property>
+   <wvobject fp_name="/card_controll_test/clk_ramc" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_ramc</obj_property>
+      <obj_property name="ObjectShortName">clk_ramc</obj_property>
    </wvobject>
    <wvobject fp_name="/card_controll_test/a30_le" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">a30_le</obj_property>
@@ -160,6 +152,14 @@
    <wvobject fp_name="/card_controll_test/bwl_bs" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">bwl_bs[2:0]</obj_property>
       <obj_property name="ObjectShortName">bwl_bs[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/card_controll_test/al" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">al[1:0]</obj_property>
+      <obj_property name="ObjectShortName">al[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/card_controll_test/le_bs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">le_bs</obj_property>
+      <obj_property name="ObjectShortName">le_bs</obj_property>
    </wvobject>
    <wvobject fp_name="/card_controll_test/fc30" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">fc30[2:0]</obj_property>

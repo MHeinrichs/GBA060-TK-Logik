@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.11 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: control.prj
 
@@ -107,8 +107,11 @@ WARNING:Xst:647 - Input <OSC_CLK> is never used. This port will be preserved and
 WARNING:Xst:1306 - Output <TCI40> is never assigned.
 WARNING:Xst:647 - Input <CIOUT40> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:646 - Signal <STERM_D1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <RESETO_S> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <RESETO_DELAY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <RESETI_S1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <RESETI_DELAY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <LE_BS_SIG_D> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <LDSACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <DSACK_D1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <CLK30_SIG> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <CLK30_D1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -135,7 +138,7 @@ WARNING:Xst:1780 - Signal <BCLK040_SIG> is never used or assigned. This unconnec
     | States             | 6                                              |
     | Transitions        | 27                                             |
     | Inputs             | 11                                             |
-    | Outputs            | 7                                              |
+    | Outputs            | 12                                             |
     | Clock              | CLK30_SM                  (falling_edge)       |
     | Reset              | RSTI40_SIG                (negative)           |
     | Reset type         | asynchronous                                   |
@@ -168,7 +171,9 @@ WARNING:Xst:1780 - Signal <BCLK040_SIG> is never used or assigned. This unconnec
     Found 1-bit tristate buffer for signal <RW30>.
     Found 2-bit tristate buffer for signal <SIZ30>.
     Found 1-bit tristate buffer for signal <RESET30>.
+    Found 3-bit register for signal <IPL40>.
     Found 1-bit tristate buffer for signal <TA40>.
+    Found 2-bit register for signal <AL_D>.
     Found 1-bit register for signal <AS30_SIG>.
     Found 1-bit register for signal <ATERM>.
     Found 1-bit register for signal <BCLK_SIG>.
@@ -180,13 +185,15 @@ WARNING:Xst:1780 - Signal <BCLK040_SIG> is never used or assigned. This unconnec
     Found 1-bit register for signal <DS30_SIG>.
     Found 2-bit register for signal <DSACK_D0>.
     Found 1-bit register for signal <END_ACK>.
-    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 340.
+    Found 1-bit xor2 for signal <END_ACK$xor0000> created at line 366.
     Found 1-bit register for signal <END_SEND>.
     Found 1-bit register for signal <END_SEND_SAMPLED>.
     Found 2-bit up counter for signal <PLL_CLOCKDIV>.
+    Found 1-bit register for signal <RESETI_S>.
     Found 1-bit register for signal <RSTI40_SIG>.
     Found 1-bit register for signal <RSTINT>.
     Found 1-bit register for signal <SCLK_SIG>.
+    Found 2-bit register for signal <SIZ30_D>.
     Found 1-bit register for signal <START_ACK>.
     Found 1-bit register for signal <START_SEND>.
     Found 1-bit register for signal <START_SEND_SAMPLED>.
@@ -195,7 +202,7 @@ WARNING:Xst:1780 - Signal <BCLK040_SIG> is never used or assigned. This unconnec
     Summary:
 	inferred   3 Finite State Machine(s).
 	inferred   1 Counter(s).
-	inferred  19 D-type flip-flop(s).
+	inferred  21 D-type flip-flop(s).
 	inferred   1 Xor(s).
 	inferred  10 Tristate(s).
 Unit <control> synthesized.
@@ -207,9 +214,10 @@ HDL Synthesis Report
 Macro Statistics
 # Counters                                             : 1
  2-bit up counter                                      : 1
-# Registers                                            : 22
- 1-bit register                                        : 21
- 2-bit register                                        : 1
+# Registers                                            : 27
+ 1-bit register                                        : 24
+ 2-bit register                                        : 2
+ 3-bit register                                        : 1
 # Tristates                                            : 8
  1-bit tristate buffer                                 : 6
  2-bit tristate buffer                                 : 2
@@ -265,8 +273,8 @@ Macro Statistics
 # FSMs                                                 : 3
 # Counters                                             : 1
  2-bit up counter                                      : 1
-# Registers                                            : 19
- Flip-Flops                                            : 19
+# Registers                                            : 21
+ Flip-Flops                                            : 21
 
 =========================================================================
 
@@ -277,29 +285,31 @@ INFO:Xst:2261 - The FF/Latch <CLK_RAMC_SIG> in Unit <control> is equivalent to t
 
 Optimizing unit <control> ...
   implementation constraint: INIT=r	 : SCLK_SIG
-  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd1
   implementation constraint: INIT=r	 : BCLK_SIG_D
-  implementation constraint: INIT=r	 : DSACK_D0_1
-  implementation constraint: INIT=r	 : DS30_SIG
   implementation constraint: INIT=r	 : AS30_SIG
   implementation constraint: INIT=r	 : SM030_N_FSM_FFd1
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd1
+  implementation constraint: INIT=r	 : TA40_SIG
   implementation constraint: INIT=r	 : BCLK_SIG
-  implementation constraint: INIT=r	 : SM030_N_FSM_FFd2
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd3
-  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd2
+  implementation constraint: INIT=r	 : DS30_SIG
+  implementation constraint: INIT=s	 : SIZ30_D_0
+  implementation constraint: INIT=s	 : AL_D_1
+  implementation constraint: INIT=s	 : SIZ30_D_1
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd3
+  implementation constraint: INIT=r	 : DMA_SM_FSM_FFd2
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd3
   implementation constraint: INIT=r	 : CLK_RAMC_SIG
   implementation constraint: INIT=r	 : RSTINT
   implementation constraint: INIT=r	 : RSTI40_SIG
+  implementation constraint: INIT=s	 : AL_D_0
+  implementation constraint: INIT=r	 : BR30_Q
   implementation constraint: INIT=r	 : PLL_CLOCKDIV_1
   implementation constraint: INIT=r	 : PLL_CLOCKDIV_0
-  implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : ATERM
+  implementation constraint: INIT=r	 : SIZING_FSM_FFd2
   implementation constraint: INIT=r	 : DMA_SM_FSM_FFd4
+  implementation constraint: INIT=r	 : SM030_N_FSM_FFd2
   implementation constraint: INIT=r	 : SIZING_FSM_FFd1
-  implementation constraint: INIT=r	 : BR30_Q
-  implementation constraint: INIT=r	 : TA40_SIG
-  implementation constraint: INIT=r	 : DSACK_D0_0
   implementation constraint: INIT=r	 : BGACK30_Q
 
 =========================================================================
@@ -332,21 +342,21 @@ Design Statistics
 # IOs                              : 72
 
 Cell Usage :
-# BELS                             : 386
-#      AND2                        : 108
+# BELS                             : 383
+#      AND2                        : 109
 #      AND3                        : 24
 #      AND4                        : 8
 #      GND                         : 1
-#      INV                         : 162
-#      OR2                         : 69
+#      INV                         : 160
+#      OR2                         : 67
 #      OR3                         : 9
 #      VCC                         : 1
 #      XOR2                        : 4
-# FlipFlops/Latches                : 33
-#      FD                          : 8
+# FlipFlops/Latches                : 41
+#      FD                          : 11
 #      FDC                         : 12
-#      FDCE                        : 5
-#      FDP                         : 5
+#      FDCE                        : 7
+#      FDP                         : 8
 #      FDPE                        : 3
 # IO Buffers                       : 69
 #      IBUF                        : 30
@@ -357,13 +367,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.49 secs
+Total CPU time to Xst completion: 7.79 secs
  
 --> 
 
-Total memory usage is 293664 kilobytes
+Total memory usage is 293672 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   11 (   0 filtered)
+Number of warnings :   14 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

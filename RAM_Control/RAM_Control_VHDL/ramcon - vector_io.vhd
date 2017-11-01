@@ -265,8 +265,8 @@ begin
 
 
 -- Signal section
-   --SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
-	SELRAM	<= '0'; 
+   SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
+	--SELRAM	<= '0'; 
 	SEL16M 	<= not SELRAM;
 
    TA40 		<= TA40_FB when (SELRAM='1') else 'Z'; --tristate on amiga access
@@ -343,9 +343,15 @@ begin
       when start_state =>
 			if (REFRESH='1') then
 				CQ_D <= refresh_start;
-			elsif (TRANSFER and RW_40 and (not SCLK))='1' then
+			elsif (TRANSFER 
+						and RW_40 
+					--	and (not SCLK)
+					)='1' then
 				CQ_D <= read_start_ras;
-			elsif (TRANSFER and (not RW_40) and SCLK)='1' then
+			elsif (TRANSFER 
+						and (not RW_40) 
+					--	and SCLK
+					)='1' then
 				CQ_D <= write_start_ras;
 			else
 				CQ_D <= start_state;
@@ -390,6 +396,7 @@ begin
 			ENACLK_PRE <= '0';
 			if (burst /="00") then
 				CQ_D <= read_line_burst;
+				--CQ_D <= read_data_wait;
 			else
 				CQ_D <= precharge;
 			end if;
@@ -429,6 +436,7 @@ begin
 			ENACLK_PRE <= '0';
 			if (burst/="00") then
 				CQ_D <= write_line_burst;
+				--CQ_D <= write_commit_cas;
 			else
 				CQ_D <= precharge;
 			end if;

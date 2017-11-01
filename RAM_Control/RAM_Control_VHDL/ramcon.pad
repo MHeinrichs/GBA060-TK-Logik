@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
-10-23-2017 10:36PM
+11- 1-2017  1:22AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -18,7 +18,7 @@ Pinout by Pin Number:
 
 -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|{blank}|Slew Rate|Termination|{blank}|Voltage|Constraint|
-P1|TIE||I/O/GTS3||||||||||
+P1|TT40_1|I|I/O/GTS3|INPUT|||||||||
 P2|TIE||I/O/GTS4||||||||||
 P3|ICACHE|I|I/O/GTS1|INPUT|||||||||
 P4|SEL16M|O|I/O/GTS2|OUTPUT|||||||||
@@ -29,7 +29,7 @@ P8|ARAM<3>|O|I/O|OUTPUT|||||||||
 P9|ARAM<4>|O|I/O|OUTPUT|||||||||
 P10|CLKEN|O|I/O|OUTPUT|||||||||
 P11|C4MHZ|I|I/O|INPUT|||||||||
-P12|TIE||I/O||||||||||
+P12|RW_40|I|I/O|INPUT|||||||||
 P13|TIE||I/O||||||||||
 P14|TIE||I/O||||||||||
 P15|A40<30>|I|I/O|INPUT|||||||||
@@ -50,32 +50,32 @@ P29|A40<21>|I|I/O|INPUT|||||||||
 P30|A40<20>|I|I/O|INPUT|||||||||
 P31|GND||GND||||||||||
 P32|A40<19>|I|I/O|INPUT|||||||||
-P33|TIE||I/O||||||||||
-P34|TIE||I/O||||||||||
-P35|TIE||I/O||||||||||
-P36|TIE||I/O||||||||||
-P37|TIE||I/O||||||||||
+P33|A40<18>|I|I/O|INPUT|||||||||
+P34|A40<17>|I|I/O|INPUT|||||||||
+P35|A40<16>|I|I/O|INPUT|||||||||
+P36|A40<15>|I|I/O|INPUT|||||||||
+P37|A40<14>|I|I/O|INPUT|||||||||
 P38|VCC||VCCIO||||||||||
-P39|TIE||I/O||||||||||
-P40|TIE||I/O||||||||||
-P41|TIE||I/O||||||||||
-P42|TIE||I/O||||||||||
-P43|TIE||I/O||||||||||
+P39|A40<13>|I|I/O|INPUT|||||||||
+P40|A40<12>|I|I/O|INPUT|||||||||
+P41|A40<11>|I|I/O|INPUT|||||||||
+P42|A40<10>|I|I/O|INPUT|||||||||
+P43|A40<9>|I|I/O|INPUT|||||||||
 P44|GND||GND||||||||||
 P45|TDI||TDI||||||||||
-P46|TIE||I/O||||||||||
+P46|A40<8>|I|I/O|INPUT|||||||||
 P47|TMS||TMS||||||||||
 P48|TCK||TCK||||||||||
-P49|TIE||I/O||||||||||
-P50|TIE||I/O||||||||||
+P49|A40<7>|I|I/O|INPUT|||||||||
+P50|A40<6>|I|I/O|INPUT|||||||||
 P51|VCC||VCCIO||||||||||
-P52|TIE||I/O||||||||||
-P53|TIE||I/O||||||||||
-P54|TIE||I/O||||||||||
-P55|TIE||I/O||||||||||
-P56|TIE||I/O||||||||||
+P52|A40<5>|I|I/O|INPUT|||||||||
+P53|A40<4>|I|I/O|INPUT|||||||||
+P54|A40<3>|I|I/O|INPUT|||||||||
+P55|A40<2>|I|I/O|INPUT|||||||||
+P56|A40<1>|I|I/O|INPUT|||||||||
 P57|VCC||VCCINT||||||||||
-P58|TIE||I/O||||||||||
+P58|A40<0>|I|I/O|INPUT|||||||||
 P59|TIE||I/O||||||||||
 P60|TIE||I/O||||||||||
 P61|TIE||I/O||||||||||
@@ -87,9 +87,9 @@ P66|OERAM_40|O|I/O|OUTPUT|||||||||
 P67|OE40_RAM|O|I/O|OUTPUT|||||||||
 P68|TA40|O|I/O|OUTPUT|||||||||
 P69|GND||GND||||||||||
-P70|TIE||I/O||||||||||
-P71|TIE||I/O||||||||||
-P72|TIE||I/O||||||||||
+P70|TS40|I|I/O|INPUT|||||||||
+P71|SIZ40<1>|I|I/O|INPUT|||||||||
+P72|SIZ40<0>|I|I/O|INPUT|||||||||
 P73|LDQ1|O|I/O|OUTPUT|||||||||
 P74|UDQ1|O|I/O|OUTPUT|||||||||
 P75|GND||GND||||||||||
