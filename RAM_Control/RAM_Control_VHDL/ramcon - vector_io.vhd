@@ -88,10 +88,11 @@ architecture ramcon_behav of ramcon is
    constant ARAM_OPTCODE: STD_LOGIC_VECTOR (12 downto 0) := "0000000100010"; 
 	signal ENACLK_PRE : STD_LOGIC;
 	signal RAM_READY : STD_LOGIC;
+	signal PRECHAGRE_WAIT : STD_LOGIC;
 	signal BURST :  STD_LOGIC_VECTOR (1 downto 0);
 	signal BYTE_ENCODE :  STD_LOGIC_VECTOR (3 downto 0);
 	signal BYTE_D :  STD_LOGIC_VECTOR (3 downto 0);
-
+	signal A3000RAM : STD_LOGIC;
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -130,6 +131,7 @@ begin
 			REFRESH <='0';
 			RAM_READY <='0';
 			BYTE_ENCODE <="1111";
+			PRECHAGRE_WAIT <= '0';
       elsif rising_edge(CLK_RAMC) then
 			if(CLRREFC ='1')then
 				REFRESH <= '0';
@@ -203,18 +205,23 @@ begin
 			end if;
 
 			if(SIZ40 = "11") then --line access: we need bursting!
-				if(CQ = start_ras and RW_40 = '1')then
+				if(CQ = commit_ras and RW_40 = '1')then
 					burst <="11"; --Init: burst of 4
-				elsif(CQ = start_ras and RW_40 = '0')then
+				elsif(CQ = commit_ras and RW_40 = '0')then
 					burst <="10"; --Init: burst of 3 on write
-				elsif((CQ = read_data_wait or CQ = write_line_burst))then
+				elsif((CQ = read_data_wait or CQ = write_commit_cas))then
 					burst <=burst-1; --decrement
 				end if;
 			else
 				burst <="00"; --no burst
 			end if;
 			
-
+			if(CQ = precharge)then
+				PRECHAGRE_WAIT <='1';
+			else
+				PRECHAGRE_WAIT <='0';
+			end if;
+			
 			CE_B_DECODE(0) <= not A40(25);		
 			CE_B_DECODE(1) <= A40(25);		
 			UDQ0 <= BYTE_D(0);
@@ -248,7 +255,7 @@ begin
    end process;
 
    TRANSFER_CLK <= '1' when TS40 ='0' and TT40_1 ='0' and SELRAM='1' else '0';
-	TRANSFER_ACLR <= '1' when 	CQ = start_ras or
+	TRANSFER_ACLR <= '1' when 	CQ = commit_ras or
 										RESET ='0' else '0';
 
    process (CLK_RAMC) begin
@@ -266,19 +273,19 @@ begin
    SELRAM	<= '1' when A40(30 downto 27) = "0001" else '0'; 
 	--SELRAM	<= '0'; 
 	SEL16M 	<= not SELRAM;
-
+	A3000RAM <= '1' when A40(30 downto 24) = "0000111" else '0'; 
    TA40 		<= TA40_FB when (SELRAM='1') else 'Z'; --tristate on amiga access
 
-   TCI40 	<= '1' when (ICACHE ='1' and(														
-													A40(30 downto 23) = "00000000" or  
-													A40(30 downto 21) = "0000000100" or
-													A40(30 downto 19) = "000000011111" 	
-													))or
-								A40(30 downto 21) = "0000001001"  or 
-								A40(30 downto 22) = "000000101"  or 
-								A40(30 downto 21) = "0000001100"  or
-								A40(30 downto 24) = "0000111"  or
-								SELRAM='1'
+   TCI40 	<= '1' when --(ICACHE ='1' and(														
+								--					A40(30 downto 23) = "00000000" or  
+								--					A40(30 downto 21) = "0000000100" or
+								--					A40(30 downto 19) = "000000011111" 	
+								--					))or
+								--A40(30 downto 21) = "0000001001"  or 
+								--A40(30 downto 22) = "000000101"  or 
+								--A40(30 downto 21) = "0000001100"  or								
+								SELRAM='1' or
+								A3000RAM ='1'
 								else '0';
    LE_RAM <= '0' when ENACLK_PRE ='1' else '1'; --LE_RAM goes only to the read from RAM direction of the 74ACT16543
   
@@ -339,11 +346,18 @@ begin
 				CQ_D <= init_wait;
 			end if;
       when start_state =>
+			CE_B_D <= CE_B_DECODE;
+			ARAM_D <= ARAM_HIGH;
+
+		
 			if (REFRESH='1') then
 				CQ_D <= refresh_start;
 			elsif (TRANSFER 
 						and (not SCLK)
+						--and (not PRECHAGRE_WAIT)
 					)='1' then
+				--RAS_D <= '0';
+				--CQ_D <= commit_ras;
 				CQ_D <= start_ras;
 			else
 				CQ_D <= start_state;
@@ -361,8 +375,8 @@ begin
 			end if;
       when start_ras =>
 			CE_B_D <= CE_B_DECODE;
-			RAS_D <= '0';
 			ARAM_D <= ARAM_HIGH;
+			RAS_D <= '0';
 			CQ_D <= commit_ras;
 	   when commit_ras =>
 			CE_B_D <= CE_B_DECODE;

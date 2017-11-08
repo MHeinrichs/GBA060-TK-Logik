@@ -242,6 +242,8 @@ begin
 			LE_BS_SIG_D <= LE_BS_SIG;
 		end if;
 	end process CLOCKS_P;
+	--statemachine clock
+	CLK30_SM	<= CLK30_D1;
 
 	--Erzeugung der Resets
 	RESET_40O: process (BCLK_SIG)
@@ -383,7 +385,6 @@ begin
 	OE_BS		<= DATA_OE when CONTROL40_OE ='1' else '0';
 	DIR_BS	<=	RW40;
 	
-	CLK30_SM	<= CLK30;
 
 	AMISEL	<= '1' when RSTI40_SIG ='1' and ((TT40(1) = '0' and SEL16M ='1') 	-- adressbereich Mainboard
 															or TT40(1)='1') 						-- alt func AVEC/BRKPT

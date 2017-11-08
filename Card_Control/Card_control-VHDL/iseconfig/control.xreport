@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-11-01T01:23:23</DateModified>
+  <DateModified>2017-11-06T09:00:04</DateModified>
   <ModuleName>control</ModuleName>
-  <SummaryTimeStamp>2017-11-01T01:06:54</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-11-06T00:50:51</SummaryTimeStamp>
   <SavedFilePath>C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/iseconfig/control.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL\</ImplementationReportsDirectory>
   <DateInitialized>2017-10-23T21:55:45</DateInitialized>
