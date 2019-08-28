@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test_isim_beh.exe" -prj "C:/Users/Matze/Amiga/Hardwarehacks/gb_a1k_tk/Logik/Card_Control/Card_control-VHDL/card_controll_test_beh.prj" "work.card_controll_test" 
